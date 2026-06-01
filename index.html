@@ -138,7 +138,10 @@
     .explore-icon { position:relative; width:112px; height:112px; object-fit:contain;
       filter: drop-shadow(0 7px 10px rgba(31,24,18,.30)); transition: transform .28s ease; }
     .explore-card:hover .explore-icon { transform: translateY(-5px) scale(1.06) rotate(-3deg); }
-    @media (max-width:640px){ .explore-icon-wrap{ width:108px; height:108px; } .explore-icon{ width:94px; height:94px; } }
+    @media (max-width:640px){
+      .explore-icon-wrap{ width:74px; height:74px; margin-bottom:0; }
+      .explore-icon{ width:64px; height:64px; }
+    }
 
     /* ── Food photo gallery (auto-scroll marquee, Health-page style) ── */
     .gallery { overflow:hidden; position:relative;
@@ -163,6 +166,7 @@
     .explore-card:hover { transform: translate(2px,3px); box-shadow:3px 3px 0 var(--color-ink); }
     .explore-card .arrow { transition: transform .2s ease; }
     .explore-card:hover .arrow { transform: translateX(5px); }
+    @media (max-width:640px){ .explore-card{ min-height:0; } }
 
     /* ── Reveal on scroll ── */
     .reveal { opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
@@ -324,32 +328,32 @@
         <p class="mt-4 text-[15px] sm:text-[16px] text-ink-soft">同じ一皿が、こんなにいろんなものにつながっている。</p>
       </div>
 
-      <div class="mt-10 sm:mt-12 grid sm:grid-cols-3 gap-6 reveal">
+      <div class="mt-8 sm:mt-12 grid sm:grid-cols-3 gap-4 sm:gap-6 reveal">
         <!-- 健康 -->
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-karada/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#E55063,#C9223A);">
-          <div class="p-8 h-full flex flex-col items-center text-center text-paper">
+          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
             <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/heart.png" alt=""/></div>
-            <h3 class="font-display text-[26px] leading-tight">からだ</h3>
+            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">からだ</h3>
             <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">いいことだらけの植物性。健康と栄養の話。</p>
-            <span class="mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと体 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと体 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
           </div>
         </a>
         <!-- 地球 -->
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-chikyu/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#6C9560,#3F6A3A);">
-          <div class="p-8 h-full flex flex-col items-center text-center text-paper">
+          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
             <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/earth.png" alt=""/></div>
-            <h3 class="font-display text-[26px] leading-tight">地球</h3>
+            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">地球</h3>
             <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">食卓から、地球を変える。環境とのつながり。</p>
-            <span class="mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと地球 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと地球 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
           </div>
         </a>
         <!-- 海 -->
         <a href="https://veganoji-staging.ojidigital.com/umi-wo-kazoeru/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#2B7AB0,#16465F);">
-          <div class="p-8 h-full flex flex-col items-center text-center text-paper">
+          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
             <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/fish.png" alt=""/></div>
-            <h3 class="font-display text-[26px] leading-tight">海</h3>
+            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">海</h3>
             <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">海で、いま起きていること。魚たちを、かぞえる。</p>
-            <span class="mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">海をかぞえる <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">海をかぞえる <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
           </div>
         </a>
       </div>
