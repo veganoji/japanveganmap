@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero 背景ラボ · Japan Vegan Map</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    .__seed { color: inherit; }
+    @theme {
+      --color-paper: #FFF9EE; --color-cream: #FDF1DA; --color-cream-2: #F6E4BD;
+      --color-royal: #C9223A; --color-royal-deep: #9C1428; --color-gold: #D4A847; --color-gold-deep: #9C7E2A;
+      --color-ink: #1F1812; --color-ink-soft: #3C2E22; --color-muted: #786148;
+      --font-noto-sans-jp: "Noto Sans JP", sans-serif;
+    }
+    html, body { background: var(--color-cream-2); color: var(--color-ink); }
+    body { font-family: var(--font-noto-sans-jp); }
+    .font-display { font-family: var(--font-noto-sans-jp); font-weight: 900; }
+    .display-tight { letter-spacing: -0.035em; line-height: 0.96; }
+    .stat-num { font-weight:900; letter-spacing:-0.03em; line-height:0.9; color:var(--color-royal); }
+
+    .btn-primary, .btn-gold {
+      display:inline-flex; align-items:center; gap:8px; border-radius:16px;
+      font-family:"Noto Sans JP",sans-serif; font-weight:700;
+      border:2.5px solid var(--color-ink); box-shadow:4px 4px 0 var(--color-ink);
+      padding:14px 28px; font-size:15px;
+    }
+    .btn-primary { background:var(--color-royal); color:var(--color-paper); }
+    .btn-gold { background:var(--color-gold); color:var(--color-ink); }
+
+    .food-pin { position:absolute; overflow:hidden; width:66px; height:66px; border-radius:50%;
+      border:3px solid var(--color-ink); box-shadow:3px 4px 0 rgba(31,24,18,.28); background:var(--color-paper); z-index:5; }
+    .food-pin img { width:100%; height:100%; object-fit:cover; display:block; }
+    .food-pin.lg { width:80px; height:80px; }
+    @media (max-width:640px){ .food-pin{ width:50px; height:50px; border-width:2.5px; } .food-pin.lg{ width:60px; height:60px; } }
+    .bob { animation: bob 4s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{ transform: translateY(0) rotate(0); } 50%{ transform: translateY(-8px) rotate(-1.5deg); } }
+    .floaty   { animation: floaty 5s ease-in-out infinite; }
+    .floaty-2 { animation: floaty 6.4s ease-in-out infinite; }
+    .floaty-3 { animation: floaty 5.8s ease-in-out infinite .8s; }
+    @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-10px); } }
+    @media (prefers-reduced-motion: reduce){ .bob,.floaty,.floaty-2,.floaty-3{ animation:none; } }
+
+    /* lab chrome */
+    .optlabel { max-width:1180px; margin:0 auto; padding:22px 24px 10px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+    .optnum { font-weight:900; font-size:13px; letter-spacing:.16em; text-transform:uppercase; color:var(--color-royal);
+      background:var(--color-paper); border:2px solid var(--color-ink); border-radius:999px; padding:4px 12px; box-shadow:2px 2px 0 var(--color-ink); }
+    .optname { font-weight:900; font-size:20px; color:var(--color-ink); }
+    .optdesc { font-size:13px; color:var(--color-muted); font-weight:600; }
+    .optblock { background:var(--color-paper); border-bottom:3px solid rgba(31,24,18,.12); }
+
+    .heroopt { position:relative; overflow:hidden; background-size:cover; background-position:center; }
+    .heroopt--current { background:radial-gradient(120% 90% at 80% 0%, #FDF1DA 0%, #FFF9EE 55%); }
+    .heroopt .veil { position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:linear-gradient(105deg, rgba(255,249,238,.86) 0%, rgba(255,249,238,.58) 38%, rgba(255,249,238,.14) 70%, rgba(255,249,238,0) 100%); }
+    .heroopt--current .veil { display:none; }
+    @media (max-width:640px){
+      .heroopt .veil { background:linear-gradient(120deg, rgba(255,249,238,.8) 0%, rgba(255,249,238,.55) 50%, rgba(255,249,238,.7) 100%); }
+    }
+    .hero-slot { position:relative; z-index:2; }
+  </style>
+</head>
+<body>
+
+  <header style="background:var(--color-ink); color:var(--color-paper); padding:16px 24px; text-align:center; position:sticky; top:0; z-index:50;">
+    <div style="font-weight:900; font-size:16px;">🎨 Hero 背景ラボ — 6パターン比較</div>
+    <div style="font-size:12.5px; opacity:.8; margin-top:3px;">気に入った番号を教えてください。選んだ背景を本番のヒーローに適用します（高画質で再生成可）。</div>
+  </header>
+
+  <!-- Hero content template (cloned into each option) -->
+  <template id="hero-tpl">
+    <div class="max-w-[1180px] mx-auto grid lg:grid-cols-12 gap-3 sm:gap-8 lg:gap-6 items-center px-5 sm:px-8 py-10 sm:py-16">
+      <div class="lg:col-span-6 order-2 lg:order-1 text-center lg:text-left">
+        <h1 class="font-display display-tight text-[40px] sm:text-[64px] lg:text-[72px] text-ink">
+          日本最大級の<br/><span class="text-royal">ビーガンマップ</span>
+        </h1>
+        <p class="mt-3 text-[13px] sm:text-[15px] tracking-[0.16em] uppercase text-muted font-bold">Japan's Largest Vegan Map</p>
+        <p class="mt-4 sm:mt-6 mx-auto lg:mx-0 max-w-[520px] text-[15px] sm:text-[17px] leading-[1.9] text-ink-soft">
+          ラーメンも、スイーツも、あの定食も。<br class="hidden sm:block"/>
+          <span class="text-royal font-bold">「植物性」で食べられるお店</span>を、ぜんぶ地図に。
+        </p>
+        <div class="mt-5 flex items-end justify-center lg:justify-start gap-3">
+          <div class="stat-num text-[52px] sm:text-[68px]">2,300<span class="text-gold">+</span></div>
+          <div class="pb-2 text-left"><div class="font-display text-[16px] sm:text-[18px] text-ink leading-tight">店舗掲載中</div></div>
+        </div>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
+          <span class="btn-primary">📍 マップを見る・Visit Map</span>
+          <span class="btn-gold">お店を掲載する</span>
+        </div>
+      </div>
+      <div class="lg:col-span-6 order-1 lg:order-2 relative">
+        <div class="relative max-w-[200px] sm:max-w-[285px] lg:max-w-[400px] mx-auto">
+          <img src="/images/mascot/map-japan.png" alt="日本地図を持つビーガン王子" class="w-full h-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="lazy"/>
+          <div class="food-pin lg floaty"  style="top:3%; left:-3%;"><img src="/images/food/ramen.jpg" alt=""/></div>
+          <div class="food-pin floaty-2"   style="top:21%; right:-5%;"><img src="/images/food/sushi.jpg" alt=""/></div>
+          <div class="food-pin floaty-3"   style="bottom:19%; left:-6%;"><img src="/images/food/cheesecake.jpg" alt=""/></div>
+          <div class="food-pin floaty"     style="bottom:3%; right:1%;"><img src="/images/food/burger.jpg" alt=""/></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Options -->
+  <div id="lab"></div>
+
+  <footer style="text-align:center; padding:28px; color:var(--color-muted); font-size:13px;">
+    どれか番号を選んでね 👑 ／ 背景は全てビーガン王子の世界観で生成
+  </footer>
+
+  <script>
+    var OPTIONS = [
+      { n: "現在", name: "今のヒーロー（背景なし）", desc: "クリームの無地グラデーション＋王冠の透かし", cls: "heroopt--current", bg: "" },
+      { n: "1", name: "ストーリーブック地図", desc: "丘・小道・お店・富士山・鳥居の絵地図", bg: "/images/hero-bg/map-world.jpg" },
+      { n: "2", name: "ロイヤル模様", desc: "金の王冠とフルール・ド・リスの上品なパターン", bg: "/images/hero-bg/royal-pattern.jpg" },
+      { n: "3", name: "ビーガン料理ドゥードル", desc: "ラーメン・おにぎり・お寿司・野菜の手描き", bg: "/images/hero-bg/food-doodle.jpg" },
+      { n: "4", name: "夢みる空", desc: "ピーチ→水色のパステル空・雲・きらめき", bg: "/images/hero-bg/dreamy-sky.jpg" },
+      { n: "5", name: "日本の里山", desc: "棚田と富士山のジブリ風やさしい風景", bg: "/images/hero-bg/countryside.jpg" }
+    ];
+    var tpl = document.getElementById("hero-tpl");
+    var lab = document.getElementById("lab");
+    OPTIONS.forEach(function (o) {
+      var block = document.createElement("div"); block.className = "optblock";
+      var label = document.createElement("div"); label.className = "optlabel";
+      label.innerHTML = '<span class="optnum">' + o.n + '</span>' +
+                        '<span class="optname">' + o.name + '</span>' +
+                        '<span class="optdesc">' + o.desc + '</span>';
+      var hero = document.createElement("section");
+      hero.className = "heroopt" + (o.cls ? " " + o.cls : "");
+      if (o.bg) hero.style.backgroundImage = "url('" + o.bg + "')";
+      var veil = document.createElement("div"); veil.className = "veil";
+      var slot = document.createElement("div"); slot.className = "hero-slot";
+      slot.appendChild(tpl.content.cloneNode(true));
+      hero.appendChild(veil); hero.appendChild(slot);
+      block.appendChild(label); block.appendChild(hero);
+      lab.appendChild(block);
+    });
+  </script>
+</body>
+</html>
