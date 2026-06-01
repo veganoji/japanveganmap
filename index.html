@@ -133,18 +133,27 @@
     /* ── Stat counter big number ── */
     .stat-num { font-weight:900; letter-spacing:-0.03em; line-height:0.9; color:var(--color-royal); }
 
-    /* ── Step card ── */
-    .step-card {
+    /* ── Explore-card icon badge ── */
+    .icon-badge {
+      width:60px; height:60px; border-radius:16px; display:grid; place-items:center;
       background:var(--color-paper); border:2.5px solid var(--color-ink);
-      border-radius:24px; box-shadow:5px 6px 0 var(--color-ink);
-      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow:3px 3px 0 var(--color-ink); margin-bottom:18px;
     }
-    .step-card:hover { transform: translate(2px,2px); box-shadow:3px 4px 0 var(--color-ink); }
-    .step-badge {
-      width:46px; height:46px; border-radius:14px; display:grid; place-items:center;
-      background:var(--color-royal); color:var(--color-paper); font-weight:900; font-size:22px;
-      border:2.5px solid var(--color-ink); box-shadow:2px 2px 0 var(--color-ink);
-    }
+    .icon-badge img { width:38px; height:38px; object-fit:contain; display:block; }
+
+    /* ── Food photo gallery (auto-scroll marquee, Health-page style) ── */
+    .gallery { overflow:hidden; position:relative;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+    .gallery-track { display:flex; gap:16px; width:max-content; animation: gscroll 42s linear infinite; }
+    .gallery:hover .gallery-track { animation-play-state: paused; }
+    @keyframes gscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .gallery-item { width:230px; flex-shrink:0; }
+    .gallery-item .ph { width:230px; height:172px; object-fit:cover; display:block; background:#EAF4E4;
+      border:2.5px solid var(--color-ink); border-radius:18px; box-shadow:5px 5px 0 var(--color-ink); }
+    .gallery-item .cap { text-align:center; font-weight:700; font-size:12.5px; margin-top:9px; color:var(--color-ink); }
+    @media (min-width:640px){ .gallery-item, .gallery-item .ph { width:280px; } .gallery-item .ph { height:210px; } }
+    @media (prefers-reduced-motion: reduce){ .gallery-track { animation:none; } }
 
     /* ── Explore card (links to other pages) ── */
     .explore-card {
@@ -215,10 +224,6 @@
 
       <!-- Text column -->
       <div class="lg:col-span-6 order-2 lg:order-1 text-center lg:text-left">
-        <div class="eyebrow justify-center lg:justify-start mb-4">
-          <svg width="13" height="13"><use href="#crown"/></svg>
-          日本全国 · ビーガン王子セレクト
-        </div>
         <h1 class="font-display display-tight text-[42px] sm:text-[68px] lg:text-[78px] text-ink">
           日本最大級の<br/><span class="text-royal">ビーガンマップ</span>
         </h1>
@@ -245,8 +250,7 @@
             <svg width="15" height="15"><use href="#pin"/></svg>
             マップを見る・Visit Map
           </a>
-          <a href="#how" class="btn-ghost !text-[14px] sm:!text-[15px]">使い方をみる</a>
-          <a href="#submit" class="btn-gold !text-[14px] sm:!text-[15px]">お店を掲載する</a>
+          <a href="#submit" class="btn-gold !text-[15px] sm:!text-[16px] !px-7 !py-3.5">お店を掲載する</a>
         </div>
       </div>
 
@@ -269,114 +273,29 @@
 
     <!-- scroll hint -->
     <div class="mt-10 sm:mt-12 flex justify-center">
-      <a href="#intro" class="flex flex-col items-center gap-1 text-muted hover:text-royal transition-colors" aria-label="下へスクロール">
+      <a href="#discover" class="flex flex-col items-center gap-1 text-muted hover:text-royal transition-colors" aria-label="下へスクロール">
         <span class="text-[11px] tracking-[0.2em] uppercase font-bold">Scroll</span>
         <svg width="16" height="16" viewBox="0 0 16 16" class="bob"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- ════════════════ INTRO ════════════════ -->
-  <section id="intro" class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
-    <div class="max-w-3xl mx-auto text-center reveal">
-      <div class="eyebrow justify-center mb-5">なにこれ？</div>
-      <h2 class="font-display display-tight text-[30px] sm:text-[46px] text-ink">
-        「これ、ビーガンなんだ！」<br/>を、地図に。
-      </h2>
-      <p class="mt-7 text-[15px] sm:text-[17px] leading-[2] text-ink-soft">
-        北海道から沖縄まで、ビーガン対応のレストラン・カフェ・ショップをあつめた地図です。
-        むずかしく考えなくて、大丈夫。今日のごはんを一品、植物性にしてみる ——
-        その小さな選択が、自分の<span class="text-royal font-bold">健康</span>にも、
-        <span class="text-leaf-deep font-bold">地球</span>にも、
-        <span class="text-royal font-bold">動物たち</span>にも、やさしくつながっていきます。
-      </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-2.5">
-        <span class="chip-tag"><svg width="14" height="14" class="text-royal"><use href="#heart"/></svg> やさしい一歩</span>
-        <span class="chip-tag">完全無料</span>
-        <span class="chip-tag">スマホでサクッと</span>
-        <span class="chip-tag">みんなでつくる</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════ HOW TO USE ════════════════ -->
-  <section id="how" class="crown-bg crown-bg-gold px-5 sm:px-8 py-16 sm:py-24" style="background:linear-gradient(180deg,#FDF1DA,#FFF9EE);">
-    <div class="max-w-[1080px] mx-auto">
-      <div class="text-center reveal">
-        <div class="eyebrow justify-center mb-4">使い方 · How to use</div>
-        <h2 class="font-display display-tight text-[30px] sm:text-[46px] text-ink">３ステップで、もう着いてる。</h2>
-        <p class="mt-4 text-[15px] sm:text-[16px] text-ink-soft">アプリのダウンロードも、登録も、いりません。</p>
-      </div>
-
-      <div class="mt-12 grid sm:grid-cols-3 gap-6 sm:gap-7">
-        <!-- step 1 -->
-        <div class="step-card p-7 text-center reveal">
-          <div class="flex justify-center mb-4"><img src="/images/oji/oji_pointing_up.png" alt="" class="w-24 h-24 object-contain" loading="lazy"/></div>
-          <div class="flex justify-center mb-4"><div class="step-badge">1</div></div>
-          <h3 class="font-display text-[19px] text-ink">地図をひらく</h3>
-          <p class="mt-3 text-[14px] leading-[1.85] text-ink-soft">「マップを見る」をタップ。Googleマップで全国のお店が一気に表示されます。</p>
-        </div>
-        <!-- step 2 -->
-        <div class="step-card p-7 text-center reveal" style="transition-delay:.08s">
-          <div class="flex justify-center mb-4"><img src="/images/oji/oji_searching.png" alt="" class="w-24 h-24 object-contain" loading="lazy"/></div>
-          <div class="flex justify-center mb-4"><div class="step-badge">2</div></div>
-          <h3 class="font-display text-[19px] text-ink">近くのお店を探す</h3>
-          <p class="mt-3 text-[14px] leading-[1.85] text-ink-soft">現在地のまわりや、旅先のエリアをズーム。ピンをタップすると、お店の詳細へ。</p>
-        </div>
-        <!-- step 3 -->
-        <div class="step-card p-7 text-center reveal" style="transition-delay:.16s">
-          <div class="flex justify-center mb-4"><img src="/images/oji/oji_excited.png" alt="" class="w-24 h-24 object-contain" loading="lazy"/></div>
-          <div class="flex justify-center mb-4"><div class="step-badge">3</div></div>
-          <h3 class="font-display text-[19px] text-ink">行って、味わう</h3>
-          <p class="mt-3 text-[14px] leading-[1.85] text-ink-soft">あとは行くだけ。「えっ、これがビーガン！？」を、その舌でどうぞ。</p>
-        </div>
-      </div>
-
-      <div class="mt-11 text-center reveal">
-        <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener" class="btn-primary !text-[15px] sm:!text-[16px] !px-7 !py-3.5">
-          <svg width="15" height="15"><use href="#pin"/></svg>
-          いますぐ地図をひらく
-          <svg width="14" height="14"><use href="#arrow"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ════════════════ WHAT'S ON THE MAP ════════════════ -->
-  <section class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
+  <section id="discover" class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
     <div class="max-w-[1080px] mx-auto">
-      <div class="text-center reveal">
-        <div class="eyebrow justify-center mb-4">マップにのってるもの</div>
+      <div class="max-w-2xl mx-auto text-center reveal">
         <h2 class="font-display display-tight text-[32px] sm:text-[52px] text-royal">えっ、これがビーガン！？</h2>
         <p class="mt-4 text-[15px] sm:text-[18px] text-ink-soft">一口で、イメージが変わるはず。</p>
+        <p class="mt-6 text-[15px] sm:text-[16px] leading-[1.95] text-ink-soft">
+          ラーメンも、からあげも、チーズケーキも。<br class="hidden sm:block"/>
+          これ全部、お肉も卵も乳製品も<span class="text-royal font-bold">使っていません</span>。
+          そんなお店を、北海道から沖縄まで地図にあつめました。
+        </p>
       </div>
 
-      <!-- food gallery -->
-      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 reveal">
-        <div class="text-center">
-          <div class="aspect-square rounded-3xl bg-cream grid place-items-center p-5" style="border:2.5px solid #1F1812; box-shadow:4px 5px 0 #1F1812;">
-            <img src="/images/food/food-veggie-burger.png" alt="ビーガンバーガー" class="w-full h-full object-contain bob" loading="lazy"/>
-          </div>
-          <p class="mt-3 font-bold text-[14px] text-ink">バーガー</p>
-        </div>
-        <div class="text-center">
-          <div class="aspect-square rounded-3xl bg-cream grid place-items-center p-5" style="border:2.5px solid #1F1812; box-shadow:4px 5px 0 #1F1812;">
-            <img src="/images/food/food-onigiri.png" alt="おにぎり" class="w-full h-full object-contain bob" style="animation-delay:.3s" loading="lazy"/>
-          </div>
-          <p class="mt-3 font-bold text-[14px] text-ink">和食・定食</p>
-        </div>
-        <div class="text-center">
-          <div class="aspect-square rounded-3xl bg-cream grid place-items-center p-5" style="border:2.5px solid #1F1812; box-shadow:4px 5px 0 #1F1812;">
-            <img src="/images/food/food-tofu.png" alt="豆腐料理" class="w-full h-full object-contain bob" style="animation-delay:.6s" loading="lazy"/>
-          </div>
-          <p class="mt-3 font-bold text-[14px] text-ink">スイーツ・カフェ</p>
-        </div>
-        <div class="text-center">
-          <div class="aspect-square rounded-3xl bg-cream grid place-items-center p-5" style="border:2.5px solid #1F1812; box-shadow:4px 5px 0 #1F1812;">
-            <img src="/images/food/food-broccoli.png" alt="野菜料理" class="w-full h-full object-contain bob" style="animation-delay:.9s" loading="lazy"/>
-          </div>
-          <p class="mt-3 font-bold text-[14px] text-ink">ヘルシー・ボウル</p>
-        </div>
+      <!-- Auto-scroll food photo gallery (built by JS) -->
+      <div class="gallery reveal mt-12">
+        <div class="gallery-track" id="food-track"></div>
       </div>
 
       <!-- category chips -->
@@ -412,37 +331,10 @@
     </div>
   </section>
 
-  <!-- ════════════════ SUBMIT A PLACE ════════════════ -->
-  <section id="submit" class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
-    <div class="max-w-[960px] mx-auto">
-      <div class="rounded-[32px] bg-cream p-8 sm:p-12 grid sm:grid-cols-[auto_1fr] gap-7 sm:gap-10 items-center reveal"
-           style="border:2.5px solid #1F1812; box-shadow:6px 8px 0 #1F1812;">
-        <div class="flex justify-center">
-          <img src="/images/oji/oji_idea.png" alt="" class="w-32 sm:w-40 h-auto object-contain bob" loading="lazy"/>
-        </div>
-        <div class="text-center sm:text-left">
-          <div class="eyebrow justify-center sm:justify-start mb-3">お店を掲載する · Submit a place</div>
-          <h2 class="font-display display-tight text-[26px] sm:text-[38px] text-ink">あなたの「推し店」、<br class="hidden sm:block"/>地図にのせよう。</h2>
-          <p class="mt-4 text-[15px] sm:text-[16px] leading-[1.9] text-ink-soft">
-            お気に入りのビーガン対応店を見つけたら、ぜひ教えてください。
-            あなたの一軒が、次の誰かの「おいしい」になります。
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
-            <a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener" class="btn-primary !text-[15px] sm:!text-[16px] !px-7 !py-3.5">
-              お店を掲載する
-              <svg width="14" height="14"><use href="#arrow"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════ EXPLORE MORE (cross-links) ════════════════ -->
+  <!-- ════════════════ WHY VEGAN (cross-links) ════════════════ -->
   <section class="px-5 sm:px-8 py-16 sm:py-24" style="background:linear-gradient(180deg,#FFF9EE,#FDF1DA);">
     <div class="max-w-[1080px] mx-auto">
       <div class="text-center reveal">
-        <div class="eyebrow justify-center mb-4">もっと知る · Why vegan?</div>
         <h2 class="font-display display-tight text-[30px] sm:text-[46px] text-ink">食べることは、いちばん身近な「選択」。</h2>
         <p class="mt-4 text-[15px] sm:text-[16px] text-ink-soft">同じ一皿が、こんなにいろんなものにつながっている。</p>
       </div>
@@ -451,7 +343,7 @@
         <!-- 健康 -->
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-karada/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#E55063,#C9223A);">
           <div class="p-7 h-full flex flex-col text-paper">
-            <img src="/images/ui-icons/heart.png" alt="" class="w-12 h-12 object-contain mb-4 drop-shadow"/>
+            <div class="icon-badge"><img src="/images/explore/heart.png" alt=""/></div>
             <h3 class="font-display text-[24px] leading-tight">からだ</h3>
             <p class="mt-2 text-[14px] leading-[1.8] opacity-95 flex-1">いいことだらけの植物性。健康と栄養の話。</p>
             <span class="mt-4 inline-flex items-center gap-2 font-bold text-[14px]">ビーガンと体 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
@@ -460,7 +352,7 @@
         <!-- 地球 -->
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-chikyu/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#6C9560,#3F6A3A);">
           <div class="p-7 h-full flex flex-col text-paper">
-            <img src="/images/decorations/icon-greens.png" alt="" class="w-12 h-12 object-contain mb-4 drop-shadow"/>
+            <div class="icon-badge"><img src="/images/explore/earth.png" alt=""/></div>
             <h3 class="font-display text-[24px] leading-tight">地球</h3>
             <p class="mt-2 text-[14px] leading-[1.8] opacity-95 flex-1">食卓から、地球を変える。環境とのつながり。</p>
             <span class="mt-4 inline-flex items-center gap-2 font-bold text-[14px]">ビーガンと地球 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
@@ -469,7 +361,7 @@
         <!-- 海 -->
         <a href="https://veganoji-staging.ojidigital.com/umi-wo-kazoeru/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#2B7AB0,#16465F);">
           <div class="p-7 h-full flex flex-col text-paper">
-            <img src="/images/ui-icons/sparkle.png" alt="" class="w-12 h-12 object-contain mb-4 drop-shadow"/>
+            <div class="icon-badge"><img src="/images/explore/fish.png" alt=""/></div>
             <h3 class="font-display text-[24px] leading-tight">海</h3>
             <p class="mt-2 text-[14px] leading-[1.8] opacity-95 flex-1">海で、いま起きていること。魚たちを、かぞえる。</p>
             <span class="mt-4 inline-flex items-center gap-2 font-bold text-[14px]">海をかぞえる <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
@@ -480,10 +372,9 @@
   </section>
 
   <!-- ════════════════ ABOUT OJI ════════════════ -->
-  <section class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
+  <section class="px-5 sm:px-8 py-16 sm:py-24 bg-cream">
     <div class="max-w-[920px] mx-auto grid sm:grid-cols-[1fr_auto] gap-8 sm:gap-12 items-center reveal">
       <div class="text-center sm:text-left order-2 sm:order-1">
-        <div class="eyebrow justify-center sm:justify-start mb-4"><svg width="13" height="13"><use href="#crown"/></svg> このマップをつくっている人</div>
         <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink">ビーガン王子</h2>
         <p class="mt-2 text-[13px] tracking-[0.14em] uppercase text-muted font-bold">Alex Derycz</p>
         <p class="mt-5 text-[15px] sm:text-[16px] leading-[2] text-ink-soft">
@@ -501,6 +392,31 @@
       </div>
       <div class="flex justify-center order-1 sm:order-2">
         <img src="/images/oji/oji_welcoming.png" alt="ビーガン王子" class="w-44 sm:w-56 h-auto object-contain bob drop-shadow-[0_14px_24px_rgba(31,24,18,.18)]" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ SUBMIT A PLACE ════════════════ -->
+  <section id="submit" class="px-5 sm:px-8 py-16 sm:py-24 bg-paper">
+    <div class="max-w-[960px] mx-auto">
+      <div class="rounded-[32px] bg-cream p-8 sm:p-12 grid sm:grid-cols-[auto_1fr] gap-7 sm:gap-10 items-center reveal"
+           style="border:2.5px solid #1F1812; box-shadow:6px 8px 0 #1F1812;">
+        <div class="flex justify-center">
+          <img src="/images/oji/oji_idea.png" alt="" class="w-32 sm:w-40 h-auto object-contain bob" loading="lazy"/>
+        </div>
+        <div class="text-center sm:text-left">
+          <h2 class="font-display display-tight text-[26px] sm:text-[38px] text-ink">あなたの「推し店」、<br class="hidden sm:block"/>地図にのせよう。</h2>
+          <p class="mt-4 text-[15px] sm:text-[16px] leading-[1.9] text-ink-soft">
+            お気に入りのビーガン対応店を見つけたら、ぜひ教えてください。
+            あなたの一軒が、次の誰かの「おいしい」になります。
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
+            <a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener" class="btn-primary !text-[15px] sm:!text-[16px] !px-7 !py-3.5">
+              お店を掲載する
+              <svg width="14" height="14"><use href="#arrow"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -531,7 +447,7 @@
 
       <nav class="hug-nav flex flex-wrap justify-center gap-x-6 gap-y-2 mt-2 text-[14px]" aria-label="フッターナビ">
         <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener">マップ</a>
-        <a href="#how">使い方</a>
+        <a href="#discover">メニュー</a>
         <a href="#submit">お店を掲載</a>
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-karada/" target="_blank" rel="noopener">からだ</a>
         <a href="https://veganoji-staging.ojidigital.com/vegan-to-chikyu/" target="_blank" rel="noopener">地球</a>
@@ -566,6 +482,36 @@
         if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
+
+    // Food photo gallery — auto-scroll marquee of real vegan dishes
+    (function () {
+      var track = document.getElementById('food-track');
+      if (!track) return;
+      var FOOD = [
+        { slug: 'ramen',      name: 'ラーメン',      e: '🍜' },
+        { slug: 'karaage',    name: 'からあげ',      e: '🍗' },
+        { slug: 'gyoza',      name: '餃子',          e: '🥟' },
+        { slug: 'curry',      name: 'カレー',        e: '🍛' },
+        { slug: 'sushi',      name: 'お寿司',        e: '🍣' },
+        { slug: 'burger',     name: 'バーガー',      e: '🍔' },
+        { slug: 'cheesecake', name: 'チーズケーキ',  e: '🍰' },
+        { slug: 'bowl',       name: 'ブッダボウル',  e: '🥗' }
+      ];
+      function makeItem(f) {
+        var item = document.createElement('div'); item.className = 'gallery-item';
+        var img = document.createElement('img'); img.className = 'ph';
+        img.src = '/images/food/' + f.slug + '.jpg'; img.alt = f.name; img.loading = 'lazy';
+        img.onerror = function () {
+          var d = document.createElement('div'); d.className = 'ph';
+          d.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:54px;';
+          d.textContent = f.e; img.replaceWith(d);
+        };
+        var cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = f.name;
+        item.appendChild(img); item.appendChild(cap); return item;
+      }
+      // Duplicate the set so the -50% keyframe loops seamlessly.
+      FOOD.concat(FOOD).forEach(function (f) { track.appendChild(makeItem(f)); });
+    })();
   </script>
 </body>
 </html>
