@@ -146,18 +146,6 @@
     /* ── Stat counter big number ── */
     .stat-num { font-weight:900; letter-spacing:-0.03em; line-height:0.9; color:var(--color-royal); }
 
-    /* ── Explore-card icon (large, unboxed, front & center) ── */
-    .explore-icon-wrap { position:relative; display:grid; place-items:center; width:128px; height:128px; margin:0 auto 6px; }
-    .explore-icon-wrap::before { content:""; position:absolute; inset:4px; border-radius:50%;
-      background:radial-gradient(circle, rgba(255,249,238,.5), rgba(255,249,238,0) 70%); }
-    .explore-icon { position:relative; width:112px; height:112px; object-fit:contain;
-      filter: drop-shadow(0 7px 10px rgba(31,24,18,.30)); transition: transform .28s ease; }
-    .explore-card:hover .explore-icon { transform: translateY(-5px) scale(1.06) rotate(-3deg); }
-    @media (max-width:640px){
-      .explore-icon-wrap{ width:74px; height:74px; margin-bottom:0; }
-      .explore-icon{ width:64px; height:64px; }
-    }
-
     /* ── Food photo gallery (auto-scroll marquee, Health-page style) ── */
     .gallery { overflow:hidden; position:relative;
       -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
@@ -172,16 +160,36 @@
     @media (min-width:640px){ .gallery-item, .gallery-item .ph { width:280px; } .gallery-item .ph { height:210px; } }
     @media (prefers-reduced-motion: reduce){ .gallery-track { animation:none; } }
 
-    /* ── Explore card (links to other pages) ── */
-    .explore-card {
-      position:relative; display:block; border-radius:24px; overflow:hidden;
-      border:2.5px solid var(--color-ink); box-shadow:5px 6px 0 var(--color-ink);
-      transition: transform .2s ease, box-shadow .2s ease; min-height:272px;
+    /* ── Explore cards — full-colour big breakout stickers ──
+       Desktop: tall card, giant icon bursting out the top.
+       Mobile:  slim full-width horizontal row (icon left, text right). ── */
+    .ex2 { position:relative; display:flex; align-items:center; gap:15px; text-decoration:none;
+      border:3px solid var(--color-ink); border-radius:20px; box-shadow:4px 5px 0 var(--color-ink);
+      background:var(--ex-grad); color:var(--color-paper); padding:15px 18px;
+      transition: transform .2s ease, box-shadow .2s ease; }
+    .ex2:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--color-ink); }
+    .ex2-ic { width:64px; height:64px; flex:0 0 64px; object-fit:contain;
+      filter:drop-shadow(0 5px 8px rgba(31,24,18,.32)); transition:transform .25s ease; }
+    .ex2:hover .ex2-ic { transform:rotate(-5deg) scale(1.06); }
+    .ex2-body { flex:1; text-align:left; min-width:0; }
+    .ex2 h3 { font-weight:900; font-size:21px; color:#fff; line-height:1.1; }
+    .ex2 p { margin-top:3px; font-size:12.5px; line-height:1.55; color:rgba(255,249,238,.93); }
+    .ex2-cta { margin-top:9px; display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:13px;
+      background:var(--color-paper); color:var(--ex-accent); border:2.5px solid var(--color-ink); border-radius:11px;
+      padding:6px 13px; box-shadow:3px 3px 0 var(--color-ink); }
+    .ex2:hover .ex2-cta { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--color-ink); }
+    .ex2-cta .arr { transition:transform .2s ease; }
+    .ex2:hover .ex2-cta .arr { transform:translateX(3px); }
+    @media (min-width:640px){
+      .ex2 { display:block; text-align:center; padding:60px 22px 24px; margin-top:48px; border-radius:24px; box-shadow:5px 6px 0 var(--color-ink); }
+      .ex2:hover { transform:translate(2px,3px); box-shadow:3px 3px 0 var(--color-ink); }
+      .ex2-ic { position:absolute; top:-48px; left:50%; transform:translateX(-50%); width:116px; height:116px; flex:none; }
+      .ex2:hover .ex2-ic { transform:translateX(-50%) translateY(-5px) rotate(-4deg) scale(1.05); }
+      .ex2-body { text-align:center; }
+      .ex2 h3 { font-size:24px; }
+      .ex2 p { margin-top:8px; font-size:13.5px; line-height:1.75; }
+      .ex2-cta { margin-top:16px; font-size:14px; padding:8px 16px; border-radius:13px; }
     }
-    .explore-card:hover { transform: translate(2px,3px); box-shadow:3px 3px 0 var(--color-ink); }
-    .explore-card .arrow { transition: transform .2s ease; }
-    .explore-card:hover .arrow { transform: translateX(5px); }
-    @media (max-width:640px){ .explore-card{ min-height:0; } }
 
     /* ── Reveal on scroll ── */
     .reveal { opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
@@ -343,32 +351,32 @@
         <p class="mt-4 text-[15px] sm:text-[16px] text-ink-soft">同じ一皿が、こんなにいろんなものにつながっている。</p>
       </div>
 
-      <div class="mt-8 sm:mt-12 grid sm:grid-cols-3 gap-4 sm:gap-6 reveal">
+      <div class="mt-8 sm:mt-16 grid sm:grid-cols-3 gap-3 sm:gap-7 reveal">
         <!-- 健康 -->
-        <a href="https://veganoji-staging.ojidigital.com/vegan-to-karada/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#E55063,#C9223A);">
-          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
-            <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/heart.png" alt=""/></div>
-            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">からだ</h3>
-            <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">いいことだらけの植物性。健康と栄養の話。</p>
-            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと体 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+        <a href="https://veganoji-staging.ojidigital.com/vegan-to-karada/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#E55063,#C9223A); --ex-accent:#C9223A;">
+          <img class="ex2-ic" src="/images/explore/heart.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">からだ</h3>
+            <p>いいことだらけの植物性。健康と栄養の話。</p>
+            <span class="ex2-cta">ビーガンと体 <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
           </div>
         </a>
         <!-- 地球 -->
-        <a href="https://veganoji-staging.ojidigital.com/vegan-to-chikyu/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#6C9560,#3F6A3A);">
-          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
-            <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/earth.png" alt=""/></div>
-            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">地球</h3>
-            <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">食卓から、地球を変える。環境とのつながり。</p>
-            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">ビーガンと地球 <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+        <a href="https://veganoji-staging.ojidigital.com/vegan-to-chikyu/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#6C9560,#3F6A3A); --ex-accent:#3F6A3A;">
+          <img class="ex2-ic" src="/images/explore/earth.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">地球</h3>
+            <p>食卓から、地球を変える。環境とのつながり。</p>
+            <span class="ex2-cta">ビーガンと地球 <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
           </div>
         </a>
         <!-- 海 -->
-        <a href="https://veganoji-staging.ojidigital.com/umi-wo-kazoeru/" target="_blank" rel="noopener" class="explore-card group" style="background:linear-gradient(160deg,#2B7AB0,#16465F);">
-          <div class="px-5 py-5 sm:p-8 h-full flex flex-col items-center text-center text-paper">
-            <div class="explore-icon-wrap"><img class="explore-icon" src="/images/explore/fish.png" alt=""/></div>
-            <h3 class="font-display text-[22px] sm:text-[26px] leading-tight">海</h3>
-            <p class="mt-2.5 text-[14px] leading-[1.8] opacity-95 flex-1">海で、いま起きていること。魚たちを、かぞえる。</p>
-            <span class="mt-4 sm:mt-5 inline-flex items-center gap-2 font-bold text-[14.5px]">海をかぞえる <svg width="14" height="14" class="arrow"><use href="#arrow"/></svg></span>
+        <a href="https://veganoji-staging.ojidigital.com/umi-wo-kazoeru/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#2B7AB0,#16465F); --ex-accent:#1F6F94;">
+          <img class="ex2-ic" src="/images/explore/fish.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">海</h3>
+            <p>海で、いま起きていること。魚たちを、かぞえる。</p>
+            <span class="ex2-cta">海をかぞえる <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
           </div>
         </a>
       </div>
