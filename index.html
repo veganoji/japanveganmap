@@ -194,8 +194,11 @@
     .pose-cycle img.on { opacity:1; }
 
     /* ── Footer hug ── */
-    .footer-hug { position:relative; overflow:hidden; background:linear-gradient(180deg,var(--color-paper) 0%,var(--color-cream-2) 100%); }
-    .footer-hug::after { content:""; position:absolute; bottom:0; left:0; right:0; height:6px; background:linear-gradient(90deg,#C9223A 0%,#D4A847 50%,#C9223A 100%); }
+    .footer-hug { position:relative; overflow:hidden; background:#FFF9EE url('/images/bg/footer-night.jpg') center/cover; }
+    .footer-hug::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,249,238,.74) 0%, rgba(255,249,238,.54) 52%, rgba(255,249,238,.42) 100%); }
+    .footer-hug > * { position:relative; z-index:1; }
+    .footer-hug::after { content:""; position:absolute; bottom:0; left:0; right:0; height:6px; z-index:2; background:linear-gradient(90deg,#C9223A 0%,#D4A847 50%,#C9223A 100%); }
     .hug-social a { display:inline-flex; width:50px; height:50px; transition:transform .25s ease; filter:drop-shadow(0 4px 8px rgba(31,24,18,.12)); }
     .hug-social a:hover { transform: translateY(-3px) rotate(-5deg) scale(1.08); }
     .hug-social img { width:100%; height:100%; object-fit:contain; }
