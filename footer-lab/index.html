@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Footer 背景ラボ · Japan Vegan Map</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    .__seed { color: inherit; }
+    @theme {
+      --color-paper:#FFF9EE; --color-cream:#FDF1DA; --color-cream-2:#F6E4BD;
+      --color-royal:#C9223A; --color-royal-deep:#9C1428; --color-gold:#D4A847; --color-gold-deep:#9C7E2A;
+      --color-ink:#1F1812; --color-ink-soft:#3C2E22; --color-muted:#786148;
+      --font-noto-sans-jp:"Noto Sans JP", sans-serif;
+    }
+    html, body { background:var(--color-cream-2); color:var(--color-ink); }
+    body { font-family:var(--font-noto-sans-jp); }
+    .font-display { font-family:var(--font-noto-sans-jp); font-weight:900; }
+
+    .btn-primary, .btn-ghost {
+      display:inline-flex; align-items:center; gap:8px; border-radius:16px;
+      font-family:"Noto Sans JP",sans-serif; font-weight:700;
+      border:2.5px solid var(--color-ink); box-shadow:4px 4px 0 var(--color-ink);
+      padding:12px 22px; font-size:15px; text-decoration:none;
+    }
+    .btn-primary { background:var(--color-royal); color:var(--color-paper); }
+    .btn-ghost { background:var(--color-paper); color:var(--color-royal); }
+    .bob { animation: bob 4s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{ transform:translateY(0) rotate(0); } 50%{ transform:translateY(-8px) rotate(-1.5deg); } }
+    @media (prefers-reduced-motion: reduce){ .bob{ animation:none; } }
+    .hug-social a { display:inline-flex; width:48px; height:48px; filter:drop-shadow(0 4px 8px rgba(31,24,18,.12)); }
+    .hug-social img { width:100%; height:100%; object-fit:contain; }
+    .hug-nav a { color:var(--color-ink-soft); text-decoration:none; font-weight:700; }
+
+    /* lab chrome */
+    .optlabel { max-width:900px; margin:0 auto; padding:22px 24px 8px; display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+    .optnum { font-weight:900; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--color-royal);
+      background:var(--color-paper); border:2px solid var(--color-ink); border-radius:999px; padding:4px 12px; box-shadow:2px 2px 0 var(--color-ink); }
+    .optname { font-weight:900; font-size:20px; color:var(--color-ink); }
+    .optdesc { font-size:13px; color:var(--color-muted); font-weight:600; }
+    .optblock { background:var(--color-paper); border-bottom:3px solid rgba(31,24,18,.12); }
+
+    .footer-opt { position:relative; overflow:hidden; background-size:cover; background-position:center; }
+    .footer-opt--current { background:linear-gradient(180deg,#FFF9EE 0%,#F6E4BD 100%); }
+    .footer-opt .veil { position:absolute; inset:0; z-index:1; pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,249,238,.74) 0%, rgba(255,249,238,.54) 52%, rgba(255,249,238,.42) 100%); }
+    .footer-opt--current .veil { display:none; }
+    .footer-opt::after { content:""; position:absolute; bottom:0; left:0; right:0; height:6px; z-index:3;
+      background:linear-gradient(90deg,#C9223A 0%,#D4A847 50%,#C9223A 100%); }
+    .foot-inner { position:relative; z-index:2; }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></symbol>
+  </svg>
+
+  <header style="background:var(--color-ink); color:var(--color-paper); padding:16px 24px; text-align:center; position:sticky; top:0; z-index:50;">
+    <div style="font-weight:900; font-size:16px;">🌾 Footer 背景ラボ — 6パターン比較</div>
+    <div style="font-size:12.5px; opacity:.8; margin-top:3px;">気に入った番号を教えてください。選んだ背景をフッターに適用します（必要なら文字色も調整）。</div>
+  </header>
+
+  <!-- Footer content template -->
+  <template id="foot-tpl">
+    <div class="foot-inner px-5 sm:px-8 pt-16 pb-10">
+      <div class="max-w-[800px] mx-auto flex flex-col items-center text-center gap-6">
+        <img src="/images/oji/oji_greeting.png" alt="ビーガン王子" class="w-32 sm:w-40 h-auto bob" loading="lazy"/>
+        <div>
+          <div class="font-display text-[58px] sm:text-[80px] text-royal leading-none" style="letter-spacing:-0.04em;">またね！</div>
+          <div class="mt-2 text-[15px] sm:text-[16px] text-ink-soft font-medium">地図で、会おう。 ♡</div>
+        </div>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <span class="btn-primary"><svg width="14" height="14"><use href="#pin"/></svg> マップを見る</span>
+          <span class="btn-ghost">お店を掲載する</span>
+        </div>
+        <div class="hug-social flex gap-3 justify-center mt-1">
+          <a href="#" onclick="return false"><img src="/images/social/ig.png" alt=""/></a>
+          <a href="#" onclick="return false"><img src="/images/social/x.png" alt=""/></a>
+          <a href="#" onclick="return false"><img src="/images/social/yt.png" alt=""/></a>
+          <a href="#" onclick="return false"><img src="/images/social/tt.png" alt=""/></a>
+          <a href="#" onclick="return false"><img src="/images/social/li.png" alt=""/></a>
+        </div>
+        <nav class="hug-nav flex flex-wrap justify-center gap-x-6 gap-y-2 mt-2 text-[14px]">
+          <a href="#" onclick="return false">マップ</a>
+          <a href="#" onclick="return false">メニュー</a>
+          <a href="#" onclick="return false">お店を掲載</a>
+          <a href="#" onclick="return false">からだ</a>
+          <a href="#" onclick="return false">地球</a>
+          <a href="#" onclick="return false">海</a>
+          <a href="#" onclick="return false">王子について</a>
+        </nav>
+        <div class="text-[12px] text-muted mt-2">© 2026 ビーガン王子株式会社</div>
+      </div>
+    </div>
+  </template>
+
+  <div id="lab"></div>
+
+  <footer style="text-align:center; padding:26px; color:var(--color-muted); font-size:13px;">どれか番号を選んでね 👑</footer>
+
+  <script>
+    var OPTIONS = [
+      { n:"現在", name:"今のフッター（背景なし）", desc:"クリーム→ベージュの無地グラデーション", cls:"footer-opt--current", bg:"" },
+      { n:"1", name:"水鏡リフレクション", desc:"水田が富士山と空を映す、ヒーローと対になる一枚", bg:"/images/footer-bg/reflection.jpg" },
+      { n:"2", name:"夕焼けの里", desc:"棚田と富士山に夕陽が沈む、あたたかい見送り", bg:"/images/footer-bg/sunset.jpg" },
+      { n:"3", name:"たそがれ", desc:"淡い藤色の夕暮れ、静かでやさしい", bg:"/images/footer-bg/dusk.jpg" },
+      { n:"4", name:"星空の夜", desc:"月と星、灯りのともる里。※文字は明るい色に調整推奨", bg:"/images/footer-bg/night.jpg" },
+      { n:"5", name:"ヒーロー反転", desc:"トップのヒーロー画像を上下反転（文字通りの“反射”）", bg:"/images/footer-bg/flipped-hero.jpg" }
+    ];
+    var tpl = document.getElementById("foot-tpl");
+    var lab = document.getElementById("lab");
+    OPTIONS.forEach(function (o) {
+      var block = document.createElement("div"); block.className = "optblock";
+      var label = document.createElement("div"); label.className = "optlabel";
+      label.innerHTML = '<span class="optnum">'+o.n+'</span><span class="optname">'+o.name+'</span><span class="optdesc">'+o.desc+'</span>';
+      var foot = document.createElement("section");
+      foot.className = "footer-opt" + (o.cls ? " "+o.cls : "");
+      if (o.bg) foot.style.backgroundImage = "url('"+o.bg+"')";
+      var veil = document.createElement("div"); veil.className = "veil";
+      foot.appendChild(veil);
+      foot.appendChild(tpl.content.cloneNode(true));
+      block.appendChild(label); block.appendChild(foot);
+      lab.appendChild(block);
+    });
+  </script>
+</body>
+</html>

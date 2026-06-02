@@ -61,19 +61,6 @@
       .hero-veil { background:linear-gradient(180deg, rgba(255,249,238,.26) 0%, rgba(255,249,238,.42) 36%, rgba(255,249,238,.82) 66%, rgba(255,249,238,.95) 100%); }
     }
 
-    /* ── Soft watercolor section dividers (hill / wave silhouettes) ── */
-    /* A divider sits at the top of a section and rises up into the previous one,
-       so sections layer like watercolor hills. */
-    .svc-rise, .svc-hills {
-      position:absolute; left:0; right:0; top:0; transform:translateY(-99%);
-      line-height:0; pointer-events:none; z-index:1;
-    }
-    .svc-rise svg  { display:block; width:100%; height:44px; }
-    .svc-hills svg { display:block; width:100%; height:44px; }
-    @media (min-width:640px){
-      .svc-rise svg  { height:74px; }
-      .svc-hills svg { height:78px; }
-    }
     html { scroll-behavior: smooth; scroll-padding-top: 84px; }
     @media (max-width: 767px) { html { scroll-padding-top: 72px; } }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -329,7 +316,6 @@
 
   <!-- ════════════════ STAT BAND ════════════════ -->
   <section class="crown-bg crown-bg-paper px-5 sm:px-8 py-12 sm:py-20 text-paper" style="background:linear-gradient(135deg,#C9223A 0%,#9C1428 100%);">
-    <div class="svc-rise" aria-hidden="true"><svg viewBox="0 0 1440 74" preserveAspectRatio="none"><path d="M0,74 L0,38 C260,74 520,6 720,36 C940,68 1180,8 1440,42 L1440,74 Z" fill="#C9223A"/></svg></div>
     <div class="max-w-[980px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center reveal">
       <div>
         <div class="font-display text-[52px] sm:text-[64px] leading-none" data-count="2300" data-suffix="+" data-suffix-class="text-gold-soft">2,300<span class="text-gold-soft">+</span></div>
@@ -347,8 +333,7 @@
   </section>
 
   <!-- ════════════════ WHY VEGAN (cross-links) ════════════════ -->
-  <section class="relative px-5 sm:px-8 py-12 sm:py-24">
-    <div class="svc-rise" aria-hidden="true"><svg viewBox="0 0 1440 74" preserveAspectRatio="none"><path d="M0,74 L0,40 C240,76 520,8 720,38 C920,70 1200,10 1440,44 L1440,74 Z" fill="#FFF9EE"/></svg></div>
+  <section class="px-5 sm:px-8 py-12 sm:py-24">
     <div class="max-w-[1080px] mx-auto">
       <div class="text-center reveal">
         <h2 class="font-display display-tight text-[30px] sm:text-[46px] text-ink">食べることは、いちばん身近な「選択」。</h2>
@@ -388,8 +373,7 @@
   </section>
 
   <!-- ════════════════ ABOUT OJI ════════════════ -->
-  <section class="relative px-5 sm:px-8 py-12 sm:py-24">
-    <div class="svc-hills" aria-hidden="true"><svg viewBox="0 0 1440 78" preserveAspectRatio="none"><path d="M0,78 L0,46 C300,84 540,26 760,46 C1000,68 1220,34 1440,52 L1440,78 Z" fill="#AECCA0" opacity=".42"/><path d="M0,78 L0,60 C280,86 580,42 820,58 C1060,73 1260,48 1440,64 L1440,78 Z" fill="#92B383" opacity=".5"/></svg></div>
+  <section class="px-5 sm:px-8 py-12 sm:py-24">
     <div class="max-w-[920px] mx-auto grid sm:grid-cols-[1fr_auto] gap-8 sm:gap-12 items-center reveal">
       <div class="text-center sm:text-left order-2 sm:order-1">
         <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink">ビーガン王子</h2>
@@ -414,8 +398,7 @@
   </section>
 
   <!-- ════════════════ SUBMIT A PLACE ════════════════ -->
-  <section id="submit" class="relative px-5 sm:px-8 py-12 sm:py-24">
-    <div class="svc-hills" aria-hidden="true"><svg viewBox="0 0 1440 78" preserveAspectRatio="none"><path d="M0,78 L0,52 C320,82 560,32 800,50 C1040,68 1240,40 1440,56 L1440,78 Z" fill="#AECCA0" opacity=".4"/><path d="M0,78 L0,62 C300,88 600,46 840,60 C1080,74 1280,50 1440,66 L1440,78 Z" fill="#92B383" opacity=".5"/></svg></div>
+  <section id="submit" class="px-5 sm:px-8 py-12 sm:py-24">
     <div class="max-w-[960px] mx-auto">
       <div class="rounded-[32px] bg-cream p-8 sm:p-12 grid sm:grid-cols-[auto_1fr] gap-7 sm:gap-10 items-center reveal"
            style="border:2.5px solid #1F1812; box-shadow:6px 8px 0 #1F1812;">
