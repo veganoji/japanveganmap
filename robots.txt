@@ -1,4 +1,3 @@
-# Temporary subdomain (japanveganmap.ojidigital.com) — not for indexing yet.
-# Remove this Disallow when the map moves to its final public domain.
+# veganmapjapan.org — Japan Vegan Map
 User-agent: *
-Disallow: /
+Allow: /
