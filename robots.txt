@@ -1,3 +1,5 @@
 # veganmapjapan.org — Japan Vegan Map
 User-agent: *
 Allow: /
+
+Sitemap: https://veganmapjapan.org/sitemap.xml

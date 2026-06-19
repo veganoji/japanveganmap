@@ -23,55 +23,83 @@
     background:var(--paper) url('/images/bg/paper-wash.jpg') center/cover no-repeat fixed;
     -webkit-font-smoothing:antialiased; min-height:100dvh;
     display:flex; align-items:center; justify-content:center; text-align:center;
-    padding:40px 22px; position:relative; overflow-x:hidden;
+    padding:46px 22px; position:relative; overflow-x:hidden;
   }
-  body::before{content:"";position:fixed;inset:0;background:rgba(255,249,238,.78);z-index:0}
-  .wrap{position:relative;z-index:1;max-width:560px;width:100%;display:flex;flex-direction:column;align-items:center}
+  body::before{content:"";position:fixed;inset:0;background:rgba(255,249,238,.74);z-index:0}
+  .wrap{position:relative;z-index:1;max-width:580px;width:100%;display:flex;flex-direction:column;align-items:center}
 
-  .oji{width:clamp(150px,42vw,224px);height:auto;filter:drop-shadow(0 14px 22px rgba(60,46,34,.22));
-       animation:bob 3.6s ease-in-out infinite}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
-  @media (prefers-reduced-motion:reduce){.oji{animation:none}}
+  /* ── playful scene: prince + floating food bubbles + speech bubble ── */
+  .scene{position:relative;width:min(86vw,360px);aspect-ratio:1/1;margin-bottom:4px}
+  .oji{position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+       width:62%;height:auto;filter:drop-shadow(0 14px 20px rgba(60,46,34,.22));
+       animation:bob 3.6s ease-in-out infinite;z-index:3}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
 
-  .num{font-weight:900;font-size:clamp(64px,17vw,120px);line-height:.95;letter-spacing:-.02em;
-       color:var(--royal);margin-top:6px;text-shadow:3px 3px 0 var(--gold-soft)}
-  h1{font-weight:900;font-size:clamp(20px,5.2vw,30px);margin:14px 0 0;color:var(--ink)}
+  .pin{position:absolute;border-radius:50%;border:3px solid var(--ink);
+       box-shadow:3px 4px 0 rgba(31,24,18,.26);background:var(--paper);overflow:hidden;z-index:4}
+  .pin img{width:100%;height:100%;object-fit:cover;display:block}
+  .p1{width:74px;height:74px;left:-2%;top:18%;animation:floaty 5s ease-in-out infinite}
+  .p2{width:62px;height:62px;right:-1%;top:34%;animation:floaty 5.8s ease-in-out infinite .4s}
+  .p3{width:58px;height:58px;left:6%;bottom:10%;animation:floaty 6.4s ease-in-out infinite .8s}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+
+  .compass{position:absolute;right:1%;bottom:15%;width:50px;height:50px;z-index:4;
+           filter:drop-shadow(0 4px 7px rgba(60,46,34,.22));animation:sway 4.5s ease-in-out infinite}
+  @keyframes sway{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(12deg)}}
+
+  .bubble{position:absolute;left:60%;top:2%;z-index:5;background:#fff;border:2.5px solid var(--ink);
+          border-radius:16px;padding:7px 13px;font-weight:900;font-size:18px;color:var(--royal);
+          box-shadow:2px 3px 0 var(--ink);animation:pop 3.6s ease-in-out infinite}
+  .bubble::after{content:"";position:absolute;left:16px;bottom:-9px;width:13px;height:13px;background:#fff;
+                 border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+  @keyframes pop{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.05)}}
+
+  @media (prefers-reduced-motion:reduce){.oji,.pin,.compass,.bubble{animation:none}}
+
+  .num{font-weight:900;font-size:clamp(66px,17vw,118px);line-height:.95;letter-spacing:-.02em;
+       color:var(--royal);margin-top:10px;text-shadow:3px 3px 0 var(--gold-soft);position:relative}
+  .num .spark{position:absolute;top:-6px;right:-26px;font-size:.34em;color:var(--gold);animation:tw 1.8s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+  h1{font-weight:900;font-size:clamp(20px,5.2vw,29px);margin:12px 0 0;color:var(--ink)}
   .lead{font-size:clamp(14px,3.6vw,16px);line-height:1.85;color:#5b4a36;margin-top:12px;font-weight:500}
-  .en{font-size:clamp(12px,3.2vw,13px);color:var(--muted);margin-top:8px;letter-spacing:.02em}
+  .en{font-size:clamp(12px,3.2vw,13px);color:var(--muted);margin-top:8px}
 
-  .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:30px}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;text-decoration:none;
-       border:2px solid var(--ink);border-radius:15px;padding:13px 24px;box-shadow:4px 5px 0 var(--ink);
+  .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:15px;text-decoration:none;
+       border:2.5px solid var(--ink);border-radius:16px;padding:12px 22px 12px 16px;box-shadow:4px 5px 0 var(--ink);
        transition:transform .09s ease,box-shadow .09s ease;white-space:nowrap}
-  .btn:active{transform:translate(2px,3px);box-shadow:1px 2px 0 var(--ink)}
+  .btn:hover{transform:translate(1px,2px);box-shadow:3px 3px 0 var(--ink)}
+  .btn:active{transform:translate(2px,4px);box-shadow:1px 1px 0 var(--ink)}
+  .btn img{width:26px;height:26px;display:block}
   .btn-primary{background:var(--royal);color:var(--paper)}
   .btn-primary:hover{background:var(--royal-deep)}
   .btn-ghost{background:var(--cream);color:var(--ink)}
   .btn-ghost:hover{background:#f3e6c9}
-  .btn svg{display:block}
 
-  .home{margin-top:26px;font-size:12.5px}
+  .home{margin-top:24px;font-size:12.5px}
   .home a{color:var(--muted);text-decoration:none;border-bottom:1px dashed #c9b78f;padding-bottom:1px}
   .home a:hover{color:var(--royal)}
 </style>
 </head>
 <body>
   <main class="wrap">
-    <img class="oji" src="/images/oji/oji_idea.png" alt="ビーガン王子" width="224" height="272" />
-    <div class="num">404</div>
+    <div class="scene">
+      <span class="bubble">あれれ…？</span>
+      <img class="compass" src="/images/ui/ico-compass.png" alt="" aria-hidden="true"/>
+      <span class="pin p1"><img src="/images/food/ramen.jpg" alt="" aria-hidden="true"/></span>
+      <span class="pin p2"><img src="/images/food/sushi.jpg" alt="" aria-hidden="true"/></span>
+      <span class="pin p3"><img src="/images/food/cheesecake.jpg" alt="" aria-hidden="true"/></span>
+      <img class="oji" src="/images/oji/oji_idea.png" alt="ビーガン王子" width="224" height="272"/>
+    </div>
+
+    <div class="num">404<span class="spark">✦</span></div>
     <h1>あれ、ページが見つかりません。</h1>
-    <p class="lead">お探しのページは、引っ越したか、なくなってしまったみたいです。<br/>でも大丈夫 — 近くの一軒は、地図でちゃんと待っています。</p>
+    <p class="lead">お探しのページは、引っ越したか、なくなってしまったみたい。<br/>でも大丈夫 — 近くの一軒は、地図でちゃんと待っています。</p>
     <p class="en">This page wandered off — but the map is still right here.</p>
 
     <div class="btns">
-      <a class="btn btn-primary" href="/">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
-        ホームへ戻る
-      </a>
-      <a class="btn btn-ghost" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.3-7-11a7 7 0 1114 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
-        マップを見る
-      </a>
+      <a class="btn btn-primary" href="/"><img src="/images/ui/ico-home.png" alt=""/>ホームへ戻る</a>
+      <a class="btn btn-ghost" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener"><img src="/images/ui/ico-pin.png" alt=""/>マップを見る</a>
     </div>
 
     <p class="home"><a href="/en/">Looking for English? Go to the map &rarr;</a></p>
