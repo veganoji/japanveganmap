@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex,nofollow"/>
+<title>ロゴ・ラボ — Logo candidates · Japan Vegan Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@700;900&family=M+PLUS+Rounded+1c:wght@700;800&family=Mochiy+Pop+One&family=Hachi+Maru+Pop&family=Yomogi&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFF9EE; --cream:#FDF1DA; --royal:#C9223A; --royal-soft:#E55063;
+    --gold:#D4A847; --gold-deep:#9C7E2A; --ink:#1F1812; --muted:#786148;
+    --leaf:#6C9560; --leaf-deep:#3F6A3A; --line:#E9D9B5;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#efe6d2;color:var(--ink);font-family:"Noto Sans JP",sans-serif;
+       -webkit-font-smoothing:antialiased;padding:0 0 80px}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  .page-head{padding:40px 20px 14px;max-width:1040px;margin:0 auto}
+  .page-head h1{font-family:"Zen Maru Gothic";font-weight:900;font-size:30px;margin:0 0 6px}
+  .page-head p{margin:4px 0;color:#5b4a36;font-size:15px;line-height:1.6}
+  .page-head code{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin:22px 0;
+        box-shadow:0 10px 28px -18px rgba(60,46,34,.5);overflow:hidden}
+  .card-top{display:flex;align-items:baseline;gap:12px;padding:16px 20px 0;flex-wrap:wrap}
+  .num{display:inline-grid;place-items:center;min-width:30px;height:30px;border-radius:50%;
+       background:var(--royal);color:#fff;font-weight:900;font-size:15px;font-family:"Zen Maru Gothic"}
+  .card-top h2{margin:0;font-family:"Zen Maru Gothic";font-weight:700;font-size:19px}
+  .tag{font-size:12px;color:var(--muted);background:var(--cream);border:1px solid var(--line);
+       border-radius:999px;padding:2px 10px}
+  .desc{padding:6px 20px 0;color:#5b4a36;font-size:13.5px;line-height:1.6}
+  .desc .lead{color:var(--ink)}
+
+  /* realistic site header bar */
+  .hdr{margin:16px 0 0;border-top:1px solid var(--line);background:
+        linear-gradient(0deg,rgba(255,249,238,.96),rgba(255,249,238,.96));}
+  .hdr-in{max-width:980px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;
+          justify-content:space-between;gap:16px}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink)}
+  .logo .mark{flex:none;display:grid;place-items:center}
+  .logo .mark img{display:block}
+  .wm{display:flex;flex-direction:column;line-height:1}
+  .wm .jp{font-family:"Noto Sans JP";font-weight:900;font-size:19px;letter-spacing:.02em;color:var(--ink)}
+  .wm .en{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .wm.inline{flex-direction:row;align-items:baseline;gap:9px}
+  .wm.inline .en{margin-top:0}
+
+  .actions{display:flex;align-items:center;gap:9px;flex:none}
+  .ghost{font-size:12.5px;color:var(--ink);border:1.5px solid var(--line);background:#fff;
+         border-radius:10px;padding:7px 11px;text-decoration:none;font-weight:700}
+  .primary{font-size:12.5px;color:#fff;background:var(--royal);border:2px solid var(--ink);
+           border-radius:12px;padding:7px 13px;text-decoration:none;font-weight:800;
+           box-shadow:3px 3px 0 var(--ink);display:inline-flex;align-items:center;gap:6px}
+
+  .swatches{display:flex;gap:0}
+  .swatch{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;min-height:86px}
+  .swatch.dark{background:var(--ink)}
+  .swatch.dark .wm .jp{color:var(--paper)} .swatch.dark .wm .en{color:#caa}
+  .swatch.cream{background:var(--cream)}
+  .small .wm .jp{font-size:14px} .small .wm .en{font-size:8.5px}
+
+  /* wordmark font variants */
+  .f-maru .jp{font-family:"Zen Maru Gothic";font-weight:900}
+  .f-kaku .jp{font-family:"Zen Kaku Gothic New";font-weight:900}
+  .f-round .jp{font-family:"M PLUS Rounded 1c";font-weight:800}
+  .f-pop .jp{font-family:"Mochiy Pop One";font-weight:400;font-size:17px}
+  .f-hachi .jp{font-family:"Hachi Maru Pop";font-weight:400;font-size:18px}
+  .f-yomogi .jp{font-family:"Yomogi";font-weight:400}
+
+  .note{font-size:12px;color:var(--muted);padding:0 22px 16px}
+  /* type-only accent */
+  .leafdot{color:var(--leaf-deep)}
+  footer.lab{max-width:1040px;margin:30px auto 0;padding:18px 20px;color:#5b4a36;font-size:13px;
+             border-top:1px dashed #c9b78f}
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>ロゴ・ラボ &mdash; 10 logo candidates</h1>
+  <p class="lead">Replacements for the current top-left lockup (crown + <code>日本ビーガンマップ Japan Vegan Map</code>). Each one is shown <b>inside a real header bar at true size</b>, plus on cream and dark so you can judge legibility. Mix &amp; match welcome &mdash; e.g. &ldquo;mark from #1, wordmark font from #6.&rdquo;</p>
+  <p>Marks: 4 newly generated (gpt-image-1) + existing favicon &amp; hero art + 2 crisp inline-SVG vectors. Tell me a number (or two) and I&rsquo;ll wire it into the live header.</p>
+</div>
+
+<div class="wrap">
+
+  <!-- 1 PIN-JAPAN -->
+  <section class="card">
+    <div class="card-top"><span class="num">1</span><h2>Pin × Japan</h2><span class="tag">generated mark · Zen Maru Gothic</span></div>
+    <div class="desc"><span class="lead">A map pin holding the green Japan islands, gold crown on top.</span> Map-forward and instantly &ldquo;find vegan spots here.&rdquo; The most literal to what the site does.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-maru"><span class="mark"><img src="/images/logo-lab/pin-japan.png" height="36" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-maru small"><span class="mark"><img src="/images/logo-lab/pin-japan.png" height="30" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-maru small"><span class="mark"><img src="/images/logo-lab/pin-japan.png" height="30" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 2 CROWN-JAPAN favicon sticker -->
+  <section class="card">
+    <div class="card-top"><span class="num">2</span><h2>Crown-Japan sticker <span style="font-weight:400;color:var(--muted);font-size:14px">(use what we have)</span></h2><span class="tag">existing favicon · Noto Sans JP 900</span></div>
+    <div class="desc"><span class="lead">Your current favicon as the logo mark</span> &mdash; green Japan wearing a crown, with a red pin. Zero new assets, and it already matches the browser-tab icon for instant brand consistency.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo"><span class="mark"><img src="/images/favicon-180.png" height="34" style="border-radius:8px" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo small"><span class="mark"><img src="/images/favicon-180.png" height="30" style="border-radius:7px" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo small"><span class="mark"><img src="/images/favicon-180.png" height="30" style="border-radius:7px" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 3 ROUNDEL STAMP -->
+  <section class="card">
+    <div class="card-top"><span class="num">3</span><h2>Passport stamp</h2><span class="tag">generated mark · Zen Kaku Gothic</span></div>
+    <div class="desc"><span class="lead">A circular travel-stamp emblem</span> &mdash; Japan + crown ringed by leaves. Reads as a &ldquo;seal of approval / collect-the-spots&rdquo; badge; great for stickers &amp; merch later.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-kaku"><span class="mark"><img src="/images/logo-lab/roundel-stamp.png" height="40" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-kaku small"><span class="mark"><img src="/images/logo-lab/roundel-stamp.png" height="34" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-kaku small"><span class="mark"><img src="/images/logo-lab/roundel-stamp.png" height="34" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 4 LEAF-CROWN -->
+  <section class="card">
+    <div class="card-top"><span class="num">4</span><h2>Leaf crown</h2><span class="tag">generated mark · M PLUS Rounded</span></div>
+    <div class="desc"><span class="lead">A crown whose points are leaves, red heart gem.</span> The most &ldquo;logo-like&rdquo; / abstract option &mdash; says vegan (leaf) + prince (crown) without a literal map. Scales tiny beautifully.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-round"><span class="mark"><img src="/images/logo-lab/leaf-crown.png" height="34" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-round small"><span class="mark"><img src="/images/logo-lab/leaf-crown.png" height="29" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-round small"><span class="mark"><img src="/images/logo-lab/leaf-crown.png" height="29" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 5 BOWL-CROWN -->
+  <section class="card">
+    <div class="card-top"><span class="num">5</span><h2>Royal bowl</h2><span class="tag">generated mark · Mochiy Pop One</span></div>
+    <div class="desc"><span class="lead">A rice bowl wearing a crown, chopsticks across the top.</span> Food-forward &amp; appetising &mdash; leads with &ldquo;eat&rdquo; rather than &ldquo;map.&rdquo; Pairs with the chunky pop wordmark for a playful feel.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-pop"><span class="mark"><img src="/images/logo-lab/bowl-crown.png" height="36" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-pop small"><span class="mark"><img src="/images/logo-lab/bowl-crown.png" height="30" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-pop small"><span class="mark"><img src="/images/logo-lab/bowl-crown.png" height="30" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 6 PRINCE AVATAR -->
+  <section class="card">
+    <div class="card-top"><span class="num">6</span><h2>Prince avatar</h2><span class="tag">hero crop · Zen Maru Gothic</span></div>
+    <div class="desc"><span class="lead">ビーガン王子 himself, in a round avatar.</span> Puts the mascot front-and-centre &mdash; warm and personable, ties the header to the about-section character. (Crop can be refined.)</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-maru"><span class="mark"><img src="/images/logo-lab/prince-head.png" height="40" style="border-radius:50%;object-fit:cover;width:40px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.18)" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-maru small"><span class="mark"><img src="/images/logo-lab/prince-head.png" height="34" style="border-radius:50%;object-fit:cover;width:34px;border:2px solid #fff" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-maru small"><span class="mark"><img src="/images/logo-lab/prince-head.png" height="34" style="border-radius:50%;object-fit:cover;width:34px;border:2px solid #fff" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 7 FULL PRINCE -->
+  <section class="card">
+    <div class="card-top"><span class="num">7</span><h2>Prince + map (full character)</h2><span class="tag">hero art · Noto Sans JP 900</span></div>
+    <div class="desc"><span class="lead">The full chibi prince holding the map.</span> Maximum personality &amp; recognisability, but tallest &mdash; needs a roomy header. Best if you want the character to lead the brand.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo"><span class="mark"><img src="/images/mascot/map-japan.png" height="48" alt=""></span>
+        <span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo small"><span class="mark"><img src="/images/mascot/map-japan.png" height="42" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo small"><span class="mark"><img src="/images/mascot/map-japan.png" height="42" alt=""></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 8 SVG PIN+LEAF -->
+  <section class="card">
+    <div class="card-top"><span class="num">8</span><h2>Vector pin + leaf</h2><span class="tag">inline SVG · Zen Kaku Gothic</span></div>
+    <div class="desc"><span class="lead">A crisp flat map-pin with a leaf inside.</span> Pure vector &mdash; razor-sharp at any size, tiny file, recolours instantly. The clean, modern, minimal route.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-kaku"><span class="mark">
+        <svg width="28" height="36" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 0C5.37 0 0 5.2 0 11.6 0 20.3 12 32 12 32s12-11.7 12-20.4C24 5.2 18.63 0 12 0z" fill="#C9223A"/><circle cx="12" cy="11.4" r="6.6" fill="#FFF9EE"/><path d="M12.2 6.7c-2.9.15-4.85 2.3-4.6 5.4 3-.05 4.95-2.2 4.6-5.4z" fill="#6C9560"/><path d="M12.2 6.7c.3 1.9-.25 3.6-1.5 4.7" fill="none" stroke="#3F6A3A" stroke-width="1" stroke-linecap="round"/></svg>
+      </span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-kaku small"><span class="mark"><svg width="23" height="30" viewBox="0 0 24 32"><path d="M12 0C5.37 0 0 5.2 0 11.6 0 20.3 12 32 12 32s12-11.7 12-20.4C24 5.2 18.63 0 12 0z" fill="#C9223A"/><circle cx="12" cy="11.4" r="6.6" fill="#FFF9EE"/><path d="M12.2 6.7c-2.9.15-4.85 2.3-4.6 5.4 3-.05 4.95-2.2 4.6-5.4z" fill="#6C9560"/></svg></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-kaku small"><span class="mark"><svg width="23" height="30" viewBox="0 0 24 32"><path d="M12 0C5.37 0 0 5.2 0 11.6 0 20.3 12 32 12 32s12-11.7 12-20.4C24 5.2 18.63 0 12 0z" fill="#E55063"/><circle cx="12" cy="11.4" r="6.6" fill="#FFF9EE"/><path d="M12.2 6.7c-2.9.15-4.85 2.3-4.6 5.4 3-.05 4.95-2.2 4.6-5.4z" fill="#6C9560"/></svg></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 9 SVG CROWN refined -->
+  <section class="card">
+    <div class="card-top"><span class="num">9</span><h2>Refined crown <span style="font-weight:400;color:var(--muted);font-size:14px">(upgrade of current)</span></h2><span class="tag">inline SVG · Noto Sans JP 900</span></div>
+    <div class="desc"><span class="lead">The same crown idea you have now, but nicer</span> &mdash; gold 3-peak crown with gem &amp; a royal-red band, instead of the flat single-colour zig-zag. Smallest change from today&rsquo;s look.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo"><span class="mark">
+        <svg width="32" height="27" viewBox="0 0 32 27" aria-hidden="true"><path d="M2.4 21 L4.2 8.5 L11 14.6 L16 4 L21 14.6 L27.8 8.5 L29.6 21 Z" fill="#D4A847" stroke="#9C7E2A" stroke-width="1.1" stroke-linejoin="round"/><rect x="3.4" y="20.4" width="25.2" height="4.6" rx="2" fill="#C9223A"/><circle cx="16" cy="9.2" r="1.8" fill="#C9223A"/><circle cx="4.2" cy="8.5" r="1.5" fill="#E8C76F"/><circle cx="27.8" cy="8.5" r="1.5" fill="#E8C76F"/></svg>
+      </span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo small"><span class="mark"><svg width="28" height="24" viewBox="0 0 32 27"><path d="M2.4 21 L4.2 8.5 L11 14.6 L16 4 L21 14.6 L27.8 8.5 L29.6 21 Z" fill="#D4A847" stroke="#9C7E2A" stroke-width="1.1" stroke-linejoin="round"/><rect x="3.4" y="20.4" width="25.2" height="4.6" rx="2" fill="#C9223A"/><circle cx="16" cy="9.2" r="1.8" fill="#C9223A"/></svg></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+      <div class="swatch dark"><a class="logo small"><span class="mark"><svg width="28" height="24" viewBox="0 0 32 27"><path d="M2.4 21 L4.2 8.5 L11 14.6 L16 4 L21 14.6 L27.8 8.5 L29.6 21 Z" fill="#E8C76F" stroke="#9C7E2A" stroke-width="1.1" stroke-linejoin="round"/><rect x="3.4" y="20.4" width="25.2" height="4.6" rx="2" fill="#E55063"/><circle cx="16" cy="9.2" r="1.8" fill="#E55063"/></svg></span><span class="wm"><span class="jp">日本ビーガンマップ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+  <!-- 10 TYPE ONLY -->
+  <section class="card">
+    <div class="card-top"><span class="num">10</span><h2>Wordmark only <span style="font-weight:400;color:var(--muted);font-size:14px">(no icon)</span></h2><span class="tag">Hachi Maru Pop · leaf accent</span></div>
+    <div class="desc"><span class="lead">No mark at all &mdash; just a characterful logotype</span> with a tiny leaf on the &ldquo;ッ&rdquo;. Cleanest &amp; most flexible; leans on the cute handwriting (same family as the site buttons) for personality.</div>
+    <div class="hdr"><div class="hdr-in">
+      <a class="logo f-hachi"><span class="wm inline"><span class="jp">日本ビーガンマ<span class="leafdot">ッ</span>プ</span><span class="en">Japan Vegan Map</span></span></a>
+      <div class="actions"><a class="ghost">EN</a><a class="primary">📍 マップを見る</a></div>
+    </div></div>
+    <div class="swatches">
+      <div class="swatch cream"><a class="logo f-yomogi small"><span class="wm inline"><span class="jp" style="font-size:17px">日本ビーガンマ<span class="leafdot">ッ</span>プ</span><span class="en">alt: Yomogi brush</span></span></a></div>
+      <div class="swatch dark"><a class="logo f-hachi small"><span class="wm inline"><span class="jp" style="font-size:17px">日本ビーガンマ<span style="color:#8FBF7E">ッ</span>プ</span><span class="en">Japan Vegan Map</span></span></a></div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="lab">
+  ロゴ・ラボ · local preview only (noindex, not deployed). Marks 1/3/4/5 = gpt-image-1, 2/7 = existing assets, 6 = hero crop, 8/9 = inline SVG, 10 = type. &nbsp;Say a number and I&rsquo;ll wire it into the live header (and regenerate a clean favicon to match if needed).
+</footer>
+
+</body>
+</html>
