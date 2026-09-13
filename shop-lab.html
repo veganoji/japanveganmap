@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ショップページ・ラボ｜未来食レストラン AWA · 日本ビーガンマップ</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- 本番のお店ページに入る構造化データの例（このラボ自体は noindex） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "未来食レストラン AWA",
+  "alternateName": "Miraishoku Restaurant AWA",
+  "description": "雑穀と野菜が主役。植物性100％、砂糖なし。2018年に閉じた未来食レストランが7年ぶりに早稲田で再始動。",
+  "url": "https://veganmapjapan.org/shop/miraishoku-awa/",
+  "sameAs": ["https://yamatonadeshiko.tsubutsubu.jp/p/miraishoku_awa"],
+  "address": {"@type": "PostalAddress", "streetAddress": "弁天町143-5 1階", "addressLocality": "新宿区", "addressRegion": "東京都", "addressCountry": "JP"},
+  "geo": {"@type": "GeoCoordinates", "latitude": 35.701191, "longitude": 139.724884},
+  "servesCuisine": ["未来食", "雑穀料理", "ヴィーガン"],
+  "acceptsReservations": true,
+  "priceRange": "¥600〜¥3,300",
+  "hasMenu": {"@type": "Menu", "hasMenuSection": {"@type": "MenuSection", "name": "ランチ",
+    "hasMenuItem": [{"@type": "MenuItem", "name": "ランチコース",
+      "offers": {"@type": "Offer", "price": "3300", "priceCurrency": "JPY"},
+      "suitableForDiet": "https://schema.org/VeganDiet"}]}}
+}
+</script>
+<style>
+  :root{
+    --paper:#FFF9EE; --cream:#FDF1DA; --cream2:#F6E4BD; --royal:#C9223A; --royal-deep:#9C1428;
+    --gold:#D4A847; --gold-soft:#E8C76F; --ink:#1F1812; --ink-soft:#3C2E22; --muted:#786148;
+    --leaf:#6C9560; --leaf-deep:#3F6A3A; --line:#E9D9B5;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#E9DEC6;color:var(--ink);font-family:"Noto Sans JP",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:inherit}
+  img{max-width:100%}
+  p{margin:0}
+  code{background:#fff;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.9em}
+
+  /* ── lab chrome ── */
+  .lab-head{max-width:1180px;margin:0 auto;padding:46px 22px 4px}
+  .lab-kicker{display:inline-block;background:var(--ink);color:var(--paper);font-weight:700;font-size:12px;letter-spacing:.14em;border-radius:999px;padding:4px 12px;margin-bottom:12px}
+  .lab-head h1{font-weight:900;font-size:34px;margin:0 0 10px;letter-spacing:-.01em}
+  .lab-head p{font-size:16px;color:#5b4a36;max-width:900px}
+  .lab-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .lab-nav a{text-decoration:none;font-weight:700;font-size:14px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:6px 14px;box-shadow:2px 2px 0 var(--ink)}
+  .dir{max-width:1180px;margin:46px auto 0;padding:0 22px}
+  .dir-label{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+  .dir-label .n{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--royal);color:#fff;font-weight:900;font-size:19px;border:2.5px solid var(--ink)}
+  .dir-label h2{margin:0;font-weight:900;font-size:26px}
+  .dir-label .tag{font-size:13px;color:var(--muted);background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+  .frame{background:var(--paper);border:1px solid #d9c9a6;border-radius:24px;overflow:hidden;box-shadow:0 22px 50px -30px rgba(60,46,34,.6)}
+
+  /* ── shared store-page components ── */
+  .sp-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;border-bottom:1px solid var(--line);background:rgba(255,249,238,.96);position:relative;z-index:3}
+  .sp-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .sp-logo img{height:44px;width:auto}
+  .sp-logo b{display:block;font-weight:900;font-size:18px;line-height:1.1}
+  .sp-logo small{display:block;font-size:10.5px;letter-spacing:.2em;color:var(--muted);margin-top:3px}
+  .sp-actions{display:flex;gap:10px}
+  .crumbs{font-size:13px;color:var(--muted);padding:14px 28px 0}
+  .crumbs a{text-decoration:none;border-bottom:1px dashed #c9b78f}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;line-height:1;text-decoration:none;color:var(--ink);background:var(--paper);border:2.5px solid var(--ink);border-radius:16px;padding:12px 20px;box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s;white-space:nowrap}
+  .btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+  .btn img{width:22px;height:22px}
+  .btn-sm{font-size:13px;padding:8px 13px;border-radius:13px;box-shadow:3px 3px 0 var(--ink)}
+  .btn-sm img{width:18px;height:18px}
+  .btn-red{background:var(--royal);color:var(--paper)}
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-light{background:transparent;color:var(--paper);border-color:var(--paper);box-shadow:4px 4px 0 rgba(0,0,0,.28)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .chip{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13.5px;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:5px 12px}
+  .chip.open{background:var(--gold-soft)}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px}
+  .cta.center{justify-content:center}
+  .en{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .lead{font-size:17px;line-height:1.95;margin:14px 0 16px}
+  .sec{font-weight:900;font-size:21px;margin:0 0 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sec small{font-weight:500;font-size:13px;color:var(--muted)}
+  .card{background:#fff;border:2.5px solid var(--ink);border-radius:20px;box-shadow:4px 5px 0 var(--ink);padding:22px 24px}
+  .card h2{font-weight:900;font-size:19px;margin:0 0 14px}
+  .tiny-inline{font-size:12px;color:var(--muted);font-weight:500;margin-left:6px}
+  .info{display:grid;grid-template-columns:84px 1fr;gap:10px 14px;margin:0;font-size:15px;line-height:1.7}
+  .info dt{font-weight:700;color:var(--muted)}
+  .info dd{margin:0}
+  .info a{color:var(--royal);font-weight:700}
+  .map{padding:0;overflow:hidden;display:flex;flex-direction:column;min-height:320px}
+  .map iframe{flex:1;width:100%;min-height:260px;border:0;display:block}
+  .map-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border-top:2.5px solid var(--ink);font-size:11.5px;color:var(--muted);background:var(--paper)}
+  .dish{background:#fff;border:2.5px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:4px 5px 0 var(--ink)}
+  .dish .ph{aspect-ratio:4/3;display:grid;place-items:center;text-align:center;font-size:12px;font-weight:700;color:var(--muted);border-bottom:2.5px solid var(--ink);background:repeating-linear-gradient(45deg,#FDF1DA 0 12px,#F8E7C4 12px 24px)}
+  .dish .ph img{width:54px;display:block;margin:0 auto 6px}
+  .dish .body{padding:12px 16px 16px}
+  .dish .body b{font-weight:900;font-size:16px}
+  .dish .body .pr{float:right;font-weight:900;color:var(--royal)}
+  .dish .body p{font-size:13.5px;color:var(--ink-soft);margin-top:4px}
+  .verify{display:flex;flex-wrap:wrap;align-items:center;gap:10px 24px;margin:0 28px;padding:16px 0 22px;border-top:2px dashed var(--line);font-size:13.5px;color:var(--ink-soft)}
+  .verify a{color:var(--royal);font-weight:700}
+  .tiny{font-size:12px;color:var(--muted);margin-top:10px}
+  .sp-foot{display:flex;justify-content:space-between;gap:12px;padding:16px 28px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+  .sp-foot a{text-decoration:none;font-weight:700;color:var(--ink-soft)}
+  .sticker{display:inline-flex;align-items:center;gap:12px;background:#fff;border:3px solid var(--ink);border-radius:20px;padding:8px 18px 8px 10px;box-shadow:4px 5px 0 var(--ink);transform:rotate(-2deg)}
+  .sticker img{width:56px;height:56px}
+  .sticker b{display:block;font-weight:900;font-size:20px;color:var(--leaf-deep);line-height:1.2}
+  .sticker small{display:block;font-weight:700;font-size:11px;letter-spacing:.14em;color:var(--muted)}
+  .bubble{position:absolute;top:18px;left:18px;right:18px;background:#fff;border:2.5px solid var(--ink);border-radius:18px;padding:12px 16px;font-weight:700;font-size:15px;line-height:1.6;box-shadow:3px 3px 0 var(--ink);z-index:2}
+  .bubble::after{content:"";position:absolute;left:50%;bottom:-11px;width:18px;height:18px;background:#fff;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:translateX(-50%) rotate(45deg)}
+
+  /* ── A. ステッカー図鑑 ── */
+  .A .hero{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;padding:22px 28px 34px}
+  .A h1{font-weight:900;font-size:54px;line-height:1.06;letter-spacing:-.02em;margin:20px 0 6px}
+  .A .oji-card{position:relative;min-height:390px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(165deg,#FDF1DA,#F6E4BD);border:3px solid var(--ink);border-radius:28px;box-shadow:6px 7px 0 var(--ink);padding:100px 20px 0;overflow:hidden}
+  .A .oji-card img{height:290px;width:auto;display:block}
+  .A .grid2{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:0 28px 30px}
+  .A .menu{padding:0 28px 30px}
+  .A .menu-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .A .event{display:flex;align-items:center;gap:16px;margin:0 28px 26px;background:var(--gold-soft);border:2.5px solid var(--ink);border-radius:20px;box-shadow:4px 5px 0 var(--ink);padding:16px 22px}
+  .A .event .ic{font-size:34px}
+  .A .event b{font-weight:900;font-size:16.5px}
+  .A .event p{font-size:14px;color:var(--ink-soft);margin-top:2px}
+  .nearby{padding:24px 28px 28px}
+  .nearby-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .sk{border:2.5px dashed #cdb98e;border-radius:18px;padding:16px 18px;background:rgba(255,255,255,.55);font-size:13px;color:var(--muted)}
+  .sk b{display:block;font-size:15px;color:var(--ink-soft);margin-bottom:4px}
+  .support{display:grid;grid-template-columns:150px 1fr auto;gap:26px;align-items:center;background:var(--royal);color:var(--paper);padding:28px 32px}
+  .support img{height:190px;width:auto;display:block;margin:0 auto}
+  .support h3{font-weight:900;font-size:22px;line-height:1.5;margin:0 0 6px}
+  .support p{opacity:.92;line-height:1.8;font-size:15px}
+  .sup-btns{display:flex;flex-direction:column;gap:12px}
+  .owner{display:flex;align-items:center;gap:18px;margin:26px 28px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;box-shadow:4px 5px 0 var(--ink);padding:16px 20px}
+  .owner .stk{flex:none;width:94px;height:94px;border-radius:50%;background:var(--paper);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;text-align:center;font-weight:900;font-size:10.5px;line-height:1.25;transform:rotate(-6deg)}
+  .owner .stk img{width:36px;display:block;margin:0 auto 2px}
+  .owner .txt{flex:1}
+  .owner b{font-weight:900;font-size:16px}
+  .owner p{font-size:14px;color:var(--ink-soft);margin-top:2px}
+
+  /* ── B. 旅のしおり ── */
+  .B{background:#F4EAD4 url('/images/bg/paper-wash.jpg') center top/cover}
+  .B .sp-top{background:rgba(255,249,238,.9)}
+  .B .ticket{display:grid;grid-template-columns:180px 1fr;margin:22px 28px 28px;background:#fff;border:2.5px solid var(--ink);border-radius:20px;box-shadow:5px 6px 0 var(--ink);overflow:hidden}
+  .B .stub{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:10px;padding:24px 14px;background:var(--royal);color:var(--paper);border-right:3px dashed rgba(255,249,238,.8);text-align:center}
+  .B .stub small{font-weight:700;font-size:11px;letter-spacing:.18em}
+  .B .stub .big{font-size:58px;line-height:1}
+  .B .stub .no{font-weight:900;font-size:14px;letter-spacing:.14em}
+  .B .tmain{position:relative;padding:24px 190px 26px 30px}
+  .B .tmain h1{font-weight:900;font-size:46px;line-height:1.1;margin:8px 0 0;letter-spacing:-.01em}
+  .B .hanko{position:absolute;right:30px;top:28px;width:136px;height:136px;border-radius:50%;border:5px double var(--royal);color:var(--royal);display:grid;place-items:center;text-align:center;font-weight:900;font-size:15px;line-height:1.3;transform:rotate(-12deg);background:rgba(255,255,255,.72)}
+  .B .hanko big{display:block;font-size:30px;line-height:1.1}
+  .B .hanko small{display:block;font-size:10.5px;letter-spacing:.06em;margin-top:3px}
+  .B .shiori{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 28px 26px}
+  .route{display:flex;flex-direction:column}
+  .route .st{display:flex;align-items:flex-start;gap:10px;font-weight:700;font-size:14.5px;line-height:1.45}
+  .route .st small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+  .route .dot{flex:none;width:16px;height:16px;border-radius:50%;border:3px solid var(--ink);background:var(--gold);margin-top:2px}
+  .route .here .dot{background:var(--leaf);width:20px;height:20px;margin-left:-2px}
+  .route .line{margin-left:6px;border-left:3px dotted var(--muted);padding:8px 0 8px 18px;font-size:13px;color:var(--muted);font-weight:700}
+  .cal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .day{border:2px solid var(--ink);border-radius:12px;padding:8px 10px;background:var(--paper);font-size:12.5px;line-height:1.4}
+  .day b{display:block;font-weight:900;font-size:14.5px}
+  .day.sp{background:var(--gold-soft)}
+  .day.go{grid-column:1/-1;background:var(--leaf);color:#fff}
+  .B .board{background:var(--ink);color:var(--paper);border:2.5px solid var(--ink);border-radius:20px;box-shadow:4px 5px 0 rgba(31,24,18,.35);padding:22px 24px}
+  .B .board h2{font-weight:900;font-size:19px;margin:0 0 12px;color:var(--gold-soft);letter-spacing:.1em}
+  .B .board .row{display:flex;align-items:baseline;gap:8px;font-size:15px;margin:10px 0}
+  .B .board .row i{flex:1;border-bottom:2px dotted rgba(255,249,238,.35);transform:translateY(-4px)}
+  .B .board .row span{font-weight:900;color:var(--gold-soft)}
+  .B .board .note{font-size:12px;opacity:.72;margin-top:14px;line-height:1.7}
+  .B .lower{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;padding:0 28px 26px}
+  .B .map{border-style:dashed}
+  .phrase .q{border-top:2px dashed var(--line);padding:10px 0}
+  .phrase .q:first-of-type{border-top:0;padding-top:0}
+  .phrase .jp{font-weight:900;font-size:17px}
+  .phrase .enx{font-size:13px;color:var(--muted)}
+  .B .verify{border-top-color:rgba(120,97,72,.3)}
+  .B .foot{position:relative;padding:36px 28px 44px;text-align:center;background:url('/images/bg/countryside.jpg') center 72%/cover}
+  .B .foot::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,238,.93),rgba(255,249,238,.6))}
+  .B .foot>*{position:relative}
+  .B .foot img{height:150px;width:auto;display:block;margin:0 auto 10px}
+  .B .foot p{font-weight:700;font-size:17px}
+
+  /* ── C. 王子チェック ── */
+  .C .hero{position:relative;overflow:hidden;background:url('/images/bg/food-doodle.jpg') center/cover;padding:0 28px}
+  .C .hero::before{content:"";position:absolute;inset:0;background:rgba(255,249,238,.74)}
+  .C .hero>*{position:relative}
+  .C .crumbs{padding:14px 0 0}
+  .C .hgrid{display:grid;grid-template-columns:1.25fr 1fr;align-items:end;gap:20px;padding-top:18px}
+  .kicker{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);font-weight:900;font-size:13px;letter-spacing:.06em;border-radius:999px;padding:7px 15px}
+  .C h1{font-weight:900;font-size:60px;line-height:1.02;letter-spacing:-.02em;margin:16px 0 8px}
+  .C h1 em{font-style:normal;color:var(--leaf-deep)}
+  .ribbon{display:inline-block;margin:14px 0 44px;background:var(--royal);color:var(--paper);font-weight:900;font-size:16px;padding:9px 18px;border:2.5px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-2deg)}
+  .C .hero img.oji{display:block;width:100%;max-width:330px;margin-left:auto}
+  .checks{position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin:-10px 28px 28px;background:#fff;border:3px solid var(--ink);border-radius:26px;box-shadow:6px 7px 0 var(--ink);padding:22px 26px}
+  .checks .stamp{width:120px;height:120px;border-radius:50%;background:var(--leaf);color:#fff;border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;text-align:center;font-weight:900;font-size:17px;line-height:1.15}
+  .checks .stamp img{width:46px;display:block;margin:0 auto 4px}
+  .checks ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px 20px}
+  .checks li{display:flex;align-items:flex-start;gap:10px;font-weight:900;font-size:15.5px;line-height:1.35}
+  .checks li i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--leaf);color:#fff;border:2px solid var(--ink);display:grid;place-items:center;font-style:normal;font-size:14px}
+  .checks li.warn i{background:var(--gold);color:var(--ink)}
+  .checks li small{display:block;font-weight:500;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .C .row2{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;padding:0 28px 28px;align-items:start}
+  .video{position:relative;aspect-ratio:16/9;display:grid;place-items:center;text-align:center;color:var(--paper);background:radial-gradient(circle at 30% 20%,#5a4632,#1F1812 70%);border:3px solid var(--ink);border-radius:22px;box-shadow:5px 6px 0 var(--ink);overflow:hidden}
+  .video .play{width:76px;height:76px;margin:0 auto 12px;border-radius:50%;background:var(--royal);border:3px solid var(--paper);display:grid;place-items:center;box-shadow:0 0 0 9px rgba(201,34,58,.28)}
+  .video .play::before{content:"";margin-left:6px;border-left:24px solid var(--paper);border-top:15px solid transparent;border-bottom:15px solid transparent}
+  .video b{font-size:19px;font-weight:900}
+  .video small{display:block;opacity:.72;font-size:12.5px;margin-top:4px;padding:0 20px}
+  .qa{display:flex;flex-direction:column;gap:12px}
+  .qa .q{align-self:flex-start;background:var(--cream);border:2.5px solid var(--ink);border-radius:18px 18px 18px 4px;padding:8px 14px;font-weight:900;font-size:15px}
+  .qa .a{align-self:flex-end;max-width:92%;background:#fff;border:2.5px solid var(--ink);border-radius:18px 18px 4px 18px;padding:10px 14px;font-size:14.5px;line-height:1.75;box-shadow:3px 3px 0 var(--ink)}
+  .C .row3{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;padding:0 28px 26px}
+  .appeal{position:relative;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:center;padding:34px 32px;background:url('/images/bg/footer-night.jpg') center/cover}
+  .appeal::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(31,24,18,.35),rgba(31,24,18,.74))}
+  .appeal>*{position:relative}
+  .appeal img{width:100%;display:block}
+  .appeal h3{color:var(--paper);font-weight:900;font-size:26px;margin:0 0 8px}
+  .appeal p{color:rgba(255,249,238,.92);line-height:1.85}
+
+  /* ── sparse-data example + notes ── */
+  .sparse-wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:22px;align-items:start}
+  .sparse .sp-body{padding:28px}
+  .sparse h1{font-weight:900;font-size:36px;margin:16px 0 4px}
+  .s-opt b{color:var(--royal)}
+  .s-opt .emoji{font-size:40px;line-height:1}
+  .ask{display:flex;align-items:center;gap:16px;margin-top:24px;background:var(--cream);border:2.5px dashed var(--muted);border-radius:18px;padding:14px 18px}
+  .ask img{height:110px;width:auto;flex:none}
+  .ask b{font-weight:900}
+  .ask p{font-size:14px;color:var(--ink-soft);margin:4px 0 10px}
+  .note-card{background:#fff;border:2px solid var(--line);border-radius:18px;padding:18px 20px;font-size:14.5px;line-height:1.8}
+  .note-card ul{margin:8px 0 0;padding-left:18px}
+  .notes{max-width:1180px;margin:46px auto 0;padding:0 22px}
+  .notes h2{font-weight:900;font-size:24px;margin:0 0 14px}
+  .notes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .notes-grid div{background:#fff;border:2px solid var(--line);border-radius:16px;padding:14px 16px}
+  .notes-grid b{font-weight:900}
+  .notes-grid p{font-size:14px;color:var(--ink-soft);margin-top:4px;line-height:1.75}
+  .lab-foot{max-width:1180px;margin:22px auto 60px;padding:0 22px;font-size:13px;color:var(--muted)}
+
+  /* ── MOBILE (additive: desktop layout above stays untouched) ── */
+  @media (max-width:760px){
+    .lab-head h1{font-size:26px}
+    .dir{padding:0 12px}
+    .frame{border-radius:18px}
+    .sp-top{padding:10px 14px}
+    .sp-logo img{height:34px}
+    .sp-logo b{font-size:14px}
+    .sp-logo small{display:none}
+    .sp-actions .btn{padding:7px 10px}
+    .crumbs{padding:12px 16px 0}
+    .lead{font-size:15.5px}
+    .cta .btn{flex:1 1 100%}
+    .info{grid-template-columns:70px 1fr;font-size:14px}
+    .verify{margin:0 16px}
+    .sp-foot{padding:14px 16px;flex-direction:column}
+    .A .hero{grid-template-columns:1fr;gap:22px;padding:16px 16px 24px}
+    .A h1{font-size:34px}
+    .A .oji-card{min-height:320px}
+    .A .oji-card img{height:230px}
+    .A .grid2{grid-template-columns:1fr;padding:0 16px 22px}
+    .A .menu{padding:0 16px 22px}
+    .A .menu-row{grid-template-columns:1fr}
+    .A .event{margin:0 16px 22px;flex-direction:column;align-items:flex-start}
+    .nearby{padding:20px 16px}
+    .nearby-row{grid-template-columns:1fr}
+    .support{grid-template-columns:1fr;text-align:center;padding:26px 18px}
+    .support img{height:160px}
+    .sup-btns{align-items:stretch}
+    .owner{margin:22px 16px;flex-wrap:wrap}
+    .B .ticket{grid-template-columns:1fr;margin:16px}
+    .B .stub{flex-direction:row;justify-content:center;border-right:0;border-bottom:3px dashed rgba(255,249,238,.8);padding:12px}
+    .B .stub .big{font-size:34px}
+    .B .tmain{padding:18px 18px 22px}
+    .B .tmain h1{font-size:32px}
+    .B .hanko{position:static;width:108px;height:108px;font-size:12px;margin:16px 0 0;transform:rotate(-8deg)}
+    .B .shiori,.B .lower{grid-template-columns:1fr;padding:0 16px 20px}
+    .C .hero{padding:0 16px}
+    .C .hgrid{grid-template-columns:1fr}
+    .C h1{font-size:40px}
+    .C .hero img.oji{max-width:210px;margin:0 auto}
+    .ribbon{margin-bottom:12px}
+    .checks{grid-template-columns:1fr;margin:14px 16px 22px;padding:18px}
+    .checks .stamp{margin:0 auto}
+    .checks ul{grid-template-columns:1fr}
+    .C .row2,.C .row3{grid-template-columns:1fr;padding:0 16px 22px}
+    .appeal{grid-template-columns:1fr;text-align:center;padding:26px 18px}
+    .appeal img{max-width:180px;margin:0 auto}
+    .appeal .cta{justify-content:center}
+    .sparse-wrap,.notes-grid{grid-template-columns:1fr}
+    .sparse h1{font-size:28px}
+  }
+</style>
+</head>
+<body>
+
+<header class="lab-head">
+  <span class="lab-kicker">SHOP PAGE LAB v1 · noindex</span>
+  <h1>お店ごとの紹介ページ、3つの方向性</h1>
+  <p>同じデータ（<b>未来食レストラン AWA</b>・2026-09-13 確認）を3案で。PC表示が基本、スマホはブラウザ幅を狭めると最適化されます。組み合わせもOK（例：Aの構成＋Bのアクセス欄＋Cのチェックリスト）。</p>
+  <nav class="lab-nav">
+    <a href="#A">A. ステッカー図鑑</a><a href="#B">B. 旅のしおり</a><a href="#C">C. 王子チェック</a><a href="#sparse">＋ 情報が少ないお店</a><a href="#notes">設計メモ</a>
+  </nav>
+</header>
+
+<!-- ═══════════════ A ═══════════════ -->
+<section class="dir" id="A">
+  <div class="dir-label"><span class="n">A</span><h2>ステッカー図鑑</h2><span class="tag">ランディングページと同じ世界観・いちばん汎用的</span></div>
+  <article class="frame A">
+    <div class="sp-top">
+      <a class="sp-logo" href="/"><img src="/images/mascot/map-japan-sm.png" alt=""><span><b>日本ビーガンマップ</b><small>JAPAN VEGAN MAP</small></span></a>
+      <div class="sp-actions"><a class="btn btn-sm" href="/en/">EN</a><a class="btn btn-sm btn-red" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i"><img src="/images/ui/ico-pin.png" alt="">マップを見る</a></div>
+    </div>
+    <p class="crumbs"><a href="/">日本ビーガンマップ</a> › 東京都 › 新宿区 › 牛込柳町・早稲田</p>
+
+    <div class="hero">
+      <div>
+        <div class="sticker"><img src="/images/brand/leaf-crown-sm.png" alt=""><span><b>完全ヴィーガン</b><small>100% VEGAN · 🌿</small></span></div>
+        <h1>未来食レストラン AWA</h1>
+        <p class="en">Miraishoku Restaurant AWA</p>
+        <p class="lead">雑穀と野菜が主役。植物性100％、砂糖なし。<br>2018年に閉じた「未来食レストラン」が、7年ぶりに早稲田で再始動します。</p>
+        <div class="chips"><span class="chip open">🎉 10/1 グランドオープン</span><span class="chip">🌾 雑穀料理</span><span class="chip">🍃 砂糖不使用</span><span class="chip">📅 完全予約制</span></div>
+        <div class="cta">
+          <a class="btn btn-red" href="https://www.google.com/maps/search/?api=1&amp;query=未来食レストランAWA+東京都新宿区弁天町143-5"><img src="/images/ui/ico-pin.png" alt="">Googleマップで開く</a>
+          <a class="btn" href="https://yamatonadeshiko.tsubutsubu.jp/p/miraishoku_awa" target="_blank" rel="noopener">公式サイトで予約 ↗</a>
+        </div>
+      </div>
+      <div class="oji-card">
+        <p class="bubble">ここは<b>ぜんぶヴィーガン</b>！<br>雑穀が主役の“未来食”だよ 🌾</p>
+        <img src="/images/oji/oji_certificate.png" alt="ビーガン王子">
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h2>📋 基本情報</h2>
+        <dl class="info">
+          <dt>住所</dt><dd>東京都新宿区弁天町143-5 1階</dd>
+          <dt>アクセス</dt><dd>都営大江戸線「牛込柳町駅」徒歩5分<br>東京メトロ東西線「早稲田駅」徒歩10分</dd>
+          <dt>営業</dt><dd>プレオープン 9/21・23・24（ランチ 11:00–15:00）<br>10/1 グランドオープン ※営業時間は公式で確認</dd>
+          <dt>予算</dt><dd>ランチコース 3,300円／1品 600円〜</dd>
+          <dt>予約</dt><dd>完全予約制（公式フォーム）</dd>
+          <dt>公式</dt><dd><a href="https://yamatonadeshiko.tsubutsubu.jp/p/miraishoku_awa" target="_blank" rel="noopener">yamatonadeshiko.tsubutsubu.jp ↗</a></dd>
+        </dl>
+      </div>
+      <div class="card map">
+        <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=139.7209%2C35.6989%2C139.7289%2C35.7035&amp;layer=mapnik&amp;marker=35.701191%2C139.724884" title="地図：未来食レストラン AWA"></iframe>
+        <div class="map-foot"><span>地図データ © OpenStreetMap contributors</span><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=未来食レストランAWA+東京都新宿区弁天町143-5">Googleマップ ↗</a></div>
+      </div>
+    </div>
+
+    <div class="menu">
+      <h2 class="sec">🍽 こんなメニュー <small>2026年9月の献立より・仕入れにより変更あり</small></h2>
+      <div class="menu-row">
+        <div class="dish"><div class="ph"><div><img src="/images/brand/leaf-crown-sm.png" alt="">お店の写真<br>（許可をいただいて掲載）</div></div><div class="body"><b>ランチコース</b><span class="pr">3,300円</span><p>雑穀と旬の野菜でつくる月替わりの献立</p></div></div>
+        <div class="dish"><div class="ph"><div><img src="/images/brand/leaf-crown-sm.png" alt="">お店の写真<br>（許可をいただいて掲載）</div></div><div class="body"><b>玄米粉カレー</b><p>素揚げ野菜トッピング</p></div></div>
+        <div class="dish"><div class="ph"><div><img src="/images/brand/leaf-crown-sm.png" alt="">お店の写真<br>（許可をいただいて掲載）</div></div><div class="body"><b>未来食のおやつ</b><p>パンケーキなど（1品メニュー 600円〜）</p></div></div>
+      </div>
+    </div>
+
+    <div class="event"><span class="ic">🎐</span><div><b>9/22（火祝）特別企画「アワの響き 〜1万粒の食卓〜」</b><p>“食べる”を超えた体感型の特別な時間。33,000円（税込）・完全予約制</p></div></div>
+
+    <div class="verify"><span>✅ <b>確認日</b> 2026-09-13</span><span>📎 <b>出典</b> 公式サイト・お店からの申告</span><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">✏️ 情報の修正・閉店を報告する</a></div>
+
+    <div class="nearby">
+      <h2 class="sec">🧭 近くのヴィーガンスポット <small>マップのデータから距離順に自動表示</small></h2>
+      <div class="nearby-row">
+        <div class="sk"><b>🌿 近くのお店 1</b>店名・徒歩◯分・タグ</div>
+        <div class="sk"><b>🌱 近くのお店 2</b>店名・徒歩◯分・タグ</div>
+        <div class="sk"><b>🌿 近くのお店 3</b>店名・徒歩◯分・タグ</div>
+      </div>
+    </div>
+
+    <div class="support">
+      <img src="/images/oji/oji_happy.png" alt="">
+      <div><h3>このマップは、ビーガン王子と小さなチームの手作業で続いています。</h3><p>2,300店以上の情報を確認・更新し続けるために、月500円からの応援がとても力になります。</p></div>
+      <div class="sup-btns"><a class="btn btn-gold" href="https://veganoji.jp/#donate">👑 応援する</a><a class="btn btn-light" href="https://veganoji.jp/#newsletter">📮 王子通信（無料）</a></div>
+    </div>
+
+    <div class="owner">
+      <div class="stk"><div><img src="/images/brand/leaf-crown-sm.png" alt="">日本<br>ビーガンマップ<br>掲載店</div></div>
+      <div class="txt"><b>お店の方へ（案）</b><p>店頭用の「掲載店ステッカー」とWebバッジをお送りします。写真・メニューの追加もこちらから。</p></div>
+      <a class="btn btn-sm" href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">受け取る</a>
+    </div>
+
+    <footer class="sp-foot"><a href="/">← 日本ビーガンマップのトップへ</a><span>by Vegan Oji</span></footer>
+  </article>
+</section>
+
+<!-- ═══════════════ B ═══════════════ -->
+<section class="dir" id="B">
+  <div class="dir-label"><span class="n">B</span><h2>旅のしおり</h2><span class="tag">チケット＆はんこ。旅行者にやさしいアクセス・予定表</span></div>
+  <article class="frame B">
+    <div class="sp-top">
+      <a class="sp-logo" href="/"><img src="/images/mascot/map-japan-sm.png" alt=""><span><b>日本ビーガンマップ</b><small>JAPAN VEGAN MAP</small></span></a>
+      <div class="sp-actions"><a class="btn btn-sm" href="/en/">EN</a><a class="btn btn-sm btn-red" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i"><img src="/images/ui/ico-pin.png" alt="">マップを見る</a></div>
+    </div>
+    <p class="crumbs"><a href="/">日本ビーガンマップ</a> › 東京都 › 新宿区 › 牛込柳町・早稲田</p>
+
+    <div class="ticket">
+      <div class="stub"><small>TOKYO · SHINJUKU</small><span class="big">🌿</span><span class="no">100% VEGAN</span></div>
+      <div class="tmain">
+        <p class="en">Miraishoku Restaurant AWA</p>
+        <h1>未来食レストラン AWA</h1>
+        <p class="lead">雑穀と野菜が主役。植物性100％、砂糖なし。7年ぶりに早稲田で再始動する、未来食のレストラン。</p>
+        <div class="chips"><span class="chip open">🎉 10/1 グランドオープン</span><span class="chip">📅 完全予約制</span></div>
+        <div class="cta">
+          <a class="btn btn-red" href="https://www.google.com/maps/search/?api=1&amp;query=未来食レストランAWA+東京都新宿区弁天町143-5"><img src="/images/ui/ico-pin.png" alt="">Googleマップで開く</a>
+          <a class="btn" href="https://yamatonadeshiko.tsubutsubu.jp/p/miraishoku_awa" target="_blank" rel="noopener">公式サイトで予約 ↗</a>
+        </div>
+        <div class="hanko"><span><big>🌿</big>完全<br>ヴィーガン<small>確認済 2026.9</small></span></div>
+      </div>
+    </div>
+
+    <div class="shiori">
+      <div class="card">
+        <h2>🚉 アクセス</h2>
+        <div class="route">
+          <div class="st"><span class="dot"></span><span>都営大江戸線「牛込柳町駅」</span></div>
+          <div class="line">徒歩 5分</div>
+          <div class="st here"><span class="dot"></span><span>未来食レストラン AWA<small>新宿区弁天町143-5 1階</small></span></div>
+          <div class="line">徒歩 10分</div>
+          <div class="st"><span class="dot"></span><span>東京メトロ東西線「早稲田駅」</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>🗓 営業カレンダー</h2>
+        <div class="cal">
+          <div class="day"><b>9/21 月祝</b>ランチ 11–15時</div>
+          <div class="day sp"><b>9/22 火祝</b>特別企画 33,000円</div>
+          <div class="day"><b>9/23 水祝</b>ランチ 11–15時</div>
+          <div class="day"><b>9/24 木</b>ランチ 11–15時</div>
+          <div class="day go"><b>10/1〜 グランドオープン</b>営業時間は公式で確認</div>
+        </div>
+        <p class="tiny">すべて完全予約制（公式フォーム）</p>
+      </div>
+      <div class="board">
+        <h2>🍽 MENU</h2>
+        <div class="row">ランチコース<i></i><span>3,300円</span></div>
+        <div class="row">1品メニュー<i></i><span>600円・1,300円</span></div>
+        <p class="note">植物性100％・砂糖不使用。2026年9月の献立より。仕入れにより変更になる場合があります。</p>
+      </div>
+    </div>
+
+    <div class="lower">
+      <div class="card map">
+        <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=139.7209%2C35.6989%2C139.7289%2C35.7035&amp;layer=mapnik&amp;marker=35.701191%2C139.724884" title="地図：未来食レストラン AWA"></iframe>
+        <div class="map-foot"><span>地図データ © OpenStreetMap contributors</span><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=未来食レストランAWA+東京都新宿区弁天町143-5">Googleマップ ↗</a></div>
+      </div>
+      <div class="card phrase">
+        <h2>💬 お店で使えるひとこと<span class="tiny-inline">Show this to staff</span></h2>
+        <div class="q"><p class="jp">予約した◯◯です。</p><p class="enx">I have a reservation under ___.</p></div>
+        <div class="q"><p class="jp">アレルギーがあります（小麦・そば など）。</p><p class="enx">I have a food allergy (wheat, buckwheat…).</p></div>
+        <div class="q"><p class="jp">写真を撮ってもいいですか？</p><p class="enx">May I take photos?</p></div>
+        <p class="tiny">※ ここは全メニュー植物性100％。🌱のお店では「ヴィーガン対応ですか？」カードに切り替え。</p>
+      </div>
+    </div>
+
+    <div class="verify"><span>✅ <b>確認日</b> 2026-09-13</span><span>📎 <b>出典</b> 公式サイト・お店からの申告</span><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">✏️ 情報の修正・閉店を報告する</a></div>
+
+    <div class="foot">
+      <img src="/images/oji/oji_reviewing.png" alt="">
+      <p>このしおりは、みんなの投稿とビーガン王子のチームの手で作っています。</p>
+      <div class="cta center"><a class="btn btn-red" href="https://veganoji.jp/#donate">👑 マップを応援する（月500円〜）</a><a class="btn" href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">📮 お店を教える</a></div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ C ═══════════════ -->
+<section class="dir" id="C">
+  <div class="dir-label"><span class="n">C</span><h2>王子チェック</h2><span class="tag">キャラクター主導・SNS動画と連動</span></div>
+  <article class="frame C">
+    <div class="sp-top">
+      <a class="sp-logo" href="/"><img src="/images/mascot/map-japan-sm.png" alt=""><span><b>日本ビーガンマップ</b><small>JAPAN VEGAN MAP</small></span></a>
+      <div class="sp-actions"><a class="btn btn-sm" href="/en/">EN</a><a class="btn btn-sm btn-red" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i"><img src="/images/ui/ico-pin.png" alt="">マップを見る</a></div>
+    </div>
+    <div class="hero">
+      <p class="crumbs"><a href="/">日本ビーガンマップ</a> › 東京都 › 新宿区 › 牛込柳町・早稲田</p>
+      <div class="hgrid">
+        <div>
+          <span class="kicker">👑 王子チェック済み · 🌿 完全ヴィーガン</span>
+          <h1>未来食<br>レストラン <em>AWA</em></h1>
+          <p class="en">Miraishoku Restaurant AWA</p>
+          <span class="ribbon">🎉 2026.10.1 GRAND OPEN</span>
+        </div>
+        <img class="oji" src="/images/oji/oji_exploring.png" alt="ビーガン王子">
+      </div>
+    </div>
+
+    <div class="checks">
+      <div class="stamp"><div><img src="/images/brand/leaf-crown-sm.png" alt="">100%<br>VEGAN</div></div>
+      <ul>
+        <li><i>✓</i><span>植物性100％<small>公式メニューに明記</small></span></li>
+        <li><i>✓</i><span>砂糖不使用<small>公式メニューに明記</small></span></li>
+        <li><i>✓</i><span>雑穀×旬の野菜<small>9月の献立</small></span></li>
+        <li class="warn"><i>!</i><span>完全予約制<small>公式フォームで予約してから</small></span></li>
+        <li><i>✓</i><span>駅から徒歩5分<small>都営大江戸線 牛込柳町</small></span></li>
+        <li><i>✓</i><span>ランチ 3,300円<small>1品メニュー 600円〜</small></span></li>
+      </ul>
+    </div>
+
+    <div class="row2">
+      <div class="video"><div><div class="play"></div><b>王子が行ってきた！</b><small>訪問したら、王子のリール／ショートをここに埋め込み（公開予定）</small></div></div>
+      <div class="qa">
+        <p class="q">どんなお店？</p>
+        <p class="a">2018年に閉じた「未来食レストラン」が7年ぶりに再始動。雑穀と旬の野菜の料理を、植物性100％・砂糖なしで。</p>
+        <p class="q">いつ行ける？</p>
+        <p class="a">9/21・23・24がプレオープン（ランチ）、10/1にグランドオープン。すべて予約制だよ。</p>
+        <p class="q">英語は通じる？</p>
+        <p class="a">まだ確認できていません。わかったら追記します（情報、募集中！）</p>
+      </div>
+    </div>
+
+    <div class="row3">
+      <div class="card">
+        <h2>📋 基本情報</h2>
+        <dl class="info">
+          <dt>住所</dt><dd>東京都新宿区弁天町143-5 1階</dd>
+          <dt>アクセス</dt><dd>都営大江戸線「牛込柳町駅」徒歩5分<br>東京メトロ東西線「早稲田駅」徒歩10分</dd>
+          <dt>営業</dt><dd>プレオープン 9/21・23・24（ランチ 11:00–15:00）<br>10/1 グランドオープン ※営業時間は公式で確認</dd>
+          <dt>予約</dt><dd>完全予約制（公式フォーム）</dd>
+          <dt>公式</dt><dd><a href="https://yamatonadeshiko.tsubutsubu.jp/p/miraishoku_awa" target="_blank" rel="noopener">yamatonadeshiko.tsubutsubu.jp ↗</a></dd>
+        </dl>
+      </div>
+      <div class="card map">
+        <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=139.7209%2C35.6989%2C139.7289%2C35.7035&amp;layer=mapnik&amp;marker=35.701191%2C139.724884" title="地図：未来食レストラン AWA"></iframe>
+        <div class="map-foot"><span>地図データ © OpenStreetMap contributors</span><a class="btn btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=未来食レストランAWA+東京都新宿区弁天町143-5">Googleマップ ↗</a></div>
+      </div>
+    </div>
+
+    <div class="verify"><span>✅ <b>確認日</b> 2026-09-13</span><span>📎 <b>出典</b> 公式サイト・お店からの申告</span><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">✏️ 情報の修正・閉店を報告する</a></div>
+
+    <div class="appeal">
+      <img src="/images/oji/oji_sleeping_cloud.png" alt="">
+      <div>
+        <h3>おいしい一軒を、つぎの誰かへ。</h3>
+        <p>マップの確認・更新は、王子と小さなチームの手作業です。<br>月500円からの応援が、次のお店の掲載につながります。</p>
+        <div class="cta"><a class="btn btn-gold" href="https://veganoji.jp/#donate">👑 王子を応援する</a><a class="btn" href="https://veganoji.jp/#newsletter">📮 王子通信に登録（無料）</a></div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ═══════════════ sparse ═══════════════ -->
+<section class="dir" id="sparse">
+  <div class="dir-label"><span class="n">＋</span><h2>情報が少ないお店の場合</h2><span class="tag">名前・住所・タグだけでも成立するか</span></div>
+  <div class="sparse-wrap">
+    <article class="frame sparse">
+      <div class="sp-body">
+        <div class="sticker s-opt"><span class="emoji">🌱</span><span><b>ヴィーガンメニューあり</b><small>VEGAN OPTIONS</small></span></div>
+        <h1>（例）◯◯カフェ</h1>
+        <p class="en">東京都◯◯区◯◯ 1-2-3</p>
+        <div class="cta"><a class="btn btn-red" href="#sparse"><img src="/images/ui/ico-pin.png" alt="">Googleマップで開く</a></div>
+        <div class="ask"><img src="/images/oji/oji_happy.png" alt=""><div><b>このお店の情報、教えてください！</b><p>ヴィーガンのおすすめメニュー・写真・営業時間を募集中。確認してから掲載します。</p><a class="btn btn-sm" href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">情報を送る</a></div></div>
+      </div>
+    </article>
+    <div class="note-card">
+      <b>方針</b>
+      <ul>
+        <li>情報が少ないページは <code>noindex</code> で公開 → 情報がそろったら自動でインデックス対象に（薄いページでサイト全体の評価を下げないため）。</li>
+        <li>「王子のひとこと」「メニュー」「動画」「イベント」はデータがある時だけ表示。</li>
+        <li>「確認日」と「出典」は全ページ必須（信頼の土台）。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ notes ═══════════════ -->
+<section class="notes" id="notes">
+  <h2>設計メモ（3案共通）</h2>
+  <div class="notes-grid">
+    <div><b>🔗 URL</b><p><code>veganmapjapan.org/shop/miraishoku-awa/</code>（英語は <code>/en/shop/…</code>）＋ エリアまとめ <code>/area/tokyo/shinjuku/</code></p></div>
+    <div><b>🗂 データ</b><p>Mondayの🗺️OJI MAPSボードから自動生成。確認日・出典・🌿/🌱タグを必ず表示。</p></div>
+    <div><b>📷 写真</b><p>Googleの写真・口コミは使いません（規約上NG）。お店に許可をいただいた写真のみ、無い時はイラスト枠。</p></div>
+    <div><b>🔍 SEO</b><p>schema.org <code>Restaurant</code>＋メニューの <code>VeganDiet</code> 構造化データ、サイトマップ、エリア⇄お店の内部リンク。</p></div>
+    <div><b>👑 応援導線</b><p>全ページに「応援する」→ <code>veganoji.jp/#donate</code>（月額Stripe）と王子通信の登録。</p></div>
+    <div><b>🗺 地図</b><p>OpenStreetMap埋め込み（無料・キー不要）＋「Googleマップで開く」ボタン。</p></div>
+  </div>
+</section>
+<p class="lab-foot">ラボページ（noindex）。方向性が決まったら本番テンプレートに組み込み、このページは削除します。</p>
+
+</body>
+</html>
