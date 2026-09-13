@@ -292,6 +292,15 @@
     .appeal .cta{justify-content:center}
     .sparse-wrap,.notes-grid{grid-template-columns:1fr}
     .sparse h1{font-size:28px}
+    /* QA fixes (mobile only): long URLs / grid items must not widen cards past the frame; logo stays on one line */
+    .A .grid2>*,.A .menu-row>*,.nearby-row>*,.B .shiori>*,.B .lower>*,.C .row2>*,.C .row3>*{min-width:0}
+    .info dd,.info a{overflow-wrap:anywhere;word-break:break-word}
+    .map-foot{flex-wrap:wrap}
+    .sp-logo b{font-size:13px;white-space:nowrap}
+    .sp-actions{gap:6px}
+    .sp-actions .btn-sm{font-size:12px}
+    .B .hanko{width:122px;height:122px}
+    .B .hanko small{font-size:9.5px}
   }
 </style>
 </head>
