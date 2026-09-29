@@ -3,3 +3,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://veganmapjapan.org/sitemap.xml
+Sitemap: https://veganmapjapan.org/sitemap-shops.xml
+Sitemap: https://veganmapjapan.org/sitemap-areas.xml
