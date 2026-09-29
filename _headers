@@ -5,3 +5,6 @@
 
 /shop-lab*
   X-Robots-Tag: noindex, nofollow
+
+/lab/*
+  X-Robots-Tag: noindex, nofollow
