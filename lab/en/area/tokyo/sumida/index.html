@@ -55,6 +55,7 @@ h1,h2,h3{font-family:var(--round);font-weight:900;margin:0;letter-spacing:.02em}
 .site-nav{display:flex;align-items:center;gap:10px;flex:none}
 .lang{font:900 13px/1 var(--round);text-decoration:none;padding:9px 12px;border-radius:12px;border:2px solid var(--line);background:var(--white)}
 .lang:hover{border-color:var(--ink)}
+.site-nav .short{display:none}
 
 .crumbs ol{list-style:none;display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0;padding:16px 0 0;font:700 13px/1 var(--round)}
 .crumbs li{display:flex;align-items:center;gap:6px}
@@ -107,6 +108,8 @@ h1,h2,h3{font-family:var(--round);font-weight:900;margin:0;letter-spacing:.02em}
   .logo b{font-size:15px}
   .site-nav{gap:7px}
   .site-nav .btn-sm{font-size:12px;padding:8px 10px}
+  .site-nav .full{display:none}
+  .site-nav .short{display:inline}
   .lang{padding:8px 9px;font-size:12px}
   .crumbs ol{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-top:12px;margin:0 -16px;padding-left:16px;padding-right:16px}
   .crumbs ol::-webkit-scrollbar{display:none}
@@ -171,7 +174,7 @@ h1,h2,h3{font-family:var(--round);font-weight:900;margin:0;letter-spacing:.02em}
   <a class="logo" href="/en/"><img src="https://veganmapjapan.org/images/oji2/map-japan.webp" alt="" width="40" height="48"><b>Japan Vegan Map</b></a>
   <nav class="site-nav">
     <a class="lang" href="/" hreflang="ja" lang="ja">日本語</a>
-    <a class="btn btn-sm btn-red" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 22s-7-6.6-7-12a7 7 0 1 1 14 0c0 5.4-7 12-7 12z" fill="#FFF9EE" stroke="#1F1812" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="#C9223A"/></svg>Open the map</a>
+    <a class="btn btn-sm btn-red" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 22s-7-6.6-7-12a7 7 0 1 1 14 0c0 5.4-7 12-7 12z" fill="#FFF9EE" stroke="#1F1812" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="#C9223A"/></svg><span class="full">Open the map</span><span class="short">Map</span></a>
   </nav>
 </div></header>
 <div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/en/"><span aria-hidden="true">🗾</span>Japan Vegan Map</a></li><li><a href="/lab/en/area/tokyo/">Tokyo</a></li><li aria-current="page"><span>Sumida</span></li></ol></nav></div>
