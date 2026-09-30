@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="No3TsaDeq0qSFKsd2VZ9HFZgt0SkjN4EW-fR0NZjrmE" />
+  <title>日本ビーガンマップ · Japan Vegan Map — ビーガン王子</title>
+  <meta name="description" content="北海道から沖縄まで、ビーガン対応のレストラン・カフェ・ショップを2,300店以上あつめた、日本最大級のビーガンマップ。ビーガン王子と一緒に、近くの一軒から。" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="https://veganmapjapan.org/" />
+  <link rel="alternate" hreflang="ja" href="https://veganmapjapan.org/" />
+  <link rel="alternate" hreflang="en" href="https://veganmapjapan.org/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://veganmapjapan.org/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="日本ビーガンマップ" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:title" content="日本ビーガンマップ · Japan Vegan Map" />
+  <meta property="og:description" content="日本最大級のビーガンマップ。2,300店以上のビーガン対応店を、地図でかんたんに。" />
+  <meta property="og:url" content="https://veganmapjapan.org/" />
+  <meta property="og:image" content="https://veganmapjapan.org/images/social/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="日本ビーガンマップ — ビーガン王子と日本地図" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="日本ビーガンマップ · Japan Vegan Map" />
+  <meta name="twitter:description" content="日本最大級のビーガンマップ。2,300店以上のビーガン対応店を、地図でかんたんに。" />
+  <meta name="twitter:image" content="https://veganmapjapan.org/images/social/og-cover.jpg" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png" />
+  <meta name="theme-color" content="#FFF9EE" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    /* Seed rule first — keeps the Tailwind v4 browser parser from choking on @theme. */
+    .__seed { color: inherit; }
+
+    @theme {
+      --color-paper: #FFF9EE;
+      --color-cream: #FDF1DA;
+      --color-cream-2: #F6E4BD;
+      --color-royal: #C9223A;
+      --color-royal-soft: #E55063;
+      --color-royal-deep: #9C1428;
+      --color-gold: #D4A847;
+      --color-gold-soft: #E8C76F;
+      --color-gold-deep: #9C7E2A;
+      --color-ink: #1F1812;
+      --color-ink-soft: #3C2E22;
+      --color-muted: #786148;
+      --color-sky: #B5D5E8;
+      --color-blush: #F8C8D2;
+      --color-leaf: #6C9560;
+      --color-leaf-deep: #3F6A3A;
+      --color-line: #E9D9B5;
+      --font-noto-sans-jp: "Noto Sans JP", sans-serif;
+    }
+
+    html { background: var(--color-paper); }
+    body {
+      background-color: var(--color-paper);
+      background-image: url('/images/bg/paper-wash.jpg');
+      background-size: cover; background-position: center top; background-attachment: fixed;
+      color: var(--color-ink); -webkit-font-smoothing: antialiased;
+    }
+    @media (max-width: 640px){ body { background-attachment: scroll; } }
+    /* Hero countryside veil — keeps text legible over the scene */
+    .hero-veil { position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:linear-gradient(105deg, rgba(255,249,238,.92) 0%, rgba(255,249,238,.66) 34%, rgba(255,249,238,.22) 64%, rgba(255,249,238,0) 100%); }
+    @media (max-width:640px){
+      .hero-veil { background:linear-gradient(180deg, rgba(255,249,238,.26) 0%, rgba(255,249,238,.42) 36%, rgba(255,249,238,.82) 66%, rgba(255,249,238,.95) 100%); }
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    @media (max-width: 767px) { html { scroll-padding-top: 72px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body { font-family: var(--font-noto-sans-jp); overflow-x: hidden; }
+
+    .font-display { font-family: var(--font-noto-sans-jp); font-weight: 900; }
+    .font-jp      { font-family: var(--font-noto-sans-jp); }
+    .display-tight { letter-spacing: -0.035em; line-height: 0.96; }
+
+    /* ── Chibi-sticker buttons (site-wide veganoji style) ── */
+    @utility btn-primary {
+      @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-royal text-paper px-5 sm:px-6 py-3 text-[14px] sm:text-[15px];
+      font-family: "Noto Sans JP", sans-serif; font-weight: 700;
+      border: 2.5px solid var(--color-ink);
+      box-shadow: 4px 4px 0 var(--color-ink);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    @utility btn-ghost {
+      @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-paper text-royal px-5 sm:px-6 py-3 text-[14px] sm:text-[15px];
+      font-family: "Noto Sans JP", sans-serif; font-weight: 700;
+      border: 2.5px solid var(--color-ink);
+      box-shadow: 4px 4px 0 var(--color-ink);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+    @utility btn-gold {
+      @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-gold text-ink px-5 sm:px-6 py-3 text-[14px] sm:text-[15px];
+      font-family: "Noto Sans JP", sans-serif; font-weight: 700;
+      border: 2.5px solid var(--color-ink);
+      box-shadow: 4px 4px 0 var(--color-ink);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn-primary:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--color-ink); background: var(--color-royal-deep); }
+    .btn-gold:hover    { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--color-ink); background: var(--color-gold-deep); color: var(--color-paper); }
+    .btn-ghost:hover   { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--color-ink); background: var(--color-royal); color: var(--color-paper); }
+    .btn-primary:active, .btn-ghost:active, .btn-gold:active { transform: translate(3px,3px); box-shadow: 1px 1px 0 var(--color-ink); }
+
+    .eyebrow { @apply inline-flex items-center gap-2 text-[11px] sm:text-[12px] tracking-[0.22em] uppercase text-royal font-bold; }
+    .chip-tag {
+      @apply inline-flex items-center gap-2 rounded-full bg-paper px-4 py-2 text-[14px] sm:text-[15px] text-ink;
+      font-weight: 700; border: 2px solid var(--color-ink);
+      box-shadow: 2px 2px 0 var(--color-ink);
+    }
+
+    /* ── Crown watermark (subtle, drifting) ── */
+    .crown-bg { position: relative; --crown-tile: 150px; }
+    .crown-bg > * { position: relative; z-index: 1; }
+    .crown-bg::before {
+      content:""; position:absolute; inset:0;
+      -webkit-mask-image:url('/images/decorations/crown-pattern.svg'); mask-image:url('/images/decorations/crown-pattern.svg');
+      -webkit-mask-repeat:repeat; mask-repeat:repeat;
+      -webkit-mask-size:var(--crown-tile) var(--crown-tile); mask-size:var(--crown-tile) var(--crown-tile);
+      background: var(--crown-color, #C9223A); opacity: var(--crown-opacity, 0.04);
+      pointer-events:none; z-index:0; animation: crownDrift 80s linear infinite;
+    }
+    @keyframes crownDrift { from { mask-position:0 0; -webkit-mask-position:0 0; } to { mask-position:var(--crown-tile) var(--crown-tile); -webkit-mask-position:var(--crown-tile) var(--crown-tile); } }
+    .crown-bg-gold { --crown-color:#D4A847; --crown-opacity:0.06; }
+    .crown-bg-paper{ --crown-color:#FFF9EE; --crown-opacity:0.08; }
+    @media (prefers-reduced-motion: reduce){ .crown-bg::before{ animation:none; } }
+
+    /* ── Hero floating food bubbles (real-food photo pins) ── */
+    .food-pin {
+      position:absolute; overflow:hidden;
+      width:66px; height:66px; border-radius:50%;
+      border:3px solid var(--color-ink); box-shadow:3px 4px 0 rgba(31,24,18,.28);
+      background:var(--color-paper); z-index:5;
+    }
+    .food-pin img { width:100%; height:100%; object-fit:cover; display:block; }
+    .food-pin.lg { width:80px; height:80px; }
+    @media (max-width:640px){ .food-pin{ width:50px; height:50px; border-width:2.5px; } .food-pin.lg{ width:60px; height:60px; } }
+    .floaty   { animation: floaty 5s ease-in-out infinite; }
+    .floaty-2 { animation: floaty 6.4s ease-in-out infinite; }
+    .floaty-3 { animation: floaty 5.8s ease-in-out infinite .8s; }
+    @keyframes floaty { 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(-10px); } }
+    @media (prefers-reduced-motion: reduce){ .floaty,.floaty-2,.floaty-3{ animation:none; } }
+
+    .bob { animation: bob 4s ease-in-out infinite; }
+    @keyframes bob { 0%,100%{ transform: translateY(0) rotate(0); } 50%{ transform: translateY(-8px) rotate(-1.5deg); } }
+    @media (prefers-reduced-motion: reduce){ .bob{ animation:none; } }
+
+    .sparkle { animation: sparkle 3.2s ease-in-out infinite; }
+    @keyframes sparkle { 0%,100%{ opacity:.35; transform: scale(.85); } 50%{ opacity:1; transform: scale(1.1); } }
+
+    /* ── Stat counter big number ── */
+    .stat-num { font-weight:900; letter-spacing:-0.03em; line-height:0.9; color:var(--color-royal); }
+
+    /* ── Food photo gallery (auto-scroll marquee, Health-page style) ── */
+    .gallery { overflow:hidden; position:relative;
+      -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+              mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+    .gallery-track { display:flex; gap:16px; width:max-content; animation: gscroll 42s linear infinite; }
+    .gallery:hover .gallery-track { animation-play-state: paused; }
+    @keyframes gscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .gallery-item { width:230px; flex-shrink:0; }
+    .gallery-item .ph { width:230px; height:172px; object-fit:cover; display:block; background:#EAF4E4;
+      border:2.5px solid var(--color-ink); border-radius:18px; box-shadow:5px 5px 0 var(--color-ink); }
+    .gallery-item .cap { text-align:center; font-weight:700; font-size:12.5px; margin-top:9px; color:var(--color-ink); }
+    @media (min-width:640px){ .gallery-item, .gallery-item .ph { width:280px; } .gallery-item .ph { height:210px; } }
+    @media (prefers-reduced-motion: reduce){ .gallery-track { animation:none; } }
+
+    /* ── Explore cards — full-colour big breakout stickers ──
+       Desktop: tall card, giant icon bursting out the top.
+       Mobile:  slim full-width horizontal row (icon left, text right). ── */
+    .ex2 { position:relative; display:flex; align-items:center; gap:15px; text-decoration:none;
+      border:3px solid var(--color-ink); border-radius:20px; box-shadow:4px 5px 0 var(--color-ink);
+      background:var(--ex-grad); color:var(--color-paper); padding:15px 18px;
+      transition: transform .2s ease, box-shadow .2s ease; }
+    .ex2:hover { transform:translate(2px,2px); box-shadow:2px 2px 0 var(--color-ink); }
+    .ex2-ic { width:64px; height:64px; flex:0 0 64px; object-fit:contain;
+      filter:drop-shadow(0 5px 8px rgba(31,24,18,.32)); transition:transform .25s ease; }
+    .ex2:hover .ex2-ic { transform:rotate(-5deg) scale(1.06); }
+    .ex2-body { flex:1; text-align:left; min-width:0; }
+    .ex2 h3 { font-weight:900; font-size:21px; color:#fff; line-height:1.1; }
+    .ex2 p { margin-top:3px; font-size:12.5px; line-height:1.55; color:rgba(255,249,238,.93); }
+    .ex2-cta { margin-top:9px; display:inline-flex; align-items:center; gap:7px; font-weight:700; font-size:13px;
+      background:var(--color-paper); color:var(--ex-accent); border:2.5px solid var(--color-ink); border-radius:11px;
+      padding:6px 13px; box-shadow:3px 3px 0 var(--color-ink); }
+    .ex2:hover .ex2-cta { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--color-ink); }
+    .ex2-cta .arr { transition:transform .2s ease; }
+    .ex2:hover .ex2-cta .arr { transform:translateX(3px); }
+    @media (min-width:640px){
+      .ex2 { display:block; text-align:center; padding:60px 22px 24px; margin-top:48px; border-radius:24px; box-shadow:5px 6px 0 var(--color-ink); }
+      .ex2:hover { transform:translate(2px,3px); box-shadow:3px 3px 0 var(--color-ink); }
+      .ex2-ic { position:absolute; top:-48px; left:50%; transform:translateX(-50%); width:116px; height:116px; flex:none; }
+      .ex2:hover .ex2-ic { transform:translateX(-50%) translateY(-5px) rotate(-4deg) scale(1.05); }
+      .ex2-body { text-align:center; }
+      .ex2 h3 { font-size:24px; }
+      .ex2 p { margin-top:8px; font-size:13.5px; line-height:1.75; }
+      .ex2-cta { margin-top:16px; font-size:14px; padding:8px 16px; border-radius:13px; }
+    }
+
+    /* ── Reveal on scroll ── */
+    .reveal { opacity:0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; } }
+
+    /* ── Pose cross-fade ── */
+    .pose-cycle { position:relative; }
+    .pose-cycle img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:0; transition:opacity .9s ease; }
+    .pose-cycle img.on { opacity:1; }
+
+    /* ── Footer hug ── */
+    .footer-hug { position:relative; overflow:hidden; background:#FFF9EE url('/images/bg/footer-night.jpg') center/cover; }
+    .footer-hug::before { content:""; position:absolute; inset:0; z-index:0; pointer-events:none;
+      background:linear-gradient(180deg, rgba(255,249,238,.74) 0%, rgba(255,249,238,.54) 52%, rgba(255,249,238,.42) 100%); }
+    .footer-hug > * { position:relative; z-index:1; }
+    .footer-hug::after { content:""; position:absolute; bottom:0; left:0; right:0; height:6px; z-index:2; background:linear-gradient(90deg,#C9223A 0%,#D4A847 50%,#C9223A 100%); }
+    .hug-social a { display:inline-flex; width:50px; height:50px; transition:transform .25s ease; filter:drop-shadow(0 4px 8px rgba(31,24,18,.12)); }
+    .hug-social a:hover { transform: translateY(-3px) rotate(-5deg) scale(1.08); }
+    .hug-social img { width:100%; height:100%; object-fit:contain; }
+    .hug-nav a { color:var(--color-ink-soft); text-decoration:none; transition:color .18s ease; font-weight:700; }
+    .hug-nav a:hover { color:var(--color-royal); }
+  </style>
+
+  <style>
+    /* ── home additions (lab) ── */
+    .find{position:relative;max-width:520px}
+    .find-box{display:flex;align-items:center;gap:10px;background:#fff;border:2.5px solid #1F1812;border-radius:18px;box-shadow:4px 4px 0 #1F1812;padding:4px 6px 4px 16px;transition:box-shadow .15s,transform .15s}
+    .find-box:focus-within{transform:translate(-1px,-1px);box-shadow:6px 6px 0 #1F1812}
+    .find-box input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:600 16px/1.4 "Noto Sans JP",sans-serif;padding:12px 0;color:#1F1812}
+    .find-box input::placeholder{color:#9b8a73;font-weight:500}
+    .find-box button{border:0;background:#C9223A;color:#fff;font:800 14px/1 "Noto Sans JP",sans-serif;border-radius:12px;padding:12px 14px;white-space:nowrap}
+    .find-res{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:30;background:#fff;border:2.5px solid #1F1812;border-radius:18px;box-shadow:5px 6px 0 #1F1812;overflow:hidden;text-align:left}
+    .find-res a{display:flex;align-items:center;gap:12px;padding:10px 14px;text-decoration:none;color:#1F1812;border-top:1.5px solid #F3E7CF}
+    .find-res a:first-child{border-top:0}
+    .find-res a:hover,.find-res a.sel{background:#FDF1DA}
+    .find-res img{width:40px;height:40px;flex:none}
+    .find-res b{display:block;font-size:15px;line-height:1.35}
+    .find-res small{display:block;font-size:12px;color:#786148}
+    .find-res .tag{margin-left:auto;flex:none;font:800 11px/1 "Noto Sans JP";padding:5px 8px;border-radius:999px}
+    .tag.f{background:#E4EFDA;color:#3F6A3A}.tag.o{background:#F8EDCD;color:#8A6D1F}.tag.a{background:#E7EEF6;color:#2F5D8A}
+    .find-res .none{padding:14px;color:#786148;font-size:14px}
+    .region{margin-top:18px}
+    .region h3{font:900 15px/1 "Noto Sans JP";color:#786148;margin:0 0 10px;letter-spacing:.04em}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{display:inline-flex;align-items:center;gap:6px;text-decoration:none;color:#1F1812;background:#fff;border:2px solid #1F1812;border-radius:999px;padding:8px 14px;font:700 14px/1 "Noto Sans JP";box-shadow:2px 2px 0 #1F1812;transition:transform .12s,box-shadow .12s}
+    .chip:hover{transform:translate(1px,1px);box-shadow:1px 1px 0 #1F1812}
+    .chip:active{transform:translate(2px,2px);box-shadow:none}
+    .chip i{font-style:normal;font-size:11.5px;color:#786148;background:#FDF1DA;border-radius:999px;padding:3px 7px}
+    .chip.hot{background:#FDF1DA}
+    .new-track{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .new-card{display:flex;flex-direction:column;text-decoration:none;color:#1F1812;background:#fff;border:2.5px solid #1F1812;border-radius:22px;box-shadow:4px 5px 0 #1F1812;overflow:hidden;transition:transform .15s,box-shadow .15s}
+    .new-card:hover{transform:translate(2px,2px);box-shadow:2px 3px 0 #1F1812}
+    .new-card .art{display:grid;place-items:center;height:118px;background:radial-gradient(circle at 1px 1px,rgba(120,97,72,.16) 1px,transparent 1.5px) 0 0/14px 14px,#E4EFDA;border-bottom:2.5px solid #1F1812}
+    .new-card .art.o{background-color:#F8EDCD}
+    .new-card .art img{width:92px;height:92px}
+    .new-card .body{padding:12px 14px 16px}
+    .new-card b{display:block;font:900 15.5px/1.4 "Noto Sans JP"}
+    .new-card small{display:block;font-size:12px;color:#786148;margin-top:2px}
+    .new-card p{font-size:13px;line-height:1.7;color:#3C2E22;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .support-card{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:#FDF1DA;border:3px solid #1F1812;border-radius:30px;box-shadow:7px 8px 0 #1F1812;padding:28px 34px}
+    .support-card img{height:190px;width:auto}
+    .support-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .soon{font-size:11px;font-weight:700;background:#fff;border-radius:999px;padding:2px 7px;margin-left:4px;color:#786148}
+    @media (max-width:760px){
+      .find-box input{font-size:15px}
+      .new-track{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;margin:0 -20px;scrollbar-width:none}
+      .new-track::-webkit-scrollbar{display:none}
+      .new-card{scroll-snap-align:start}
+      .support-card{grid-template-columns:1fr;text-align:center;padding:24px 20px}
+      .support-card img{height:150px;margin:0 auto}
+      .support-btns{justify-content:center}
+      .chip{font-size:13.5px;padding:8px 12px}
+    }
+  </style>
+</head>
+<body class="font-jp">
+
+  <!-- ── SVG sprite ── -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="crown" viewBox="0 0 24 24"><path fill="currentColor" d="M3 7l4 4 5-7 5 7 4-4-2 12H5L3 7z"/></symbol>
+    <symbol id="sparkle" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></symbol>
+    <symbol id="arrow" viewBox="0 0 14 14"><path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/></symbol>
+    <symbol id="heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7.5-4.7-10-9.3C.4 8.4 2 4.8 5.4 4.8c2 0 3.3 1.2 4.1 2.4l.0.0c.8-1.2 2.1-2.4 4.1-2.4 3.4 0 5 3.6 3.4 6.9C19.5 16.3 12 21 12 21z"/></symbol>
+  </svg>
+
+  <!-- ════════════════ HEADER ════════════════ -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-paper/90 border-b border-line/70">
+    <div class="max-w-[1280px] mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-1.5 sm:gap-2.5 shrink min-w-0">
+        <img src="/images/mascot/map-japan-sm.png" alt="ビーガン王子" width="169" height="240" class="h-8 sm:h-12 w-auto shrink-0" />
+        <span class="flex flex-col leading-none min-w-0">
+          <span class="font-display text-[13px] sm:text-[19px] tracking-wide text-ink whitespace-nowrap">日本ビーガンマップ</span>
+          <span class="text-[9px] sm:text-[11px] tracking-[0.16em] sm:tracking-[0.18em] text-muted uppercase mt-1 whitespace-nowrap">Japan Vegan Map</span>
+        </span>
+      </a>
+      <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        <a href="/en/" class="btn-ghost !py-2 !px-3 !text-[12px] sm:!text-[13px]" aria-label="View in English">EN</a>
+        <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener"
+           class="btn-primary !py-2 !px-3 sm:!px-4 !text-[12px] sm:!text-[13px] whitespace-nowrap">
+          <svg width="13" height="13"><use href="#pin"/></svg>
+          <span>マップを見る</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section id="top" class="relative overflow-hidden px-5 sm:px-8 pt-6 sm:pt-12 pb-10 sm:pb-16 bg-cover bg-center"
+           style="background-color:#E9E0C8; background-image:url('/images/bg/countryside.jpg');">
+    <div class="hero-veil" aria-hidden="true"></div>
+
+    <div class="relative z-10 max-w-[1180px] mx-auto grid lg:grid-cols-12 gap-3 sm:gap-8 lg:gap-6 items-center">
+
+      <!-- Text column -->
+      <div class="lg:col-span-6 order-2 lg:order-1 text-center lg:text-left">
+        <h1 class="font-display display-tight text-[42px] sm:text-[68px] lg:text-[78px] text-ink">
+          日本最大級の<br/><span class="text-royal">ビーガンマップ</span>
+        </h1>
+        <p class="mt-3 text-[13px] sm:text-[15px] tracking-[0.16em] uppercase text-muted font-bold">Japan's Largest Vegan Map</p>
+
+        <p class="mt-4 sm:mt-6 mx-auto lg:mx-0 max-w-[520px] text-[15px] sm:text-[17px] leading-[1.9] sm:leading-[1.95] text-ink-soft">
+          ラーメンも、スイーツも、あの定食も。<br class="hidden sm:block"/>
+          <span class="text-royal font-bold">「植物性」で食べられるお店</span>を、ぜんぶ地図に。<br/>
+          近くの一軒から、気軽に行ってみよう！
+        </p>
+
+        <!-- stat -->
+        <div class="mt-5 sm:mt-7 flex items-end justify-center lg:justify-start gap-3">
+          <div class="stat-num text-[58px] sm:text-[76px]">2,300<span class="text-gold">+</span></div>
+          <div class="pb-2 text-left">
+            <div class="font-display text-[16px] sm:text-[18px] text-ink leading-tight">店舗掲載中</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-6 sm:mt-8 flex flex-wrap gap-3 justify-center lg:justify-start">
+          <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener" class="btn-primary !text-[15px] sm:!text-[16px] !px-7 !py-3.5">
+            <svg width="15" height="15"><use href="#pin"/></svg>
+            マップを見る・Visit Map
+          </a>
+          <a href="#submit" class="btn-gold !text-[15px] sm:!text-[16px] !px-7 !py-3.5">お店を掲載する</a>
+        </div>
+        <!-- search (lab) -->
+        <div class="find mt-6 mx-auto lg:mx-0" id="find">
+          <form class="find-box" id="find-form" role="search" autocomplete="off">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#1F1812" stroke-width="2.4"/><path d="M20 20l-4-4" stroke="#1F1812" stroke-width="2.4" stroke-linecap="round"/></svg>
+            <input id="q" type="search" placeholder="お店・エリアで探す（例：渋谷 ラーメン）" aria-label="お店・エリアで探す" />
+            <button type="submit">探す</button>
+          </form>
+          <div class="find-res" id="find-res" hidden></div>
+        </div>
+
+      </div>
+
+      <!-- Prince + map column -->
+      <div class="lg:col-span-6 order-1 lg:order-2 relative">
+        <div class="relative max-w-[185px] sm:max-w-[285px] lg:max-w-[400px] mx-auto">
+          <!-- soft halo -->
+          <div class="absolute inset-0 -z-10" style="background:radial-gradient(circle at 50% 42%, rgba(212,168,71,.26), transparent 60%);"></div>
+          <img src="/images/mascot/map-japan.png" alt="日本地図を持つビーガン王子" class="w-full h-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="eager"/>
+
+          <!-- floating real-food bubbles -->
+          <div class="food-pin lg floaty"  style="top:3%; left:-3%;"><img src="/images/food/ramen.jpg" alt="ビーガンラーメン"/></div>
+          <div class="food-pin floaty-2"   style="top:21%; right:-5%;"><img src="/images/food/sushi.jpg" alt="ビーガン寿司"/></div>
+          <div class="food-pin floaty-3"   style="bottom:19%; left:-6%;"><img src="/images/food/cheesecake.jpg" alt="ビーガンスイーツ"/></div>
+          <div class="food-pin floaty"     style="bottom:3%; right:1%; animation-delay:.5s;"><img src="/images/food/burger.jpg" alt="ビーガンバーガー"/></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- scroll hint (desktop only — mobile users scroll instinctively) -->
+    <div class="mt-8 sm:mt-12 hidden sm:flex justify-center relative z-10">
+      <a href="#discover" class="flex flex-col items-center gap-1 text-muted hover:text-royal transition-colors" aria-label="下へスクロール">
+        <span class="text-[11px] tracking-[0.16em] font-bold">スクロール</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" class="bob"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ BROWSE BY AREA (lab) ════════════════ -->
+  <section id="areas" class="px-5 sm:px-8 py-12 sm:py-20">
+    <div class="max-w-[1080px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-8">
+          <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">エリアから探す</p>
+          <h2 class="font-display display-tight text-[30px] sm:text-[44px] text-ink mt-2">行きたい場所の、<br class="sm:hidden"/><span class="text-royal">ビーガンごはん</span>。</h2>
+          <p class="mt-3 text-[15px] sm:text-[16px] text-ink-soft leading-[1.9]">都道府県をえらぶと、そのエリアのお店が地図と一緒に見られます。</p>
+          <div id="regions"><p class="mt-6 text-muted text-[14px]">読み込み中…</p></div>
+          <div class="region">
+            <h3>🔥 人気のエリア</h3>
+            <div class="chips" id="hot"></div>
+          </div>
+        </div>
+        <div class="lg:col-span-4 hidden lg:block">
+          <img src="/images/oji2/map-japan.webp" alt="" class="w-[260px] mx-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ NEWLY ADDED (lab) ════════════════ -->
+  <section id="new" class="px-5 sm:px-8 pb-12 sm:pb-20">
+    <div class="max-w-[1080px] mx-auto">
+      <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">NEW</p>
+      <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink mt-2">新しく追加されたお店</h2>
+      <div class="new-track mt-6" id="new-track"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════ WHAT'S ON THE MAP ════════════════ -->
+  <section id="discover" class="px-5 sm:px-8 py-12 sm:py-24" style="background-color:#FFF9EE; background-image:linear-gradient(rgba(255,249,238,.62),rgba(255,249,238,.62)), url('/images/bg/food-doodle.jpg'); background-size:cover; background-position:center;">
+    <div class="max-w-[1080px] mx-auto">
+      <div class="max-w-2xl mx-auto text-center reveal">
+        <h2 class="font-display display-tight text-[32px] sm:text-[52px] text-royal">えっ、これがビーガン！？</h2>
+        <p class="mt-4 text-[15px] sm:text-[18px] text-ink-soft">一口で、イメージが変わるはず。</p>
+        <p class="mt-6 text-[15px] sm:text-[16px] leading-[1.95] text-ink font-medium">
+          ラーメンも、からあげも、チーズケーキも。<br class="hidden sm:block"/>
+          これ全部、お肉も卵も乳製品も<span class="text-royal font-bold">使っていません</span>。
+          そんなお店を、北海道から沖縄まで地図にあつめました。
+        </p>
+      </div>
+
+      <!-- Auto-scroll food photo gallery (built by JS) -->
+      <div class="gallery reveal mt-10 sm:mt-14">
+        <div class="gallery-track" id="food-track"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ STAT BAND ════════════════ -->
+  <section class="crown-bg crown-bg-paper px-5 sm:px-8 py-12 sm:py-20 text-paper" style="background:linear-gradient(135deg,#C9223A 0%,#9C1428 100%);">
+    <div class="max-w-[980px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center reveal">
+      <div>
+        <div class="font-display text-[52px] sm:text-[64px] leading-none" data-count="2300" data-suffix="+" data-suffix-class="text-gold-soft">2,300<span class="text-gold-soft">+</span></div>
+        <div class="mt-2 text-[14px] sm:text-[15px] tracking-wide opacity-90">掲載店舗 · Listings</div>
+      </div>
+      <div class="sm:border-x border-paper/25">
+        <div class="font-display text-[52px] sm:text-[64px] leading-none" data-count="47">47</div>
+        <div class="mt-2 text-[14px] sm:text-[15px] tracking-wide opacity-90">都道府県をカバー</div>
+      </div>
+      <div>
+        <div class="font-display text-[52px] sm:text-[64px] leading-none" data-count="0" data-from="980" data-prefix="¥">¥0</div>
+        <div class="mt-2 text-[14px] sm:text-[15px] tracking-wide opacity-90">ずっと無料で使える</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ WHY VEGAN (cross-links) ════════════════ -->
+  <section class="px-5 sm:px-8 py-12 sm:py-24">
+    <div class="max-w-[1080px] mx-auto">
+      <div class="text-center reveal">
+        <h2 class="font-display display-tight text-[30px] sm:text-[46px] text-ink">食べることは、いちばん身近な「選択」。</h2>
+        <p class="mt-4 text-[15px] sm:text-[16px] text-ink-soft">同じ一皿が、こんなにいろんなものにつながっている。</p>
+      </div>
+
+      <div class="mt-8 sm:mt-16 grid sm:grid-cols-3 gap-3 sm:gap-7 reveal">
+        <!-- 健康 -->
+        <a href="https://veganoji.jp/vegan-and-health/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#E55063,#C9223A); --ex-accent:#C9223A;">
+          <img class="ex2-ic" src="/images/explore/heart.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">からだ</h3>
+            <p>からだに、いいことづくし。</p>
+            <span class="ex2-cta">ビーガンと健康 <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
+          </div>
+        </a>
+        <!-- 地球 -->
+        <a href="https://veganoji.jp/vegan-and-earth/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#6C9560,#3F6A3A); --ex-accent:#3F6A3A;">
+          <img class="ex2-ic" src="/images/explore/earth.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">地球</h3>
+            <p>食卓から、地球を守る。</p>
+            <span class="ex2-cta">ビーガンと地球 <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
+          </div>
+        </a>
+        <!-- 海 -->
+        <a href="https://veganoji.jp/fish-and-life/" target="_blank" rel="noopener" class="ex2" style="--ex-grad:linear-gradient(160deg,#2B7AB0,#16465F); --ex-accent:#1F6F94;">
+          <img class="ex2-ic" src="/images/explore/fish.png" alt=""/>
+          <div class="ex2-body">
+            <h3 class="font-display">海</h3>
+            <p>魚たちのいのちと環境</p>
+            <span class="ex2-cta">魚の環境といのち <svg class="arr" width="13" height="13"><use href="#arrow"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ SUBMIT A PLACE ════════════════ -->
+  <section id="submit" class="px-5 sm:px-8 py-12 sm:py-24">
+    <div class="max-w-[960px] mx-auto">
+      <div class="rounded-[32px] bg-cream p-8 sm:p-12 grid sm:grid-cols-[auto_1fr] gap-7 sm:gap-10 items-center reveal"
+           style="border:2.5px solid #1F1812; box-shadow:6px 8px 0 #1F1812;">
+        <div class="flex justify-center">
+          <img src="/images/oji/oji_idea.png" alt="" class="w-32 sm:w-40 h-auto object-contain bob" loading="lazy"/>
+        </div>
+        <div class="text-center sm:text-left">
+          <h2 class="font-display display-tight text-[26px] sm:text-[38px] text-ink">あなたの「推し店」、<br class="hidden sm:block"/>地図にのせよう。</h2>
+          <p class="mt-4 text-[15px] sm:text-[16px] leading-[1.9] text-ink-soft">
+            お気に入りのビーガン対応店を見つけたら、ぜひ教えてください！あなたの一軒が、誰かの新しいお気に入りのお店になるかも。
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3 justify-center sm:justify-start">
+            <a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener" class="btn-primary !text-[15px] sm:!text-[16px] !px-7 !py-3.5">
+              お店を掲載する
+              <svg width="14" height="14"><use href="#arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ ABOUT OJI ════════════════ -->
+  <section class="px-5 sm:px-8 py-12 sm:py-24">
+    <div class="max-w-[920px] mx-auto grid sm:grid-cols-[1fr_auto] gap-8 sm:gap-12 items-center reveal">
+      <div class="text-center sm:text-left order-2 sm:order-1">
+        <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink">ビーガン王子</h2>
+        <p class="mt-2 text-[13px] tracking-[0.14em] text-muted font-bold">デレチ・アレックス</p>
+        <p class="mt-5 text-[15px] sm:text-[16px] leading-[2] text-ink-soft">
+          モデル・タレントとして活動しながら、「<span class="text-royal font-bold">日本を世界一ビーガンフレンドリーな国へ</span>」を合言葉に、
+          ビーガンやSDGsのことを<span class="font-bold">たのしく・おいしく・わかりやすく</span>発信中。
+          2021年に「ビーガン王子株式会社」を設立。この地図も、その活動のひとつです。
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3 justify-center sm:justify-start">
+          <a href="https://veganoji.jp/" target="_blank" rel="noopener" class="btn-ghost !text-[14px] sm:!text-[15px]">王子のサイトへ</a>
+          <a href="https://veganoji.jp/#donate" target="_blank" rel="noopener" class="btn-gold !text-[14px] sm:!text-[15px]">
+            <svg width="14" height="14" class="text-ink"><use href="#heart"/></svg>
+            活動を応援する
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center order-1 sm:order-2">
+        <img src="/images/oji/oji_welcoming.png" alt="ビーガン王子" class="w-44 sm:w-56 h-auto object-contain bob drop-shadow-[0_14px_24px_rgba(31,24,18,.18)]" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+
+  <!-- ════════════════ SUPPORT (lab) ════════════════ -->
+  <section id="support" class="px-5 sm:px-8 py-12 sm:py-20">
+    <div class="max-w-[980px] mx-auto">
+      <div class="support-card">
+        <img src="/images/oji2/oji-happy.webp" alt="" loading="lazy"/>
+        <div>
+          <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">このマップ、役に立った？</p>
+          <h2 class="font-display display-tight text-[26px] sm:text-[36px] text-ink mt-2">おいしい一軒を、<br class="sm:hidden"/>つぎの誰かへ。</h2>
+          <p class="mt-3 text-[15px] sm:text-[16px] leading-[1.95] text-ink-soft">日本ビーガンマップは、広告なし。王子と小さなチームが、一軒ずつ確かめて更新しています。<br class="hidden sm:block"/>役に立ったら、応援してもらえるとうれしいです。</p>
+          <div class="support-btns">
+            <a class="btn-gold !text-[15px] !px-6 !py-3.5" href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener">👑 毎月応援する（¥500〜）</a>
+            <a class="btn-primary !text-[15px] !px-6 !py-3.5" href="#" aria-disabled="true">☕ 王子に一杯おごる（¥300〜）<span class="soon">準備中</span></a>
+            <a class="btn-ghost-lab !text-[15px]" href="https://veganoji.jp/#newsletter" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:14px 18px;border-radius:16px;border:2.5px solid #1F1812;background:#fff;font-weight:800;text-decoration:none;color:#1F1812;box-shadow:4px 4px 0 #1F1812">📮 王子通信（無料）</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-hug px-5 sm:px-8 pt-16 pb-10">
+    <div class="max-w-[800px] mx-auto flex flex-col items-center text-center gap-6">
+      <img src="/images/oji/oji_sleeping_cloud.png" alt="ビーガン王子" class="w-56 sm:w-72 h-auto bob" loading="lazy"/>
+      <div>
+        <div class="font-display text-[64px] sm:text-[84px] text-royal leading-none" style="letter-spacing:-0.04em;">またね！</div>
+        <div class="mt-2 text-[15px] sm:text-[16px] text-ink-soft font-medium">地図で会おう ♡</div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener" class="btn-primary !text-[15px]">
+          <svg width="14" height="14"><use href="#pin"/></svg> マップを見る
+        </a>
+        <a href="#submit" class="btn-ghost !text-[15px]">お店を掲載する</a>
+      </div>
+
+      <div class="hug-social flex gap-3 justify-center mt-1">
+        <a href="https://instagram.com/veganoji" target="_blank" rel="noopener" aria-label="Instagram"><img src="/images/social/ig.png" alt=""/></a>
+        <a href="https://x.com/VeganOji" target="_blank" rel="noopener" aria-label="X"><img src="/images/social/x.png" alt=""/></a>
+        <a href="https://www.youtube.com/@veganoji" target="_blank" rel="noopener" aria-label="YouTube"><img src="/images/social/yt.png" alt=""/></a>
+        <a href="https://www.tiktok.com/@veganoji" target="_blank" rel="noopener" aria-label="TikTok"><img src="/images/social/tt.png" alt=""/></a>
+        <a href="https://www.linkedin.com/in/vegan-oji-alex-derycz/" target="_blank" rel="noopener" aria-label="LinkedIn"><img src="/images/social/li.png" alt=""/></a>
+      </div>
+
+      <nav class="hug-nav flex flex-wrap justify-center gap-x-6 gap-y-2 mt-2 text-[14px]" aria-label="フッターナビ">
+        <a href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener">マップ</a>
+        <a href="#discover">メニュー</a>
+        <a href="#submit">お店を掲載</a>
+        <a href="https://veganoji.jp/vegan-and-health/" target="_blank" rel="noopener">からだ</a>
+        <a href="https://veganoji.jp/vegan-and-earth/" target="_blank" rel="noopener">地球</a>
+        <a href="https://veganoji.jp/fish-and-life/" target="_blank" rel="noopener">海</a>
+        <a href="https://veganoji.jp/" target="_blank" rel="noopener">王子について</a>
+      </nav>
+
+      <div class="text-[12px] text-muted mt-2">© 2026 ビーガン王子株式会社</div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+
+    // Smooth scroll for in-page anchors (with sticky-header offset already handled via scroll-padding)
+    document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href');
+        var t = document.querySelector(id);
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // Count-up animation for the red stat band (fires when scrolled into view)
+    (function () {
+      var nums = document.querySelectorAll('[data-count]');
+      if (!nums.length) return;
+      function render(el, v) {
+        var prefix = el.getAttribute('data-prefix') || '';
+        var suffix = el.getAttribute('data-suffix') || '';
+        var sc = el.getAttribute('data-suffix-class');
+        var s = prefix + Math.round(v).toLocaleString('en-US');
+        if (suffix) s += sc ? '<span class="' + sc + '">' + suffix + '</span>' : suffix;
+        el.innerHTML = s;
+      }
+      function animate(el) {
+        var from = parseFloat(el.getAttribute('data-from') || '0');
+        var to = parseFloat(el.getAttribute('data-count'));
+        var dur = 1500, start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          render(el, from + (to - from) * e);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Show the start value (off-screen) so the count begins from there.
+      nums.forEach(function (n) { render(n, parseFloat(n.getAttribute('data-from') || '0')); });
+      if (reduce || !('IntersectionObserver' in window)) {
+        nums.forEach(function (n) { render(n, parseFloat(n.getAttribute('data-count'))); });
+        return;
+      }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (en) { if (en.isIntersecting) { animate(en.target); io.unobserve(en.target); } });
+      }, { threshold: 0.5 });
+      nums.forEach(function (n) { io.observe(n); });
+    })();
+
+    // Food photo gallery — auto-scroll marquee of real vegan dishes
+    (function () {
+      var track = document.getElementById('food-track');
+      if (!track) return;
+      var FOOD = [
+        { slug: 'ramen',      name: 'ラーメン',      e: '🍜' },
+        { slug: 'karaage',    name: 'からあげ',      e: '🍗' },
+        { slug: 'gyoza',      name: '餃子',          e: '🥟' },
+        { slug: 'curry',      name: 'カレー',        e: '🍛' },
+        { slug: 'sushi',      name: 'お寿司',        e: '🍣' },
+        { slug: 'burger',     name: 'バーガー',      e: '🍔' },
+        { slug: 'cheesecake', name: 'チーズケーキ',  e: '🍰' },
+        { slug: 'bowl',       name: 'ブッダボウル',  e: '🥗' }
+      ];
+      function makeItem(f) {
+        var item = document.createElement('div'); item.className = 'gallery-item';
+        var img = document.createElement('img'); img.className = 'ph';
+        img.src = '/images/food/' + f.slug + '.jpg'; img.alt = f.name; img.loading = 'lazy';
+        img.onerror = function () {
+          var d = document.createElement('div'); d.className = 'ph';
+          d.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:54px;';
+          d.textContent = f.e; img.replaceWith(d);
+        };
+        var cap = document.createElement('div'); cap.className = 'cap'; cap.textContent = f.name;
+        item.appendChild(img); item.appendChild(cap); return item;
+      }
+      // Duplicate the set so the -50% keyframe loops seamlessly.
+      FOOD.concat(FOOD).forEach(function (f) { track.appendChild(makeItem(f)); });
+    })();
+  </script>
+
+<script>
+(() => {
+  const REGIONS = [['北海道・東北', 1, 7], ['関東', 8, 14], ['中部', 15, 23], ['近畿', 24, 30], ['中国・四国', 31, 39], ['九州・沖縄', 40, 47]];
+  const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  fetch('/data/home.json').then((r) => r.json()).then((d) => {
+    document.getElementById('regions').innerHTML = REGIONS.map(([name, a, b]) => {
+      const list = d.prefs.filter((p) => +p.pref_code >= a && +p.pref_code <= b);
+      if (!list.length) return '';
+      return '<div class="region"><h3>' + name + '</h3><div class="chips">' + list.map((p) =>
+        '<a class="chip" href="/area/' + p.pref_slug + '/">' + esc(p.pref_ja.replace(/[都府県]$/, '')) + '<i>' + p.n + '</i></a>').join('') + '</div></div>';
+    }).join('');
+    document.getElementById('hot').innerHTML = d.cities.map((c) =>
+      '<a class="chip hot" href="/area/' + c.pref_slug + '/' + c.city_slug + '/">' + esc(c.city_ja) + '<i>' + c.n + '</i></a>').join('');
+    document.getElementById('new-track').innerHTML = d.latest.map((x) =>
+      '<a class="new-card" href="/shop/' + x.slug + '/"><div class="art' + (x.verdict === 'fully_vegan' ? '' : ' o') + '"><img src="/images/menu2/' + (x.icon && x.icon !== 'other' ? x.icon : 'bento') + '.webp" alt="" loading="lazy"></div>' +
+      '<div class="body"><b>' + esc(x.name) + '</b><small>' + (x.verdict === 'fully_vegan' ? '🌿 完全ヴィーガン' : '🌱 ヴィーガンあり') + ' ・ ' + esc((x.pref_ja || '') + (x.city_ja || '')) + '</small><p>' + esc(x.lead || '') + '</p></div></a>').join('');
+  }).catch(() => {});
+
+  // search: loads a compact index on first focus, matches names / areas / English names
+  const q = document.getElementById('q'), res = document.getElementById('find-res'), form = document.getElementById('find-form');
+  let idx = null, loading = null, sel = -1;
+  const kana = (s) => s.replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
+  const norm = (s) => kana(String(s || '').normalize('NFKC').toLowerCase()).replace(/[\s・･()（）【】「」'"’.,、。!！?？\-]+/g, '');
+  const load = () => loading || (loading = fetch('/data/search.json').then((r) => r.json()).then((d) => {
+    idx = { shops: d.shops.map((s) => ({ slug: s[0], n: s[1], e: s[2], a: s[3], ae: s[4], f: s[5], c: s[6], k: norm(s[1] + ' ' + s[2]), ka: norm(s[3] + ' ' + s[4]) })),
+            areas: d.areas.map((a) => ({ href: '/area/' + a[0] + '/' + a[1] + '/', label: a[2] + a[3], k: norm(a[2] + a[3] + a[4] + a[5]) })) };
+  }));
+  function render() {
+    const terms = q.value.trim().split(/\s+/).map(norm).filter(Boolean);
+    if (!terms.length || !idx) { res.hidden = true; return; }
+    const shops = idx.shops.map((s) => {
+      let score = 0;
+      for (const t of terms) {
+        if (s.k.startsWith(t)) score += 6; else if (s.k.includes(t)) score += 4; else if (s.ka.includes(t)) score += 2; else if (s.c && norm(s.c).includes(t)) score += 1; else return null;
+      }
+      return { s, score };
+    }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 7);
+    const areas = terms.length === 1 ? idx.areas.filter((a) => a.k.includes(terms[0])).slice(0, 3) : [];
+    const items = areas.map((a) => '<a href="' + a.href + '"><img src="/images/menu2/pin.webp" alt=""><span><b>' + esc(a.label) + '</b><small>このエリアのお店を見る</small></span><span class="tag a">エリア</span></a>')
+      .concat(shops.map(({ s }) => '<a href="/shop/' + s.slug + '/"><img src="/images/menu2/' + (s.c && s.c !== 'other' ? s.c : 'bento') + '.webp" alt=""><span><b>' + esc(s.n || s.e) + '</b><small>' + esc(s.a) + '</small></span><span class="tag ' + (s.f ? 'f' : 'o') + '">' + (s.f ? '🌿 完全' : '🌱 あり') + '</span></a>'));
+    res.innerHTML = items.join('') || '<div class="none">見つかりませんでした。別のことばで試してみてね。</div>';
+    res.hidden = false; sel = -1;
+  }
+  q.addEventListener('focus', () => { load().then(render); });
+  q.addEventListener('input', () => { if (idx) render(); else load().then(render); });
+  q.addEventListener('keydown', (e) => {
+    const links = [...res.querySelectorAll('a')];
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); sel = Math.max(0, Math.min(links.length - 1, sel + (e.key === 'ArrowDown' ? 1 : -1))); links.forEach((l, i) => l.classList.toggle('sel', i === sel)); }
+  });
+  form.addEventListener('submit', (e) => { e.preventDefault(); const links = [...res.querySelectorAll('a')]; const go = links[Math.max(0, sel)]; if (go) location.href = go.href; });
+  document.addEventListener('click', (e) => { if (!e.target.closest('#find')) res.hidden = true; });
+})();
+</script>
+</body>
+</html>
