@@ -269,6 +269,7 @@
     .new-card p{font-size:13px;line-height:1.7;color:#3C2E22;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .support-card{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:#FDF1DA;border:3px solid #1F1812;border-radius:30px;box-shadow:7px 8px 0 #1F1812;padding:28px 34px}
     .support-card img{height:190px;width:auto}
+    .ask-card img,.ribbon img,.sheet img{width:auto}
     .support-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
     .soon{font-size:11px;font-weight:700;background:#fff;border-radius:999px;padding:2px 7px;margin-left:4px;color:#786148}
     @media (max-width:760px){
@@ -305,7 +306,7 @@
     .step{animation:pop .28s ease-out}
     @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
     .ribbon{display:flex;align-items:center;gap:14px;background:#C9223A;color:#fff;border:3px solid #1F1812;border-radius:22px;box-shadow:5px 6px 0 #1F1812;padding:12px 14px 12px 12px}
-    .ribbon img{width:54px;height:54px;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
+    .ribbon img{width:54px!important;height:54px;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
     .ribbon p{flex:1;margin:0;font-size:15px;line-height:1.5}.ribbon p span{display:block;opacity:.9;font-size:13.5px}
     .ribbon a{flex:none;background:#FDF1DA;color:#1F1812;text-decoration:none;font:900 14.5px/1 "Noto Sans JP";border:2.5px solid #1F1812;border-radius:14px;box-shadow:3px 3px 0 #1F1812;padding:12px 14px}
     .lab-picks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:10px;border:2px dashed #C9B48E;border-radius:16px;background:rgba(255,255,255,.55)}
@@ -326,7 +327,7 @@
     .toast-demo button{flex:none;border:2.5px solid #1F1812;background:#1F1812;color:#fff;border-radius:14px;padding:12px 14px;font:900 14px/1 "Noto Sans JP";cursor:pointer}
     .sheet{position:fixed;left:50%;bottom:72px;z-index:60;width:min(440px,calc(100% - 24px));display:flex;gap:12px;align-items:center;background:#FFF9EE;border:3px solid #1F1812;border-radius:22px;box-shadow:5px 6px 0 #1F1812;padding:14px 16px 14px 12px;transform:translate(-50%,140%);opacity:0;transition:transform .45s cubic-bezier(.2,1.3,.4,1),opacity .3s;pointer-events:none}
     .sheet.open{transform:translate(-50%,0);opacity:1;pointer-events:auto}
-    .sheet img{width:58px;height:58px;flex:none;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
+    .sheet img{width:58px!important;height:58px;flex:none;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
     .sheet-body b{display:block;font:900 15.5px/1.4 "Noto Sans JP";padding-right:18px}
     .sheet-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
     .sheet-btns button,.sheet-btns a{border:2px solid #1F1812;background:#fff;border-radius:12px;box-shadow:2px 2px 0 #1F1812;padding:9px 12px;font:900 14px/1 "Noto Sans JP";color:#1F1812;text-decoration:none;cursor:pointer}
@@ -477,7 +478,7 @@
       </div>
         </div>
         <div class="lg:col-span-4 hidden lg:block">
-          <img src="/images/oji2/map-japan.webp" alt="" class="w-[260px] mx-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="lazy"/>
+          <img width="298" height="360" src="/images/oji2/map-japan.webp" alt="" class="w-[260px] mx-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="lazy"/>
         </div>
       </div>
     </div>
@@ -636,7 +637,7 @@
 
       <div class="cta-v" data-v="A">
         <div class="support-card">
-          <img src="/images/oji2/oji-happy.webp" alt="" loading="lazy"/>
+          <img width="307" height="560" src="/images/oji2/oji-happy.webp" alt="" loading="lazy"/>
           <div>
             <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">このマップ、役に立った？</p>
             <h2 class="font-display display-tight text-[26px] sm:text-[36px] text-ink mt-2"><span class="inline-block">おいしい一軒を、</span><span class="inline-block">つぎの誰かへ。</span></h2>
@@ -655,7 +656,7 @@
       <div class="cta-v" data-v="B" hidden>
         <link rel="prefetch" href="/images/oji2/oji-happy.webp"><link rel="prefetch" href="/images/oji2/oji-explaining.webp">
         <div class="ask-card" id="ask">
-          <img src="/images/oji2/oji-curious.webp" alt="" loading="lazy"/>
+          <img width="419" height="600" src="/images/oji2/oji-curious.webp" alt="" loading="lazy"/>
           <div class="ask-body">
             <div class="step" data-step="q" data-img="/images/oji2/oji-curious.webp">
               <h2 class="font-display text-[24px] sm:text-[32px] text-ink">このマップ、役に立った？</h2>
@@ -684,7 +685,7 @@
 
       <div class="cta-v" data-v="C" hidden>
         <div class="ribbon">
-          <img src="/images/oji2/oji-face.webp" alt="" loading="lazy"/>
+          <img width="128" height="128" src="/images/oji2/oji-face.webp" alt="" loading="lazy"/>
           <p><b>日本ビーガンマップは広告なし。</b><span>みんなの応援で続いています。</span></p>
           <a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener">☕ 月¥500で応援</a>
         </div>
@@ -713,7 +714,7 @@
   <!-- shop-page prompt (demo) -->
   <div class="sheet" id="sheet" aria-hidden="true">
     <button class="sheet-x" aria-label="閉じる">×</button>
-    <img src="/images/oji2/oji-face.webp" alt=""/>
+    <img width="128" height="128" src="/images/oji2/oji-face.webp" alt=""/>
     <div class="sheet-body">
       <div data-s="q"><b>このページ、役に立った？</b><div class="sheet-btns"><button data-s-go="yes">👍 うん！</button><button data-s-go="meh">🤔 いまいち</button></div></div>
       <div data-s="yes" hidden><b>やった！ 王子に一杯おごる？</b><div class="sheet-btns"><a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener" class="go">☕ 月¥500で応援</a><button data-s-go="close">また今度</button></div></div>
