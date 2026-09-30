@@ -6,8 +6,8 @@
 body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.6 "Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
 header{position:sticky;top:0;z-index:10;background:rgba(255,249,238,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line);padding:12px 16px 12px;padding-top:max(12px,env(safe-area-inset-top))}
 .top{display:flex;align-items:center;gap:10px}
-h1{margin:0;font-size:19px;flex:1}
-.tabs{display:flex;gap:6px}.tabs a{display:grid;place-items:center;width:42px;height:38px;text-decoration:none;border:2px solid var(--line);border-radius:12px;font-size:18px;background:#fff}
+h1{margin:0;font-size:18px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tabs{display:flex;gap:5px;flex:none}.tabs a{display:grid;place-items:center;width:38px;height:36px;text-decoration:none;border:2px solid var(--line);border-radius:12px;font-size:18px;background:#fff}
 .tabs a.on{border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
 .progress{margin-top:10px;display:flex;align-items:center;gap:10px;font:700 13px/1 inherit;color:var(--muted)}
 .bar{flex:1;height:10px;border-radius:999px;background:var(--cream);border:1.5px solid var(--line);overflow:hidden}
@@ -16,7 +16,7 @@ h1{margin:0;font-size:19px;flex:1}
 .intro p{margin:0 0 6px;color:var(--muted);font-size:14px}
 .intro ol{margin:0;padding-left:20px;font-size:14px}
 main{padding:4px 12px 60px}
-.pref h2{position:sticky;top:var(--hh,108px);z-index:5;margin:18px 4px 6px;font-size:14px;color:var(--muted);background:var(--paper);padding:4px 0}
+.pref h2{position:sticky;top:var(--hh,100px);z-index:5;margin:18px -12px 6px;font-size:14px;color:var(--muted);background:linear-gradient(var(--paper) 80%,rgba(255,249,238,0));padding:6px 16px 8px}
 .pref h2 .n{display:inline-block;min-width:24px;text-align:center;background:var(--cream);border-radius:999px;padding:0 8px;margin-left:4px}
 .pref.empty{display:none}
 .card{position:relative;background:#fff;border:2px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);padding:14px;margin:10px 0;transform-origin:center;
@@ -31,7 +31,7 @@ main{padding:4px 12px 60px}
 .note{margin:8px 0 0;padding:8px 10px;background:var(--cream);border-radius:10px;font-size:14px}
 .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .btn{position:relative;flex:1 1 45%;display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;border:2px solid var(--ink);background:#fff;color:var(--ink);
-  font:800 15px/1 inherit;text-decoration:none;padding:0 12px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;overflow:hidden;
+  font:800 14.5px/1.2 inherit;text-decoration:none;padding:0 10px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;overflow:hidden;white-space:nowrap;letter-spacing:-.01em;
   transition:transform .12s ease,box-shadow .12s ease,background .2s}
 .btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
 .btn.open{background:var(--red);color:#fff}
@@ -64,7 +64,7 @@ main{padding:4px 12px 60px}
 </header>
 <div class="intro"><p>Googleで閉業・消えたお店です。</p><ol><li>「Googleマップで開く」</li><li>「保存済み」をタップ</li><li>「ビーガン王子のマップ」のチェックを外す</li><li>戻ってきて「✓ 外した」</li></ol></div>
 <main>
-  <section class="pref" data-pref="愛知県"><h2>愛知県 <span class="n">12</span></h2>
+  <section class="pref" data-pref="愛知県"><h2>愛知県 <span class="n">5</span></h2>
     <article class="card" data-id="6130047037">
       <div class="info"><b>dining 栄夏 EIKA＋シスターズカフェ168</b><small>江南市 ・ Googleで閉業</small></div>
       <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
@@ -109,7 +109,8 @@ main{padding:4px 12px 60px}
         <a class="btn open" data-open="6117728044" href="https://www.google.com/maps/search/?api=1&amp;query=ITADAKIZEN%20Paris%20London%20Kyoto%20gallery%20in%20NAGOYA%20%2F%20%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8D%E7%B9%95%E5%90%8D%E5%8F%A4%E5%B1%8B&amp;query_place_id=ChIJSYUtUJdxA2ARu4Vwl_VYiqg" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
         <button class="btn done" data-act="removed" data-id="6117728044"><span>✓ 外した</span></button>
       </div>
-    </article>
+    </article></section>
+  <section class="pref" data-pref="沖縄県"><h2>沖縄県 <span class="n">7</span></h2>
     <article class="card" data-id="6117760949">
       <div class="info"><b>Kaizuiji</b><small>名古屋市 ・ Googleで閉業</small></div>
       <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
@@ -147,7 +148,7 @@ main{padding:4px 12px 60px}
       </div>
     </article>
     <article class="card" data-id="6099162864">
-      <div class="info"><b>Kitchen Nogi Macrobiotic &amp;amp; Organic restaurant</b><small>沖縄市 ・ Googleで閉業</small></div>
+      <div class="info"><b>Kitchen Nogi Macrobiotic &amp; Organic restaurant</b><small>沖縄市 ・ Googleで閉業</small></div>
       <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
       <div class="acts">
         
