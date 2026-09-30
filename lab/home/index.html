@@ -281,6 +281,65 @@
       .support-btns{justify-content:center}
       .chip{font-size:13.5px;padding:8px 12px}
     }
+
+    /* ── support variants + lab chrome ── */
+    .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;max-width:420px}
+    .tiers a{display:flex;align-items:baseline;justify-content:center;gap:2px;text-decoration:none;color:#1F1812;background:#fff;border:2.5px solid #1F1812;border-radius:16px;box-shadow:3px 3px 0 #1F1812;padding:13px 6px;transition:transform .12s,box-shadow .12s}
+    .tiers a b{font:900 19px/1 "Noto Sans JP"}.tiers a small{font:700 12px/1 "Noto Sans JP";color:#786148}
+    .tiers a.rec{background:#C9223A;color:#fff}.tiers a.rec small{color:#FDE3E7}
+    .tiers a:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 #1F1812}.tiers a:active{transform:translate(3px,3px);box-shadow:none}
+    .fine{margin-top:8px;font-size:12px;color:#786148}
+    .sub-links{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px;font-size:14px}
+    .sub-links a,.linkish{color:#9C1428;font-weight:800;text-decoration:underline;text-underline-offset:3px;background:none;border:0;padding:0;font-size:14px;cursor:pointer}
+    .soon-pill{font-size:12.5px;font-weight:800;color:#786148;border:2px dashed #C9B48E;border-radius:999px;padding:6px 12px}
+    .lab-tabs{display:flex;gap:8px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none}
+    .lab-tabs button{flex:none;border:2px solid #E9D9B5;background:#fff;border-radius:999px;padding:9px 14px;font:800 14px/1 "Noto Sans JP";color:#1F1812;cursor:pointer}
+    .lab-tabs button.on{border-color:#1F1812;box-shadow:2px 2px 0 #1F1812;background:#FDF1DA}
+    .lab-tabs em{font-style:normal;font-size:11px;background:#C9223A;color:#fff;border-radius:999px;padding:3px 7px;margin-left:4px}
+    .ask-card{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:#fff;border:3px solid #1F1812;border-radius:30px;box-shadow:7px 8px 0 #1F1812;padding:28px 32px}
+    .ask-card img{height:170px}
+    .ask-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .ask-btns button,.ask-btns a{border:2.5px solid #1F1812;background:#FDF1DA;border-radius:16px;box-shadow:3px 3px 0 #1F1812;padding:13px 18px;font:900 16px/1 "Noto Sans JP";color:#1F1812;text-decoration:none;cursor:pointer;transition:transform .12s,box-shadow .12s}
+    .ask-btns button:first-child{background:#C9223A;color:#fff}
+    .ask-btns button:active,.ask-btns a:active{transform:translate(3px,3px);box-shadow:none}
+    .step{animation:pop .28s ease-out}
+    @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+    .ribbon{display:flex;align-items:center;gap:14px;background:#C9223A;color:#fff;border:3px solid #1F1812;border-radius:22px;box-shadow:5px 6px 0 #1F1812;padding:12px 14px 12px 12px}
+    .ribbon img{width:54px;height:54px;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
+    .ribbon p{flex:1;margin:0;font-size:15px;line-height:1.5}.ribbon p span{display:block;opacity:.9;font-size:13.5px}
+    .ribbon a{flex:none;background:#FDF1DA;color:#1F1812;text-decoration:none;font:900 14.5px/1 "Noto Sans JP";border:2.5px solid #1F1812;border-radius:14px;box-shadow:3px 3px 0 #1F1812;padding:12px 14px}
+    .lab-picks{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding:10px;border:2px dashed #C9B48E;border-radius:16px;background:rgba(255,255,255,.55)}
+    .lab-picks::before{content:"LAB";font:900 10px/1 "Noto Sans JP";letter-spacing:.12em;color:#fff;background:#1F1812;border-radius:6px;padding:5px 6px;align-self:center}
+    .lab-picks .v{display:flex;align-items:center;gap:8px;background:#fff;border:2px solid #E9D9B5;border-radius:12px;padding:6px 6px 6px 10px;font-size:13.5px}
+    .lab-picks .v[data-picked="true"]{border-color:#3F6A3A;background:#EAF4E4}
+    .pickb{border:2px solid #1F1812;background:#fff;border-radius:10px;box-shadow:2px 2px 0 #1F1812;padding:7px 10px;font:900 13px/1 "Noto Sans JP";cursor:pointer;white-space:nowrap}
+    .pickb:active{transform:translate(2px,2px);box-shadow:none}
+    .v[data-picked="true"] .pickb{background:#3F6A3A;color:#fff}
+    .hero-picks{max-width:520px;margin-left:auto;margin-right:auto}
+    @media (min-width:1024px){.hero-picks{margin-left:0}}
+    .toast-demo{display:flex;align-items:center;gap:16px;margin-top:26px;background:#fff;border:2.5px solid #1F1812;border-radius:20px;box-shadow:4px 4px 0 #1F1812;padding:16px 18px}
+    .toast-demo b{font:900 16px/1.4 "Noto Sans JP"}.toast-demo p{margin:4px 0 0;font-size:13.5px;line-height:1.8;color:#3C2E22}
+    .toast-demo button{flex:none;border:2.5px solid #1F1812;background:#1F1812;color:#fff;border-radius:14px;padding:12px 14px;font:900 14px/1 "Noto Sans JP";cursor:pointer}
+    .sheet{position:fixed;left:50%;bottom:72px;z-index:60;width:min(440px,calc(100% - 24px));display:flex;gap:12px;align-items:center;background:#FFF9EE;border:3px solid #1F1812;border-radius:22px;box-shadow:5px 6px 0 #1F1812;padding:14px 16px 14px 12px;transform:translate(-50%,140%);opacity:0;transition:transform .45s cubic-bezier(.2,1.3,.4,1),opacity .3s;pointer-events:none}
+    .sheet.open{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+    .sheet img{width:58px;height:58px;flex:none;border-radius:50%;background:#FDF1DA;border:2px solid #1F1812}
+    .sheet-body b{display:block;font:900 15.5px/1.4 "Noto Sans JP";padding-right:18px}
+    .sheet-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .sheet-btns button,.sheet-btns a{border:2px solid #1F1812;background:#fff;border-radius:12px;box-shadow:2px 2px 0 #1F1812;padding:9px 12px;font:900 14px/1 "Noto Sans JP";color:#1F1812;text-decoration:none;cursor:pointer}
+    .sheet-btns .go,.sheet-btns button:first-child{background:#C9223A;color:#fff}
+    .sheet-x{position:absolute;top:6px;right:10px;border:0;background:none;font-size:22px;line-height:1;color:#786148;cursor:pointer}
+    .labbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#1F1812;color:#FFF9EE;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+    .labbar-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:12px}
+    .labbar p{flex:1;margin:0;font-size:13px;line-height:1.5}
+    .labbar button{flex:none;border:2px solid #FFF9EE;background:#C9223A;color:#fff;border-radius:12px;padding:9px 16px;font:900 14px/1 "Noto Sans JP";cursor:pointer}
+    body{padding-bottom:64px}
+    @media (max-width:760px){
+      .ask-card{grid-template-columns:1fr;text-align:center;padding:22px 18px}.ask-card img{height:130px;margin:0 auto}
+      .ask-btns,.sub-links{justify-content:center}.tiers{margin-left:auto;margin-right:auto}
+      .ribbon{flex-wrap:wrap}.ribbon p{min-width:0;flex:1 1 60%}.ribbon a{width:100%;text-align:center}
+      .toast-demo{flex-direction:column;align-items:stretch}.toast-demo button{width:100%}
+      .lab-picks .v{flex:1 1 100%;justify-content:space-between}
+    }
   </style>
 </head>
 <body class="font-jp">
@@ -360,6 +419,10 @@
           </form>
           <div class="find-res" id="find-res" hidden></div>
         </div>
+      <div class="lab-picks mini hero-picks">
+        <div class="v" data-sec="search" data-id="OK"><b>検索：これでOK</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="search" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      </div>
 
       </div>
 
@@ -403,6 +466,10 @@
             <h3>🔥 人気のエリア</h3>
             <div class="chips" id="hot"></div>
           </div>
+      <div class="lab-picks mini">
+        <div class="v" data-sec="areas" data-id="OK"><b>エリアから探す：これでOK</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="areas" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      </div>
         </div>
         <div class="lg:col-span-4 hidden lg:block">
           <img src="/images/oji2/map-japan.webp" alt="" class="w-[260px] mx-auto bob drop-shadow-[0_18px_30px_rgba(31,24,18,.18)]" loading="lazy"/>
@@ -417,6 +484,10 @@
       <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">NEW</p>
       <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink mt-2">新しく追加されたお店</h2>
       <div class="new-track mt-6" id="new-track"></div>
+      <div class="lab-picks mini">
+        <div class="v" data-sec="new" data-id="OK"><b>新着：これでOK</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="new" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      </div>
     </div>
   </section>
 
@@ -549,24 +620,103 @@
 
   <!-- ════════════════ FOOTER ════════════════ -->
 
-  <!-- ════════════════ SUPPORT (lab) ════════════════ -->
+  <!-- ════════════════ SUPPORT (lab: 3 variants) ════════════════ -->
   <section id="support" class="px-5 sm:px-8 py-12 sm:py-20">
     <div class="max-w-[980px] mx-auto">
-      <div class="support-card">
-        <img src="/images/oji2/oji-happy.webp" alt="" loading="lazy"/>
-        <div>
-          <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">このマップ、役に立った？</p>
-          <h2 class="font-display display-tight text-[26px] sm:text-[36px] text-ink mt-2">おいしい一軒を、<br class="sm:hidden"/>つぎの誰かへ。</h2>
-          <p class="mt-3 text-[15px] sm:text-[16px] leading-[1.95] text-ink-soft">日本ビーガンマップは、広告なし。王子と小さなチームが、一軒ずつ確かめて更新しています。<br class="hidden sm:block"/>役に立ったら、応援してもらえるとうれしいです。</p>
-          <div class="support-btns">
-            <a class="btn-gold !text-[15px] !px-6 !py-3.5" href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener">👑 毎月応援する（¥500〜）</a>
-            <a class="btn-primary !text-[15px] !px-6 !py-3.5" href="#" aria-disabled="true">☕ 王子に一杯おごる（¥300〜）<span class="soon">準備中</span></a>
-            <a class="btn-ghost-lab !text-[15px]" href="https://veganoji.jp/#newsletter" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:14px 18px;border-radius:16px;border:2.5px solid #1F1812;background:#fff;font-weight:800;text-decoration:none;color:#1F1812;box-shadow:4px 4px 0 #1F1812">📮 王子通信（無料）</a>
+      <div class="lab-tabs" role="tablist">
+        <button data-show="A" class="on">A 応援カード <em>おすすめ</em></button>
+        <button data-show="B">B 役に立った？</button>
+        <button data-show="C">C ひとことバナー</button>
+      </div>
+
+      <div class="cta-v" data-v="A">
+        <div class="support-card">
+          <img src="/images/oji2/oji-happy.webp" alt="" loading="lazy"/>
+          <div>
+            <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">このマップ、役に立った？</p>
+            <h2 class="font-display display-tight text-[26px] sm:text-[36px] text-ink mt-2">おいしい一軒を、<br class="sm:hidden"/>つぎの誰かへ。</h2>
+            <p class="mt-3 text-[15px] sm:text-[16px] leading-[1.95] text-ink-soft">日本ビーガンマップは広告なし。王子と小さなチームが、一軒ずつ確かめて更新しています。役に立ったら、月¥500から応援できます。</p>
+            <div class="tiers">
+              <a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener"><b>¥500</b><small>/月</small></a>
+              <a href="https://buy.stripe.com/7sI03zbyj33T7WE144" target="_blank" rel="noopener" class="rec"><b>¥1,000</b><small>/月</small></a>
+              <a href="https://buy.stripe.com/00g03z59Vawl2Ck8wx" target="_blank" rel="noopener"><b>¥2,000</b><small>/月</small></a>
+            </div>
+            <p class="fine">いつでも解除OK ・ Stripeの安全な決済ページへ</p>
+            <div class="sub-links"><span class="soon-pill">☕ 1回だけ応援（準備中）</span><a href="https://veganoji.jp/#newsletter" target="_blank" rel="noopener">📮 王子通信（無料）を受け取る</a></div>
           </div>
         </div>
       </div>
+
+      <div class="cta-v" data-v="B" hidden>
+        <div class="ask-card" id="ask">
+          <img src="/images/oji2/oji-curious.webp" alt="" loading="lazy"/>
+          <div class="ask-body">
+            <div class="step" data-step="q">
+              <h2 class="font-display text-[24px] sm:text-[32px] text-ink">このマップ、役に立った？</h2>
+              <div class="ask-btns"><button data-ans="yes">👍 役に立った！</button><button data-ans="meh">🤔 いまいち</button></div>
+            </div>
+            <div class="step" data-step="yes" hidden>
+              <h2 class="font-display text-[24px] sm:text-[32px] text-ink">よかった！🎉</h2>
+              <p class="mt-2 text-[15px] leading-[1.9] text-ink-soft">このマップは、みなさんの応援で続いています。よかったら、王子に一杯おごってください。</p>
+              <div class="tiers">
+              <a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener"><b>¥500</b><small>/月</small></a>
+              <a href="https://buy.stripe.com/7sI03zbyj33T7WE144" target="_blank" rel="noopener" class="rec"><b>¥1,000</b><small>/月</small></a>
+              <a href="https://buy.stripe.com/00g03z59Vawl2Ck8wx" target="_blank" rel="noopener"><b>¥2,000</b><small>/月</small></a>
+            </div>
+            <p class="fine">いつでも解除OK ・ Stripeの安全な決済ページへ</p>
+              <div class="sub-links"><a href="https://veganoji.jp/#newsletter" target="_blank" rel="noopener">📮 まずは王子通信（無料）から</a><button class="linkish" data-ans="reset">もどる</button></div>
+            </div>
+            <div class="step" data-step="meh" hidden>
+              <h2 class="font-display text-[24px] sm:text-[32px] text-ink">教えてくれてありがとう</h2>
+              <p class="mt-2 text-[15px] leading-[1.9] text-ink-soft">何が足りなかった？ 王子が確認して、マップを直します。</p>
+              <div class="ask-btns"><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">✏️ 情報の修正・閉店を報告</a><a href="#submit">➕ 載っていないお店を教える</a></div>
+              <div class="sub-links"><button class="linkish" data-ans="reset">もどる</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-v" data-v="C" hidden>
+        <div class="ribbon">
+          <img src="/images/oji2/oji-face.webp" alt="" loading="lazy"/>
+          <p><b>日本ビーガンマップは広告なし。</b><span>みんなの応援で続いています。</span></p>
+          <a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener">☕ 月¥500で応援</a>
+        </div>
+      </div>
+
+      <div class="lab-picks">
+        <div class="v" data-sec="cta" data-id="A"><b>A 応援カード</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="cta" data-id="B"><b>B 役に立った？</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="cta" data-id="C"><b>C ひとことバナー</b><button class="pickb">これにする</button></div>
+      </div>
+
+      <div class="toast-demo">
+        <div>
+          <b>📱 お店ページでは「そっと聞く」</b>
+          <p>2ページ目を見たあと、下までスクロールした人にだけ、1回だけ表示。閉じたら14日間は出しません。お店を探している最中はじゃましません。</p>
+        </div>
+        <button id="toast-open">どう出るか見る ▶</button>
+      </div>
+      <div class="lab-picks">
+        <div class="v" data-sec="toast" data-id="ON"><b>お店ページで聞く</b><button class="pickb">これにする</button></div>
+        <div class="v" data-sec="toast" data-id="OFF"><b>お店ページでは聞かない</b><button class="pickb">これにする</button></div>
+      </div>
     </div>
   </section>
+
+  <!-- shop-page prompt (demo) -->
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <button class="sheet-x" aria-label="閉じる">×</button>
+    <img src="/images/oji2/oji-face.webp" alt=""/>
+    <div class="sheet-body">
+      <div data-s="q"><b>このページ、役に立った？</b><div class="sheet-btns"><button data-s-go="yes">👍 うん！</button><button data-s-go="meh">🤔 いまいち</button></div></div>
+      <div data-s="yes" hidden><b>やった！ 王子に一杯おごる？</b><div class="sheet-btns"><a href="https://buy.stripe.com/6oU5kC6QadQT39xf0Lao80e" target="_blank" rel="noopener" class="go">☕ 月¥500で応援</a><button data-s-go="close">また今度</button></div></div>
+      <div data-s="meh" hidden><b>どこが足りなかった？</b><div class="sheet-btns"><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener" class="go">✏️ 情報を直す</a><button data-s-go="close">閉じる</button></div></div>
+    </div>
+  </div>
+
+  <!-- lab bar -->
+  <div class="labbar"><div class="labbar-in"><p id="sum"></p><button type="button" id="copy">コピー</button></div></div>
 
   <footer class="footer-hug px-5 sm:px-8 pt-16 pb-10">
     <div class="max-w-[800px] mx-auto flex flex-col items-center text-center gap-6">
@@ -708,7 +858,7 @@
     document.getElementById('hot').innerHTML = d.cities.map((c) =>
       '<a class="chip hot" href="/area/' + c.pref_slug + '/' + c.city_slug + '/">' + esc(c.city_ja) + '<i>' + c.n + '</i></a>').join('');
     document.getElementById('new-track').innerHTML = d.latest.map((x) =>
-      '<a class="new-card" href="/shop/' + x.slug + '/"><div class="art' + (x.verdict === 'fully_vegan' ? '' : ' o') + '"><img src="/images/menu2/' + (x.icon && x.icon !== 'other' ? x.icon : 'bento') + '.webp" alt="" loading="lazy"></div>' +
+      '<a class="new-card" href="/shop/' + x.slug + '/"><div class="art' + (x.verdict === 'fully_vegan' ? '' : ' o') + '"><img src="/images/menu2/' + (x.icon && x.icon !== 'other' ? x.icon : (x.verdict === 'fully_vegan' ? 'leaf' : 'sprout')) + '.webp" alt="" loading="lazy"></div>' +
       '<div class="body"><b>' + esc(x.name) + '</b><small>' + (x.verdict === 'fully_vegan' ? '🌿 完全ヴィーガン' : '🌱 ヴィーガンあり') + ' ・ ' + esc((x.pref_ja || '') + (x.city_ja || '')) + '</small><p>' + esc(x.lead || '') + '</p></div></a>').join('');
   }).catch(() => {});
 
@@ -733,7 +883,7 @@
     }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 7);
     const areas = terms.length === 1 ? idx.areas.filter((a) => a.k.includes(terms[0])).slice(0, 3) : [];
     const items = areas.map((a) => '<a href="' + a.href + '"><img src="/images/menu2/pin.webp" alt=""><span><b>' + esc(a.label) + '</b><small>このエリアのお店を見る</small></span><span class="tag a">エリア</span></a>')
-      .concat(shops.map(({ s }) => '<a href="/shop/' + s.slug + '/"><img src="/images/menu2/' + (s.c && s.c !== 'other' ? s.c : 'bento') + '.webp" alt=""><span><b>' + esc(s.n || s.e) + '</b><small>' + esc(s.a) + '</small></span><span class="tag ' + (s.f ? 'f' : 'o') + '">' + (s.f ? '🌿 完全' : '🌱 あり') + '</span></a>'));
+      .concat(shops.map(({ s }) => '<a href="/shop/' + s.slug + '/"><img src="/images/menu2/' + (s.c && s.c !== 'other' ? s.c : (s.f ? 'leaf' : 'sprout')) + '.webp" alt=""><span><b>' + esc(s.n || s.e) + '</b><small>' + esc(s.a) + '</small></span><span class="tag ' + (s.f ? 'f' : 'o') + '">' + (s.f ? '🌿 完全' : '🌱 あり') + '</span></a>'));
     res.innerHTML = items.join('') || '<div class="none">見つかりませんでした。別のことばで試してみてね。</div>';
     res.hidden = false; sel = -1;
   }
@@ -745,6 +895,55 @@
   });
   form.addEventListener('submit', (e) => { e.preventDefault(); const links = [...res.querySelectorAll('a')]; const go = links[Math.max(0, sel)]; if (go) location.href = go.href; });
   document.addEventListener('click', (e) => { if (!e.target.closest('#find')) res.hidden = true; });
+})();
+</script>
+
+<script>
+(() => {
+  // variant tabs
+  const tabs = [...document.querySelectorAll('.lab-tabs button')];
+  const show = (id) => { tabs.forEach((b) => b.classList.toggle('on', b.dataset.show === id)); document.querySelectorAll('.cta-v').forEach((v) => { v.hidden = v.dataset.v !== id; }); };
+  tabs.forEach((b) => b.addEventListener('click', () => show(b.dataset.show)));
+  // B: two-step question
+  const ask = document.getElementById('ask');
+  ask.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-ans]'); if (!b) return;
+    const to = b.dataset.ans === 'reset' ? 'q' : b.dataset.ans;
+    ask.querySelectorAll('.step').forEach((s) => { s.hidden = s.dataset.step !== to; });
+  });
+  // shop-page prompt demo
+  const sheet = document.getElementById('sheet');
+  const sheetStep = (to) => sheet.querySelectorAll('[data-s]').forEach((s) => { s.hidden = s.dataset.s !== to; });
+  document.getElementById('toast-open').addEventListener('click', () => { sheetStep('q'); sheet.classList.add('open'); });
+  sheet.addEventListener('click', (e) => {
+    if (e.target.closest('.sheet-x')) return sheet.classList.remove('open');
+    const b = e.target.closest('[data-s-go]'); if (!b) return;
+    if (b.dataset.sGo === 'close') return sheet.classList.remove('open');
+    sheetStep(b.dataset.sGo);
+  });
+  // picks + summary (same flow as the calculator lab)
+  const KEY = 'home-lab-picks';
+  let st = {}; try { st = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  const NAMES = { search: '検索', areas: 'エリアから探す', new: '新着', cta: '応援', toast: 'お店ページで聞く' };
+  const LABEL = { OK: 'OK', FIX: '直したい', A: 'A 応援カード', B: 'B 役に立った？', C: 'C ひとことバナー', ON: 'はい', OFF: 'いいえ' };
+  const summary = () => Object.keys(NAMES).filter((k) => st[k]).map((k) => NAMES[k] + '：' + LABEL[st[k]]).join(' ／ ');
+  const render = () => {
+    document.querySelectorAll('.lab-picks .v').forEach((v) => { const on = st[v.dataset.sec] === v.dataset.id; v.dataset.picked = String(on); v.querySelector('.pickb').textContent = on ? '✓ これにした' : 'これにする'; });
+    document.getElementById('sum').textContent = summary() || 'ホーム追加ラボ：各セクションの「これにする」→「コピー」で送ってね';
+  };
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('.pickb'); if (!b) return;
+    const v = b.closest('.v'); st[v.dataset.sec] = st[v.dataset.sec] === v.dataset.id ? '' : v.dataset.id;
+    try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+    if (v.dataset.sec === 'cta' && st.cta) show(st.cta);
+    render();
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    const txt = 'ホーム追加ラボ: ' + (summary() || '（まだ選んでいません）'), b = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject()).then(() => { b.textContent = 'コピーした！'; setTimeout(() => { b.textContent = 'コピー'; }, 1600); })
+      .catch(() => { prompt('コピーしてね', txt); });
+  });
+  render();
 })();
 </script>
 </body>
