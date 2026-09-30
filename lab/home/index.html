@@ -284,7 +284,7 @@
 
     /* ── support variants + lab chrome ── */
     .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px;max-width:420px}
-    .tiers a{display:flex;align-items:baseline;justify-content:center;gap:2px;text-decoration:none;color:#1F1812;background:#fff;border:2.5px solid #1F1812;border-radius:16px;box-shadow:3px 3px 0 #1F1812;padding:13px 6px;transition:transform .12s,box-shadow .12s}
+    .tiers a{display:flex;align-items:baseline;justify-content:center;gap:2px;white-space:nowrap;text-decoration:none;color:#1F1812;background:#fff;border:2.5px solid #1F1812;border-radius:16px;box-shadow:3px 3px 0 #1F1812;padding:13px 6px;transition:transform .12s,box-shadow .12s}
     .tiers a b{font:900 19px/1 "Noto Sans JP"}.tiers a small{font:700 12px/1 "Noto Sans JP";color:#786148}
     .tiers a.rec{background:#C9223A;color:#fff}.tiers a.rec small{color:#FDE3E7}
     .tiers a:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 #1F1812}.tiers a:active{transform:translate(3px,3px);box-shadow:none}
@@ -339,7 +339,7 @@
     body{padding-bottom:64px}
     @media (max-width:760px){
       .ask-card{grid-template-columns:1fr;text-align:center;padding:22px 18px}.ask-card img{height:130px;margin:0 auto}
-      .ask-btns,.sub-links{justify-content:center}.tiers{margin-left:auto;margin-right:auto}
+      .ask-btns,.sub-links{justify-content:center}.tiers{margin-left:auto;margin-right:auto;gap:8px}.tiers a b{font-size:17px}.tiers a{padding:13px 4px}
       .ribbon{flex-wrap:wrap}.ribbon p{min-width:0;flex:1 1 60%}.ribbon a{width:100%;text-align:center}
       .toast-demo{flex-direction:column;align-items:stretch}.toast-demo button{width:100%}
       .lab-picks .v{flex:1 1 100%;justify-content:space-between}
@@ -653,14 +653,15 @@
       </div>
 
       <div class="cta-v" data-v="B" hidden>
+        <link rel="prefetch" href="/images/oji2/oji-happy.webp"><link rel="prefetch" href="/images/oji2/oji-explaining.webp">
         <div class="ask-card" id="ask">
           <img src="/images/oji2/oji-curious.webp" alt="" loading="lazy"/>
           <div class="ask-body">
-            <div class="step" data-step="q">
+            <div class="step" data-step="q" data-img="/images/oji2/oji-curious.webp">
               <h2 class="font-display text-[24px] sm:text-[32px] text-ink">このマップ、役に立った？</h2>
               <div class="ask-btns"><button data-ans="yes">👍 役に立った！</button><button data-ans="meh">🤔 いまいち</button></div>
             </div>
-            <div class="step" data-step="yes" hidden>
+            <div class="step" data-step="yes" data-img="/images/oji2/oji-happy.webp" hidden>
               <h2 class="font-display text-[24px] sm:text-[32px] text-ink">よかった！🎉</h2>
               <p class="mt-2 text-[15px] leading-[1.9] text-ink-soft">このマップは、みなさんの応援で続いています。よかったら、王子に一杯おごってください。</p>
               <div class="tiers">
@@ -671,7 +672,7 @@
             <p class="fine">いつでも解除OK ・ Stripeの安全な決済ページへ</p>
               <div class="sub-links"><a href="https://veganoji.jp/#newsletter" target="_blank" rel="noopener">📮 まずは王子通信（無料）から</a><button class="linkish" data-ans="reset">もどる</button></div>
             </div>
-            <div class="step" data-step="meh" hidden>
+            <div class="step" data-step="meh" data-img="/images/oji2/oji-explaining.webp" hidden>
               <h2 class="font-display text-[24px] sm:text-[32px] text-ink">教えてくれてありがとう</h2>
               <p class="mt-2 text-[15px] leading-[1.9] text-ink-soft">何が足りなかった？ 王子が確認して、マップを直します。</p>
               <div class="ask-btns"><a href="https://forms.monday.com/forms/embed/ae7ddb21cdeb1544ff69794ebe9646c2?r=use1" target="_blank" rel="noopener">✏️ 情報の修正・閉店を報告</a><a href="#submit">➕ 載っていないお店を教える</a></div>
@@ -698,7 +699,7 @@
       <div class="toast-demo">
         <div>
           <b>📱 お店ページでは「そっと聞く」</b>
-          <p>2ページ目を見たあと、下までスクロールした人にだけ、1回だけ表示。閉じたら14日間は出しません。お店を探している最中はじゃましません。</p>
+          <p>2ページ目以降、下まで読んだ人にだけ1回表示。閉じたら14日間は出さず、お店探しのじゃまはしません。</p>
         </div>
         <button id="toast-open">どう出るか見る ▶</button>
       </div>
@@ -920,7 +921,7 @@
   ask.addEventListener('click', (e) => {
     const b = e.target.closest('[data-ans]'); if (!b) return;
     const to = b.dataset.ans === 'reset' ? 'q' : b.dataset.ans;
-    ask.querySelectorAll('.step').forEach((s) => { s.hidden = s.dataset.step !== to; });
+    ask.querySelectorAll('.step').forEach((s) => { s.hidden = s.dataset.step !== to; if (!s.hidden) ask.querySelector('img').src = s.dataset.img; });
   });
   // shop-page prompt demo
   const sheet = document.getElementById('sheet');
