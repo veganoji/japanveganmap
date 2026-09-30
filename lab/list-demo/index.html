@@ -1,0 +1,256 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex"><meta name="theme-color" content="#FFF9EE"><title>🚫 マップから外す | マップ更新</title>
+<style>
+:root{--ink:#1F1812;--paper:#FFF9EE;--cream:#FDF1DA;--line:#EADCC0;--muted:#786148;--red:#C9223A;--green:#3F6A3A;--gold:#E8C76F}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--paper);color:var(--ink);font:500 16px/1.6 "Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+header{position:sticky;top:0;z-index:10;background:rgba(255,249,238,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line);padding:12px 16px 12px;padding-top:max(12px,env(safe-area-inset-top))}
+.top{display:flex;align-items:center;gap:10px}
+h1{margin:0;font-size:19px;flex:1}
+.tabs{display:flex;gap:6px}.tabs a{display:grid;place-items:center;width:42px;height:38px;text-decoration:none;border:2px solid var(--line);border-radius:12px;font-size:18px;background:#fff}
+.tabs a.on{border-color:var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.progress{margin-top:10px;display:flex;align-items:center;gap:10px;font:700 13px/1 inherit;color:var(--muted)}
+.bar{flex:1;height:10px;border-radius:999px;background:var(--cream);border:1.5px solid var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#7FB069,var(--green));border-radius:999px;transition:width .5s cubic-bezier(.2,.9,.3,1.2)}
+.intro{margin:14px 16px 0;padding:12px 14px;background:#fff;border:1.5px solid var(--line);border-radius:16px}
+.intro p{margin:0 0 6px;color:var(--muted);font-size:14px}
+.intro ol{margin:0;padding-left:20px;font-size:14px}
+main{padding:4px 12px 60px}
+.pref h2{position:sticky;top:var(--hh,108px);z-index:5;margin:18px 4px 6px;font-size:14px;color:var(--muted);background:var(--paper);padding:4px 0}
+.pref h2 .n{display:inline-block;min-width:24px;text-align:center;background:var(--cream);border-radius:999px;padding:0 8px;margin-left:4px}
+.pref.empty{display:none}
+.card{position:relative;background:#fff;border:2px solid var(--ink);border-radius:18px;box-shadow:3px 3px 0 var(--ink);padding:14px;margin:10px 0;transform-origin:center;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2),opacity .35s,max-height .45s ease,margin .45s ease,padding .45s ease,border-color .2s,box-shadow .2s;max-height:600px;overflow:hidden}
+.card.opened{border-color:var(--red);box-shadow:3px 3px 0 var(--red),0 0 0 4px rgba(201,34,58,.12)}
+.card .back{display:none;margin:10px 0 0;font:700 13px/1.4 inherit;color:var(--red)}
+.card.opened .back{display:block}
+.card.opened .btn.done{animation:pulse 1.4s ease-in-out infinite}
+.card.leaving{transform:scale(.92) translateX(40px);opacity:0;max-height:0;margin:0;padding-top:0;padding-bottom:0}
+.info b{display:block;font-size:17px;line-height:1.4}
+.info small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.note{margin:8px 0 0;padding:8px 10px;background:var(--cream);border-radius:10px;font-size:14px}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{position:relative;flex:1 1 45%;display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;border:2px solid var(--ink);background:#fff;color:var(--ink);
+  font:800 15px/1 inherit;text-decoration:none;padding:0 12px;box-shadow:3px 3px 0 var(--ink);cursor:pointer;overflow:hidden;
+  transition:transform .12s ease,box-shadow .12s ease,background .2s}
+.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.btn.open{background:var(--red);color:#fff}
+.btn.done{background:var(--green);color:#fff}
+.btn.copy{background:var(--cream)}
+.btn.busy span{opacity:0}
+.btn.busy::after{content:"";position:absolute;width:20px;height:20px;border:3px solid rgba(255,255,255,.5);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+.btn.copy.busy::after{border-color:rgba(31,24,18,.25);border-top-color:var(--ink)}
+.btn.ok{background:#7FB069}
+.ripple{position:absolute;border-radius:50%;transform:scale(0);background:rgba(255,255,255,.55);animation:ripple .55s ease-out;pointer-events:none}
+.btn.copy .ripple{background:rgba(31,24,18,.15)}
+@keyframes ripple{to{transform:scale(3.2);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{box-shadow:3px 3px 0 var(--ink),0 0 0 0 rgba(63,106,58,.5)}50%{box-shadow:3px 3px 0 var(--ink),0 0 0 8px rgba(63,106,58,0)}}
+.done-sec{margin:28px 4px 0;border-top:2px dashed var(--line);padding-top:14px}
+.done-sec h2{margin:0 0 8px;font-size:15px}
+.done-row{display:flex;align-items:center;gap:10px;background:#F1F6EC;border:1.5px solid #CFE0C2;border-radius:14px;padding:10px 12px;margin:8px 0;animation:drop .45s cubic-bezier(.2,.9,.3,1.2)}
+.done-row b{flex:1;font-size:14.5px;line-height:1.4}
+.done-row b::before{content:"✓ ";color:var(--green)}
+.undo{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;font:700 13px/1 inherit;color:var(--muted)}
+@keyframes drop{from{transform:translateY(-12px);opacity:0}to{transform:none;opacity:1}}
+.empty{text-align:center;color:var(--muted);margin:40px 0}
+#toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);border-radius:999px;padding:11px 20px;font-weight:800;opacity:0;transition:all .25s;z-index:20;white-space:nowrap}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header id="hd">
+  <div class="top"><h1>🚫 マップから外す</h1><nav class="tabs"><a href="/list/remove" class="on">🚫</a><a href="/list/add" class="">📍</a><a href="/list/fix" class="">📝</a><a href="/">🏠</a></nav></div>
+  <div class="progress"><span id="left">のこり 12</span><div class="bar"><i id="bar"></i></div><span id="doneN">✓ 0</span></div>
+</header>
+<div class="intro"><p>Googleで閉業・消えたお店です。</p><ol><li>「Googleマップで開く」</li><li>「保存済み」をタップ</li><li>「ビーガン王子のマップ」のチェックを外す</li><li>戻ってきて「✓ 外した」</li></ol></div>
+<main>
+  <section class="pref" data-pref="愛知県"><h2>愛知県 <span class="n">12</span></h2>
+    <article class="card" data-id="6130047037">
+      <div class="info"><b>dining 栄夏 EIKA＋シスターズカフェ168</b><small>江南市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6130047037" href="https://www.google.com/maps/search/?api=1&amp;query=dining%20%E6%A0%84%E5%A4%8F%20EIKA%EF%BC%8B%E3%82%B7%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA%E3%82%AB%E3%83%95%E3%82%A7168&amp;query_place_id=ChIJwa4x_psJA2ARHjaTftKirg4" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6130047037"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117811336">
+      <div class="info"><b>Bejiroka</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117811336" href="https://www.google.com/maps/search/?api=1&amp;query=Bejiroka&amp;query_place_id=ChIJsXJgjdx2A2ARLOgX03zD77Q" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117811336"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117674280">
+      <div class="info"><b>Bio Terrace</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117674280" href="https://www.google.com/maps/search/?api=1&amp;query=Bio%20Terrace&amp;query_place_id=ChIJf5JiIAJxA2AR6a4fyqE08Hc" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117674280"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117752294">
+      <div class="info"><b>FD LABO ～ヴィーガンファストフード～</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117752294" href="https://www.google.com/maps/search/?api=1&amp;query=FD%20LABO%20%EF%BD%9E%E3%83%B4%E3%82%A3%E3%83%BC%E3%82%AC%E3%83%B3%E3%83%95%E3%82%A1%E3%82%B9%E3%83%88%E3%83%95%E3%83%BC%E3%83%89%EF%BD%9E&amp;query_place_id=ChIJIfX0x4txA2AR7G-NnjM4eSo" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117752294"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117728044">
+      <div class="info"><b>ITADAKIZEN Paris London Kyoto gallery in NAGOYA / いただき繕名古屋</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117728044" href="https://www.google.com/maps/search/?api=1&amp;query=ITADAKIZEN%20Paris%20London%20Kyoto%20gallery%20in%20NAGOYA%20%2F%20%E3%81%84%E3%81%9F%E3%81%A0%E3%81%8D%E7%B9%95%E5%90%8D%E5%8F%A4%E5%B1%8B&amp;query_place_id=ChIJSYUtUJdxA2ARu4Vwl_VYiqg" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117728044"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117760949">
+      <div class="info"><b>Kaizuiji</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117760949" href="https://www.google.com/maps/search/?api=1&amp;query=Kaizuiji&amp;query_place_id=ChIJn46Kk3JxA2ARnur4jScwvpQ" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117760949"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117814955">
+      <div class="info"><b>vegefirst</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117814955" href="https://www.google.com/maps/search/?api=1&amp;query=vegefirst&amp;query_place_id=ChIJVVVBatN2A2ARqb2JDsxeixM" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117814955"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6117718715">
+      <div class="info"><b>旬菜カフェ おてあて</b><small>名古屋市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6117718715" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%97%AC%E8%8F%9C%E3%82%AB%E3%83%95%E3%82%A7%20%E3%81%8A%E3%81%A6%E3%81%82%E3%81%A6&amp;query_place_id=ChIJ-eXQ3K16A2ARYodXBNUrpis" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6117718715"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6098262435">
+      <div class="info"><b>Haruwa Plantbased vegan icecreamハルワ プラントベースヴィーガンアイス</b><small>守谷市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6098262435" href="https://www.google.com/maps/search/?api=1&amp;query=Haruwa%20Plantbased%20vegan%20icecream%E3%83%8F%E3%83%AB%E3%83%AF%20%E3%83%97%E3%83%A9%E3%83%B3%E3%83%88%E3%83%99%E3%83%BC%E3%82%B9%E3%83%B4%E3%82%A3%E3%83%BC%E3%82%AC%E3%83%B3%E3%82%A2%E3%82%A4%E3%82%B9&amp;query_place_id=ChIJyUe5xWWfGGARxadUPPp0p34" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6098262435"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6099162864">
+      <div class="info"><b>Kitchen Nogi Macrobiotic &amp;amp; Organic restaurant</b><small>沖縄市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6099162864" href="https://www.google.com/maps/search/?api=1&amp;query=Kitchen%20Nogi%20Macrobiotic%20%26%20Organic%20restaurant&amp;query_place_id=ChIJ8Xh2Ye0T5TQR_Om34rAU7do" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6099162864"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6138288660">
+      <div class="info"><b>Vege Crew</b><small>宮古島市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6138288660" href="https://www.google.com/maps/search/?api=1&amp;query=Vege%20Crew&amp;query_place_id=ChIJRbPuALtT9DQRKJUqMnMn6ZQ" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6138288660"><span>✓ 外した</span></button>
+      </div>
+    </article>
+    <article class="card" data-id="6138303659">
+      <div class="info"><b>viva 45°(ビバ・フォーティーファイブ)</b><small>宮古島市 ・ Googleで閉業</small></div>
+      <p class="back">👈 戻ってきたら、こちらの ✓ を押してください</p>
+      <div class="acts">
+        
+        <a class="btn open" data-open="6138303659" href="https://www.google.com/maps/search/?api=1&amp;query=viva%2045%C2%B0(%E3%83%93%E3%83%90%E3%83%BB%E3%83%95%E3%82%A9%E3%83%BC%E3%83%86%E3%82%A3%E3%83%BC%E3%83%95%E3%82%A1%E3%82%A4%E3%83%96)&amp;query_place_id=ChIJ77REIWdT9DQRNUXy_p4ONP4" target="_blank" rel="noopener"><span>Googleマップで開く</span></a>
+        <button class="btn done" data-act="removed" data-id="6138303659"><span>✓ 外した</span></button>
+      </div>
+    </article></section>
+<section class="done-sec" id="doneSec" hidden><h2>✅ 完了（このページで）</h2><div id="doneList"></div></section>
+</main>
+<div id="toast"></div>
+<script>
+const KIND = "remove", TOTAL = 12;
+let done = 0;
+const $ = (id) => document.getElementById(id);
+document.documentElement.style.setProperty('--hh', $('hd').offsetHeight + 'px');
+const toast = (t) => { const e = $('toast'); e.textContent = t; e.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => e.classList.remove('show'), 2000); };
+const progress = () => { $('left').textContent = 'のこり ' + (TOTAL - done); $('doneN').textContent = '✓ ' + done; $('bar').style.width = (TOTAL ? done / TOTAL * 100 : 0) + '%'; };
+const buzz = () => { try { navigator.vibrate && navigator.vibrate(12); } catch (e) {} };
+function ripple(btn, ev) {
+  const r = btn.getBoundingClientRect(), s = Math.max(r.width, r.height), d = document.createElement('span');
+  d.className = 'ripple'; d.style.width = d.style.height = s + 'px';
+  d.style.left = ((ev.clientX || r.left + r.width / 2) - r.left - s / 2) + 'px'; d.style.top = ((ev.clientY || r.top + r.height / 2) - r.top - s / 2) + 'px';
+  btn.appendChild(d); setTimeout(() => d.remove(), 600);
+}
+async function post(path, id) {
+  if (true) { await new Promise((ok) => setTimeout(ok, 450)); return { ok: true }; }
+  const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Oji-Maps': '1' }, body: JSON.stringify({ id, kind: KIND }) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || j.error) throw new Error(j.error || r.status);
+  return j;
+}
+function markOpened(id) {
+  document.querySelectorAll('.card.opened').forEach((c) => c.classList.remove('opened'));
+  const c = document.querySelector('.card[data-id="' + id + '"]');
+  if (c) c.classList.add('opened');
+  try { localStorage.setItem('opened-' + KIND, id); } catch (e) {}
+}
+try { const last = localStorage.getItem('opened-' + KIND); if (last) markOpened(last); } catch (e) {}
+document.addEventListener('click', async (ev) => {
+  const btn = ev.target.closest('.btn');
+  if (btn) { ripple(btn, ev); buzz(); }
+  const open = ev.target.closest('[data-open]');
+  if (open) { markOpened(open.dataset.open); return; }
+  const copy = ev.target.closest('[data-copy]');
+  if (copy) {
+    try { await navigator.clipboard.writeText(copy.dataset.copy); copy.classList.add('ok'); setTimeout(() => copy.classList.remove('ok'), 900); toast('メモをコピーしました 📋'); }
+    catch (e) { prompt('コピーしてください', copy.dataset.copy); }
+    return;
+  }
+  const act = ev.target.closest('[data-act]');
+  if (act && !act.classList.contains('busy')) {
+    const card = act.closest('.card'), id = act.dataset.id, name = card.querySelector('b').textContent;
+    act.classList.add('busy');
+    try {
+      await post('/api/' + act.dataset.act, id);
+      act.classList.remove('busy'); act.classList.add('ok');
+      card.classList.remove('opened');
+      try { if (localStorage.getItem('opened-' + KIND) === id) localStorage.removeItem('opened-' + KIND); } catch (e) {}
+      setTimeout(() => card.classList.add('leaving'), 250);
+      setTimeout(() => {
+        const sec = card.closest('.pref'); card.remove();
+        const n = sec.querySelectorAll('.card').length; sec.querySelector('.n').textContent = n; if (!n) sec.classList.add('empty');
+        const row = document.createElement('div'); row.className = 'done-row'; row.dataset.id = id;
+        row.innerHTML = '<b></b><button class="undo">元に戻す</button>'; row.querySelector('b').textContent = name;
+        row._card = card; row._sec = sec;
+        $('doneList').prepend(row); $('doneSec').hidden = false;
+        done++; progress();
+      }, 700);
+      toast("外しました" + ' ✓');
+    } catch (e) { act.classList.remove('busy'); toast('エラー：' + e.message); }
+    return;
+  }
+  const undo = ev.target.closest('.undo');
+  if (undo) {
+    const row = undo.closest('.done-row');
+    undo.disabled = true; undo.textContent = '…';
+    try {
+      await post('/api/undo', row.dataset.id);
+      const c = row._card; c.classList.remove('leaving'); c.querySelector('.btn.done').classList.remove('ok');
+      row._sec.classList.remove('empty'); row._sec.querySelector('h2').after(c);
+      row._sec.querySelector('.n').textContent = row._sec.querySelectorAll('.card').length;
+      row.remove(); done--; progress(); if (!$('doneList').children.length) $('doneSec').hidden = true;
+      toast('元に戻しました');
+    } catch (e) { undo.disabled = false; undo.textContent = '元に戻す'; toast('エラー：' + e.message); }
+  }
+});
+progress();
+</script></body></html>
