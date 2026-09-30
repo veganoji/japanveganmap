@@ -316,6 +316,10 @@
     .pickb:active{transform:translate(2px,2px);box-shadow:none}
     .v[data-picked="true"] .pickb{background:#3F6A3A;color:#fff}
     .hero-picks{max-width:520px;margin-left:auto;margin-right:auto}
+    .lab-picks.mini{padding:8px;gap:8px;align-items:center}
+    .lab-picks.mini::before{content:"LAB · " attr(data-name)}
+    .lab-picks.mini .v{padding:0;border:0;background:none}
+    .lab-picks.mini .pickb{padding:9px 12px;font-size:13.5px}
     @media (min-width:1024px){.hero-picks{margin-left:0}}
     .toast-demo{display:flex;align-items:center;gap:16px;margin-top:26px;background:#fff;border:2.5px solid #1F1812;border-radius:20px;box-shadow:4px 4px 0 #1F1812;padding:16px 18px}
     .toast-demo b{font:900 16px/1.4 "Noto Sans JP"}.toast-demo p{margin:4px 0 0;font-size:13.5px;line-height:1.8;color:#3C2E22}
@@ -339,6 +343,7 @@
       .ribbon{flex-wrap:wrap}.ribbon p{min-width:0;flex:1 1 60%}.ribbon a{width:100%;text-align:center}
       .toast-demo{flex-direction:column;align-items:stretch}.toast-demo button{width:100%}
       .lab-picks .v{flex:1 1 100%;justify-content:space-between}
+      .lab-picks.mini .v{flex:1 1 0}.lab-picks.mini .pickb{width:100%}.lab-picks.mini::before{flex:1 1 100%;text-align:center}
     }
   </style>
 </head>
@@ -414,14 +419,14 @@
         <div class="find mt-6 mx-auto lg:mx-0" id="find">
           <form class="find-box" id="find-form" role="search" autocomplete="off">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="#1F1812" stroke-width="2.4"/><path d="M20 20l-4-4" stroke="#1F1812" stroke-width="2.4" stroke-linecap="round"/></svg>
-            <input id="q" type="search" placeholder="お店・エリアで探す（例：渋谷 ラーメン）" aria-label="お店・エリアで探す" />
+            <input id="q" type="search" placeholder="お店・エリア・料理で探す" aria-label="お店・エリアで探す" />
             <button type="submit">探す</button>
           </form>
           <div class="find-res" id="find-res" hidden></div>
         </div>
-      <div class="lab-picks mini hero-picks">
-        <div class="v" data-sec="search" data-id="OK"><b>検索：これでOK</b><button class="pickb">これにする</button></div>
-        <div class="v" data-sec="search" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      <div class="lab-picks mini hero-picks" data-name="検索">
+        <div class="v" data-sec="search" data-id="OK"><button class="pickb" data-label="👍 これでOK">👍 これでOK</button></div>
+        <div class="v" data-sec="search" data-id="FIX"><button class="pickb" data-label="✏️ 直したい">✏️ 直したい</button></div>
       </div>
 
       </div>
@@ -466,9 +471,9 @@
             <h3>🔥 人気のエリア</h3>
             <div class="chips" id="hot"></div>
           </div>
-      <div class="lab-picks mini">
-        <div class="v" data-sec="areas" data-id="OK"><b>エリアから探す：これでOK</b><button class="pickb">これにする</button></div>
-        <div class="v" data-sec="areas" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      <div class="lab-picks mini" data-name="エリアから探す">
+        <div class="v" data-sec="areas" data-id="OK"><button class="pickb" data-label="👍 これでOK">👍 これでOK</button></div>
+        <div class="v" data-sec="areas" data-id="FIX"><button class="pickb" data-label="✏️ 直したい">✏️ 直したい</button></div>
       </div>
         </div>
         <div class="lg:col-span-4 hidden lg:block">
@@ -484,9 +489,9 @@
       <p class="text-[12px] tracking-[0.2em] font-bold text-gold-deep">NEW</p>
       <h2 class="font-display display-tight text-[28px] sm:text-[40px] text-ink mt-2">新しく追加されたお店</h2>
       <div class="new-track mt-6" id="new-track"></div>
-      <div class="lab-picks mini">
-        <div class="v" data-sec="new" data-id="OK"><b>新着：これでOK</b><button class="pickb">これにする</button></div>
-        <div class="v" data-sec="new" data-id="FIX"><b>直したい（チャットで）</b><button class="pickb">これにする</button></div>
+      <div class="lab-picks mini" data-name="新着">
+        <div class="v" data-sec="new" data-id="OK"><button class="pickb" data-label="👍 これでOK">👍 これでOK</button></div>
+        <div class="v" data-sec="new" data-id="FIX"><button class="pickb" data-label="✏️ 直したい">✏️ 直したい</button></div>
       </div>
     </div>
   </section>
@@ -867,23 +872,29 @@
   let idx = null, loading = null, sel = -1;
   const kana = (s) => s.replace(/[\u30a1-\u30f6]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60));
   const norm = (s) => kana(String(s || '').normalize('NFKC').toLowerCase()).replace(/[\s・･()（）【】「」'"’.,、。!！?？\-]+/g, '');
+  const FOOD = { ramen: 'ラーメン らーめん 拉麺', curry: 'カレー', bakery: 'パン ベーカリー bakery bread', sweets: 'スイーツ ケーキ ドーナツ アイス ジェラート 和菓子 sweets cake',
+    sushi: '寿司 すし 鮨 sushi', burger: 'バーガー ハンバーガー burger', pizza: 'ピザ pizza', pasta: 'パスタ イタリアン pasta', gyoza: '餃子 ぎょうざ 中華 gyoza',
+    salad: 'サラダ salad', teishoku: '定食 和食 ごはん', tofu: '豆腐 とうふ tofu', bento: '弁当 べんとう bento', drink: 'カフェ コーヒー ドリンク cafe coffee',
+    bowl: '丼 どんぶり ボウル bowl', course: 'コース フレンチ course', fried: '揚げ物 唐揚げ からあげ 天ぷら', otsumami: '居酒屋 おつまみ バー bar izakaya', noodles: '麺 うどん そば 蕎麦 noodles udon soba' };
+  const catOf = (t) => Object.keys(FOOD).filter((k) => FOOD[k].split(' ').some((w) => { const n = norm(w); return n.startsWith(t) || t.startsWith(n); }));
   const load = () => loading || (loading = fetch('/data/search.json').then((r) => r.json()).then((d) => {
-    idx = { shops: d.shops.map((s) => ({ slug: s[0], n: s[1], e: s[2], a: s[3], ae: s[4], f: s[5], c: s[6], k: norm(s[1] + ' ' + s[2]), ka: norm(s[3] + ' ' + s[4]) })),
+    idx = { shops: d.shops.map((s) => ({ slug: s[0], n: s[1], e: s[2], a: s[3], ae: s[4], f: s[5], c: s[6], u: s[7] || '', k: norm(s[1] + ' ' + s[2]), ka: norm(s[3] + ' ' + s[4]) })).filter((s) => s.slug || s.u),
             areas: d.areas.map((a) => ({ href: '/area/' + a[0] + '/' + a[1] + '/', label: a[2] + a[3], k: norm(a[2] + a[3] + a[4] + a[5]) })) };
   }));
   function render() {
     const terms = q.value.trim().split(/\s+/).map(norm).filter(Boolean);
     if (!terms.length || !idx) { res.hidden = true; return; }
+    const cats = Object.fromEntries(terms.map((t) => [t, catOf(t)]));
     const shops = idx.shops.map((s) => {
       let score = 0;
       for (const t of terms) {
-        if (s.k.startsWith(t)) score += 6; else if (s.k.includes(t)) score += 4; else if (s.ka.includes(t)) score += 2; else if (s.c && norm(s.c).includes(t)) score += 1; else return null;
+        if (s.k.startsWith(t)) score += 6; else if (s.k.includes(t)) score += 4; else if (s.ka.includes(t)) score += 2; else if (s.c && cats[t].includes(s.c)) score += 1; else return null;
       }
       return { s, score };
-    }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 7);
+    }).filter(Boolean).sort((a, b) => b.score - a.score || (b.s.slug ? 1 : 0) - (a.s.slug ? 1 : 0)).slice(0, 7);
     const areas = terms.length === 1 ? idx.areas.filter((a) => a.k.includes(terms[0])).slice(0, 3) : [];
     const items = areas.map((a) => '<a href="' + a.href + '"><img src="/images/menu2/pin.webp" alt=""><span><b>' + esc(a.label) + '</b><small>このエリアのお店を見る</small></span><span class="tag a">エリア</span></a>')
-      .concat(shops.map(({ s }) => '<a href="/shop/' + s.slug + '/"><img src="/images/menu2/' + (s.c && s.c !== 'other' ? s.c : (s.f ? 'leaf' : 'sprout')) + '.webp" alt=""><span><b>' + esc(s.n || s.e) + '</b><small>' + esc(s.a) + '</small></span><span class="tag ' + (s.f ? 'f' : 'o') + '">' + (s.f ? '🌿 完全' : '🌱 あり') + '</span></a>'));
+      .concat(shops.map(({ s }) => '<a href="' + (s.slug ? '/shop/' + s.slug + '/' : esc(s.u)) + '"' + (s.slug ? '' : ' target="_blank" rel="noopener"') + '><img src="/images/menu2/' + (s.c && s.c !== 'other' ? s.c : (s.f ? 'leaf' : 'sprout')) + '.webp" alt=""><span><b>' + esc(s.n || s.e) + '</b><small>' + esc(s.a) + '</small></span><span class="tag ' + (s.f ? 'f' : 'o') + '">' + (s.f ? '🌿 完全' : '🌱 あり') + '</span></a>'));
     res.innerHTML = items.join('') || '<div class="none">見つかりませんでした。別のことばで試してみてね。</div>';
     res.hidden = false; sel = -1;
   }
@@ -928,7 +939,7 @@
   const LABEL = { OK: 'OK', FIX: '直したい', A: 'A 応援カード', B: 'B 役に立った？', C: 'C ひとことバナー', ON: 'はい', OFF: 'いいえ' };
   const summary = () => Object.keys(NAMES).filter((k) => st[k]).map((k) => NAMES[k] + '：' + LABEL[st[k]]).join(' ／ ');
   const render = () => {
-    document.querySelectorAll('.lab-picks .v').forEach((v) => { const on = st[v.dataset.sec] === v.dataset.id; v.dataset.picked = String(on); v.querySelector('.pickb').textContent = on ? '✓ これにした' : 'これにする'; });
+    document.querySelectorAll('.lab-picks .v').forEach((v) => { const on = st[v.dataset.sec] === v.dataset.id; v.dataset.picked = String(on); const pb = v.querySelector('.pickb'); pb.textContent = pb.dataset.label ? (on ? '✓ ' + pb.dataset.label.replace(/^\S+\s/, '') : pb.dataset.label) : (on ? '✓ これにした' : 'これにする'); });
     document.getElementById('sum').textContent = summary() || 'ホーム追加ラボ：各セクションの「これにする」→「コピー」で送ってね';
   };
   document.addEventListener('click', (e) => {
