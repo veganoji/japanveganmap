@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>カバー 2027 ラボ 2｜日本ビーガンマップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Inter:wght@600;800&family=Noto+Sans+JP:wght@400;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C9223A;--red2:#a8172c;--gold:#D4A847;--paper:#FFF9EE;--ink:#1d1a17;--navy:#0f1f3d}
+*{box-sizing:border-box}
+body{margin:0;background:#f3eee4;color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif}
+.lab-head{max-width:1200px;margin:0 auto;padding:28px 16px 4px}
+.lab-head h1{font-size:26px;margin:0 0 6px}
+.lab-head p{margin:4px 0;font-size:16px;line-height:1.6;color:#4a443d}
+.lab-head a{color:var(--red)}
+.fam{max-width:1200px;margin:0 auto;padding:18px 16px 0}
+.fam h2{font-size:21px;margin:10px 0 2px}
+.fam>p{margin:0 0 12px;color:#5a534b;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:24px}
+.card{background:#fff;border-radius:18px;padding:12px;box-shadow:0 6px 24px rgba(0,0,0,.06);border:3px solid transparent}
+.card.picked{border-color:var(--red)}
+.frame{position:relative;width:100%;aspect-ratio:1080/1350;overflow:hidden;border-radius:10px;background:#ddd}
+.frame .art{position:absolute;left:0;top:0;transform-origin:0 0;transform:scale(var(--s,.3))}
+.meta{padding:12px 4px 4px}
+.meta h3{font-size:17px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+.meta p{font-size:15px;line-height:1.55;margin:0 0 10px;color:#555}
+.tag{font-size:12px;background:var(--red);color:#fff;border-radius:99px;padding:2px 9px;font-weight:700}
+.row{display:flex;gap:8px}
+.btn{flex:1;font:700 15px "Noto Sans JP",sans-serif;padding:11px 10px;border-radius:12px;border:2.5px solid var(--ink);background:#fff;color:var(--ink);box-shadow:3px 3px 0 var(--ink);cursor:pointer;text-align:center;text-decoration:none}
+.btn.pick{background:var(--paper)}
+.card.picked .btn.pick{background:var(--red);color:#fff}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e5ddcf;padding:12px 16px;display:flex;gap:12px;align-items:center;justify-content:center;z-index:5}
+.bar span{font-size:15px}.bar .btn{flex:0 0 auto}
+.spacer{height:120px}
+body.raw{background:none}
+body.raw>*:not(#rawbox){display:none!important}
+#rawbox{display:none} body.raw #rawbox{display:block} body.raw #rawbox .art{position:relative}
+
+/* ===== artboards ===== */
+.art{width:1080px;height:1350px;overflow:hidden;position:relative;font-family:"Noto Sans JP",sans-serif}
+.art *{margin:0}
+.ph{background-size:cover;background-position:center;position:absolute}
+.stk{border:6px solid var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.ttl{position:absolute;left:0;right:0;text-align:center;font:900 104px/1.12 "Zen Maru Gothic";letter-spacing:.01em}
+.en{position:absolute;left:0;right:0;text-align:center;font:800 27px Inter;letter-spacing:.34em}
+.credit{position:absolute;left:0;right:0;bottom:44px;text-align:center;font:900 27px "Zen Maru Gothic";letter-spacing:.04em}
+.pills{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:16px}
+.pills span{background:#fff;border:5px solid var(--ink);border-radius:22px;padding:14px 26px;font:900 36px "Zen Maru Gothic";box-shadow:6px 6px 0 var(--ink);white-space:nowrap}
+.pills .r{background:var(--red);color:#fff}
+.pills .g{background:var(--gold)}
+svg.pin{position:absolute;overflow:visible}
+.face{position:absolute;border-radius:50%;background:#fff;border:7px solid var(--ink);overflow:hidden}
+.face img{position:absolute;left:50%;transform:translateX(-50%)}
+
+/* A1 pin over photo mosaic */
+.a1{background:#111}
+.a1 .mos{position:absolute;inset:-10px;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:280px;gap:8px}
+.a1 .mos div{background-size:cover;background-position:center}
+.a1 .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,238,.97) 0%,rgba(255,249,238,.9) 19%,rgba(255,249,238,0) 36%,rgba(255,249,238,0) 74%,rgba(255,249,238,.95) 88%,rgba(255,249,238,1) 100%)}
+
+/* A2 pin-shaped collage */
+.a2{background:var(--paper);background-image:radial-gradient(#e6d9bf 2.5px,transparent 2.6px);background-size:36px 36px}
+.a2 .pinclip{position:absolute;left:50%;top:268px;width:640px;height:864px;transform:translateX(-50%);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 270' preserveAspectRatio='none'%3E%3Cpath d='M100 6C49 6 10 45 10 96c0 66 78 150 86 160a5 5 0 0 0 8 0c8-10 86-94 86-160C190 45 151 6 100 6z'/%3E%3C/svg%3E") center/100% 100% no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 270' preserveAspectRatio='none'%3E%3Cpath d='M100 6C49 6 10 45 10 96c0 66 78 150 86 160a5 5 0 0 0 8 0c8-10 86-94 86-160C190 45 151 6 100 6z'/%3E%3C/svg%3E") center/100% 100% no-repeat;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:216px;gap:6px;background:var(--ink)}
+.a2 .pinclip div{background-size:cover;background-position:center}
+
+/* A3 photo pins */
+.a3{background:var(--red);background-image:radial-gradient(circle at 50% 46%,#de3a51 0%,var(--red) 50%,var(--red2) 100%)}
+.a3 .pp{position:absolute;width:190px;height:240px}
+.a3 .pp .c{position:absolute;left:0;top:0;width:190px;height:190px;border-radius:50%;border:6px solid #fff;background-size:cover;background-position:center;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+.a3 .pp::after{content:"";position:absolute;left:50%;top:176px;transform:translateX(-50%);border:22px solid transparent;border-top:44px solid #fff;border-bottom:0}
+
+/* C ring */
+.cring{position:absolute;left:50%;transform:translateX(-50%)}
+.cring .p{position:absolute;border-radius:50%;background-size:cover;background-position:center;border:5px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+
+/* D collage */
+.dg{position:absolute;display:grid;gap:14px}
+.dg div{border-radius:24px;background-size:cover;background-position:center}
+.pol{position:absolute;background:#fff;padding:16px 16px 58px;box-shadow:0 14px 30px rgba(60,40,20,.22)}
+.pol div{width:100%;height:100%;background-size:cover;background-position:center}
+.tape{position:absolute;width:150px;height:44px;background:rgba(240,214,140,.78);left:50%;top:-20px;transform:translateX(-50%) rotate(-4deg)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><clipPath id="pinpath" clipPathUnits="objectBoundingBox"><path d="M.5 .022C.245 .022 .05 .167 .05 .356c0 .244 .39 .556 .43 .593a.03 .02 0 0 0 .04 0C.56 .912 .95 .6 .95 .356 .95 .167 .755 .022 .5 .022z"/></clipPath>
+<symbol id="pinsym" viewBox="0 0 200 270"><path d="M100 6C49 6 10 45 10 96c0 66 78 150 86 160a5 5 0 0 0 8 0c8-10 86-94 86-160C190 45 151 6 100 6z"/></symbol></defs></svg>
+<header class="lab-head">
+  <h1>📍 カバー 2027 ラボ ②：アレックスの本物の料理写真で</h1>
+  <p>気に入った「6. ビッグピン」「5. フードコラージュ」「10. メニューぐるり」を、AIの料理画像ではなく、アレックスが撮った本物のビーガン料理写真で作り直しました。各3パターン＋「ピン×料理写真」の新しい組み合わせ3パターン。</p>
+  <p>写真はすべて @veganoji の過去の投稿から（下に一覧）。別の写真に差し替えたいときは番号で教えてください。<a href="/cover-lab/">← 第1ラウンド</a></p>
+</header>
+<div id="fams"></div>
+<section class="fam"><h2>使った写真</h2><p>番号つき。「A1の3番を差し替え」などで指定できます。</p><div id="phlist" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px"></div></section>
+<div class="spacer"></div>
+<div class="bar"><span id="sum">まだ選んでいません</span><button class="btn" id="copy">選んだ案をコピー</button></div>
+<div id="rawbox"></div>
+<script>
+const PH = ["/images/cover-lab/food/f01.jpg", "/images/cover-lab/food/f02.jpg", "/images/cover-lab/food/f03.jpg", "/images/cover-lab/food/f04.jpg", "/images/cover-lab/food/f05.jpg", "/images/cover-lab/food/f06.jpg", "/images/cover-lab/food/f07.jpg", "/images/cover-lab/food/f08.jpg", "/images/cover-lab/food/f09.jpg", "/images/cover-lab/food/f10.jpg", "/images/cover-lab/food/f11.jpg", "/images/cover-lab/food/f12.jpg", "/images/cover-lab/food/f13.jpg", "/images/cover-lab/food/f14.jpg", "/images/cover-lab/food/f15.jpg", "/images/cover-lab/food/f16.jpg", "/images/cover-lab/food/f17.jpg", "/images/cover-lab/food/f18.jpg", "/images/cover-lab/food/f19.jpg", "/images/cover-lab/food/f20.jpg", "/images/cover-lab/food/f21.jpg", "/images/cover-lab/food/f22.jpg", "/images/cover-lab/food/f23.jpg", "/images/cover-lab/food/f24.jpg", "/images/cover-lab/food/f25.jpg", "/images/cover-lab/food/f26.jpg", "/images/cover-lab/food/f27.jpg", "/images/cover-lab/food/f28.jpg"];
+const ph = i => `background-image:url(${PH[i % PH.length]})`;
+const OJI = '/images/mascot/map-japan.png';
+const credit = (c='#6b5f52') => `<p class="credit" style="color:${c}">ビーガン王子 @veganoji</p>`;
+const pills = (top, extra='') => `<div class="pills" style="top:${top}px">${extra||'<span class="r">2027年版</span><span>2,300店以上</span><span>47都道府県</span>'}</div>`;
+const pin = (x,y,w,fill='#C9223A',stroke='#1d1a17',sh='14px 14px 0 #1d1a17') => `<svg class="pin" viewBox="0 0 200 270" style="left:${x}px;top:${y}px;width:${w}px;height:${w*1.35}px;filter:drop-shadow(${sh})"><use href="#pinsym" fill="${fill}" stroke="${stroke}" stroke-width="5"/></svg>`;
+// face centred on the pin head: head centre = (x+w/2, y+0.356*1.35w); radius ≈ 0.37w
+const face = (x,y,w,img=OJI,bg='#fff') => { const d=w*0.73, cx=x+w/2, cy=y+w*1.35*0.356; return `<div class="face" style="left:${cx-d/2}px;top:${cy-d/2}px;width:${d}px;height:${d}px;background:${bg}"><img src="${img}" style="top:${d*0.05}px;width:${d*0.7}px"></div>`; };
+const facePh = (x,y,w,i) => { const d=w*0.73, cx=x+w/2, cy=y+w*1.35*0.356; return `<div class="face ph" style="left:${cx-d/2}px;top:${cy-d/2}px;width:${d}px;height:${d}px;${ph(i)}"></div>`; };
+
+const FAM = [
+ ['A','ピン × 料理写真（新しい組み合わせ）','ビッグピンとフードコラージュを合体。',[
+  ['A1','写真モザイク＋ビッグピン','本物の料理写真を一面に敷きつめて、真ん中に王子のピン。グリッドで一番「おいしそう」に見える。',1, () => `<div class="art a1">
+    <div class="mos">${Array.from({length:20},(_,k)=>`<div style="${ph(k)}"></div>`).join('')}</div><div class="veil"></div>
+    <h1 class="ttl" style="top:64px">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#C9223A">JAPAN VEGAN MAP · 2027</p>
+    ${pin(300,330,480)}${face(300,330,480)}
+    ${pills(1118)}${credit()}</div>`],
+  ['A2','ピンの形の写真コラージュ','ピンの中に料理写真をぎゅっと。形だけで「マップ」と分かる。王子は右下からひょっこり。',0, () => `<div class="art a2">
+    <h1 class="ttl" style="top:64px">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#C9223A">JAPAN VEGAN MAP · 2027</p>
+    <svg class="pin" viewBox="0 0 200 270" style="left:206px;top:256px;width:668px;height:902px;filter:drop-shadow(14px 14px 0 #1d1a17)"><use href="#pinsym" fill="#1d1a17"/></svg>
+    <div class="pinclip">${Array.from({length:12},(_,k)=>`<div style="${ph(k+3)}"></div>`).join('')}</div>
+    <img src="/images/cover-lab/oji_winking.png" style="position:absolute;right:46px;top:760px;height:420px">
+    ${pills(1150,'<span class="r">2027年版</span><span>2,300店以上</span>')}${credit()}</div>`],
+  ['A3','料理写真のピンがいっぱい','丸い料理写真が全部マップピンに。赤背景で真ん中に王子の大きいピン。',0, () => {
+    const spots=[[70,300],[820,290],[40,700],[850,690],[200,1000],[690,1000],[455,1070]];
+    return `<div class="art a3">
+    <h1 class="ttl" style="top:64px;color:#fff">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#ffd9a0">JAPAN VEGAN MAP · 2027</p>
+    ${spots.map(([x,y],k)=>`<div class="pp" style="left:${x}px;top:${y}px;transform:rotate(${[-8,7,-4,6,-6,5,0][k]}deg)"><div class="c" style="${ph(k+6)}"></div></div>`).join('')}
+    ${pin(330,330,420,'#fff','#1d1a17','12px 12px 0 rgba(0,0,0,.35)')}${face(330,330,420,OJI,'#FFF9EE')}
+    <div class="pills" style="top:960px"><span style="font-size:40px">2027年版にアップデート！</span></div>
+    <p class="credit" style="color:#ffe1e5">全国2,300店以上 ・ ビーガン王子 @veganoji</p></div>`; }],
+ ]],
+ ['B','ビッグピン（ブラッシュアップ）','気に入った6番を、文字の大きさ・余白・ツヤ感を整えて3色で。',[
+  ['B1','クリーム × 赤ピン（定番）','元の6番の完成版。ピンにツヤ、王子の円の外に料理写真の小さな輪。',0, () => {
+    let ring=''; for(let k=0;k<8;k++){const a=k/8*2*Math.PI-Math.PI/2+Math.PI/8,r=360;ring+=`<div class="ph stk" style="left:${540+r*Math.cos(a)-62}px;top:${640+r*Math.sin(a)-62}px;width:124px;height:124px;border-radius:50%;border-width:5px;box-shadow:5px 5px 0 #1d1a17;${ph(k+1)}"></div>`}
+    return `<div class="art" style="background:#FFF9EE;background-image:radial-gradient(#e6d9bf 2.5px,transparent 2.6px);background-size:36px 36px">
+    <h1 class="ttl" style="top:64px">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#C9223A">JAPAN VEGAN MAP · 2027</p>
+    ${ring}${pin(330,355,420)}${face(330,355,420)}
+    <div style="position:absolute;left:440px;top:420px;width:70px;height:34px;border-radius:50%;background:rgba(255,255,255,.55);transform:rotate(-28deg)"></div>
+    ${pills(1110)}${credit()}</div>`; }],
+  ['B2','赤背景 × 白ピン','背景を真っ赤に。白いピンが映えて、グリッドで一番目立つ。',0, () => `<div class="art" style="background:radial-gradient(circle at 50% 45%,#de3a51 0%,#C9223A 52%,#a8172c 100%)">
+    <h1 class="ttl" style="top:64px;color:#fff">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#ffd9a0">JAPAN VEGAN MAP · 2027</p>
+    ${pin(270,300,540,'#fff','#1d1a17','14px 14px 0 rgba(0,0,0,.3)')}${facePh(270,300,540,8)}
+    <img src="/images/oji/oji_welcoming.png" style="position:absolute;left:640px;top:690px;height:400px">
+    ${pills(1110,'<span class="g">2027年版</span><span>2,300店以上</span><span>47都道府県</span>')}<p class="credit" style="color:#ffe1e5">ビーガン王子 @veganoji</p></div>`],
+  ['B3','夜空 × 赤ピン × 金','紺と金で大人っぽく。ピンの中は料理写真、王子は下で案内役。',0, () => `<div class="art" style="background:radial-gradient(110% 80% at 50% 40%,#1a3566 0%,#0f1f3d 55%,#081226 100%)">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(#fff 1.4px,transparent 1.6px),radial-gradient(#ffe7a8 1.2px,transparent 1.4px);background-size:120px 120px,190px 170px;background-position:10px 20px,70px 90px;opacity:.35"></div>
+    <h1 class="ttl" style="top:64px;color:#fff">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#D4A847">JAPAN VEGAN MAP · 2027</p>
+    ${pin(290,290,500,'#C9223A','#D4A847','0 18px 40px rgba(0,0,0,.5)')}${facePh(290,290,500,2)}
+    <img src="/images/cover-lab/oji_excited.png" style="position:absolute;left:60px;top:760px;height:380px">
+    <div class="pills" style="top:1130px"><span style="background:#D4A847;border-color:#D4A847;box-shadow:none">2027年版</span><span style="background:transparent;color:#fff;border-color:#D4A847;box-shadow:none">2,300店以上</span></div>
+    <p class="credit" style="color:#aebbd6">ビーガン王子 @veganoji</p></div>`],
+ ]],
+ ['C','メニューぐるり（本物の写真で）','10番のアイコンを、本物の料理写真に。',[
+  ['C1','写真の輪 × 王子','料理写真12枚が王子のまわりをぐるっと。やさしくて、一番「ビーガン王子らしい」。',0, () => {
+    let r=''; for(let k=0;k<12;k++){const a=k/12*2*Math.PI-Math.PI/2;r+=`<div class="p" style="left:${380+322*Math.cos(a)-78}px;top:${380+322*Math.sin(a)-78}px;width:156px;height:156px;${ph(k)}"></div>`}
+    return `<div class="art" style="background:#FFF9EE">
+    <h1 class="ttl" style="top:64px">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#C9223A">JAPAN VEGAN MAP · 2027</p>
+    <div class="cring" style="top:290px;width:760px;height:760px">${r}<div class="face" style="left:170px;top:170px;width:420px;height:420px;box-shadow:inset 0 0 0 14px #fff,inset 0 0 0 20px #D4A847"><img src="${OJI}" style="top:30px;width:290px"></div></div>
+    ${pills(1095,'<span class="r" style="font-size:44px">2027年版にアップデート！</span>')}<p class="credit" style="bottom:52px;color:#4a443d;font-size:32px">ラーメンも、お寿司も、全国2,300店以上</p></div>`; }],
+  ['C2','二重の輪 × 赤','内側8枚・外側14枚の二重の輪。赤背景でにぎやか。',0, () => {
+    let r=''; for(let k=0;k<14;k++){const a=k/14*2*Math.PI-Math.PI/2;r+=`<div class="p" style="left:${440+400*Math.cos(a)-62}px;top:${440+400*Math.sin(a)-62}px;width:124px;height:124px;border-color:#fff;box-shadow:none;${ph(k+4)}"></div>`}
+    for(let k=0;k<8;k++){const a=k/8*2*Math.PI-Math.PI/2+Math.PI/8;r+=`<div class="p" style="left:${440+262*Math.cos(a)-72}px;top:${440+262*Math.sin(a)-72}px;width:144px;height:144px;border-color:#fff;box-shadow:none;${ph(k)}"></div>`}
+    return `<div class="art" style="background:radial-gradient(circle at 50% 50%,#de3a51 0%,#C9223A 55%,#a8172c 100%)">
+    <h1 class="ttl" style="top:56px;color:#fff">日本ビーガンマップ</h1>
+    <div class="cring" style="top:220px;width:880px;height:880px">${r}<div class="face" style="left:290px;top:290px;width:300px;height:300px;border-color:#fff"><img src="${OJI}" style="top:22px;width:210px"></div></div>
+    ${pills(1130,'<span class="g">2027年版</span><span>2,300店以上</span><span>47都道府県</span>')}<p class="credit" style="color:#ffe1e5">ビーガン王子 @veganoji</p></div>`; }],
+  ['C3','虹のアーチ × 全身の王子','写真が虹のように王子の上にアーチ。王子が「どうぞ！」と案内。',0, () => {
+    let r=''; const n=9; for(let k=0;k<n;k++){const a=Math.PI+k/(n-1)*Math.PI;r+=`<div class="p" style="left:${540+420*Math.cos(a)-92}px;top:${830+420*Math.sin(a)-92}px;width:184px;height:184px;${ph(k+2)}"></div>`}
+    return `<div class="art" style="background:linear-gradient(#FFF9EE 0%,#fdebd0 100%)">
+    <h1 class="ttl" style="top:64px">日本ビーガンマップ</h1><p class="en" style="top:198px;color:#C9223A">JAPAN VEGAN MAP · 2027</p>
+    <div class="cring" style="left:0;top:0;transform:none;width:1080px;height:1350px">${r}</div>
+    <img src="/images/oji/oji_welcoming.png" style="position:absolute;left:50%;transform:translateX(-50%);top:560px;height:560px">
+    ${pills(1110)}${credit()}</div>`; }],
+ ]],
+ ['D','フードコラージュ（本物の写真で）','5番を本物の写真で。',[
+  ['D1','3×3グリッド × ピンバッジ','元の5番の完成版。真ん中はピンの形の2027バッジ。',0, () => `<div class="art" style="background:#FFF9EE">
+    <h1 class="ttl" style="top:50px;font-size:92px">日本ビーガンマップ</h1>
+    <div class="dg" style="left:50px;top:190px;width:980px;grid-template-columns:repeat(3,1fr);grid-auto-rows:318px">${[0,1,2,3,-1,4,5,6,7].map(k=>k<0?`<div style="background:#C9223A;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff"><svg viewBox="0 0 200 270" style="width:120px;height:162px"><use href="#pinsym" fill="#fff"/><text x="100" y="118" text-anchor="middle" font-family="Fraunces" font-weight="900" font-size="64" fill="#C9223A">27</text></svg><p style="font:900 32px 'Zen Maru Gothic';margin-top:6px">2027年版</p></div>`:`<div style="${ph(k)}"></div>`).join('')}</div>
+    <p style="position:absolute;left:0;right:0;top:1186px;text-align:center;font:900 64px 'Zen Maru Gothic'">ぜんぶ、ビーガン。</p>
+    <p class="credit" style="color:#6b5f52;bottom:40px">全国2,300店以上 ・ 47都道府県 ・ @veganoji</p></div>`],
+  ['D2','ポラロイド散らし','旅先で撮ったポラロイドを机に並べたような温かさ。真ん中にタイトルのステッカー。',0, () => {
+    const P=[[40,250,330,380,-7],[400,210,300,350,4],[720,260,320,370,8],[60,690,320,370,5],[700,720,330,380,-6],[230,960,300,340,-3],[560,980,320,360,6]];
+    return `<div class="art" style="background:#efe4cf url(/images/bg/paper-wash.jpg) center/cover">
+    <p class="en" style="top:82px;color:#C9223A;font-size:30px">JAPAN VEGAN MAP · 2027</p>
+    ${P.map(([x,y,w,h,r],k)=>`<div class="pol" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;transform:rotate(${r}deg)"><div style="${ph(k+1)}"></div><span class="tape"></span></div>`).join('')}
+    <div class="stk" style="position:absolute;left:150px;top:560px;width:780px;background:#FFF9EE;border-radius:34px;padding:34px 20px;text-align:center;transform:rotate(-2deg)"><p style="font:900 98px/1.1 'Zen Maru Gothic'">日本ビーガン<br>マップ</p><p style="margin-top:14px;display:inline-block;background:#C9223A;color:#fff;font:900 42px 'Zen Maru Gothic';padding:8px 28px;border-radius:14px">2027年版にアップデート！</p></div>
+    ${credit()}</div>`; }],
+  ['D3','4×4グリッド × 中央ピン','写真16枚をぎっしり。真ん中に赤いピンと王子。情報量で「2,300店」を感じさせる。',0, () => `<div class="art" style="background:#1d1a17">
+    <div class="dg" style="left:0;top:0;width:1080px;grid-template-columns:repeat(4,1fr);grid-auto-rows:334px;gap:8px">${Array.from({length:16},(_,k)=>`<div style="border-radius:0;${ph(k)}"></div>`).join('')}</div>
+    <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(0,0,0,0) 0%,rgba(0,0,0,.25) 60%,rgba(0,0,0,.55) 100%)"></div>
+    <div class="stk" style="position:absolute;left:90px;right:90px;top:70px;background:#FFF9EE;border-radius:30px;padding:22px 10px 26px;text-align:center"><p style="font:900 92px/1.1 'Zen Maru Gothic'">日本ビーガンマップ</p><p style="font:800 26px Inter;letter-spacing:.34em;color:#C9223A;margin-top:6px">JAPAN VEGAN MAP · 2027</p></div>
+    ${pin(360,400,360)}${face(360,400,360)}
+    ${pills(1150)}</div>`],
+ ]],
+];
+
+const q = new URLSearchParams(location.search);
+const all = FAM.flatMap(f => f[3]);
+function art(id){ const d=all.find(x=>x[0]===id); const w=document.createElement('div'); w.innerHTML=d[4](); return w.firstElementChild; }
+if (q.get('only')) { document.body.classList.add('raw'); document.getElementById('rawbox').appendChild(art(q.get('only'))); }
+else {
+  const picked = new Set(), fams = document.getElementById('fams');
+  FAM.forEach(([k,t,d,items]) => {
+    const s=document.createElement('section'); s.className='fam'; s.innerHTML=`<h2>${k}. ${t}</h2><p>${d}</p><div class="grid"></div>`;
+    items.forEach(([id,name,desc,rec]) => {
+      const c=document.createElement('article'); c.className='card';
+      c.innerHTML=`<div class="frame"></div><div class="meta"><h3>${id}. ${name}${rec?' <span class="tag">おすすめ</span>':''}</h3><p>${desc}</p><div class="row"><button class="btn pick">これにする</button><a class="btn" href="/images/cover-lab/v2/${id}.jpg" download>画像を保存</a></div></div>`;
+      c.querySelector('.frame').appendChild(art(id));
+      c.querySelector('.pick').onclick=()=>{picked.has(id)?picked.delete(id):picked.add(id);c.classList.toggle('picked');upd()};
+      s.querySelector('.grid').appendChild(c);
+    });
+    fams.appendChild(s);
+  });
+  document.getElementById('phlist').innerHTML = PH.map((p,i)=>`<figure style="margin:0"><div style="aspect-ratio:1;border-radius:10px;background:url(${p}) center/cover"></div><figcaption style="font:700 13px Inter;text-align:center;margin-top:3px">${i+1}</figcaption></figure>`).join('');
+  const sum=document.getElementById('sum'); const txt=()=>picked.size?'カバー2027 ラボ②：'+[...picked].join('、')+' にする':'';
+  function upd(){ sum.textContent = picked.size ? txt() : 'まだ選んでいません'; }
+  document.getElementById('copy').onclick=e=>{ if(!picked.size) return; navigator.clipboard.writeText(txt()); e.target.textContent='コピーしました ✓'; };
+  const ro=new ResizeObserver(es=>es.forEach(x=>x.target.style.setProperty('--s',x.contentRect.width/1080)));
+  document.querySelectorAll('.frame').forEach(f=>ro.observe(f));
+}
+</script>
+</body>
+</html>
