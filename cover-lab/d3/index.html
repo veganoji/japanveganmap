@@ -32,7 +32,7 @@ body.edit .slot .n{opacity:1}
 .vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 46%,rgba(0,0,0,0) 0%,rgba(0,0,0,.25) 60%,rgba(0,0,0,.55) 100%)}
 .top{position:absolute;left:90px;right:90px;top:70px;background:var(--paper);border:6px solid var(--ink);box-shadow:8px 8px 0 var(--ink);border-radius:30px;padding:22px 10px 26px;text-align:center;pointer-events:none}
 .top p:first-child{font:900 92px/1.1 "Zen Maru Gothic"}
-.top p:last-child{font:800 26px Inter;letter-spacing:.34em;color:var(--red);margin-top:6px}
+.top p:last-child{font:800 36px Inter;letter-spacing:.32em;color:var(--red);margin-top:8px;padding-left:.32em}
 svg.pin{position:absolute;left:360px;top:400px;width:360px;height:486px;overflow:visible;filter:drop-shadow(14px 14px 0 #1d1a17);pointer-events:none}
 .face{position:absolute;left:408.6px;top:441.6px;width:262.8px;height:262.8px;border-radius:50%;background:#fff;border:7px solid var(--ink);overflow:hidden;pointer-events:none}
 .face img{position:absolute;left:50%;top:13px;width:184px;transform:translateX(-50%)}
@@ -71,7 +71,7 @@ svg.pin{position:absolute;left:360px;top:400px;width:360px;height:486px;overflow
       <div class="art" id="art">
         <div class="g" id="grid"></div>
         <div class="vig"></div>
-        <div class="top"><p>日本ビーガンマップ</p><p>JAPAN VEGAN MAP · 2027</p></div>
+        <div class="top"><p>日本ビーガンマップ</p><p>JAPAN VEGAN MAP</p></div>
         <svg class="pin" viewBox="0 0 200 270"><path d="M100 6C49 6 10 45 10 96c0 66 78 150 86 160a5 5 0 0 0 8 0c8-10 86-94 86-160C190 45 151 6 100 6z" fill="#C9223A" stroke="#1d1a17" stroke-width="5"/></svg>
         <div class="face"><img src="/images/mascot/map-japan.png" alt="" crossorigin="anonymous"></div>
         <div class="pills"><span class="r">2027年版</span><span>2,300店以上</span><span>47都道府県</span></div>
@@ -81,7 +81,7 @@ svg.pin{position:absolute;left:360px;top:400px;width:360px;height:486px;overflow
       <button class="btn" id="nums">番号 表示/非表示</button>
       <button class="btn" id="shuffle">シャッフル</button>
       <button class="btn" id="reset">最初の並び</button>
-      <button class="btn" id="save">画像を保存（PNG）</button>
+      <button class="btn" id="save">画像を保存（PNG・2160×2700）</button>
     </div>
     <p class="hint">並びは自動で保存され、リンクにも入ります（このページのURLを送れば同じ並びで開けます）。</p>
   </section>
@@ -173,16 +173,16 @@ document.getElementById('save').onclick = async e => {
   const b = e.target; b.textContent = '作成中…';
   try {
     await document.fonts.ready;
-    await Promise.all(['900 92px "Zen Maru Gothic"','800 26px Inter','900 36px "Zen Maru Gothic"'].map(f=>document.fonts.load(f,'日本ビーガンマップ2027年版')));
-    const c = document.createElement('canvas'); c.width=1080; c.height=1350; const x = c.getContext('2d');
+    await Promise.all(['900 92px "Zen Maru Gothic"','800 36px Inter','900 36px "Zen Maru Gothic"'].map(f=>document.fonts.load(f,'日本ビーガンマップ2027年版')));
+    const c = document.createElement('canvas'); c.width=2160; c.height=2700; const x = c.getContext('2d'); x.scale(2,2); x.imageSmoothingQuality='high';
     x.fillStyle='#1d1a17'; x.fillRect(0,0,1080,1350);
     const imgs = await Promise.all(order.map(p=>loadImg(PH[p])));
     const cw=(1080-24)/4; imgs.forEach((im,s)=>cover(x,im,(s%4)*(cw+8),Math.floor(s/4)*342,cw,334));
     const g = x.createRadialGradient(540,621,0,540,621,Math.hypot(540,729)); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(.6,'rgba(0,0,0,.25)'); g.addColorStop(1,'rgba(0,0,0,.55)'); x.fillStyle=g; x.fillRect(0,0,1080,1350);
     // title card
-    sticker(x,90,70,900,190,30,'#FFF9EE');
+    sticker(x,90,70,900,202,30,'#FFF9EE');
     x.textAlign='center'; x.textBaseline='alphabetic'; x.fillStyle='#1d1a17'; x.font='900 92px "Zen Maru Gothic"'; x.fillText('日本ビーガンマップ',540,190);
-    x.fillStyle='#C9223A'; x.font='800 26px Inter'; x.letterSpacing='9px'; x.fillText('JAPAN VEGAN MAP · 2027',545,238); x.letterSpacing='0px';
+    x.fillStyle='#C9223A'; x.font='800 36px Inter'; x.letterSpacing='11.5px'; x.fillText('JAPAN VEGAN MAP',546,246); x.letterSpacing='0px';
     // pin
     const P = new Path2D('M100 6C49 6 10 45 10 96c0 66 78 150 86 160a5 5 0 0 0 8 0c8-10 86-94 86-160C190 45 151 6 100 6z');
     x.save(); x.translate(374,414); x.scale(1.8,1.8); x.fillStyle='#1d1a17'; x.fill(P); x.restore();
@@ -194,7 +194,7 @@ document.getElementById('save').onclick = async e => {
     // pills
     x.font='900 36px "Zen Maru Gothic"'; const L=['2027年版','2,300店以上','47都道府県']; const W=L.map(t=>x.measureText(t).width+52+10); let px=(1080-(W.reduce((a,b)=>a+b,0)+32))/2;
     L.forEach((t,k)=>{ sticker(x,px,1150,W[k],80,22,k===0?'#C9223A':'#fff'); x.fillStyle=k===0?'#fff':'#1d1a17'; x.textBaseline='middle'; x.fillText(t,px+W[k]/2,1191); px+=W[k]+16; });
-    const a = document.createElement('a'); a.download = `japan-vegan-map-2027-D3.png`; a.href = c.toDataURL('image/png'); a.click();
+    const a = document.createElement('a'); a.download = `japan-vegan-map-2027-D3-2160x2700.png`; a.href = c.toDataURL('image/png'); a.click();
     b.textContent = '保存しました ✓';
   } catch (err) { b.textContent = '保存できませんでした'; console.log(err); }
 };
