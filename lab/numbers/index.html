@@ -79,6 +79,16 @@ h2{font-size:24px;line-height:1.3}
 .fact .n{font-size:34px;line-height:1;color:var(--royal);min-width:110px;text-align:center}
 .fact.g .n{color:var(--leaf-deep)} .fact.k .n{color:var(--muted)}
 .fact p{font-weight:700;font-size:15px}
+.trend svg{width:100%;height:auto;display:block;overflow:visible}
+.trend .ln{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1)}
+.trend .ax{font:700 11px 'Noto Sans JP';fill:#9C8A70}
+.trend .gl{stroke:#EADCC0;stroke-width:1}
+.trend .note{opacity:0;transition:opacity .6s 2.2s}
+.trend.in .note{opacity:1}
+.trend .note text{font:900 12px 'Noto Sans JP';fill:#1F1812}
+.tkeys{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font-weight:700;font-size:14px}
+.tkeys i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.src{font-size:12px;color:var(--muted);margin-top:8px}
 /* cite */
 section.card.cite{background:var(--night);color:#fff;border:0}
 .cite .sub{color:#C9D2EA}
@@ -147,6 +157,14 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 40px}
     <div class="types" id="types"></div>
   </section>
 
+  <section class="card reveal trend" id="trend">
+    <h2>🔍 「ヴィーガン」は、いつから？</h2>
+    <p class="sub">Google検索の人気度・2016年〜</p>
+    <svg id="tsvg" viewBox="0 0 360 220"></svg>
+    <div class="tkeys" id="tkeys"></div>
+    <p class="src" id="tsrc"></p>
+  </section>
+
   <section class="card reveal">
     <h2>📈 2026年11月の大更新</h2>
     <div class="facts">
@@ -161,7 +179,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 40px}
     <p class="sub">記事・研究・発表にどうぞ（出典を明記してください）</p>
     <code>出典：日本ビーガンマップ（veganmapjapan.org）<span id="asof2"></span>時点</code>
     <button class="btn" id="csv">⬇ 都道府県別データ（CSV）</button>
-    <div class="soon"><div><b>🔍</b>検索トレンド<br>準備中</div><div><b>🗓️</b>月別の変化<br>準備中</div><div><b>🏙️</b>人口あたり<br>準備中</div></div>
+    <div class="soon"><div><b>🍽️</b>ジャンル別<br>の推移 準備中</div><div><b>🗓️</b>月別の変化<br>準備中</div><div><b>🏙️</b>人口あたり<br>準備中</div></div>
   </section>
 </main>
 <footer>© 日本ビーガンマップ ・ ビーガン王子</footer>
@@ -210,6 +228,20 @@ fetch('data.json').then(r=>r.json()).then(D=>{
   // facts
   $('fClosed').dataset.to=D.closed;
   onShow(document.querySelector('.facts').closest('section'),()=>document.querySelectorAll('.fact .n').forEach(e=>count(e,+e.dataset.to,1600)));
+  // trends
+  (function(){const T=D.trends;if(!T)return;const KEEP=[0,4,2,1],COLS=['#C9223A','#D4A847','#6C9560','#13213F'],NAMES=T.kw;
+    const W=360,H=200,L=26,R=8,TP=10,B=24,n=T.m.length;const X=i=>L+(W-L-R)*i/(n-1),Y=v=>TP+(H-TP-B)*(1-v/100);
+    let g='';[0,25,50,75,100].forEach(v=>g+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${L-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`);
+    T.m.forEach((m,i)=>{if(m.endsWith('/01')&&(+m.slice(0,4))%2===0)g+=`<text class="ax" x="${X(i)}" y="${H-6}" text-anchor="middle">${m.slice(0,4)}</text>`});
+    let paths='';KEEP.forEach((k,j)=>{const d=T.v.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v[k]).toFixed(1)).join(' ');paths+=`<path class="ln" d="${d}" stroke="${COLS[j]}"/>`});
+    const at=(ym)=>T.m.indexOf(ym);const peak=T.v.reduce((b,v,i)=>v[0]>T.v[b][0]?i:b,0);const cross=T.v.findIndex(v=>v[0]>v[4]);const soy=T.v.reduce((b,v,i)=>v[2]>T.v[b][2]?i:b,0);
+    const note=(i,k,txt,dy)=>`<g class="note"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="4.5" fill="#fff" stroke="${COLS[KEEP.indexOf(k)]}" stroke-width="3"/><text x="${Math.min(X(i),W-70)}" y="${Y(T.v[i][k])+dy}" text-anchor="middle">${txt}</text></g>`;
+    $('tsvg').innerHTML=g+paths+note(cross,0,`${T.m[cross].slice(0,4)} ベジタリアンを逆転`,-12)+note(peak,0,`${T.m[peak].slice(0,4)} ピーク`,-12)+note(soy,2,`${T.m[soy].slice(0,4)} 大豆ミートブーム`,-12);
+    $('tkeys').innerHTML=KEEP.map((k,j)=>`<span><i style="background:${COLS[j]}"></i>${NAMES[k]}</span>`).join('');
+    $('tsrc').textContent='出典：'+T.src+'（3か月移動平均）';
+    const ls=[...document.querySelectorAll('#tsvg .ln')];ls.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L});
+    onShow($('trend'),()=>ls.forEach(p=>p.style.strokeDashoffset=0));
+  })();
   // csv
   $('csv').onclick=()=>{const rows=[['都道府県','掲載中','まもなく追加','合計','うち完全ヴィーガン']].concat(D.pref.map(r=>[r[0],r[1],r[2],r[1]+r[2],r[3]]));const b=new Blob(['﻿'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`japan-vegan-map-prefectures-${D.asof}.csv`;a.click()};
 });
