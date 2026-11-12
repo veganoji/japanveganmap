@@ -36,7 +36,7 @@
   <meta name="theme-color" content="#FFF9EE" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/lab/home-v2/site.css" />
 </head>
 <body class="font-jp">
@@ -375,7 +375,7 @@
       function makeItem(f) {
         var item = document.createElement('div'); item.className = 'gallery-item';
         var img = document.createElement('img'); img.className = 'ph';
-        img.src = '/images/food/' + f.slug + '.jpg'; img.alt = f.name; img.loading = 'lazy';
+        img.src = '/lab/home-v2/img/food/' + f.slug + '.webp'; img.alt = f.name; img.loading = 'lazy';
         img.onerror = function () {
           var d = document.createElement('div'); d.className = 'ph';
           d.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:54px;';
