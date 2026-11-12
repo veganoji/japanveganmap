@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>つぶつぶ変身｜ビーガン白書 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#E9D9B5;--royal:#C9223A;--royal-deep:#9C1428;--gold:#D4A847;--gold-deep:#9C7E2A;
+  --ink:#1F1812;--ink-soft:#3C2E22;--muted:#786148;--leaf:#5E8C52;--leaf-deep:#3F6A3A;
+  --sans:'Noto Sans JP',sans-serif;--round:'Zen Maru Gothic','Noto Sans JP',sans-serif}
+*{box-sizing:border-box;margin:0}
+html{background:var(--paper);overflow-x:clip;scroll-snap-type:y mandatory}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+.top{position:fixed;z-index:20;top:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 14px;
+  background:rgba(255,249,238,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
+.top a{font:700 16px/1 var(--sans);color:var(--ink);text-decoration:none;padding:10px 2px;white-space:nowrap}
+.top a:hover{color:var(--royal)}
+.top b{font:900 17px/1 var(--round);color:var(--royal);white-space:nowrap}
+.story{position:relative;height:calc(var(--n,5)*100vh);height:calc(var(--n,5)*100svh)}
+.snap{position:absolute;left:0;top:calc(var(--i)*100vh);top:calc(var(--i)*100svh);width:1px;height:100vh;height:100svh;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 80% at 50% 42%,#FFFDF6 0%,var(--paper) 62%)}
+.panel{position:absolute;z-index:5;left:0;right:0;bottom:0;max-width:580px;margin:0 auto;padding:0 12px calc(12px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:9px}
+.legend{display:flex;justify-content:center;gap:16px;font:700 16px/1.2 var(--sans)}
+.legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.legend span::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--c);border:2px solid var(--ink);flex:none}
+.legend i{font-style:normal}
+.guide{display:flex;align-items:flex-end;gap:13px}
+.oji{width:82px;height:112px;flex:none;display:flex;align-items:flex-end;justify-content:center}
+.oji img{max-width:100%;max-height:100%;display:block;filter:drop-shadow(0 4px 0 rgba(31,24,18,.1))}
+.oji img.pop{animation:pop .45s ease-out}
+@keyframes pop{0%{transform:translateY(8px) scale(.93)}60%{transform:translateY(-4px) scale(1.04)}100%{transform:none}}
+.bubble{position:relative;flex:1;min-width:0;background:var(--white);border:2.5px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);padding:11px 14px;font:700 16.5px/1.6 var(--round)}
+.bubble::before{content:"";position:absolute;left:-9.5px;bottom:24px;width:14px;height:14px;background:var(--white);border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+.bubble b{color:var(--royal);font-weight:900}
+.bubble .c{opacity:0}.bubble .c.on{opacity:1}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-right:4px}
+.pips{display:flex}
+.pip{width:30px;height:40px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center;-webkit-tap-highlight-color:transparent}
+.pip::before{content:"";width:12px;height:12px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);transition:transform .2s,background .2s}
+.pip[aria-current=true]::before{background:var(--royal);transform:scale(1.4)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:92px;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink);border-radius:16px;padding:10px 16px;
+  font:900 18px/1.3 var(--round);background:var(--white);color:var(--ink);cursor:pointer;transition:transform .18s,box-shadow .18s,opacity .2s;-webkit-tap-highlight-color:transparent;white-space:nowrap}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn-go{background:var(--royal);color:#fff}
+.btn[disabled]{opacity:.32;pointer-events:none}
+.btn.long{font-size:15px;padding-left:8px;padding-right:8px}
+@media (max-width:479px){.legend i{display:none}}
+@media (min-width:900px){
+  .panel{left:36px;right:auto;top:48px;width:392px;max-width:none;margin:0;padding:0;justify-content:center;gap:20px}
+  .guide{flex-direction:column;align-items:center;gap:16px}
+  .oji{width:100%;height:208px}
+  .bubble{flex:none;width:100%;font-size:19.5px;padding:16px 20px}
+  .bubble::before{left:50%;top:-9.5px;bottom:auto;margin-left:-7px;border:0;border-left:2.5px solid var(--ink);border-top:2.5px solid var(--ink)}
+  .legend{order:3;flex-direction:column;align-items:flex-start;gap:9px;font-size:17px;padding-left:6px}
+  .btn{font-size:20px;min-width:112px;padding:12px 14px}
+  .btn.long{font-size:18px;padding-left:12px;padding-right:12px}
+  .pip{width:28px}
+}
+@media (prefers-reduced-motion:reduce){.oji img.pop{animation:none}.btn,.pip::before{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><a href="../../">← ビーガン白書にもどる</a><b>つぶつぶ変身</b></header>
+<main class="story" id="story">
+  <div class="stage" id="stage">
+    <div class="panel" id="panel">
+      <div class="legend"><span style="--c:var(--leaf)"><i>お店</i>まるごとヴィーガン</span><span style="--c:var(--gold)"><i>ヴィーガン</i>メニューあり</span></div>
+      <div class="guide">
+        <div class="oji"><img id="oji" src="/images/oji2/oji-greeting.webp" alt="ヴィーガン王子"></div>
+        <p class="bubble" id="cap" aria-live="polite">つぶを あつめているよ…</p>
+      </div>
+      <div class="nav">
+        <button class="btn" id="prev" type="button" disabled>まえ</button>
+        <div class="pips" id="pips"></div>
+        <button class="btn btn-go" id="next" type="button">つぎ</button>
+      </div>
+    </div>
+  </div>
+</main>
+<script src="fx.js"></script>
+<script>
+(async () => {
+  const $ = s => document.querySelector(s), stage = $('#stage'), panel = $('#panel'), story = $('#story'), cap = $('#cap'), oji = $('#oji'), prevB = $('#prev'), nextB = $('#next'), pips = $('#pips');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches, f = v => v.toLocaleString('ja-JP');
+  const NAMES = ['日本地図', '地方ごと', '都道府県ランキング', 'まるごとヴィーガンは何軒？', 'フィナーレ'];
+  const [data, jp] = await Promise.all(['../../data.json', '../../jp.json'].map(u => fetch(u).then(r => r.json())));
+  let cur = 0, lock = 0, typeT = 0;
+
+  const plot = (W, H) => {
+    const s = stage.getBoundingClientRect(), p = panel.getBoundingClientRect();
+    if (innerWidth >= 900) { const x = p.right - s.left + 44; return { x, y: 70, w: W - x - 36, h: H - 70 - 30 }; }
+    return { x: 12, y: 58, w: W - 24, h: p.top - s.top - 10 - 58 };
+  };
+  const fx = initFx(stage, data, jp, { plot, onScene });
+  window.__fx = fx;
+  const s = fx.stats, caps = [
+    ['greeting', `つぶ ひとつが、お店 ひとつ。日本じゅうで <b>${f(s.total)}軒</b> 見つけたよ！`],
+    ['explaining', `地方ごとに まとめたよ。いちばんは <b>${s.topRegion.name}</b>の ${f(s.topRegion.count)}軒。まんなかの緑が まるごとヴィーガン！`],
+    ['pointing-up', `都道府県で ならべると、1位は <b>${s.top[0].name}</b>。トップ${s.top.length}だけで ぜんたいの <b>${s.topShare}%</b> だよ。`],
+    ['presenting', `お店まるごとヴィーガンは <b>${f(s.full)}軒</b>。およそ <b>${s.oneIn}軒に1軒</b> なんだ。`],
+    ['excited', `ぜんぶ あわせて <b>${f(s.total)}軒</b>！ひとつぶ ひとつぶが、だれかの「おいしい」に なるよ。`]];
+  caps.forEach(c => { new Image().src = `/images/oji2/oji-${c[0]}.webp`; });
+  story.style.setProperty('--n', fx.count);
+  for (let i = 0; i < fx.count; i++) {
+    const sn = document.createElement('div'); sn.className = 'snap'; sn.style.setProperty('--i', i); story.appendChild(sn);
+    const b = document.createElement('button'); b.className = 'pip'; b.type = 'button'; b.setAttribute('aria-label', NAMES[i]); b.onclick = () => goto(i); pips.appendChild(b);
+  }
+
+  /* ふきだしの高さを いちばん長い文に そろえる（場面が変わっても ガタつかない） */
+  function measure() { cap.style.minHeight = ''; let h = 0; caps.forEach(c => { cap.innerHTML = c[1]; h = Math.max(h, cap.offsetHeight); }); cap.style.minHeight = h + 'px'; cap.innerHTML = caps[cur][1]; }
+  function typeIn(html) {
+    clearInterval(typeT); cap.innerHTML = html; if (reduced) return;
+    const tw = document.createTreeWalker(cap, NodeFilter.SHOW_TEXT), nodes = [], spans = []; while (tw.nextNode()) nodes.push(tw.currentNode);
+    nodes.forEach(nd => { const fr = document.createDocumentFragment(); [...nd.data].forEach(ch => { const e = document.createElement('span'); e.className = 'c'; e.textContent = ch; fr.appendChild(e); spans.push(e); }); nd.replaceWith(fr); });
+    let i = 0; typeT = setInterval(() => { for (let k = 0; k < 2 && i < spans.length; k++) spans[i++].classList.add('on'); if (i >= spans.length) clearInterval(typeT); }, 36);
+  }
+  function onScene(k) {
+    cur = k; const c = caps[k]; oji.src = `/images/oji2/oji-${c[0]}.webp`; oji.classList.remove('pop'); void oji.offsetWidth; oji.classList.add('pop'); typeIn(c[1]);
+    prevB.disabled = k === 0; const last = k === fx.count - 1; nextB.textContent = last ? 'もういちど' : 'つぎ'; nextB.classList.toggle('long', last);
+    [...pips.children].forEach((p, i) => p.setAttribute('aria-current', i === k));
+  }
+  const stepH = () => stage.offsetHeight, topY = () => story.offsetTop;
+  const jump = k => { lock = performance.now() + 500; scrollTo({ top: topY() + k * stepH(), behavior: 'instant' }); };
+  function goto(k) { k = Math.max(0, Math.min(fx.count - 1, k)); jump(k); fx.go(k); }
+  nextB.onclick = () => { if (cur === fx.count - 1) { jump(0); fx.replay(); } else goto(cur + 1); };
+  prevB.onclick = () => goto(cur - 1);
+  addEventListener('scroll', () => { if (performance.now() < lock) return; const k = Math.max(0, Math.min(fx.count - 1, Math.round((scrollY - topY()) / stepH()))); if (k !== cur) fx.go(k); }, { passive: true });
+  addEventListener('keydown', e => { if (e.key === 'ArrowRight') nextB.click(); else if (e.key === 'ArrowLeft' && cur > 0) prevB.click(); });
+  let rz = 0; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { measure(); fx.resize(); }, 160); });
+
+  /* 文字のフォントを 先によんでから はじめる（数字を つぶで かくため） */
+  const txt = '0123456789,軒位沖縄・奄美その他都道府県お店まるごとヴィーガンメニューありよに日本で見つけた' + s.regions.map(r => r.name).join('') + s.top.map(r => r.name).join('');
+  const fonts = Promise.all(['900 20px "Zen Maru Gothic"', '700 20px "Zen Maru Gothic"', '900 20px "Noto Sans JP"'].map(d => document.fonts.load(d, txt))).catch(() => {});
+  let late = false; await Promise.race([fonts, new Promise(r => setTimeout(() => { late = true; r(); }, 2500))]);
+  measure(); if (scrollY > 4) scrollTo({ top: 0, behavior: 'instant' }); fx.start();
+  if (late) fonts.then(() => { measure(); fx.resize(); });
+})();
+</script>
+</body>
+</html>

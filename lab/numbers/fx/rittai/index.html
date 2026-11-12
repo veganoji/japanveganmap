@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>立体ジャパン｜ビーガン白書 2026</title>
+<link rel="icon" href="/images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF9EE;--royal:#C9223A;--gold:#D4A847;--leaf:#5E8C52;--leaf-deep:#3F6A3A;--ink:#1F1812;--night:#13213F}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font:500 17px/1.6 "Noto Sans JP",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;max-width:1320px;margin:0 auto}
+.bar a{font-weight:700;font-size:16px;color:var(--ink);text-decoration:none;border-bottom:2.5px solid var(--gold);padding-bottom:1px;white-space:nowrap}
+.bar h1{margin:0;font:900 20px/1.2 "Zen Maru Gothic",sans-serif;color:var(--leaf-deep);white-space:nowrap}
+.wrap{max-width:1320px;margin:0 auto;padding:4px 16px 28px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.stage{height:clamp(380px,52svh,560px);padding:0 4px 4px 0}
+#fx{width:100%;height:100%;display:grid;place-items:center;font:700 18px "Zen Maru Gothic",sans-serif}
+.side{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;align-content:start}
+.guide{display:flex;align-items:flex-end;gap:10px}
+.guide img{width:92px;height:auto;flex:none;display:block}
+.bub{position:relative;flex:1;min-width:0;background:#fff;border:2.5px solid var(--ink);border-radius:18px;box-shadow:4px 4px 0 var(--ink);padding:12px 15px;margin:0 4px 6px 0}
+.bub::before{content:"";position:absolute;left:-10px;bottom:22px;width:16px;height:16px;background:#fff;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+.bub p{margin:0;font-weight:700;font-size:19px;line-height:1.55;min-height:calc(19px*1.55*4)}
+.bub .rest{visibility:hidden}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.fly{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 10px;padding-right:4px}
+.stk{appearance:none;font:900 17px/1.15 "Zen Maru Gothic","Noto Sans JP",sans-serif;color:var(--ink);background:#fff;border:2.5px solid var(--ink);border-radius:14px;box-shadow:4px 4px 0 var(--ink);min-height:50px;padding:8px 6px;cursor:pointer;white-space:nowrap;transition:transform .08s,box-shadow .08s,background .2s}
+.stk:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.stk.on{background:var(--gold)}
+.stk:focus-visible{outline:3px solid var(--night);outline-offset:3px}
+.again{background:var(--royal);color:#fff;font-size:18px;padding:8px 20px;justify-self:start}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-weight:700;font-size:16px;line-height:1.4}
+.legend li{display:flex;align-items:center;gap:10px}
+.legend i{flex:none;width:18px;height:30px;border-radius:9px 9px 3px 3px;border:2px solid var(--ink);background:linear-gradient(#3F6A3A,#8FB57F)}
+.legend i.g{background:linear-gradient(#EBC766,#D4A847)}
+.asof{margin:0;font-size:15px;font-weight:500}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;justify-content:space-between}
+@media (min-width:900px){
+  .bar{padding:14px 28px}.bar a{font-size:17px}.bar h1{font-size:24px}
+  .wrap{grid-template-columns:minmax(0,1fr) 372px;gap:28px;padding:4px 28px 24px}
+  .stage{height:calc(100svh - 96px);min-height:520px;max-height:860px}
+  .side{gap:22px;padding-top:6px}
+  .guide{flex-direction:column;align-items:flex-start;gap:14px}
+  .guide img{width:150px;order:2;margin-left:18px}
+  .bub{order:1;width:calc(100% - 4px);flex:none;margin:0}
+  .bub::before{left:56px;bottom:-10px;border-left:0;border-right:2.5px solid var(--ink)}
+  .bub p{font-size:21px;min-height:calc(21px*1.55*4)}
+  .stk{font-size:19px;min-height:54px}
+  .legend{font-size:17px}
+}
+</style>
+</head>
+<body>
+<header class="bar"><a href="../../">← ビーガン白書にもどる</a><h1>立体ジャパン</h1></header>
+<main class="wrap">
+  <div class="stage"><div id="fx">地図を組み立て中…</div></div>
+  <div class="side">
+    <div class="guide">
+      <img src="/images/oji2/oji-explaining.webp" alt="ビーガン王子" width="300" height="300">
+      <div class="bub"><p id="say" aria-hidden="true"></p><span id="sayLive" class="sr" aria-live="polite"></span></div>
+    </div>
+    <div class="fly" id="fly" role="group" aria-label="見たい場所へ飛ぶ">
+      <button class="stk on" data-k="all" type="button">全国</button>
+      <button class="stk" data-k="tokyo" type="button">東京</button>
+      <button class="stk" data-k="kansai" type="button">京都・大阪</button>
+      <button class="stk" data-k="hokkaido" type="button">北海道</button>
+      <button class="stk" data-k="fukuoka" type="button">福岡</button>
+      <button class="stk" data-k="okinawa" type="button">沖縄</button>
+    </div>
+    <div class="foot">
+      <ul class="legend">
+        <li><i></i>緑の柱＝お店の数（高いほど多い）</li>
+        <li><i class="g"></i>金色＝まるごとヴィーガンのお店</li>
+      </ul>
+      <button class="stk again" id="again" type="button">🔁 もう一度</button>
+    </div>
+    <p class="asof" id="asof"></p>
+  </div>
+</main>
+<script type="module">
+import { initFx } from './rittai.js';
+const $ = s => document.querySelector(s), N = n => n.toLocaleString('ja-JP');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let timer = 0;
+function say(text) {
+  clearInterval(timer); const el = $('#say'); $('#sayLive').textContent = text;
+  if (reduce) { el.textContent = text; return; }
+  el.innerHTML = '<span></span><span class="rest"></span>'; const [a, b] = el.children; let i = 0; b.textContent = text;
+  timer = setInterval(() => { i++; a.textContent = text.slice(0, i); b.textContent = text.slice(i); if (i >= text.length) clearInterval(timer); }, 30);
+}
+try {
+  const [data, jp] = await Promise.all(['../../data.json', '../../jp.json'].map(u => fetch(u).then(r => { if (!r.ok) throw new Error(u); return r.json(); })));
+  const prefs = data.pref.map((p, i) => ({ i, name: p[0], total: p[1] + p[2], full: p[3] }));
+  const order = [...prefs].sort((a, b) => b.total - a.total);
+  for (const p of prefs) p.rank = order.findIndex(q => q.total === p.total) + 1;
+  const total = prefs.reduce((s, p) => s + p.total, 0), full = prefs.reduce((s, p) => s + p.full, 0);
+  const byName = n => prefs.find(p => p.name === n);
+  const prefLine = p => {
+    const head = `${p.name}は${N(p.total)}軒で全国${p.rank}位${p.rank === 1 ? '！' : '。'}`;
+    if (!p.full) return head + 'まるごとヴィーガンはまだ0軒。これからが楽しみだね！';
+    return head + (p.rank === 1 ? `まるごとヴィーガンは${N(p.full)}軒もあるよ！` : `まるごとヴィーガンは${N(p.full)}軒だよ！`);
+  };
+  const SPOT = { tokyo: '東京都', hokkaido: '北海道', fukuoka: '福岡県', okinawa: '沖縄県' };
+  const btns = [...document.querySelectorAll('#fly .stk')];
+  const mark = k => btns.forEach(b => b.classList.toggle('on', b.dataset.k === k));
+  const fx = await initFx($('#fx'), data, jp, { onPick: i => say(prefLine(prefs[i])), onView: mark });
+  const d = new Date(data.asof + 'T00:00:00'); $('#asof').textContent = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日時点のビーガンマップより`;
+  say('お店をぜんぶ積みあげたら、日本がこうなったよ。気になる県をタップしてみてね！');
+  for (const b of btns) b.addEventListener('click', () => {
+    const k = b.dataset.k; fx.fly(k); mark(k);
+    if (k === 'all') { fx.select(-1); say(`全国で${N(total)}軒。そのうち${N(full)}軒がまるごとヴィーガンだよ！`); }
+    else if (k === 'kansai') { const a = byName('京都府'), o = byName('大阪府'); fx.select(-1); say(`京都府は${N(a.total)}軒、大阪府は${N(o.total)}軒。関西もにぎやかだね！`); }
+    else { const p = byName(SPOT[k]); fx.select(p.i); say(prefLine(p)); }
+  });
+  $('#again').addEventListener('click', () => { fx.replay(); mark('all'); say('もう一度、はじめから積みあげるよ。見ててね！'); });
+  window.__fx = fx;
+} catch (e) {
+  console.error(e); $('#fx').textContent = 'うまく読みこめなかったよ。もう一度ひらいてみてね。';
+}
+</script>
+</body>
+</html>

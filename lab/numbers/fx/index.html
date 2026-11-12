@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>動く演出の案｜ビーガン白書 2026</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#E9D9B5;--royal:#C9223A;--gold:#D9A23A;--gold-soft:#F6DFA0;
+  --ink:#1F1812;--ink-soft:#3C2E22;--muted:#786148;--leaf:#4E8A45;--leaf-soft:#E4EFDA;
+  --sans:'Noto Sans JP',sans-serif;--round:'Zen Maru Gothic','Noto Sans JP',sans-serif;--pop:'Mochiy Pop One','Zen Maru Gothic',sans-serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font:500 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;overflow-x:hidden;padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+.bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;height:50px;padding:0 16px;background:rgba(255,249,238,.94);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
+.bar a{font:700 16px/1 var(--sans);color:var(--ink);text-decoration:none;padding:12px 2px}
+.bar a:hover{color:var(--royal)}
+main{max-width:1040px;margin:0 auto;padding:26px 16px 0}
+h1{font:400 clamp(30px,8.4vw,52px)/1.25 var(--pop);color:var(--leaf);letter-spacing:.01em;text-shadow:3px 3px 0 #fff,-3px 3px 0 #fff,3px -3px 0 #fff,-3px -3px 0 #fff,0 5px 0 rgba(31,24,18,.14)}
+h1 em{font-style:normal;color:var(--royal);display:inline-block}
+.lead{margin-top:10px;font:900 clamp(18px,4.9vw,23px)/1.55 var(--round);color:var(--ink-soft)}
+.lead span{display:inline-block}
+.grid{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:24px}
+@media(min-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}}
+.card{position:relative;background:var(--white);border:2.5px solid var(--ink);border-radius:26px;box-shadow:6px 6px 0 var(--ink);overflow:hidden;transition:box-shadow .18s,transform .18s}
+.card[data-picked=true]{box-shadow:6px 6px 0 var(--leaf);border-color:var(--leaf)}
+.th{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--cream);border-bottom:2.5px solid var(--ink)}
+.th img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
+.rec{display:inline-block;margin:0 0 10px -2px;background:var(--royal);color:#fff;font:900 15px/1 var(--sans);padding:8px 13px;border-radius:999px;border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);transform:rotate(-3deg)}
+.body h2{display:block}
+.body{padding:16px 18px 18px}
+h2{font:400 clamp(23px,6.3vw,29px)/1.3 var(--pop);color:var(--ink)}
+.body p{margin-top:6px;font:700 17px/1.6 var(--round);color:var(--ink-soft)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink);border-radius:16px;padding:9px 18px;font:900 17px/1.3 var(--sans);background:var(--white);color:var(--ink);cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.go{background:var(--gold-soft)}
+.pick[aria-pressed=true]{background:var(--leaf);color:#fff}
+.dock{position:fixed;z-index:20;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(19,33,63,.97);color:#fff}
+.dock div{max-width:1040px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.dock p{flex:1;min-width:0;font:700 16px/1.45 var(--sans)}
+.dock button{flex:none;min-height:48px;border:0;border-radius:14px;padding:8px 18px;font:900 17px/1 var(--sans);background:#FFD36B;color:#13213F;cursor:pointer}
+.dock button:disabled{opacity:.45;cursor:default}
+:focus-visible{outline:3px solid var(--royal);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="bar"><a href="../">← ビーガン白書にもどる</a></header>
+<main>
+  <h1>動く演出、<em>どれが好き？</em></h1>
+  <p class="lead"><span>4つの案を、</span><span>さわって見くらべてね。</span><br><span>気に入ったら「これにする」。</span><span>いくつでもOK！</span></p>
+  <div class="grid" id="grid">
+    <article class="card" data-id="箱庭ニッポン">
+      <a class="th" href="hakoniwa/" tabindex="-1" aria-hidden="true"><img src="thumb-hakoniwa.webp" alt="" width="600" height="750" loading="lazy"></a>
+      <div class="body"><span class="rec">おすすめ</span><h2>ビーガン箱庭ニッポン</h2><p>👑と🌱が、日本じゅうにポンポン生える。ひると夜も、きりかえられる。</p>
+        <div class="row"><a class="btn go" href="hakoniwa/">見てみる →</a><button class="btn pick" aria-pressed="false">これにする</button></div></div>
+    </article>
+    <article class="card" data-id="水彩にじみマップ">
+      <a class="th" href="suisai/" tabindex="-1" aria-hidden="true"><img src="thumb-suisai.webp" alt="" width="600" height="750" loading="lazy"></a>
+      <div class="body"><h2>水彩にじみマップ</h2><p>お店ひとつが、絵の具ひとしずく。日本が、じわっと色づく。</p>
+        <div class="row"><a class="btn go" href="suisai/">見てみる →</a><button class="btn pick" aria-pressed="false">これにする</button></div></div>
+    </article>
+    <article class="card" data-id="つぶつぶ変身">
+      <a class="th" href="tsubu/" tabindex="-1" aria-hidden="true"><img src="thumb-tsubu.webp" alt="" width="600" height="750" loading="lazy"></a>
+      <div class="body"><h2>つぶつぶ変身</h2><p>2,942のつぶが、地図からグラフへ。数字が、目で見てわかる。</p>
+        <div class="row"><a class="btn go" href="tsubu/">見てみる →</a><button class="btn pick" aria-pressed="false">これにする</button></div></div>
+    </article>
+    <article class="card" data-id="立体ジャパン">
+      <a class="th" href="rittai/" tabindex="-1" aria-hidden="true"><img src="thumb-rittai.webp" alt="" width="600" height="750" loading="lazy"></a>
+      <div class="body"><h2>立体ジャパン</h2><p>お店の数が、柱の高さに。ぐるっと回して、ながめられる。</p>
+        <div class="row"><a class="btn go" href="rittai/">見てみる →</a><button class="btn pick" aria-pressed="false">これにする</button></div></div>
+    </article>
+  </div>
+</main>
+<div class="dock"><div><p id="sum">気に入った案の「これにする」をおしてね。</p><button id="copy" disabled>コピー</button></div></div>
+<script>
+(() => {
+  const KEY = 'hakusho-fx-picks', cards = [...document.querySelectorAll('.card')], sum = document.getElementById('sum'), copy = document.getElementById('copy');
+  let picks = [];
+  try { picks = JSON.parse(localStorage.getItem(KEY) || '[]') } catch (e) {}
+  if (!Array.isArray(picks)) picks = [];
+  const text = () => '白書の演出：' + picks.join(' ＋ ');
+  const draw = () => {
+    cards.forEach(c => { const on = picks.includes(c.dataset.id); c.dataset.picked = on; const b = c.querySelector('.pick'); b.setAttribute('aria-pressed', on); b.textContent = on ? '✓ えらんだ' : 'これにする' });
+    sum.textContent = picks.length ? text() : '気に入った案の「これにする」をおしてね。';
+    copy.disabled = !picks.length; copy.textContent = 'コピー';
+  };
+  cards.forEach(c => c.querySelector('.pick').onclick = () => {
+    const id = c.dataset.id; picks = picks.includes(id) ? picks.filter(x => x !== id) : picks.concat(id);
+    try { localStorage.setItem(KEY, JSON.stringify(picks)) } catch (e) {}
+    draw();
+  });
+  copy.onclick = async () => {
+    const t = text(); let ok = false;
+    try { await navigator.clipboard.writeText(t); ok = true } catch (e) {
+      const ta = document.createElement('textarea'); ta.value = t; ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand('copy') } catch (e2) {} ta.remove();
+    }
+    copy.textContent = ok ? '✓ コピーしたよ' : 'コピーできなかった…';
+  };
+  draw();
+})();
+</script>
+</body>
+</html>
