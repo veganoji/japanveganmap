@@ -342,11 +342,11 @@
       function animate(el) {
         var from = parseFloat(el.getAttribute('data-from') || '0');
         var to = parseFloat(el.getAttribute('data-count'));
-        var dur = 1500, start = null;
+        var dur = 3600, start = null; // fast start, long slow finish
         function step(ts) {
           if (start === null) start = ts;
           var p = Math.min((ts - start) / dur, 1);
-          var e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          var e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p); // easeOutExpo
           render(el, from + (to - from) * e);
           if (p < 1) requestAnimationFrame(step);
         }
