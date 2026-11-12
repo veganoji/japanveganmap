@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>数字で見るビーガンなニッポン</title>
+<link rel="icon" href="/images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#EADCC0;--royal:#C9223A;--royal-deep:#9C1428;--gold:#D4A847;--gold-deep:#8A6D1F;
+  --ink:#1F1812;--muted:#786148;--leaf:#6C9560;--leaf-deep:#3F6A3A;--night:#13213F;--grey:#B9AE9C}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper) url(/images/scene/page-wash-portrait.webp) top center/100% auto no-repeat;color:var(--ink);font:500 17px/1.6 'Noto Sans JP',sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+h1,h2,.n{font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif;font-weight:900}
+.num{font-variant-numeric:tabular-nums}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:34px 0 26px;text-align:center}
+.sky{position:absolute;inset:0;background:url(/images/scene/hero-sky.webp) center/cover;opacity:.85;z-index:-1}
+.cloud{position:absolute;width:150px;opacity:.9;z-index:-1;animation:drift 38s linear infinite}
+.cloud.c2{top:62%;width:110px;animation-duration:52s;animation-delay:-20s}
+@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(120vw)}}
+.kicker{display:inline-block;background:var(--white);border:2px solid var(--line);border-radius:999px;padding:4px 14px;font-weight:900;font-size:14px;color:var(--royal)}
+.hero h1{font-size:clamp(30px,7.6vw,46px);line-height:1.2;margin:12px 0 6px}
+.hero h1 em{font-style:normal;color:var(--royal)}
+.big{font:900 clamp(78px,23vw,128px)/1 'Zen Maru Gothic',sans-serif;color:var(--royal);letter-spacing:-.02em;text-shadow:0 4px 0 rgba(156,20,40,.12)}
+.big small{font-size:.32em;color:var(--ink);margin-left:4px}
+.split{display:flex;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap}
+.pill{background:var(--white);border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:900;font-size:15px}
+.pill i{font-style:normal;margin-right:4px}
+.oji{width:120px;margin-top:8px;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+/* cards */
+section.card{background:rgba(255,253,248,.92);border:2px solid var(--line);border-radius:28px;padding:20px 16px;margin:18px 0;box-shadow:0 14px 30px -24px rgba(31,24,18,.5)}
+h2{font-size:24px;line-height:1.3}
+.sub{color:var(--muted);font-size:15px;font-weight:700;margin:2px 0 12px}
+/* map */
+.mapbox{position:relative}
+#map{width:100%;display:block;border-radius:20px;background:radial-gradient(ellipse at 60% 40%,#EAF2F6,#DCE9F0 70%);}
+.mapcount{position:absolute;left:14px;top:12px;background:var(--white);border-radius:16px;padding:6px 12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.4)}
+.mapcount b{font:900 30px/1 'Zen Maru Gothic',sans-serif;color:var(--royal)}
+.mapcount span{display:block;font-size:12px;font-weight:700;color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-weight:700;font-size:14px}
+.legend button{border:2px solid var(--line);background:var(--white);border-radius:999px;padding:5px 12px;font:inherit;cursor:pointer;display:flex;align-items:center;gap:6px}
+.legend button[aria-pressed=false]{opacity:.4}
+.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
+.replay{margin-left:auto;background:var(--royal)!important;color:#fff;border-color:var(--royal)!important}
+/* bars */
+.bars{display:grid;gap:7px}
+.bar{display:grid;grid-template-columns:76px 1fr 54px;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.bar .t{height:22px;border-radius:11px;background:var(--cream);overflow:hidden;display:flex}
+.bar .t i{display:block;height:100%;width:0;transition:width 1.1s cubic-bezier(.2,.8,.3,1)}
+.bar .t i.a{background:var(--leaf)} .bar .t i.b{background:#C9DDB9}
+.bar .v{text-align:right;font-weight:900}
+.more{margin-top:12px;width:100%;border:2px solid var(--line);background:var(--white);border-radius:999px;padding:10px;font:inherit;font-weight:900;cursor:pointer}
+/* donut */
+.donutrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.donut{width:170px;height:170px;flex:none}
+.donut circle{fill:none;stroke-width:22}
+.donut .bg{stroke:#F2D795}
+.donut .fg{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.3,1);transform:rotate(-90deg);transform-origin:50% 50%}
+.donut text{font:900 30px 'Zen Maru Gothic',sans-serif;fill:var(--leaf-deep)}
+.kv{display:grid;gap:8px;flex:1;min-width:180px}
+.kv div{display:flex;align-items:center;gap:8px;font-weight:700}
+.kv b{font:900 26px/1 'Zen Maru Gothic',sans-serif;margin-left:auto}
+/* types */
+.types{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.ty{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:10px 4px 8px;text-align:center;opacity:0;transform:scale(.6) translateY(10px)}
+.ty.in{animation:pop .55s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+@keyframes pop{to{opacity:1;transform:none}}
+.ty img{width:48px;height:48px;object-fit:contain}
+.ty b{display:block;font:900 20px/1.1 'Zen Maru Gothic',sans-serif}
+.ty span{font-size:12px;color:var(--muted);font-weight:700}
+/* facts */
+.facts{display:grid;gap:12px}
+.fact{display:flex;gap:14px;align-items:center;background:var(--white);border-radius:20px;padding:14px;border:2px solid var(--line)}
+.fact .n{font-size:34px;line-height:1;color:var(--royal);min-width:110px;text-align:center}
+.fact.g .n{color:var(--leaf-deep)} .fact.k .n{color:var(--muted)}
+.fact p{font-weight:700;font-size:15px}
+/* cite */
+.cite{background:var(--night);color:#fff;border:0}
+.cite .sub{color:#C9D2EA}
+.cite code{display:block;background:rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;font:700 14px/1.5 'Noto Sans JP',sans-serif;margin:10px 0}
+.btn{display:inline-block;border:0;border-radius:999px;padding:12px 18px;font:900 16px 'Noto Sans JP',sans-serif;background:var(--gold);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--gold-deep)}
+.soon{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.soon div{border:2px dashed rgba(255,255,255,.3);border-radius:16px;padding:10px 6px;text-align:center;font-size:13px;font-weight:700;color:#C9D2EA}
+.soon div b{display:block;font-size:22px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 40px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ty{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="sky"></div>
+  <img class="cloud" src="/images/scene/hero-cloud1.webp" alt="" style="top:12%">
+  <img class="cloud c2" src="/images/scene/hero-cloud2.webp" alt="">
+  <div class="wrap">
+    <span class="kicker">日本ビーガンマップ調べ・<span id="asof"></span></span>
+    <h1>数字で見る<br><em>ビーガンなニッポン</em></h1>
+    <div class="big num"><span id="total">0</span><small>軒</small></div>
+    <div class="split"><span class="pill"><i>📍</i>マップ掲載 <span class="num" id="onN">0</span></span><span class="pill"><i>✨</i>まもなく追加 <span class="num" id="nextN">0</span></span></div>
+    <img class="oji" src="/images/oji2/oji-presenting.webp" alt="ビーガン王子">
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card reveal">
+    <h2>🗾 全国のビーガンスポット</h2>
+    <p class="sub">点ひとつが、お店ひとつ。</p>
+    <div class="mapbox">
+      <canvas id="map"></canvas>
+      <div class="mapcount"><b class="num" id="mapN">0</b><span>軒</span></div>
+    </div>
+    <div class="legend">
+      <button data-k="full" aria-pressed="true"><i style="background:var(--leaf)"></i>🌿 完全ヴィーガン</button>
+      <button data-k="opt" aria-pressed="true"><i style="background:var(--gold)"></i>🌱 メニューあり</button>
+      <button data-k="closed" aria-pressed="false"><i style="background:var(--grey)"></i>閉店</button>
+      <button class="replay" id="replay">▶ もう一回</button>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>🏆 都道府県ランキング</h2>
+    <p class="sub">掲載中 ＋ まもなく追加</p>
+    <div class="bars" id="bars"></div>
+    <button class="more" id="more">47都道府県ぜんぶ見る</button>
+  </section>
+
+  <section class="card reveal">
+    <h2>🌿 完全ヴィーガンは何軒？</h2>
+    <div class="donutrow">
+      <svg class="donut" viewBox="0 0 170 170"><circle class="bg" cx="85" cy="85" r="66"/><circle class="fg" id="dfg" cx="85" cy="85" r="66"/><text x="85" y="96" text-anchor="middle" id="dpct">0%</text></svg>
+      <div class="kv">
+        <div>🌿 完全ヴィーガン<b class="num" id="kFull">0</b></div>
+        <div>🌱 メニューあり<b class="num" id="kOpt">0</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card reveal">
+    <h2>🍜 何が食べられる？</h2>
+    <p class="sub">お店のジャンル</p>
+    <div class="types" id="types"></div>
+  </section>
+
+  <section class="card reveal">
+    <h2>📈 2026年11月の大更新</h2>
+    <div class="facts">
+      <div class="fact"><span class="n num" data-to="26986">0</span><p>候補を、一軒ずつチェック</p></div>
+      <div class="fact g"><span class="n num" data-to="1177">0</span><p>新しいビーガンスポットを発見</p></div>
+      <div class="fact k"><span class="n num" id="fClosed" data-to="0">0</span><p>閉店したお店は「💔 EX VEGAN」へ</p></div>
+    </div>
+  </section>
+
+  <section class="card cite reveal">
+    <h2>📊 データの引用について</h2>
+    <p class="sub">記事・研究・発表にどうぞ（出典を明記してください）</p>
+    <code>出典：日本ビーガンマップ（veganmapjapan.org）<span id="asof2"></span>時点</code>
+    <button class="btn" id="csv">⬇ 都道府県別データ（CSV）</button>
+    <div class="soon"><div><b>🔍</b>検索トレンド<br>準備中</div><div><b>🗓️</b>月別の変化<br>準備中</div><div><b>🏙️</b>人口あたり<br>準備中</div></div>
+  </section>
+</main>
+<footer>© 日本ビーガンマップ ・ ビーガン王子</footer>
+
+<script>
+const $=(id)=>document.getElementById(id);
+const fmt=(n)=>Math.round(n).toLocaleString('ja-JP');
+function count(el,to,ms=1400){const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(f)})(t0)}
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.dispatchEvent(new Event('show'));io.unobserve(e.target)}}),{threshold:.25});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const TYPE={teishoku:'定食',sweets:'スイーツ',curry:'カレー',bakery:'パン',bowl:'丼・ボウル',course:'コース',ramen:'ラーメン',drink:'ドリンク',noodles:'麺',salad:'サラダ',burger:'バーガー',pizza:'ピザ',bento:'お弁当',pasta:'パスタ',fried:'揚げもの',sushi:'寿司',gyoza:'餃子',tofu:'豆腐',otsumami:'おつまみ'};
+fetch('data.json').then(r=>r.json()).then(D=>{
+  const d=new Date(D.asof);const asof=`${d.getFullYear()}年${d.getMonth()+1}月`;$('asof').textContent=asof;$('asof2').textContent=asof;
+  count($('total'),D.on+D.next,1800);count($('onN'),D.on);count($('nextN'),D.next);
+  // map
+  const cv=$('map'),ctx=cv.getContext('2d');const show={full:true,opt:true,closed:false};
+  const LON0=127.5,LON1=146.2,LAT0=30.6,LAT1=45.7,K=Math.cos(38*Math.PI/180);
+  let W,H,dpr;function size(){dpr=devicePixelRatio||1;W=cv.clientWidth;H=Math.round(W*((LAT1-LAT0)/((LON1-LON0)*K))*.92);cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px'}
+  // Okinawa & far islands shifted into an inset (bottom-left box)
+  const proj=(la,lo)=>{let x,y;if(la<30.5){x=((lo-122.8)/(131.5-122.8))*W*.30+W*.02;y=H*.78+((27.2-la)/(27.2-24))*H*.18;}else{x=(lo-LON0)*K/((LON1-LON0)*K)*W;y=(LAT1-la)/(LAT1-LAT0)*H*.98+H*.01;}return[x,y]};
+  const pts=D.pts.map(p=>{const[x,y]=proj(p[0],p[1]);const k=p[2];return{x,y,cat:k===2?'closed':(k>=3?'full':'opt'),la:p[0]}});
+  const order=pts.map((p,i)=>i).sort((a,b)=>pts[b].la-pts[a].la);
+  const COL={full:'#6C9560',opt:'#D4A847',closed:'#B9AE9C'};
+  let start=0,anim;
+  function draw(t){const n=Math.min(order.length,Math.floor((t-start)/2600*order.length));ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle='rgba(31,24,18,.18)';ctx.setLineDash([4,5]);ctx.strokeRect(W*.015,H*.76,W*.33,H*.22);ctx.setLineDash([]);ctx.fillStyle='rgba(31,24,18,.45)';ctx.font='700 11px "Noto Sans JP"';ctx.fillText('沖縄・奄美',W*.025,H*.775+12);
+    let c=0;for(let j=0;j<n;j++){const p=pts[order[j]];if(!show[p.cat])continue;c+=p.cat==='closed'?0:1;const age=(t-start)-j/order.length*2600;const r=age<350?2.2+3*(1-age/350):2.2;ctx.globalAlpha=p.cat==='closed'?.55:.82;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.283);ctx.fill()}
+    ctx.globalAlpha=1;$('mapN').textContent=fmt(c);if(n<order.length||(t-start)<3000)anim=requestAnimationFrame(draw)}
+  function play(){cancelAnimationFrame(anim);size();start=performance.now();anim=requestAnimationFrame(draw)}
+  const mapCard=cv.closest('section');mapCard.addEventListener('show',play,{once:true});
+  $('replay').onclick=play;addEventListener('resize',()=>{size();draw(start+1e7)});
+  document.querySelectorAll('.legend button[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;show[k]=!show[k];b.setAttribute('aria-pressed',show[k]);draw(start+1e7)});
+  // bars
+  const P=D.pref.map(r=>({p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2]})).sort((a,b)=>b.t-a.t);const max=P[0].t;let all=false;
+  function bars(){$('bars').innerHTML=(all?P:P.slice(0,10)).map((r,i)=>`<div class="bar"><span>${i+1}. ${r.p.replace(/[都府県]$/,'')}</span><span class="t"><i class="a" data-w="${r.on/max*100}"></i><i class="b" data-w="${r.nx/max*100}"></i></span><span class="v num">${fmt(r.t)}</span></div>`).join('');requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('.bar .t i').forEach(i=>i.style.width=i.dataset.w+'%')))}
+  $('bars').closest('section').addEventListener('show',bars,{once:true});
+  $('more').onclick=()=>{all=!all;$('more').textContent=all?'トップ10だけ':'47都道府県ぜんぶ見る';bars()};
+  // donut
+  const tot=D.on+D.next,full=D.full,pct=full/tot,C=2*Math.PI*66;const fg=$('dfg');fg.style.strokeDasharray=C;fg.style.strokeDashoffset=C;
+  $('dfg').closest('section').addEventListener('show',()=>{fg.style.strokeDashoffset=C*(1-pct);count($('kFull'),full);count($('kOpt'),tot-full);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1600);$('dpct').textContent=Math.round(pct*100*(1-Math.pow(1-p,3)))+'%';if(p<1)requestAnimationFrame(f)})(t0)},{once:true});
+  // types
+  $('types').innerHTML=D.types.filter(([k])=>TYPE[k]).slice(0,12).map(([k,n],i)=>`<div class="ty" style="--d:${i*70}ms"><img src="/images/menu2/${k==='sushi'?'sushi':k}.webp" alt=""><b class="num">${fmt(n)}</b><span>${TYPE[k]}</span></div>`).join('');
+  $('types').closest('section').addEventListener('show',()=>document.querySelectorAll('.ty').forEach(e=>e.classList.add('in')),{once:true});
+  // facts
+  $('fClosed').dataset.to=D.closed;
+  document.querySelector('.facts').closest('section').addEventListener('show',()=>document.querySelectorAll('.fact .n').forEach(e=>count(e,+e.dataset.to,1600)),{once:true});
+  // csv
+  $('csv').onclick=()=>{const rows=[['都道府県','掲載中','まもなく追加','合計','うち完全ヴィーガン']].concat(D.pref.map(r=>[r[0],r[1],r[2],r[1]+r[2],r[3]]));const b=new Blob(['﻿'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`japan-vegan-map-prefectures-${D.asof}.csv`;a.click()};
+});
+</script>
+</body>
+</html>
