@@ -31,7 +31,7 @@ body{background:var(--paper);color:var(--ink);font:500 17px/1.65 'Noto Sans JP',
 .cover h1 .l{display:block;font-size:clamp(46px,13.2vw,96px);color:var(--ink)}
 .cover h1 .l em{font-style:normal;color:var(--royal)}
 .hero-n{display:flex;align-items:flex-end;gap:10px;margin-top:18px}
-.hero-n b{font:400 clamp(64px,19vw,132px)/.9 var(--disp);color:var(--royal);letter-spacing:-.02em}
+.hero-n b{font:400 clamp(58px,16.5vw,132px)/.9 var(--disp);color:var(--royal);letter-spacing:-.02em}
 .hero-n span{font:900 18px/1.3 var(--round);padding-bottom:8px;white-space:nowrap}
 .hero-n span small{display:block;font:700 13px/1.4 'Noto Sans JP';color:var(--muted)}
 .cover .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
@@ -59,7 +59,7 @@ section.sec{padding:54px 0 8px}
 /* ---------- map ---------- */
 .mapbox{position:relative;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 62% 46%,#EEF5F7 0%,var(--sea) 60%,#D6E6EE 100%)}
 #map{display:block;width:100%;touch-action:manipulation}
-.mc{position:absolute;right:12px;top:12px;text-align:right;pointer-events:none}
+.mc{position:absolute;right:12px;bottom:12px;text-align:right;pointer-events:none}
 .mc b{display:block;font:400 34px/1 var(--disp);color:var(--royal)}
 .mc span{font:900 12px 'Noto Sans JP';color:var(--muted)}
 .tip{position:absolute;pointer-events:none;background:var(--night);color:#fff;border-radius:12px;padding:7px 11px;font:900 14px/1.35 'Noto Sans JP';transform:translate(-50%,-120%);white-space:nowrap;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
@@ -290,7 +290,7 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     glow=document.createElement('canvas');glow.width=cv.width;glow.height=cv.height;const g=glow.getContext('2d');g.scale(dpr,dpr);
     for(const p of pts){if(p.cat==='closed')continue;const r=16;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(255,250,236,.30)');gr.addColorStop(1,'rgba(255,250,236,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}
     for(const p of pts){if(p.cat==='closed')continue;const r=7;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(108,149,96,.10)');gr.addColorStop(1,'rgba(108,149,96,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}}
-  const LBL=[['東京',35.68,139.76,12,1],['京都',35.01,135.77,25,1],['大阪',34.69,135.5,26,-1],['福岡',33.59,130.4,39,1],['北海道',43.06,141.35,0,1],['沖縄',26.21,127.68,46,1]];
+  const LBL=[['東京',35.68,139.76,12,1],['京都',35.01,135.77,25,1],['大阪',34.69,135.5,26,-1],['福岡',33.59,130.4,39,1],['北海道',43.06,141.35,0,-1],['沖縄',26.21,127.68,46,1]];
   let start=0,anim,DUR=3400;
   function frame(t){const el=t-start,n=Math.min(order.length,Math.floor(el/DUR*order.length));
     ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
