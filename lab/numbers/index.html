@@ -4,373 +4,587 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>数字で見るビーガンなニッポン</title>
+<title>ビーガン白書 2026｜日本ビーガンマップ</title>
 <link rel="icon" href="/images/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-1400.webp" media="(max-width:899px)">
+<link rel="preload" as="image" href="img/hero-2400.webp" media="(min-width:900px)">
 <style>
-:root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#EADCC0;--royal:#C9223A;--royal-deep:#9C1428;--gold:#D4A847;--gold-deep:#8A6D1F;
-  --ink:#1F1812;--muted:#786148;--leaf:#6C9560;--leaf-deep:#3F6A3A;--leaf-soft:#C9DDB9;--night:#13213F;--grey:#B9AE9C;--sea:#E3EEF3;
-  --disp:'Dela Gothic One','Zen Maru Gothic',sans-serif;--round:'Zen Maru Gothic','Noto Sans JP',sans-serif}
+:root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#E9D9B5;--royal:#C9223A;--royal-deep:#9C1428;--royal-soft:#FAD3D9;--gold:#D4A847;--gold-deep:#9C7E2A;
+  --ink:#1F1812;--ink-soft:#3C2E22;--muted:#786148;--leaf:#5E8C52;--leaf-deep:#3F6A3A;--leaf-soft:#C9DDB9;--night:#13213F;--sky:#5E9BC4;
+  --sans:'Noto Sans JP',sans-serif;--round:'Zen Maru Gothic','Noto Sans JP',sans-serif}
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font:500 17px/1.65 'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"palt"}
+body{background:var(--paper);color:var(--ink);font:500 17px/1.7 var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"palt";overflow-x:hidden}
 .num{font-variant-numeric:tabular-nums}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
-#prog{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--leaf),var(--gold),var(--royal));z-index:50}
+.stat{font-family:var(--sans);font-weight:900;letter-spacing:-.03em;line-height:.9;color:var(--royal)}
+#prog{position:fixed;left:0;top:0;height:5px;width:0;background:linear-gradient(90deg,var(--leaf),var(--gold),var(--royal));z-index:50}
+/* ---------- buttons (chibi sticker) ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--ink);border-radius:16px;padding:9px 16px;font:700 15.5px/1.3 var(--sans);background:var(--white);color:var(--ink);cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 var(--ink)}
+.btn[aria-pressed=true]{background:var(--ink);color:#fff}
+.btn.r{background:var(--royal);color:#fff}.btn.g{background:var(--gold)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 /* ---------- cover ---------- */
-.cover{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;
-  background:url(img/hero.webp) 72% 100%/cover no-repeat}
-.cover::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,238,.97) 0%,rgba(255,249,238,.9) 38%,rgba(255,249,238,0) 64%)}
-.cover .wrap{position:relative;padding-top:34px;width:100%}
-@media(min-width:900px){.cover{background-position:right center;justify-content:center}.cover::before{background:linear-gradient(90deg,rgba(255,249,238,.97) 0%,rgba(255,249,238,.88) 34%,rgba(255,249,238,0) 60%)}}
-.eyebrow{display:flex;align-items:center;gap:10px;font:900 12px/1 'Noto Sans JP',sans-serif;letter-spacing:.22em;color:var(--royal)}
-.eyebrow::before{content:"";width:28px;height:3px;background:currentColor;border-radius:2px}
-.cover h1{margin-top:18px;font-family:var(--disp);font-weight:400;line-height:1.08;letter-spacing:.01em}
-.cover h1 .s{display:block;font-size:clamp(22px,5.6vw,34px);color:var(--muted)}
-.cover h1 .l{display:block;font-size:clamp(46px,13.2vw,96px);color:var(--ink)}
-.cover h1 .l em{font-style:normal;color:var(--royal)}
-.hero-n{display:flex;align-items:flex-end;gap:10px;margin-top:18px}
-.hero-n b{font:400 clamp(58px,16.5vw,132px)/.9 var(--disp);color:var(--royal);letter-spacing:-.02em}
-.hero-n span{font:900 18px/1.3 var(--round);padding-bottom:8px;white-space:nowrap}
-.hero-n span small{display:block;font:700 13px/1.4 'Noto Sans JP';color:var(--muted)}
-.cover .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.tag{background:rgba(255,253,248,.92);border:2px solid var(--line);border-radius:999px;padding:5px 12px;font-weight:900;font-size:14px}
-.scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,253,248,.92);display:grid;place-items:center;font-size:20px;animation:nudge 1.8s ease-in-out infinite;box-shadow:0 8px 20px -10px rgba(0,0,0,.4);text-decoration:none;color:var(--ink)}
+.cover{position:relative;overflow:hidden}
+.c-in{position:relative;z-index:2;padding-top:26px}
+.ttl{margin:0}
+.ttl img{display:block;width:min(100%,560px);height:auto;filter:drop-shadow(3px 5px 0 rgba(31,24,18,.14));transform-origin:20% 80%;animation:ttlIn .9s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes ttlIn{from{opacity:0;transform:scale(.7) rotate(-4deg)}}
+.tagline{font:900 clamp(19px,5.2vw,26px)/1.4 var(--round);color:var(--ink-soft);margin-top:6px}
+.hero-stat{display:flex;align-items:flex-end;gap:12px;margin-top:16px}
+.hero-stat .stat{font-size:clamp(86px,24vw,150px)}
+.hero-stat .u{font:900 clamp(30px,8vw,44px)/1 var(--sans);padding-bottom:8px}
+.hs-l{font:900 clamp(17px,4.6vw,21px)/1.4 var(--sans);color:var(--ink-soft);margin-top:8px}
+.asof{display:inline-flex;align-items:center;gap:7px;margin-top:12px;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font:900 14px var(--sans)}
+.asof i{width:9px;height:9px;border-radius:50%;background:var(--leaf);animation:pulse 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(94,140,82,.6)}100%{box-shadow:0 0 0 10px rgba(94,140,82,0)}}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;max-width:560px}
+.mini div{background:rgba(255,253,248,.94);border:2.5px solid var(--ink);border-radius:18px;padding:10px 6px 9px;text-align:center;box-shadow:3px 3px 0 var(--ink)}
+.mini b{display:block;font:900 clamp(26px,7.4vw,36px)/1 var(--sans);letter-spacing:-.03em}
+.mini b.g{color:var(--leaf-deep)}.mini b.r{color:var(--royal)}
+.mini span{display:block;font:900 13.5px/1.3 var(--sans);color:var(--muted);margin-top:5px}
+.c-art{position:relative;margin-top:-30px;height:clamp(300px,92vw,520px);z-index:1}
+.c-art img{width:100%;height:100%;object-fit:cover;object-position:72% 70%;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+.hero-guide{margin-top:18px;max-width:560px}
+@media(min-width:900px){
+  .cover{min-height:min(100svh,900px);display:flex;align-items:center}
+  .c-in{padding:40px 16px 60px;width:100%}
+  .c-in>*{max-width:540px}
+  .c-art{position:absolute;inset:0;margin:0;height:auto}
+  .c-art img{object-position:right center;-webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 50%);mask-image:linear-gradient(90deg,transparent 22%,#000 50%)}
+}
+.scroll{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:3;width:46px;height:46px;border-radius:50%;background:var(--white);border:2.5px solid var(--ink);box-shadow:3px 3px 0 var(--ink);display:grid;place-items:center;font:900 20px var(--sans);animation:nudge 1.8s ease-in-out infinite;text-decoration:none;color:var(--ink)}
 @keyframes nudge{50%{transform:translate(-50%,6px)}}
+/* ---------- Oji guide ---------- */
+.guide{display:flex;gap:8px;align-items:flex-end;margin:6px 0 20px;max-width:780px}
+.g-oji{flex:none;width:clamp(84px,22vw,112px);border:0;background:none;padding:0;cursor:pointer;opacity:0;transform:translateY(30px) scale(.6);transform-origin:50% 100%;-webkit-tap-highlight-color:transparent}
+.guide.on .g-oji{animation:ojiIn .75s cubic-bezier(.3,1.6,.5,1) forwards}
+@keyframes ojiIn{to{opacity:1;transform:none}}
+.g-oji img{display:block;width:100%;height:auto;transform-origin:50% 100%;animation:bob 4s ease-in-out infinite}
+.g-oji.hop img{animation:hop .55s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bob{0%,100%{transform:none}50%{transform:translateY(-5px)}}
+@keyframes hop{0%{transform:none}30%{transform:translateY(-16px) scale(1.04,.96)}60%{transform:translateY(0) scale(1.06,.92)}100%{transform:none}}
+.g-bub{position:relative;flex:1;min-width:0;background:#fff;border:2.5px solid var(--ink);border-radius:22px;padding:13px 16px 14px;box-shadow:4px 4px 0 var(--ink);font:700 17.5px/1.6 var(--round);color:var(--ink);opacity:0;transform:scale(.8);transform-origin:0 100%;cursor:pointer;margin-bottom:14px}
+.guide.on .g-bub{animation:bubIn .55s .2s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes bubIn{to{opacity:1;transform:none}}
+.g-bub::before{content:"";position:absolute;left:-10px;bottom:18px;width:16px;height:16px;background:#fff;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg)}
+.g-txt em{font-style:normal;color:var(--royal)}
+.g-txt b{font-weight:900}
+.g-art img{display:block;height:44px;width:auto;margin:0 0 4px;animation:artIn .5s cubic-bezier(.3,1.8,.5,1)}
+@keyframes artIn{from{opacity:0;transform:scale(.4) rotate(-8deg)}}
+.g-q{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.g-q:empty{display:none}
+.qo{border:2.5px solid var(--ink);background:var(--paper);border-radius:14px;padding:8px 14px;font:900 17px/1.2 var(--sans);box-shadow:3px 3px 0 var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s,background .2s;color:var(--ink)}
+.qo:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--ink)}
+.qo.ok{background:var(--leaf);color:#fff;animation:artIn .5s cubic-bezier(.3,1.8,.5,1)}
+.qo.ng{background:#EFE8DC;color:#9C8E7A;text-decoration:line-through;box-shadow:none;transform:translate(3px,3px)}
+.qo.skip{background:none;border:2px dashed var(--line);box-shadow:none;font-weight:700;font-size:14.5px;color:var(--muted)}
+.qo:disabled{cursor:default}
+.g-more{display:none;text-align:right;font:900 12.5px/1 var(--sans);color:var(--muted);margin-top:4px}
+.g-bub.can .g-more{display:block;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
 /* ---------- sections ---------- */
-section.sec{padding:54px 0 8px}
-.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
-.sh .no{font:400 15px/1 var(--disp);color:var(--royal);letter-spacing:.05em}
-.sh h2{font:900 clamp(22px,6vw,34px)/1.25 var(--round);text-wrap:balance;word-break:keep-all}
-.lede{color:var(--muted);font-weight:700;font-size:15px;margin-bottom:16px}
-.rule{height:3px;background:var(--ink);border-radius:2px;width:0;transition:width 1s cubic-bezier(.2,.8,.3,1);margin:8px 0 16px}
-.in .rule{width:56px}
-.card{background:var(--white);border:2px solid var(--line);border-radius:26px;padding:18px 16px;box-shadow:0 18px 36px -30px rgba(31,24,18,.55)}
-.duo{display:grid;gap:18px}
-@media(min-width:900px){.duo{grid-template-columns:1fr 1fr;align-items:start}.wide-map{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:start}}
-.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.k3{background:var(--cream);border-radius:18px;padding:12px 8px;text-align:center}
-.k3 b{display:block;font:400 clamp(24px,7vw,34px)/1.05 var(--disp);color:var(--ink)}
-.k3 span{font-size:12.5px;font-weight:900;color:var(--muted)}
-.k3.r b{color:var(--royal)}.k3.g b{color:var(--leaf-deep)}
+section.sec{padding:70px 0 6px}
+.sh{display:flex;align-items:flex-end;gap:12px;margin-bottom:16px}
+.sh .no{flex:none;font:900 clamp(56px,15vw,88px)/.78 var(--sans);letter-spacing:-.05em;color:var(--royal);position:relative}
+.sh .no::after{content:"";position:absolute;left:4%;right:4%;bottom:-8px;height:6px;border-radius:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .9s .2s cubic-bezier(.2,.8,.3,1)}
+.in .sh .no::after{transform:none}
+.sh h2{min-width:0;font:900 clamp(25px,6.6vw,40px)/1.22 var(--sans);text-wrap:balance;word-break:auto-phrase;letter-spacing:-.01em}
+.card{background:var(--white);border:2.5px solid var(--ink);border-radius:26px;padding:18px 16px;box-shadow:5px 5px 0 var(--ink)}
+.duo{display:grid;grid-template-columns:minmax(0,1fr);gap:0 26px}
+@media(min-width:900px){.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.3,1)}
 .reveal.in{opacity:1;transform:none}
+.src{font-size:14px;line-height:1.6;color:var(--muted);margin-top:14px;font-weight:700}
+.k3{background:var(--cream);border-radius:18px;padding:13px 14px}
+.k3 b{display:block;font:900 clamp(32px,8.6vw,44px)/1 var(--sans);letter-spacing:-.03em}
+.k3 span{display:block;font-size:15px;font-weight:900;color:var(--muted);margin-top:4px}
+.k3.r b{color:var(--royal)}.k3.g b{color:var(--leaf-deep)}
 /* ---------- map ---------- */
-.mapbox{position:relative;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 62% 46%,#EEF5F7 0%,var(--sea) 60%,#D6E6EE 100%)}
-#map{display:block;width:100%;touch-action:manipulation}
-.mc{position:absolute;right:12px;bottom:12px;text-align:right;pointer-events:none}
-.mc b{display:block;font:400 34px/1 var(--disp);color:var(--royal)}
-.mc span{font:900 12px 'Noto Sans JP';color:var(--muted)}
-.tip{position:absolute;pointer-events:none;background:var(--night);color:#fff;border-radius:12px;padding:7px 11px;font:900 14px/1.35 'Noto Sans JP';transform:translate(-50%,-120%);white-space:nowrap;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
-.tip small{display:block;font-weight:700;opacity:.8;font-size:12px}
-.tip[hidden]{display:none}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.chip{border:2px solid var(--line);background:var(--white);border-radius:999px;padding:7px 14px;font:900 14px 'Noto Sans JP';cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
-.chip i{width:11px;height:11px;border-radius:50%;display:inline-block}
-.chip[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
-.chip.play{margin-left:auto;background:var(--royal);border-color:var(--royal);color:#fff}
-.side .k3{text-align:left;padding:14px 16px}
-.side{display:grid;gap:10px;margin-top:14px}
+@media(min-width:900px){.wide-map{display:grid;grid-template-columns:1.55fr 1fr;gap:26px;align-items:start}}
+.mapbox{position:relative;border:2.5px solid var(--ink);border-radius:26px;overflow:hidden;background:radial-gradient(ellipse at 60% 45%,#EAF4F7 0%,#D8E9F0 65%,#C8DFE9 100%);box-shadow:5px 5px 0 var(--ink)}
+#map{display:block;width:100%;touch-action:manipulation;cursor:pointer}
+.mc{position:absolute;right:14px;bottom:12px;text-align:right;pointer-events:none}
+.mc b{display:block;font:900 clamp(40px,11vw,56px)/1 var(--sans);letter-spacing:-.03em;color:var(--royal)}
+.mc span{font:900 15px var(--sans)}
+.now{position:absolute;right:12px;top:12px;background:var(--night);color:#fff;border-radius:999px;padding:5px 13px;font:900 14px var(--sans);transition:opacity .4s;pointer-events:none}
+.now[hidden]{display:block;opacity:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font:900 15.5px var(--sans)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:7px;vertical-align:-1px;border:2px solid #fff;box-shadow:0 0 0 1.5px rgba(31,24,18,.3)}
+.pinfo{margin-top:16px}
+.pinfo .hint{font:700 15.5px var(--round);color:var(--muted)}
+.pi-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pi-top .nm{font:900 24px var(--sans)}
+.pi-top .stat{font-size:52px}
+.pi-top .u{font:900 20px var(--sans)}
+.pill{display:inline-block;background:var(--gold);border:2px solid var(--ink);border-radius:999px;padding:2px 11px;font:900 14.5px var(--sans)}
+.pi-sub{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font:900 15.5px var(--sans);color:var(--ink-soft)}
+.pi-sub b{font-size:19px}
+.side{display:grid;gap:10px;margin-top:16px}
 @media(min-width:900px){.side{margin-top:0}}
+.pop-in{animation:artIn .5s cubic-bezier(.3,1.8,.5,1)}
 /* ---------- bars ---------- */
-.bars{display:grid;gap:8px}
-.bar{display:grid;grid-template-columns:22px 64px 1fr 48px;gap:8px;align-items:center;font-weight:900;font-size:15px}
-.bar .rk{font:400 13px var(--disp);color:var(--muted)}
-.bar .t{height:24px;border-radius:12px;background:var(--cream);overflow:hidden;display:flex}
+.bars{position:relative;display:grid;gap:4px}
+.bar{display:grid;grid-template-columns:28px 72px 1fr 62px;gap:10px;align-items:center;font-weight:900;font-size:16.5px;padding:4px 6px;border-radius:12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.bar:hover{background:rgba(212,168,71,.12)}
+.bar.sel{background:var(--royal-soft)}
+.bar .rk{font:900 16px var(--sans);color:var(--muted);text-align:right}
+.bar .t{height:26px;border-radius:13px;background:var(--cream);overflow:hidden;display:flex}
 .bar .t i{display:block;height:100%;width:0;transition:width 1.4s cubic-bezier(.2,.8,.3,1)}
-.bar .t i.a{background:var(--leaf)}.bar .t i.b{background:var(--leaf-soft)}
-.bar .v{text-align:right;font:400 16px var(--disp)}
-.more{margin-top:12px;width:100%;border:2px solid var(--line);background:var(--white);border-radius:999px;padding:11px;font:900 15px 'Noto Sans JP';cursor:pointer;color:var(--ink)}
-.keys{display:flex;gap:14px;font-size:13px;font-weight:900;color:var(--muted);margin:-6px 0 12px}
-.keys i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+.bar .t i.a{background:var(--leaf)}.bar .t i.b{background:var(--leaf-soft)}.bar .t i.c{background:var(--gold)}
+.bar .v{text-align:right;font:900 19px var(--sans);letter-spacing:-.02em}
+.keys{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:15px;font-weight:900;color:var(--ink-soft);margin:14px 0 10px}
+.keys i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:6px;vertical-align:-1px}
 /* ---------- cities ---------- */
-.cities{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.city{display:flex;align-items:center;gap:10px;background:var(--white);border:2px solid var(--line);border-radius:16px;padding:10px 12px;opacity:0;transform:scale(.8)}
+.cities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.city{display:flex;align-items:center;gap:10px;background:var(--white);border:2.5px solid var(--ink);border-radius:18px;padding:11px 12px;box-shadow:3px 3px 0 var(--ink);opacity:0;transform:scale(.8);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .in .city{animation:pop .6s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
-.city .rk{font:400 18px var(--disp);color:var(--gold-deep);width:24px}
-.city b{display:block;font:900 16px/1.2 var(--round)}
-.city small{font-size:11.5px;color:var(--muted);font-weight:700}
-.city .n{margin-left:auto;font:400 20px var(--disp);color:var(--royal)}
-.city:first-child{grid-column:1/-1;background:var(--royal);border-color:var(--royal);color:#fff}
+.city.bump{animation:bump .45s cubic-bezier(.3,1.8,.5,1)!important;opacity:1;transform:none}
+@keyframes bump{40%{transform:scale(1.07) rotate(-1.5deg)}}
+.city .rk{font:900 20px var(--sans);color:var(--gold-deep);width:24px}
+.city b{display:block;font:900 17px/1.2 var(--sans)}
+.city small{font-size:13.5px;color:var(--muted);font-weight:900}
+.city .n{margin-left:auto;font:900 24px var(--sans);letter-spacing:-.03em;color:var(--royal)}
+.city:first-child{grid-column:1/-1;background:var(--royal);color:#fff}
 .city:first-child .rk,.city:first-child .n,.city:first-child small{color:#fff}
-.city:first-child .n{font-size:30px}
+.city:first-child .n{font-size:38px}
 @keyframes pop{to{opacity:1;transform:none}}
 /* ---------- donut ---------- */
-.donutrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.donut{width:128px;height:128px;flex:none}
-.donut circle{fill:none;stroke-width:20}
+.donutrow{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.donut{width:150px;height:150px;flex:none}
+.donut circle{fill:none;stroke-width:22}
 .donut .bg{stroke:#F2D795}
-.donut .fg{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset 2.2s cubic-bezier(.2,.8,.3,1);transform:rotate(-90deg);transform-origin:50% 50%}
-.donut text{font:400 28px var(--disp);fill:var(--leaf-deep)}
-.dl{display:grid;gap:6px;flex:1;min-width:170px;font-weight:900;font-size:15px}
-.dl div{white-space:nowrap}
-.dl div{display:flex;align-items:center;gap:6px}.dl b{margin-left:auto;font:400 22px var(--disp)}
-/* ---------- types ---------- */
-.types{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.ty{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:8px 2px 6px;text-align:center;opacity:0;transform:scale(.6) translateY(10px)}
-.in .ty{animation:pop .6s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
-.ty img{width:46px;height:46px;object-fit:contain}
-.ty b{display:block;font:400 18px/1.1 var(--disp)}
-.ty span{font-size:11.5px;color:var(--muted);font-weight:900}
+.donut .fg{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset 2.4s cubic-bezier(.2,.8,.3,1);transform:rotate(-90deg);transform-origin:50% 50%}
+.donut text{font:900 34px var(--sans);fill:var(--leaf-deep);letter-spacing:-.03em}
+.dl{display:grid;gap:8px;flex:1;min-width:190px;font-weight:900;font-size:16.5px}
+.dl div{display:flex;align-items:center;gap:6px;white-space:nowrap}.dl b{margin-left:auto;font:900 28px var(--sans);letter-spacing:-.03em}
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.big3 .k3{text-align:center;padding:12px 6px}
+.subh{font:900 16.5px var(--sans);margin:20px 0 0}
 /* ---------- trends ---------- */
-.take{font:900 clamp(19px,5vw,24px)/1.35 var(--round);margin:4px 0 12px}
+.take{font:900 clamp(21px,5.6vw,28px)/1.35 var(--sans);margin:2px 0 12px;min-height:2.7em}
 .take em{font-style:normal;color:var(--royal)}
+.tchart{position:relative;touch-action:pan-y}
 #tsvg{width:100%;height:auto;display:block;overflow:visible}
-#tsvg .ln{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1)}
-#tsvg .ax{font:700 11px 'Noto Sans JP';fill:#9C8A70}
+#tsvg .ln{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1)}
+#tsvg .ax{font:700 13px var(--sans);fill:#8C7A60}
 #tsvg .gl{stroke:#EADCC0;stroke-width:1}
 #tsvg .mk{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .4s,transform .5s cubic-bezier(.3,1.6,.5,1)}
-.in #tsvg .mk{opacity:1;transform:none}
-#tsvg .mk text{font:400 11px var(--disp);fill:#fff}
-.caps{list-style:none;padding:0;display:grid;gap:8px;margin-top:12px}
-.caps li{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:15px}
-.caps li b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font:400 12px var(--disp)}
-.tkeys{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-weight:900;font-size:13px}
-.tkeys i{display:inline-block;width:16px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
-.src{font-size:12px;color:var(--muted);margin-top:10px;font-weight:700}
+#tsvg.ans .mk{opacity:1;transform:none}
+#tsvg .mk text{font:900 12px var(--sans);fill:#fff}
+#tsvg .cur{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3;opacity:0}
+.tt{position:absolute;top:0;pointer-events:none;background:var(--night);color:#fff;border-radius:14px;padding:8px 12px;font:900 14px/1.5 var(--sans);transform:translate(-50%,-105%);white-space:nowrap;opacity:0;transition:opacity .2s;box-shadow:3px 3px 0 var(--ink)}
+.tt i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.tt.on{opacity:1}
+.caps{list-style:none;padding:0;display:grid;gap:10px;margin-top:14px}
+.caps li{display:flex;gap:10px;align-items:flex-start;font-weight:900;font-size:16px;opacity:0;transform:translateX(-10px);transition:opacity .5s,transform .5s}
+.caps.ans li{opacity:1;transform:none}
+.caps li b{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font:900 13px var(--sans)}
+.tkeys{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-weight:900;font-size:15px}
+.tkeys i{display:inline-block;width:18px;height:5px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.drag{font:700 14.5px var(--round);color:var(--muted);margin-top:6px}
+@media(min-width:900px){.tgrid{display:grid;grid-template-columns:1.45fr 1fr;gap:30px;align-items:start}.tgrid .tkeys{margin-top:0}}
+/* ---------- types ---------- */
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(min-width:600px){.types{grid-template-columns:repeat(4,1fr)}}
+.ty{position:relative;background:var(--white);border:2.5px solid var(--ink);border-radius:20px;padding:10px 4px 9px;text-align:center;box-shadow:3px 3px 0 var(--ink);opacity:0;transform:scale(.6) translateY(10px);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.in .ty{animation:pop .6s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+.ty.bump{animation:bump .45s cubic-bezier(.3,1.8,.5,1)!important;opacity:1;transform:none}
+.ty.hl{background:var(--gold)}
+.ty.win{background:var(--royal);color:#fff}.ty.win span{color:#fff}
+.ty img{width:56px;height:56px;object-fit:contain}
+.ty b{display:block;font:900 22px/1.1 var(--sans);letter-spacing:-.02em}
+.ty span{display:block;font-size:14.5px;color:var(--muted);font-weight:900}
 /* ---------- chains ---------- */
-.chainhead{font:400 clamp(40px,12vw,64px)/1 var(--disp);color:var(--royal)}
-.chainhead small{font:900 18px var(--round);color:var(--ink);margin-left:4px}
-.cchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.cc{background:var(--cream);border-radius:14px;padding:7px 11px;font-weight:900;font-size:14px;opacity:0;transform:scale(.7)}
-.in .cc{animation:pop .5s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
-.cc span{color:var(--muted);font-size:12px;margin-left:4px}
-.soon{display:flex;gap:14px;align-items:center}
-.soon img{width:96px;flex:none}
-/* ---------- facts ---------- */
-.facts{display:grid;gap:10px}
-@media(min-width:900px){.facts{grid-template-columns:repeat(3,1fr)}}
-.fact{background:var(--white);border:2px solid var(--line);border-radius:22px;padding:18px 16px}
-.fact b{display:block;font:400 clamp(38px,11vw,52px)/1 var(--disp);color:var(--royal)}
-.fact.g b{color:var(--leaf-deep)}.fact.k b{color:var(--muted)}
-.fact p{font-weight:900;margin-top:6px}
+.ch-top{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.ch-top .stat{font-size:clamp(64px,18vw,104px)}
+.ch-top .u{font:900 26px var(--sans);padding-bottom:6px}
+.ch-lbl{font:900 16px var(--sans);color:var(--muted)}
+.stack{display:flex;height:30px;border-radius:15px;overflow:hidden;background:var(--cream);margin:14px 0 6px;border:2px solid var(--ink)}
+.stack i{display:block;height:100%;width:0;transition:width 1.2s cubic-bezier(.2,.8,.3,1)}
+.chl{display:grid;gap:10px;margin-top:14px}
+.cb{display:grid;grid-template-columns:30px 1fr auto;align-items:center;gap:10px;text-align:left;width:100%}
+.cb .dot{width:30px;height:30px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;font:900 17px var(--sans);color:#fff}
+.cb .nm{font:900 16.5px/1.3 var(--sans)}.cb .nm small{display:block;font:700 13.5px/1.4 var(--sans);color:var(--muted)}
+.cb .n{font:900 19px var(--sans);letter-spacing:-.02em}
+.cb.added{background:var(--cream)}
+.cb.added .dot{animation:artIn .5s cubic-bezier(.3,1.8,.5,1)}
+/* ---------- funnel ---------- */
+.fun{display:grid;gap:12px}
+.fr .fl{display:flex;justify-content:space-between;align-items:baseline;font:900 16.5px var(--sans);margin-bottom:5px}
+.fr .fl b{font:900 clamp(32px,9vw,48px)/1 var(--sans);letter-spacing:-.03em}
+.fr .fb{height:22px;border-radius:11px;background:var(--cream);overflow:hidden}
+.fr .fb i{display:block;height:100%;width:0;border-radius:11px;transition:width 1.6s cubic-bezier(.2,.8,.3,1)}
 /* ---------- cite ---------- */
-.cite{background:var(--night) url(/images/scene/night.webp) center bottom/cover;color:#fff;border-radius:28px;padding:26px 18px;margin-top:8px}
-.cite h2{font:900 24px/1.3 var(--round)}
-.cite p{color:#C9D2EA;font-weight:700;font-size:15px;margin-top:4px}
-.cite code{display:block;background:rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;font:700 14px/1.6 'Noto Sans JP';margin:14px 0}
-.btn{display:inline-block;border:0;border-radius:999px;padding:13px 20px;font:900 16px 'Noto Sans JP';background:var(--gold);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--gold-deep)}
-.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--gold-deep)}
-footer{text-align:center;color:var(--muted);font-size:13px;font-weight:700;padding:30px 0 44px}
-footer img{width:84px;display:block;margin:0 auto 6px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ty,.city,.cc,#tsvg .mk{opacity:1;transform:none}}
+.cite{background:var(--night) url(/images/scene/night.webp) center bottom/cover;color:#fff;border:2.5px solid var(--ink);border-radius:28px;padding:26px 18px;box-shadow:5px 5px 0 var(--ink)}
+.cite .sh .no{color:var(--gold)}
+.cite p{color:#D5DCEE;font-weight:700;font-size:16.5px}
+.cite code{display:block;background:rgba(255,255,255,.12);border-radius:14px;padding:13px 15px;font:700 16px/1.6 var(--sans);margin:14px 0}
+.cite .g-bub,.cite .g-bub p{color:var(--ink);font-size:inherit}
+footer{text-align:center;color:var(--muted);font-size:15px;font-weight:700;padding:34px 0 90px}
+footer img{width:92px;display:block;margin:0 auto 6px}
+/* ---------- lab: title switcher ---------- */
+.tsw{position:fixed;left:8px;bottom:8px;z-index:60;display:flex;align-items:center;gap:3px;background:rgba(31,24,18,.88);color:#fff;border-radius:14px;padding:4px 4px 4px 10px;font:900 12px var(--sans);box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.tsw button{width:28px;height:28px;border-radius:10px;border:0;background:rgba(255,255,255,.14);color:#fff;font:900 15px var(--sans);cursor:pointer}
+.tsw button[aria-pressed=true]{background:var(--gold);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ty,.city,.g-oji,.g-bub,#tsvg .mk,.caps li{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
 <div id="prog"></div>
-<header class="cover">
-  <div class="wrap">
-    <p class="eyebrow">JAPAN VEGAN MAP · REPORT <span id="asof"></span></p>
-    <h1><span class="s">数字で見る</span><span class="l">ビーガンな<br><em>ニッポン</em></span></h1>
-    <div class="hero-n"><b class="num" id="total">0</b><span>軒<small>のビーガンスポット</small></span></div>
-    <div class="meta"><span class="tag">📍 マップ掲載 <span class="num" id="onN">0</span></span><span class="tag">✨ まもなく追加 <span class="num" id="nextN">0</span></span></div>
+<header class="cover" id="top">
+  <div class="wrap c-in">
+    <h1 class="ttl"><img id="ttlImg" src="img/title-A.webp" alt="ビーガン白書 2026" width="1100" height="422"></h1>
+    <p class="tagline" id="tagline">日本のビーガン、ぜんぶ数えてみた。</p>
+    <div class="hero-stat"><b class="stat num" id="total">0</b><span class="u">軒</span></div>
+    <p class="hs-l">全国のビーガンスポット</p>
+    <div class="mini">
+      <div><b class="num r" data-to="47">0</b><span>都道府県<br>すべてに</span></div>
+      <div><b class="num g" id="hFull">0</b><span>お店まるごと<br>ヴィーガン</span></div>
+      <div><b class="num" data-to="26986">0</b><span>件の候補を<br>チェック</span></div>
+    </div>
+    <span class="asof"><i></i><span id="asofTxt">2026年11月時点</span></span>
+    <div class="guide hero-guide" id="g0"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-greeting.webp" alt="ビーガン王子"></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
   </div>
+  <div class="c-art"><img src="img/hero-1400.webp" srcset="img/hero-1400.webp 1400w, img/hero-2400.webp 2400w" sizes="(min-width:900px) 100vw, 170vw" alt="" fetchpriority="high"></div>
   <a class="scroll" href="#s1" aria-label="下へ">↓</a>
 </header>
 
 <main class="wrap">
   <section class="sec reveal" id="s1">
     <div class="sh"><span class="no">01</span><h2>全国のビーガンスポット</h2></div>
-    <p class="lede">点ひとつが、お店ひとつ。タップで都道府県の数。</p><div class="rule"></div>
+    <div class="guide" id="g1"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-explaining.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
     <div class="wide-map">
       <div>
-        <div class="mapbox"><canvas id="map"></canvas><div class="mc"><b class="num" id="mapN">0</b><span>軒</span></div><div class="tip" id="tip" hidden></div></div>
-        <div class="chips" id="filters">
-          <button class="chip" data-f="all" aria-pressed="true">すべて</button>
-          <button class="chip" data-f="full" aria-pressed="false"><i style="background:var(--leaf)"></i>🌿だけ</button>
-          <button class="chip" data-f="closed" aria-pressed="false"><i style="background:var(--grey)"></i>閉店も</button>
-          <button class="chip play" id="replay">▶ もう一回</button>
-        </div>
+        <div class="mapbox"><canvas id="map" aria-label="日本地図。点ひとつがお店ひとつ"></canvas><span class="now" id="mapNow" hidden></span><div class="mc"><b class="num" id="mapN">0</b><span>軒</span></div></div>
+        <div class="legend"><span><i style="background:#4E8A45"></i>お店まるごとヴィーガン</span><span><i style="background:#D9A23A"></i>ヴィーガンメニューあり</span></div>
+        <div class="btns"><button class="btn" id="fFull" aria-pressed="false">🌿 まるごとヴィーガンだけ</button><button class="btn r" id="replay">▶ もう一回</button></div>
       </div>
-      <div class="side" id="side"></div>
+      <div>
+        <div class="card pinfo" id="pinfo"><p class="hint">地図の県をタップすると、ここに数字が出るよ。</p></div>
+        <div class="side" id="side"></div>
+      </div>
     </div>
   </section>
 
   <section class="sec reveal" id="s2">
     <div class="sh"><span class="no">02</span><h2>都道府県ランキング</h2></div>
-    <p class="lede" id="tokyoLede"></p><div class="rule"></div>
-    <div class="keys"><span><i style="background:var(--leaf)"></i>掲載中</span><span><i style="background:var(--leaf-soft)"></i>まもなく追加</span></div>
+    <div class="guide" id="g2"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-questioning.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
+    <div class="btns" style="margin-top:0"><button class="btn" id="bCount" aria-pressed="true">軒数</button><button class="btn" id="bPop" aria-pressed="false">人口10万人あたり</button></div>
+    <div class="keys" id="keys"><span><i style="background:var(--leaf)"></i>マップ掲載中</span><span><i style="background:var(--leaf-soft)"></i>まもなく追加</span></div>
     <div class="bars" id="bars"></div>
-    <button class="more" id="more">47都道府県ぜんぶ見る</button>
+    <div class="btns"><button class="btn" id="more">47都道府県ぜんぶ見る</button></div>
+    <p class="src">人口：総務省「令和2年国勢調査」</p>
   </section>
 
   <div class="duo">
     <section class="sec reveal" id="s3">
       <div class="sh"><span class="no">03</span><h2>ビーガンな街 TOP10</h2></div>
-      <p class="lede">市区町村別・掲載中</p><div class="rule"></div>
+      <div class="guide" id="g3"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-presenting.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
       <div class="cities" id="cities"></div>
     </section>
     <section class="sec reveal" id="s4">
-      <div class="sh"><span class="no">04</span><h2>完全ヴィーガンは何軒？</h2></div>
-      <p class="lede">メニューの一部ではなく、お店まるごと。</p><div class="rule"></div>
+      <div class="sh"><span class="no">04</span><h2>まるごとヴィーガンは何軒？</h2></div>
+      <div class="guide" id="g4"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-curious.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
       <div class="card"><div class="donutrow">
-        <svg class="donut" viewBox="0 0 150 150"><circle class="bg" cx="75" cy="75" r="58"/><circle class="fg" id="dfg" cx="75" cy="75" r="58"/><text x="75" y="85" text-anchor="middle" id="dpct">0%</text></svg>
-        <div class="dl"><div>🌿 完全ヴィーガン<b class="num" id="kFull">0</b></div><div>🌱 メニューあり<b class="num" id="kOpt">0</b></div></div>
+        <svg class="donut" viewBox="0 0 150 150"><circle class="bg" cx="75" cy="75" r="58"/><circle class="fg" id="dfg" cx="75" cy="75" r="58"/><text x="75" y="87" text-anchor="middle" id="dpct">?</text></svg>
+        <div class="dl"><div>🌿 まるごとヴィーガン<b class="num" id="kFull">?</b></div><div>🌱 メニューあり<b class="num" id="kOpt">?</b></div></div>
       </div>
+      <p class="subh">🌿の割合が高い県</p>
       <div class="big3" id="fullTop"></div></div>
     </section>
   </div>
 
   <section class="sec reveal" id="s5">
     <div class="sh"><span class="no">05</span><h2>「ヴィーガン」は、いつから？</h2></div>
-    <p class="lede">Google検索の人気度（日本・2016年〜）</p><div class="rule"></div>
+    <div class="guide" id="g5"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-wondering.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
     <div class="card">
       <p class="take" id="take"></p>
-      <svg id="tsvg" viewBox="0 0 360 210"></svg>
+      <div class="tgrid"><div>
+      <div class="tchart" id="tchart"><svg id="tsvg" viewBox="0 0 360 226"></svg><div class="tt" id="tt"></div></div>
+      <p class="drag">👆 グラフを指でなぞると、その月の数字が見られるよ</p>
+      </div><div>
       <div class="tkeys" id="tkeys"></div>
       <ol class="caps" id="caps"></ol>
       <p class="src" id="tsrc"></p>
+      </div></div>
     </div>
   </section>
 
   <div class="duo">
     <section class="sec reveal" id="s6">
       <div class="sh"><span class="no">06</span><h2>何が食べられる？</h2></div>
-      <p class="lede">お店のジャンル</p><div class="rule"></div>
+      <div class="guide" id="g6"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-excited.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
       <div class="types" id="types"></div>
+      <div class="btns"><button class="btn g" id="spin">🎲 今日のごはんを決めて！</button><a class="btn" id="spinGo" href="https://maps.app.goo.gl/8tyER4M5xx1vQQni6?g_st=i" target="_blank" rel="noopener" hidden>マップで探す →</a></div>
     </section>
     <section class="sec reveal" id="s7">
-      <div class="sh"><span class="no">07</span><h2>チェーン店も入れると…</h2></div>
-      <p class="lede">ヴィーガンメニューがある全国チェーン</p><div class="rule"></div>
+      <div class="sh"><span class="no">07</span><h2>チェーン店も入れると？</h2></div>
+      <div class="guide" id="g7"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-pointing-up.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
       <div class="card" id="chains"></div>
     </section>
   </div>
 
   <section class="sec reveal" id="s8">
     <div class="sh"><span class="no">08</span><h2>2026年11月の大更新</h2></div>
-    <div class="rule"></div>
-    <div class="facts">
-      <div class="fact"><b class="num" data-to="26986">0</b><p>件の候補をチェック</p></div>
-      <div class="fact g"><b class="num" data-to="1177">0</b><p>軒を新しく発見</p></div>
-      <div class="fact k"><b class="num" id="fClosed" data-to="0">0</b><p>軒の閉店を反映</p></div>
+    <div class="guide" id="g8"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-investigating.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
+    <div class="card fun">
+      <div class="fr"><div class="fl"><span>チェックした候補</span><b class="num" data-to="26986">0</b></div><div class="fb"><i style="background:var(--gold)" data-w="100"></i></div></div>
+      <div class="fr"><div class="fl"><span>新しく見つけたお店</span><b class="num" style="color:var(--leaf-deep)" data-to="1177">0</b></div><div class="fb"><i style="background:var(--leaf)" data-w="21"></i></div></div>
+      <div class="fr"><div class="fl"><span>閉店を反映 💔</span><b class="num" style="color:var(--muted)" id="fClosed" data-to="0">0</b></div><div class="fb"><i style="background:#A99D8A" data-w="7"></i></div></div>
     </div>
   </section>
 
   <section class="sec reveal" id="s9">
     <div class="cite">
-      <div class="sh"><span class="no" style="color:var(--gold)">09</span><h2>データの引用について</h2></div>
-      <p>記事・研究・発表にどうぞ。出典を明記してください。</p>
-      <code>出典：日本ビーガンマップ（veganmapjapan.org）<span id="asof2"></span>時点</code>
-      <button class="btn" id="csv">⬇ 都道府県別データ（CSV）</button>
+      <div class="sh"><span class="no">09</span><h2>データの引用について</h2></div>
+      <div class="guide" id="g9"><button class="g-oji" aria-label="ビーガン王子"><img src="/images/oji2/oji-winking.webp" alt=""></button><div class="g-bub"><div class="g-art"></div><p class="g-txt"></p><div class="g-q"></div><span class="g-more">タップ ▶</span></div></div>
+      <p>記事・研究・発表に自由に使えます。出典を明記してください。</p>
+      <code>出典：ビーガン白書 2026（日本ビーガンマップ／veganmapjapan.org）<span id="asof2"></span>時点</code>
+      <button class="btn g" id="csv">⬇ 都道府県別データ（CSV）</button>
     </div>
   </section>
 </main>
 <footer><img src="/images/oji2/oji-happy.webp" alt="">日本ビーガンマップ ・ ビーガン王子</footer>
+<div class="tsw" id="tsw">タイトル案<button data-t="A">A</button><button data-t="B">B</button><button data-t="C">C</button><button data-t="D">D</button></div>
 
 <script>
 const $=(id)=>document.getElementById(id);
 const fmt=(n)=>Math.round(n).toLocaleString('ja-JP');
 const ease=(p)=>p>=1?1:1-Math.pow(2,-10*p);
-function count(el,to,ms=2600){if(!el)return;const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms);el.textContent=fmt(to*ease(p));if(p<1)requestAnimationFrame(f)})(t0)}
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.dispatchEvent(new Event('show'));io.unobserve(e.target)}}),{threshold:.18});
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function count(el,to,ms=3600,from=0,dec=0){if(!el)return;if(el._raf)cancelAnimationFrame(el._raf);const t0=performance.now();const f=(t)=>{const p=Math.min(1,(t-t0)/ms),v=from+(to-from)*ease(p);el.textContent=dec?v.toFixed(dec):fmt(v);if(p<1)el._raf=requestAnimationFrame(f)};el._raf=requestAnimationFrame(f)}
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.dispatchEvent(new Event('show'));io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const onShow=(el,fn)=>{if(el.classList.contains('in'))fn();else el.addEventListener('show',fn,{once:true})};
 addEventListener('scroll',()=>{const h=document.documentElement;$('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
-const TYPE={teishoku:'定食',sweets:'スイーツ',curry:'カレー',bakery:'パン',bowl:'丼・ボウル',course:'コース',ramen:'ラーメン',drink:'ドリンク',noodles:'麺',salad:'サラダ',burger:'バーガー',pizza:'ピザ',bento:'お弁当',pasta:'パスタ',fried:'揚げもの',sushi:'寿司',gyoza:'餃子',tofu:'豆腐',otsumami:'おつまみ'};
 const short=(p)=>p.replace(/[都府県]$/,'');
-fetch('data.json').then(r=>r.json()).then(D=>{
-  const d=new Date(D.asof),asof=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}`;$('asof').textContent=asof;$('asof2').textContent=`${d.getFullYear()}年${d.getMonth()+1}月`;
-  const tot=D.on+D.next;count($('total'),tot,3200);count($('onN'),D.on,3200);count($('nextN'),D.next,3200);
-  const P=D.pref.map((r,i)=>({i,p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2]}));
+
+/* ---------- lab: title options ---------- */
+const TITLES={A:['ビーガン白書 2026',422,'日本のビーガン、ぜんぶ数えてみた。'],B:['日本のビーガン、ぜんぶ数えてみた！',469,'ビーガン白書 2026'],C:['ニッポンのビーガン 2026',486,'日本のビーガン、ぜんぶ数えてみた。'],D:['数字で見る ビーガンなニッポン',390,'日本のビーガン、ぜんぶ数えてみた。']};
+function setTitle(t){if(!TITLES[t])t='A';const [alt,h,tag]=TITLES[t];const im=$('ttlImg');im.src=`img/title-${t}.webp`;im.alt=alt;im.height=h;$('tagline').textContent=tag;
+  document.querySelectorAll('#tsw button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===t));try{history.replaceState(null,'',`?t=${t}`)}catch(e){}}
+document.querySelectorAll('#tsw button').forEach(b=>b.onclick=()=>setTitle(b.dataset.t));
+setTitle(new URLSearchParams(location.search).get('t')||'A');
+
+/* ---------- Oji guide ---------- */
+const POSE=(n)=>`/images/oji2/oji-${n}.webp`;
+function Guide(id){const el=$(id),img=el.querySelector('.g-oji img'),txt=el.querySelector('.g-txt'),art=el.querySelector('.g-art'),q=el.querySelector('.g-q'),bub=el.querySelector('.g-bub');
+  let tm=0,idle=[],ii=0,locked=false;
+  const hop=()=>{const b=el.querySelector('.g-oji');b.classList.remove('hop');void b.offsetWidth;b.classList.add('hop')};
+  const G={el,
+    say(text,pose,artHtml){clearInterval(tm);if(pose&&!img.src.endsWith(`oji-${pose}.webp`))img.src=POSE(pose);hop();art.innerHTML=artHtml||'';
+      const plain=text.replace(/<[^>]+>/g,'');if(RM){txt.innerHTML=text;return}let i=0;txt.textContent='';tm=setInterval(()=>{i+=2;txt.textContent=plain.slice(0,i);if(i>=plain.length){clearInterval(tm);txt.innerHTML=text}},34)},
+    lines(ls){idle=ls;ii=0;bub.classList.toggle('can',ls.length>0)},
+    next(){if(locked||!idle.length)return;q.innerHTML='';const l=idle[ii++%idle.length];G.say(l[0],l[1])},
+    start(text,pose){el.classList.add('on');setTimeout(()=>G.say(text,pose),RM?0:420)},
+    ask(c){locked=true;bub.classList.remove('can');el.classList.add('on');setTimeout(()=>G.say(c.q,c.pose||'questioning'),RM?0:420);
+      q.innerHTML=c.opts.map((o,i)=>`<button class="qo" data-i="${i}">${o}</button>`).join('')+'<button class="qo skip" data-i="-1">答えを見る</button>';
+      q.querySelectorAll('.qo').forEach(b=>b.onclick=(e)=>{e.stopPropagation();const i=+b.dataset.i,ok=i===c.ans;
+        q.querySelectorAll('.qo').forEach(x=>{const j=+x.dataset.i;x.disabled=true;if(j<0)x.remove();else if(j===c.ans)x.classList.add('ok');else if(j===i)x.classList.add('ng')});
+        locked=false;G.lines(c.after||[]);
+        G.say(i<0?c.reveal:ok?c.right:c.wrong,i<0?'explaining':ok?'excited':'surprised-3',i<0?'':`<img src="img/${ok?'seikai':'zannen'}.webp" alt="${ok?'せいかい':'ざんねん'}">`);
+        c.onAnswer&&c.onAnswer(ok)})}};
+  el.querySelector('.g-oji').onclick=()=>{hop();G.next()};
+  bub.onclick=(e)=>{if(e.target.closest('button,a'))return;G.next()};
+  return G}
+const g={};['g0','g1','g2','g3','g4','g5','g6','g7','g8','g9'].forEach(id=>g[id]=Guide(id));
+
+/* ---------- data ---------- */
+const POP=[5224614,1237984,1210534,2301996,959502,1068027,1833152,2867009,1933146,1939110,7344765,6284480,14047594,9237337,2201272,1034814,1132526,766863,809974,2048011,1978742,3633202,7542415,1770254,1413610,2578087,8837685,5465002,1324473,922584,553407,671126,1888432,2799702,1342059,719559,950244,1334841,691527,5135214,811442,1312317,1738301,1123852,1069576,1588256,1467480];
+const TYPE={teishoku:'定食',sweets:'スイーツ',curry:'カレー',bakery:'パン',bowl:'丼・ボウル',course:'コース',ramen:'ラーメン',drink:'ドリンク',noodles:'麺',salad:'サラダ',burger:'バーガー',pizza:'ピザ',bento:'お弁当',pasta:'パスタ',fried:'揚げもの',sushi:'寿司',gyoza:'餃子',tofu:'豆腐',otsumami:'おつまみ'};
+Promise.all([fetch('data.json').then(r=>r.json()),fetch('jp.json').then(r=>r.json()).catch(()=>[])]).then(([D,JP])=>{
+  const d=new Date(D.asof);$('asofTxt').textContent=`${d.getFullYear()}年${d.getMonth()+1}月時点`;$('asof2').textContent=`${d.getFullYear()}年${d.getMonth()+1}月`;
+  const tot=D.on+D.next;
+  const P=D.pref.map((r,i)=>({i,p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2],pc:(r[1]+r[2])/POP[i]*1e5}));
+  const byT=[...P].sort((a,b)=>b.t-a.t),byPC=[...P].sort((a,b)=>b.pc-a.pc);
+  P.forEach(r=>{r.rk=byT.indexOf(r)+1;r.rkpc=byPC.indexOf(r)+1});
+  const tokyo=byT[0],tpct=Math.round(tokyo.t/tot*100);
+
+  /* ---------- hero ---------- */
+  setTimeout(()=>{count($('total'),tot,3800);count($('hFull'),D.full,3800);document.querySelectorAll('.mini b[data-to]').forEach(e=>count(e,+e.dataset.to,3800))},350);
+  g.g0.start('やあ、ビーガン王子だよ！日本じゅうのビーガンのお店を、<em>ぜんぶ数えてみた</em>んだ。','greeting');
+  g.g0.lines([['スクロールして、いっしょに見ていこう！クイズもあるよ。','welcoming'],['ここの数字は、記事や発表に使ってOK。いちばん下に引用のしかたがあるよ。','winking'],['ぼくをタップすると、いろいろ話すよ！','happy']]);
 
   /* ---------- 01 map ---------- */
-  const cv=$('map'),ctx=cv.getContext('2d');let mode='all';
-  const LON0=128.6,LON1=146.1,LAT0=30.9,LAT1=45.6,K=Math.cos(38*Math.PI/180);
-  let W,H,dpr,glow,MW,OX;
-  const inset={x0:.03,y0:.04,w:.34,h:.27};
-  function proj(la,lo){if(la<30.6){return[OX+(inset.x0+(lo-123)/(131.4-123)*inset.w)*MW,(inset.y0+(29.6-la)/(29.6-24)*inset.h)*H]}
-    return[OX+(lo-LON0)*K/((LON1-LON0)*K)*MW*.94+MW*.03,(LAT1-la)/(LAT1-LAT0)*H*.92+H*.04]}
-  const pts=D.pts.map(p=>({la:p[0],lo:p[1],k:p[2],pr:p[3],cat:p[2]===2?'closed':(p[2]>=3?'full':'opt'),x:0,y:0}));
+  const cv=$('map'),ctx=cv.getContext('2d');let fullOnly=false,sel=-1;
+  const LON0=128.3,LON1=149.0,LAT0=30.0,LAT1=45.6,K=Math.cos(38*Math.PI/180);
+  let W,H,dpr,s,si,OX,OY,IX=10,IY=10,IW,IH,paths=[],landC=document.createElement('canvas');
+  const pm=(lo,la)=>[OX+(lo-LON0)*K*s,OY+(LAT1-la)*s],pi=(lo,la)=>[IX+14+(lo-122.9)*K*si,IY+30+(29.6-la)*si];
+  const proj=(la,lo)=>la<29.6&&lo<131.6?pi(lo,la):pm(lo,la);
+  const pts=D.pts.filter(p=>p[2]!==2).map(p=>({la:p[0],lo:p[1],pr:p[3],cat:p[2]===3||p[2]===4?'full':'opt',x:0,y:0}));
   const order=pts.map((p,i)=>i).sort((a,b)=>pts[b].la-pts[a].la);
-  const COL={full:'#5E8C52',opt:'#D4A847',closed:'#A99D8A'};
-  const vis=(p)=>mode==='all'?p.cat!=='closed':mode==='full'?p.cat==='full':true;
-  function size(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=Math.round(Math.min(W*1.02,680));MW=Math.min(W,H/1.02);OX=(W-MW)/2;cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+  const COL={full:'#4E8A45',opt:'#D9A23A'};
+  const vis=(p)=>!fullOnly||p.cat==='full';
+  function size(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=Math.round(Math.min(W*1.0,700));
+    s=Math.min(W*.92/((LON1-LON0)*K),H*.93/(LAT1-LAT0));const mw=(LON1-LON0)*K*s;OX=(W-mw)/2+W*.02;OY=H*.035;
+    si=s*.62;IW=(131.6-122.9)*K*si+28;IH=(29.6-24.0)*si+42;
+    cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';landC.width=cv.width;landC.height=cv.height;
     pts.forEach(p=>{[p.x,p.y]=proj(p.la,p.lo)});
-    glow=document.createElement('canvas');glow.width=cv.width;glow.height=cv.height;const g=glow.getContext('2d');g.scale(dpr,dpr);
-    for(const p of pts){if(p.cat==='closed')continue;const r=16;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(255,250,236,.30)');gr.addColorStop(1,'rgba(255,250,236,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}
-    for(const p of pts){if(p.cat==='closed')continue;const r=7;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(108,149,96,.10)');gr.addColorStop(1,'rgba(108,149,96,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}}
-  const LBL=[['東京',35.68,139.76,12,1],['京都',35.01,135.77,25,1],['大阪',34.69,135.5,26,-1],['福岡',33.59,130.4,39,1],['北海道',43.06,141.35,0,-1],['沖縄',26.21,127.68,46,1]];
-  let start=0,anim,DUR=3400;
+    paths=JP.map(([id,rings])=>{const q=new Path2D();rings.forEach(r=>{let maxLa=-90,minLo=999;for(let i=0;i<r.length;i+=2){const lo=(r[i]+122000)/1000,la=(r[i+1]+24000)/1000;if(la>maxLa)maxLa=la;if(lo<minLo)minLo=lo}
+      const inset=maxLa<29.6&&minLo<131.6;for(let i=0;i<r.length;i+=2){const lo=(r[i]+122000)/1000,la=(r[i+1]+24000)/1000,[x,y]=inset?pi(lo,la):pm(lo,la);i?q.lineTo(x,y):q.moveTo(x,y)}q.closePath()});return{i:id-1,q}});
+    P.forEach(r=>{r.cx=0;r.cy=0;r.n=0});pts.forEach(p=>{const r=P[p.pr];r.cx+=p.x;r.cy+=p.y;r.n++});P.forEach(r=>{if(r.n){r.cx/=r.n;r.cy/=r.n}});
+    land()}
+  function land(){const c=landC.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,W,H);
+    c.fillStyle='rgba(255,255,255,.4)';c.strokeStyle='rgba(31,24,18,.4)';c.lineWidth=1.5;c.setLineDash([5,5]);c.beginPath();c.roundRect(IX,IY,IW,IH,14);c.fill();c.stroke();c.setLineDash([]);
+    c.fillStyle='rgba(31,24,18,.7)';c.font='900 13px "Noto Sans JP"';c.fillText('沖縄・奄美',IX+12,IY+21);
+    c.save();c.translate(2.5,3.5);c.fillStyle='rgba(31,24,18,.18)';paths.forEach(p=>c.fill(p.q));c.restore();
+    c.lineJoin='round';c.strokeStyle='#3C2E22';c.lineWidth=2.8;paths.forEach(p=>c.stroke(p.q));
+    paths.forEach(p=>{c.fillStyle=p.i===sel?'#FAD3D9':'#FFFBF1';c.fill(p.q)});
+    c.strokeStyle='rgba(120,97,72,.42)';c.lineWidth=.8;paths.forEach(p=>c.stroke(p.q));
+    if(sel>=0)paths.filter(p=>p.i===sel).forEach(p=>{c.strokeStyle='#C9223A';c.lineWidth=2.4;c.stroke(p.q)})}
+  const LBL=[['東京',12,1,0],['京都',25,1,0],['大阪',26,-1,0],['福岡',39,1,30],['北海道',0,1,0],['沖縄',46,1,0]];
+  function tag(x,y,txt,side,red,dy=0){ctx.font='900 13px "Noto Sans JP"';const w=ctx.measureText(txt).width+16;let bx=side>0?x+10:x-10-w;bx=Math.max(4,Math.min(W-w-4,bx));const by=y-12+dy;
+    ctx.fillStyle=red?'#C9223A':'rgba(19,33,63,.92)';ctx.strokeStyle=ctx.fillStyle;ctx.lineWidth=1.6;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(side>0?bx:bx+w,y+dy);ctx.stroke();
+    ctx.beginPath();ctx.roundRect(bx,by,w,24,12);ctx.fill();ctx.fillStyle='#fff';ctx.fillText(txt,bx+8,by+17)}
+  let start=0,anim=0,DUR=RM?1:7200,done=false;
   function frame(t){const el=t-start,n=Math.min(order.length,Math.floor(el/DUR*order.length));
-    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
-    ctx.globalAlpha=Math.min(1,el/DUR*1.4);ctx.drawImage(glow,0,0,W,H);ctx.globalAlpha=1;
-    ctx.strokeStyle='rgba(31,24,18,.16)';ctx.lineWidth=1.2;ctx.setLineDash([4,5]);ctx.beginPath();ctx.roundRect(OX+inset.x0*MW,inset.y0*H,inset.w*MW,inset.h*H,14);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle='rgba(31,24,18,.45)';ctx.font='900 11px "Noto Sans JP"';ctx.fillText('沖縄・奄美',OX+inset.x0*MW+10,inset.y0*H+18);
-    let c=0;
-    for(let j=0;j<n;j++){const p=pts[order[j]];if(!vis(p))continue;if(p.cat!=='closed')c++;const age=el-j/order.length*DUR;
-      if(age<600){const q=age/600;ctx.globalAlpha=.5*(1-q);ctx.strokeStyle=COL[p.cat];ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,2+12*q,0,6.283);ctx.stroke()}
-      ctx.globalAlpha=p.cat==='closed'?.6:.88;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,age<240?2+2.2*(1-age/240):2,0,6.283);ctx.fill()}
-    ctx.globalAlpha=1;$('mapN').textContent=fmt(c);
-    if(el>DUR){const a=Math.min(1,(el-DUR)/500);ctx.globalAlpha=a;for(const[name,la,lo,pi,side]of LBL){const[x,y]=proj(la,lo);const txt=`${name} ${fmt(P[pi].t)}`;ctx.font='900 12px "Noto Sans JP"';const w=ctx.measureText(txt).width+14;const bx=side>0?x+8:x-8-w,by=y-11;
-      ctx.fillStyle='rgba(19,33,63,.9)';ctx.beginPath();ctx.roundRect(bx,by,w,22,11);ctx.fill();ctx.fillStyle='#fff';ctx.fillText(txt,bx+7,by+15.5);ctx.strokeStyle='rgba(19,33,63,.9)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(side>0?bx:bx+w,y);ctx.stroke()}ctx.globalAlpha=1}
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);ctx.drawImage(landC,0,0,W,H);
+    let c=0,last=-1;
+    for(let j=0;j<n;j++){const p=pts[order[j]];if(!vis(p))continue;c++;last=p.pr;const age=el-j/order.length*DUR,dim=sel>=0&&p.pr!==sel;
+      if(age<700&&!dim){const k=age/700;ctx.globalAlpha=.55*(1-k);ctx.strokeStyle=COL[p.cat];ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(p.x,p.y,2+13*k,0,6.283);ctx.stroke()}
+      ctx.globalAlpha=dim?.22:.92;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,(sel>=0&&!dim?3:2.2)+(age<260?2.6*(1-age/260):0),0,6.283);ctx.fill()}
+    ctx.globalAlpha=1;$('mapN').textContent=fmt(sel>=0?(fullOnly?P[sel].f:P[sel].t):c);
+    const nw=$('mapNow');if(el<DUR&&last>=0){nw.hidden=false;nw.textContent='いま：'+P[last].p}else nw.hidden=true;
+    if(el>DUR){ctx.globalAlpha=Math.min(1,(el-DUR)/500);
+      if(sel>=0){const r=P[sel];tag(r.cx,r.cy,`${r.p} ${fmt(fullOnly?r.f:r.t)}`,r.cx<W*.6?1:-1,true)}
+      else for(const[nm,pi2,side,dy]of LBL){const r=P[pi2];tag(r.cx,r.cy,`${nm} ${fmt(fullOnly?r.f:r.t)}`,side,false,dy)}
+      ctx.globalAlpha=1;if(!done){done=true;if(sel<0)g.g1.say('気になる県を<em>タップ</em>してみて！','pointing-up')}}
     if(el<DUR+600)anim=requestAnimationFrame(frame)}
-  function play(){cancelAnimationFrame(anim);size();start=performance.now();anim=requestAnimationFrame(frame)}
-  onShow($('s1'),play);$('replay').onclick=play;
-  addEventListener('resize',()=>{size();frame(start+1e7)});
-  document.querySelectorAll('#filters .chip[data-f]').forEach(b=>b.onclick=()=>{mode=b.dataset.f;document.querySelectorAll('#filters .chip[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));frame(start+1e7)});
-  cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let best=null,bd=26*26;for(const p of pts){if(!vis(p))continue;const dd=(p.x-x)**2+(p.y-y)**2;if(dd<bd){bd=dd;best=p}}
-    const tip=$('tip');if(!best){tip.hidden=true;return}const pr=P[best.pr];tip.innerHTML=`${pr.p} ${fmt(pr.t)}軒<small>🌿 ${fmt(pr.f)} ・ 🌱 ${fmt(pr.t-pr.f)}</small>`;tip.style.left=x+'px';tip.style.top=y+'px';tip.hidden=false;clearTimeout(tip.h);tip.h=setTimeout(()=>tip.hidden=true,2600)});
-  const sorted=[...P].sort((a,b)=>b.t-a.t),tokyo=sorted[0];
-  const kanto=P.slice(7,14).reduce((s,r)=>s+r.t,0),kinki=P.slice(23,30).reduce((s,r)=>s+r.t,0);
+  const still=()=>{if(done||el0()>DUR){cancelAnimationFrame(anim);frame(start+DUR+1e5)}};
+  const el0=()=>performance.now()-start;
+  function play(){cancelAnimationFrame(anim);done=false;size();start=performance.now();anim=requestAnimationFrame(frame)}
+  function pick(i){sel=i;land();
+    $('pinfo').innerHTML=i<0?'<p class="hint">地図の県をタップすると、ここに数字が出るよ。</p>':(()=>{const r=P[i];return`<div class="pi-top pop-in"><span class="nm">${r.p}</span><b class="stat num">${fmt(r.t)}</b><span class="u">軒</span><span class="pill">全国${r.rk}位</span></div>
+      <div class="pi-sub"><span>🌿 まるごとヴィーガン <b class="num">${fmt(r.f)}</b></span><span>人口10万人あたり <b class="num">${r.pc.toFixed(1)}</b>軒（${r.rkpc}位）</span></div>`})();
+    if(i>=0){const r=P[i];g.g1.say(r.rk<=3?`${short(r.p)}は<em>${fmt(r.t)}軒</em>、全国${r.rk}位！さすがだね。`:r.rkpc<=5?`${short(r.p)}は${fmt(r.t)}軒。人口あたりだと<em>全国${r.rkpc}位</em>なんだ！`:`${short(r.p)}は<em>${fmt(r.t)}軒</em>、全国${r.rk}位だよ。`,r.rk<=3||r.rkpc<=5?'excited':'explaining')}
+    still()}
+  cv.addEventListener('click',e=>{const b=cv.getBoundingClientRect(),x=e.clientX-b.left,y=e.clientY-b.top;let hit=-1;ctx.setTransform(dpr,0,0,dpr,0,0);
+    for(const p of paths){if(ctx.isPointInPath(p.q,x*dpr,y*dpr)){hit=p.i;break}}
+    if(hit<0){let bd=24*24;for(const p of pts){const dd=(p.x-x)**2+(p.y-y)**2;if(dd<bd){bd=dd;hit=p.pr}}}
+    pick(hit===sel?-1:hit)});
+  $('replay').onclick=()=>{pick(-1);play()};
+  $('fFull').onclick=()=>{fullOnly=!fullOnly;$('fFull').setAttribute('aria-pressed',fullOnly);still();if(fullOnly)g.g1.say(`緑の点だけにしたよ。お店まるごとヴィーガンは<em>${fmt(D.full)}軒</em>！`,'happy')}
+  let rw=0;addEventListener('resize',()=>{if(cv.clientWidth===rw)return;rw=cv.clientWidth;size();still()});
+  onShow($('s1'),()=>{rw=cv.clientWidth;play();g.g1.start('点ひとつが、お店ひとつ。<em>北から順番</em>に置いていくね！','explaining')});
+  g.g1.lines([['<b style="color:#4E8A45">緑の点</b>はお店まるごとヴィーガン、<b style="color:#B8841F">金色</b>はヴィーガンメニューがあるお店だよ。','teaching'],['沖縄・奄美は、左上の枠の中にあるよ。','pointing-up'],['気になる県をタップしてみて！','pointing-up']]);
+  const kanto=P.slice(7,14).reduce((a,r)=>a+r.t,0),kinki=P.slice(23,30).reduce((a,r)=>a+r.t,0);
   $('side').innerHTML=`<div class="k3 r"><b class="num" data-to="${kanto}">0</b><span>関東（1都6県）</span></div><div class="k3"><b class="num" data-to="${kinki}">0</b><span>近畿（2府5県）</span></div><div class="k3 g"><b class="num">47<small style="font-size:.5em">/47</small></b><span>すべての都道府県にあり</span></div>`;
   onShow($('s1'),()=>document.querySelectorAll('#side b[data-to]').forEach(e=>count(e,+e.dataset.to)));
 
   /* ---------- 02 bars ---------- */
-  $('tokyoLede').textContent=`東京だけで全体の${Math.round(tokyo.t/tot*100)}%。2位は${short(sorted[1].p)}。`;
-  let all=false;const max=tokyo.t;
-  function bars(){$('bars').innerHTML=(all?sorted:sorted.slice(0,10)).map((r,i)=>`<div class="bar"><span class="rk">${i+1}</span><span>${short(r.p)}</span><span class="t"><i class="a" data-w="${r.on/max*100}"></i><i class="b" data-w="${r.nx/max*100}"></i></span><span class="v num">${fmt(r.t)}</span></div>`).join('');
-    requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('.bar .t i').forEach((i,k)=>{i.style.transitionDelay=(Math.floor(k/2)*45)+'ms';i.style.width=i.dataset.w+'%'})))}
-  onShow($('s2'),bars);$('more').onclick=()=>{all=!all;$('more').textContent=all?'トップ10だけ':'47都道府県ぜんぶ見る';bars()};
+  let bmode='t',all=false,bsel=-1;
+  function bars(){const list=(bmode==='t'?byT:byPC).slice(0,all?47:10),max=bmode==='t'?byT[0].t:byPC[0].pc,box=$('bars');
+    const before={};box.querySelectorAll('.bar').forEach(b=>before[b.dataset.i]=b.getBoundingClientRect().top);
+    box.innerHTML=list.map((r,k)=>`<div class="bar${r.i===bsel?' sel':''}" data-i="${r.i}"><span class="rk">${k+1}</span><span>${short(r.p)}</span><span class="t">${bmode==='t'?`<i class="a" data-w="${r.on/max*100}"></i><i class="b" data-w="${r.nx/max*100}"></i>`:`<i class="c" data-w="${r.pc/max*100}"></i>`}</span><span class="v num">${bmode==='t'?fmt(r.t):r.pc.toFixed(1)}</span></div>`).join('');
+    $('keys').style.visibility=bmode==='t'?'visible':'hidden';
+    box.querySelectorAll('.bar').forEach(b=>{const o=before[b.dataset.i];if(o!=null){const dy=o-b.getBoundingClientRect().top;if(dy){b.style.transform=`translateY(${dy}px)`;b.style.transition='none';requestAnimationFrame(()=>{b.style.transition='transform .8s cubic-bezier(.2,.8,.3,1)';b.style.transform=''})}}
+      b.onclick=()=>{const r=P[+b.dataset.i];bsel=r.i;box.querySelectorAll('.bar').forEach(x=>x.classList.toggle('sel',x===b));
+        g.g2.say(`${r.p}：<em>${fmt(r.t)}軒</em>（全国${r.rk}位）。人口10万人あたり${r.pc.toFixed(1)}軒で${r.rkpc}位。🌿まるごとヴィーガンは${fmt(r.f)}軒だよ。`,'explaining')}});
+    requestAnimationFrame(()=>requestAnimationFrame(()=>box.querySelectorAll('.bar .t i').forEach((i,k)=>{i.style.transitionDelay=(Math.floor(k/(bmode==='t'?2:1))*40)+'ms';i.style.width=i.dataset.w+'%'})))}
+  const mode=(m)=>{if(m===bmode)return;bmode=m;$('bCount').setAttribute('aria-pressed',m==='t');$('bPop').setAttribute('aria-pressed',m!=='t');bars();
+    g.g2.say(m==='t'?`軒数だと、1位は<em>${short(byT[0].p)}</em>。`:`人口あたりだと、1位は<em>${short(byPC[0].p)}</em>！10万人あたり${byPC[0].pc.toFixed(1)}軒。2位は${short(byPC[1].p)}だよ。`,m==='t'?'explaining':'surprised-3')};
+  $('bCount').onclick=()=>mode('t');$('bPop').onclick=()=>mode('pc');
+  $('more').onclick=()=>{all=!all;$('more').textContent=all?'トップ10だけ':'47都道府県ぜんぶ見る';bars()};
+  const o2=[Math.max(5,Math.round(tpct/2.5)),tpct,Math.min(70,tpct*2)];
+  onShow($('s2'),()=>{bars();g.g2.ask({q:'クイズ！<em>東京だけ</em>で、全体の何%だと思う？',opts:o2.map(v=>v+'%'),ans:1,
+    right:`東京だけで<em>${tpct}%</em>！2位は${short(byT[1].p)}、3位は${short(byT[2].p)}だよ。`,wrong:`正解は<em>${tpct}%</em>。全国の約${Math.round(100/tpct)}軒に1軒が東京なんだ。`,reveal:`東京だけで<em>${tpct}%</em>。2位は${short(byT[1].p)}だよ。`,
+    after:[['「<em>人口10万人あたり</em>」に切りかえてみて。1位がガラッと変わるよ！','pointing-up'],['バーをタップすると、くわしい数字が出るよ。','explaining']]})});
 
   /* ---------- 03 cities ---------- */
-  $('cities').innerHTML=(D.cities||[]).map((c,i)=>`<div class="city" style="--d:${i*80}ms"><span class="rk">${i+1}</span><span><b>${c[0]}</b><small>${c[1]}</small></span><span class="n num">${fmt(c[2])}</span></div>`).join('');
+  const C=D.cities||[];
+  $('cities').innerHTML=C.map((c,i)=>`<div class="city" style="--d:${i*80}ms" data-i="${i}"><span class="rk">${i+1}</span><span><b>${c[0]}</b><small>${c[1]}</small></span><span class="n num">${fmt(c[2])}</span></div>`).join('');
+  $('cities').querySelectorAll('.city').forEach(el=>el.onclick=()=>{const c=C[+el.dataset.i];el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');g.g3.say(`${c[0]}（${short(c[1])}）は<em>${fmt(c[2])}軒</em>！`,'happy')});
+  if(C.length>1){const df=C[0][2]-C[1][2];onShow($('s3'),()=>g.g3.start(df<=10?`<em>${C[0][0]}</em>と<em>${C[1][0]}</em>が、たった${df}軒差でトップ争い！`:`市区町村だと、<em>${C[0][0]}</em>がトップ！`,'presenting'))}
+  g.g3.lines([['マップに載っているお店で数えたよ。カードをタップしてみて！','explaining'],[`3位は${C[2]?C[2][0]:''}。大阪もがんばってる！`,'happy']]);
 
   /* ---------- 04 donut ---------- */
-  const full=D.full,pct=full/tot,C=2*Math.PI*58,fg=$('dfg');fg.style.strokeDasharray=C;fg.style.strokeDashoffset=C;
+  const full=D.full,pct=full/tot,ratio=Math.round(tot/full),Cc=2*Math.PI*58,fg=$('dfg');fg.style.strokeDasharray=Cc;fg.style.strokeDashoffset=Cc;
   const fullTop=[...P].filter(r=>r.t>=20).sort((a,b)=>b.f/b.t-a.f/a.t).slice(0,3);
   $('fullTop').innerHTML=fullTop.map((r,i)=>`<div class="k3 g"><b>${Math.round(r.f/r.t*100)}%</b><span>${i+1}位 ${short(r.p)}</span></div>`).join('');
-  $('fullTop').insertAdjacentHTML('beforebegin','<p class="lede" style="margin:16px 0 0">🌿率が高い県（20軒以上）</p>');
-  onShow($('s4'),()=>{fg.style.strokeDashoffset=C*(1-pct);count($('kFull'),full);count($('kOpt'),tot-full);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/2400);$('dpct').textContent=Math.round(pct*100*ease(p))+'%';if(p<1)requestAnimationFrame(f)})(t0)});
+  const donut=()=>{fg.style.strokeDashoffset=Cc*(1-pct);count($('kFull'),full,2600);count($('kOpt'),tot-full,2600);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/2600);$('dpct').textContent=Math.round(pct*100*ease(p))+'%';if(p<1)requestAnimationFrame(f)})(t0)};
+  const o4=[2,ratio,ratio<12?20:40];
+  onShow($('s4'),()=>g.g4.ask({q:'メニューの一部じゃなく、<em>お店まるごと</em>ヴィーガン。何軒に1軒だと思う？',pose:'curious',opts:o4.map(v=>v+'軒に1軒'),ans:1,
+    right:`約<em>${ratio}軒に1軒</em>！${fmt(full)}軒もあるんだ。`,wrong:`正解は約<em>${ratio}軒に1軒</em>。${fmt(full)}軒もあるよ！`,reveal:`約<em>${ratio}軒に1軒</em>、${fmt(full)}軒だよ。`,onAnswer:donut,
+    after:[[`🌿の割合がいちばん高いのは<em>${short(fullTop[0].p)}</em>。${Math.round(fullTop[0].f/fullTop[0].t*100)}%がお店まるごとヴィーガン！`,'excited'],['完全ヴィーガンのお店なら、何を頼んでも安心だね。','happy']]}));
 
   /* ---------- 05 trends ---------- */
   (function(){const T=D.trends;if(!T)return;const KEEP=[0,4,2,1],COLS=['#C9223A','#D4A847','#5E8C52','#13213F'];
-    const W=360,H=196,L=24,R=6,TP=8,B=22,n=T.m.length,X=i=>L+(W-L-R)*i/(n-1),Y=v=>TP+(H-TP-B)*(1-v/100);
-    let g='';[0,50,100].forEach(v=>g+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${L-5}" y="${Y(v)+4}" text-anchor="end">${v}</text>`);
-    T.m.forEach((m,i)=>{const y=+m.slice(0,4);if(m.endsWith('/01')&&y%2===0)g+=`<text class="ax" x="${X(i)}" y="${H+4}" text-anchor="middle">${y}</text>`});
+    const W=360,H=206,L=28,R=8,TP=10,B=24,n=T.m.length,X=i=>L+(W-L-R)*i/(n-1),Y=v=>TP+(H-TP-B)*(1-v/100);
+    let s='';[0,50,100].forEach(v=>s+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${L-6}" y="${Y(v)+4.5}" text-anchor="end">${v}</text>`);
+    T.m.forEach((m,i)=>{const y=+m.slice(0,4);if(m.endsWith('/01')&&y%2===0)s+=`<text class="ax" x="${X(i)}" y="${H+12}" text-anchor="middle">${y}</text>`});
     let paths='';KEEP.forEach((k,j)=>{paths+=`<path class="ln" d="${T.v.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v[k]).toFixed(1)).join(' ')}" stroke="${COLS[j]}"/>`});
     const peak=T.v.reduce((b,v,i)=>v[0]>T.v[b][0]?i:b,0),cross=T.v.findIndex(v=>v[0]>v[4]),soy=T.v.reduce((b,v,i)=>v[2]>T.v[b][2]?i:b,0),last=n-1;
-    const ym=(i)=>`${T.m[i].slice(0,4)}年${+T.m[i].slice(5,7)}月`;
-    const M=[[cross,0,'#C9223A',`${ym(cross)}　「ヴィーガン」が「ベジタリアン」を逆転`],[soy,2,'#5E8C52',`${ym(soy)}　大豆ミートの検索がピーク`],[peak,0,'#C9223A',`${ym(peak)}　「ヴィーガン」の検索がピーク`],[last,0,'#C9223A',`いまはピークの約${Math.round(T.v[last][0]/T.v[peak][0]*100)}%。ブームから定着へ？`]];
-    const mk=M.map(([i,k,c],j)=>`<g class="mk" style="transition-delay:${2600+j*250}ms"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="9" fill="${c}" stroke="#fff" stroke-width="2.5"/><text x="${X(i)}" y="${Y(T.v[i][k])+4}" text-anchor="middle">${j+1}</text></g>`).join('');
-    $('tsvg').innerHTML=g+paths+mk;
-    $('take').innerHTML=`${T.m[cross].slice(0,4)}年、<em>「ヴィーガン」</em>が<br>「ベジタリアン」を追い越した。`;
+    const ym=(i)=>`${T.m[i].slice(0,4)}年${+T.m[i].slice(5,7)}月`,cy=+T.m[cross].slice(0,4),nowPct=Math.round(T.v[last][0]/T.v[peak][0]*100);
+    const M=[[cross,0,'#C9223A',`${ym(cross)}　「ヴィーガン」が「ベジタリアン」を逆転`],[soy,2,'#5E8C52',`${ym(soy)}　大豆ミートの検索がピーク`],[peak,0,'#C9223A',`${ym(peak)}　「ヴィーガン」の検索がピーク`],[last,0,'#C9223A',`いまはピークの約${nowPct}%。ブームから定着へ？`]].sort((a,b)=>a[0]-b[0]);
+    const mk=M.map(([i,k,c],j)=>`<g class="mk" style="transition-delay:${j*250}ms"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="10" fill="${c}" stroke="#fff" stroke-width="2.5"/><text x="${X(i)}" y="${Y(T.v[i][k])+4.3}" text-anchor="middle">${j+1}</text></g>`).join('');
+    const svg=$('tsvg');svg.innerHTML=s+paths+`<line class="cur" id="cur" y1="${TP}" y2="${H-B}"/>`+mk;
     $('tkeys').innerHTML=KEEP.map((k,j)=>`<span><i style="background:${COLS[j]}"></i>${T.kw[k]}</span>`).join('');
-    $('caps').innerHTML=M.map(([,,c,t],j)=>`<li><b style="background:${c}">${j+1}</b><span>${t}</span></li>`).join('');
-    $('tsrc').textContent='出典：'+T.src+'・3か月移動平均。値は期間中の最大を100とした相対値。';
-    const ls=[...document.querySelectorAll('#tsvg .ln')];ls.forEach(p=>{const l=p.getTotalLength();p.style.strokeDasharray=l;p.style.strokeDashoffset=l});
-    onShow($('s5'),()=>ls.forEach(p=>p.style.strokeDashoffset=0));
+    $('caps').innerHTML=M.map(([,,c,t],j)=>`<li style="transition-delay:${j*200}ms"><b style="background:${c}">${j+1}</b><span>${t}</span></li>`).join('');
+    $('tsrc').textContent='出典：'+T.src+'・3か月移動平均。期間中の最大を100とした相対値。';
+    $('take').innerHTML='「ヴィーガン」と「ベジタリアン」、<br>検索されるのはどっち？';
+    const ls=[...svg.querySelectorAll('.ln')];ls.forEach(p=>{const l=p.getTotalLength();p.style.strokeDasharray=l;p.style.strokeDashoffset=l});
+    const answer=()=>{svg.classList.add('ans');$('caps').classList.add('ans');$('take').innerHTML=`${cy}年、<em>「ヴィーガン」</em>が<br>「ベジタリアン」を追い越した。`};
+    const yrs=[cy-4,cy,cy+4];
+    onShow($('s5'),()=>{ls.forEach(p=>p.style.strokeDashoffset=0);g.g5.ask({q:'「ヴィーガン」が「ベジタリアン」より<em>たくさん検索される</em>ようになったのは、何年？',pose:'wondering',opts:yrs.map(y=>y+'年'),ans:1,
+      right:`<em>${cy}年</em>！そこから一気にのびたんだ。`,wrong:`正解は<em>${cy}年</em>。思ったより早い？おそい？`,reveal:`<em>${cy}年</em>に逆転したよ。`,onAnswer:answer,
+      after:[[`いまはピークの約${nowPct}%。ブームが落ちついて、<em>ふつうの選択肢</em>になってきたのかも。`,'thinking'],['グラフを指でなぞってみて！その月の数字が出るよ。','pointing-up']]})});
+    const tc=$('tchart'),tt=$('tt'),cur=$('cur');
+    const scrub=(e)=>{const b=svg.getBoundingClientRect(),vx=(e.clientX-b.left)/b.width*W;const i=Math.max(0,Math.min(n-1,Math.round((vx-L)/(W-L-R)*(n-1))));
+      cur.setAttribute('x1',X(i));cur.setAttribute('x2',X(i));cur.style.opacity=1;
+      tt.innerHTML=`${ym(i)}<br>`+KEEP.map((k,j)=>`<i style="background:${COLS[j]}"></i>${T.kw[k]} ${Math.round(T.v[i][k])}`).join('<br>');
+      const px=X(i)/W*b.width;tt.style.left=Math.max(70,Math.min(b.width-70,px))+'px';tt.style.top=(Y(Math.max(...KEEP.map(k=>T.v[i][k])))/226*b.height)+'px';tt.classList.add('on')};
+    const off=()=>{tt.classList.remove('on');cur.style.opacity=0};
+    tc.addEventListener('pointermove',scrub);tc.addEventListener('pointerdown',scrub);tc.addEventListener('pointerleave',off);tc.addEventListener('pointerup',(e)=>{if(e.pointerType!=='mouse')setTimeout(off,1500)});
   })();
 
   /* ---------- 06 types ---------- */
-  $('types').innerHTML=D.types.filter(([k])=>TYPE[k]).slice(0,12).map(([k,n],i)=>`<div class="ty" style="--d:${i*60}ms"><img src="/images/menu2/${k}.webp" alt="" loading="lazy"><b class="num">${fmt(n)}</b><span>${TYPE[k]}</span></div>`).join('');
+  const TY=D.types.filter(([k])=>TYPE[k]).slice(0,12);
+  $('types').innerHTML=TY.map(([k,n],i)=>`<div class="ty" style="--d:${i*60}ms" data-i="${i}"><img src="/images/menu2/${k}.webp" alt="" loading="lazy"><b class="num">${fmt(n)}</b><span>${TYPE[k]}</span></div>`).join('');
+  const tiles=[...$('types').querySelectorAll('.ty')];
+  tiles.forEach(el=>el.onclick=()=>{const [k,n]=TY[+el.dataset.i];el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');g.g6.say(`${TYPE[k]}は<em>${fmt(n)}軒</em>！`,'happy')});
+  onShow($('s6'),()=>g.g6.start(`いちばん多いのは<em>${TYPE[TY[0][0]]}</em>！ラーメンもカレーも、ビーガンで食べられるよ。`,'excited'));
+  g.g6.lines([['🎲を押すと、今日のごはんを王子が決めるよ！','idea'],['ジャンルをタップすると、軒数が出るよ。','explaining']]);
+  let spinning=false;$('spin').onclick=()=>{if(spinning)return;spinning=true;$('spinGo').hidden=true;tiles.forEach(t=>t.classList.remove('win','hl'));
+    const end=Math.floor(Math.random()*tiles.length),steps=tiles.length*2+end;let k=0;
+    g.g6.say('どれにしようかな…','thinking');
+    (function tick(){tiles.forEach(t=>t.classList.remove('hl'));const t=tiles[k%tiles.length];t.classList.add('hl');
+      if(k>=steps){t.classList.remove('hl');t.classList.add('win','bump');spinning=false;$('spinGo').hidden=false;g.g6.say(`今日は<em>${TYPE[TY[end][0]]}</em>に決まり！マップで近くのお店を探してみて。`,'excited');return}
+      k++;setTimeout(tick,60+Math.pow(k/steps,3)*380)})()};
 
   /* ---------- 07 chains ---------- */
   fetch('chains.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(c=>{
-    if(!c||!c.chains||!c.total_food_stores){$('chains').innerHTML=`<div class="soon"><img src="/images/oji2/oji-investigating.webp" alt=""><div><b style="font:900 20px var(--round)">ただいま調査中！</b><p class="lede" style="margin:4px 0 0">ヴィーガンメニューのある全国チェーンを数えています。</p></div></div>`;return}
-    const total=tot+c.total_food_stores;
-    $('chains').innerHTML=`<p class="lede" style="margin:0">チェーン店も入れると、ビーガンが食べられる場所は約</p><div class="chainhead"><span class="num" id="chainN">0</span><small>軒</small></div>
-      <div class="cchips">${c.chains.filter(x=>x.kind!=='drink').sort((a,b)=>(b.stores||0)-(a.stores||0)).slice(0,10).map((x,i)=>`<span class="cc" style="--d:${i*70}ms">${x.name}<span class="num">${fmt(x.stores||0)}</span></span>`).join('')}</div>
-      <p class="src">店舗数は各社公表値など（${c.asof||''}）。メニューは店舗・時期により異なります。${c.total_drink_only_stores?`ドリンクのみのチェーン（約${fmt(c.total_drink_only_stores)}店）は含みません。`:''}</p>`;
-    onShow($('s7'),()=>count($('chainN'),Math.round(total/100)*100,3200));
+    if(!c||!c.chains){$('chains').innerHTML='<p class="ch-lbl">ただいま調査中！</p>';return}
+    const CH=c.chains.filter(x=>x.stores).sort((a,b)=>b.stores-a.stores),SC=['#D4A847','#C9223A','#13213F','#5E9BC4','#8A5A9E','#E07B39'],grand=tot+CH.reduce((a,x)=>a+x.stores,0);
+    let cur=tot;const added=new Set();
+    $('chains').innerHTML=`<p class="ch-lbl">ビーガンが食べられる場所</p><div class="ch-top"><b class="stat num" id="chainN">${fmt(tot)}</b><span class="u">軒</span></div>
+      <div class="stack" id="stack"><i style="background:var(--leaf);width:${tot/grand*100}%"></i>${CH.map((x,i)=>`<i data-i="${i}" style="background:${SC[i%SC.length]}"></i>`).join('')}</div>
+      <div class="keys" style="margin:4px 0 0"><span><i style="background:var(--leaf)"></i>マップのお店 ${fmt(tot)}</span></div>
+      <div class="chl">${CH.map((x,i)=>`<button class="btn cb" data-i="${i}"><span class="dot" style="background:${SC[i%SC.length]}">＋</span><span class="nm">${x.short||x.name}<small>${x.what||''}</small></span><span class="n num">${fmt(x.stores)}<small style="font-size:.7em">店</small></span></button>`).join('')}</div>
+      <div class="btns"><button class="btn r" id="chAll">ぜんぶ足す</button></div>
+      <p class="src">店舗数は各社の公表値（${c.asof||''}）。メニューは店舗・時期によって異なります。${CH.some(x=>x.kind==='drink')?'スターバックスはドリンク（植物性ミルクへの変更）での計上です。':''}</p>`;
+    const add=(i)=>{if(added.has(i))return;added.add(i);const x=CH[i],b=$('chains').querySelector(`.cb[data-i="${i}"]`);b.classList.add('added');b.querySelector('.dot').textContent='✓';
+      $('stack').querySelector(`i[data-i="${i}"]`).style.width=x.stores/grand*100+'%';count($('chainN'),cur+x.stores,1600,cur);cur+=x.stores;
+      if(added.size===CH.length){$('chAll').hidden=true;g.g7.say(`ぜんぶ足すと、約<em>${fmt(Math.round(grand/100)*100)}軒</em>！ビーガンは、もう特別じゃないね。`,'excited')}
+      else g.g7.say(`${x.short||x.name}の<em>${x.what||''}</em>で、＋${fmt(x.stores)}店！`,'happy')};
+    $('chains').querySelectorAll('.cb').forEach(b=>b.onclick=()=>add(+b.dataset.i));
+    $('chAll').onclick=()=>CH.forEach((x,i)=>setTimeout(()=>add(i),i*450));
+    onShow($('s7'),()=>g.g7.start('CoCo壱やモスみたいな<em>チェーン店</em>にも、ヴィーガンメニューがあるんだ。タップして足してみて！','pointing-up'));
   });
 
-  /* ---------- 08 facts ---------- */
+  /* ---------- 08 update ---------- */
   $('fClosed').dataset.to=D.closed;
-  onShow($('s8'),()=>document.querySelectorAll('.fact b[data-to]').forEach(e=>count(e,+e.dataset.to)));
+  onShow($('s8'),()=>{document.querySelectorAll('#s8 b[data-to]').forEach(e=>count(e,+e.dataset.to));setTimeout(()=>document.querySelectorAll('#s8 .fb i').forEach((i,k)=>{i.style.transitionDelay=k*300+'ms';i.style.width=i.dataset.w+'%'}),100);
+    g.g8.start(`全国の候補<em>${fmt(26986)}件</em>を、1軒ずつチェックしたよ。新しく${fmt(1177)}軒、見つけた！`,'investigating')});
+  g.g8.lines([[`閉店したお店（${fmt(D.closed)}軒）は、マップから外して「💔EX VEGAN」リストにうつしたよ。`,'reading'],['これからも毎月アップデートしていくね！','confident']]);
 
-  /* ---------- 09 csv ---------- */
-  $('csv').onclick=()=>{const rows=[['都道府県','掲載中','まもなく追加','合計','うち完全ヴィーガン']].concat(D.pref.map(r=>[r[0],r[1],r[2],r[1]+r[2],r[3]]));const b=new Blob(['﻿'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`japan-vegan-map-prefectures-${D.asof}.csv`;a.click()};
+  /* ---------- 09 cite ---------- */
+  onShow($('s9'),()=>g.g9.start('記事や研究、発表に<em>自由に使って</em>ね。出典だけ書いてくれたらうれしいな！','winking'));
+  $('csv').onclick=()=>{const rows=[['都道府県','マップ掲載中','まもなく追加','合計','うちお店まるごとヴィーガン','人口10万人あたり']].concat(P.map(r=>[r.p,r.on,r.nx,r.t,r.f,r.pc.toFixed(2)]));const b=new Blob(['﻿'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`vegan-hakusho-2026-prefectures-${D.asof}.csv`;a.click()};
 });
 </script>
 </body>
