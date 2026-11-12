@@ -7,242 +7,367 @@
 <title>数字で見るビーガンなニッポン</title>
 <link rel="icon" href="/images/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+JP:wght@500;700;900&family=Zen+Maru+Gothic:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--paper:#FFF9EE;--white:#FFFDF8;--cream:#FDF1DA;--line:#EADCC0;--royal:#C9223A;--royal-deep:#9C1428;--gold:#D4A847;--gold-deep:#8A6D1F;
-  --ink:#1F1812;--muted:#786148;--leaf:#6C9560;--leaf-deep:#3F6A3A;--night:#13213F;--grey:#B9AE9C}
+  --ink:#1F1812;--muted:#786148;--leaf:#6C9560;--leaf-deep:#3F6A3A;--leaf-soft:#C9DDB9;--night:#13213F;--grey:#B9AE9C;--sea:#E3EEF3;
+  --disp:'Dela Gothic One','Zen Maru Gothic',sans-serif;--round:'Zen Maru Gothic','Noto Sans JP',sans-serif}
 *{box-sizing:border-box;margin:0}
-body{background:var(--paper) url(/images/scene/page-wash-portrait.webp) top center/100% auto no-repeat;color:var(--ink);font:500 17px/1.6 'Noto Sans JP',sans-serif}
-.wrap{max-width:720px;margin:0 auto;padding:0 16px}
-h1,h2,.n{font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif;font-weight:900}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font:500 17px/1.65 'Noto Sans JP',sans-serif;-webkit-font-smoothing:antialiased;font-feature-settings:"palt"}
 .num{font-variant-numeric:tabular-nums}
-/* hero */
-.hero{position:relative;overflow:hidden;padding:34px 0 26px;text-align:center}
-.sky{position:absolute;inset:0;background:url(/images/scene/hero-sky.webp) center/cover;opacity:.85;z-index:-1}
-.cloud{position:absolute;width:150px;opacity:.9;z-index:-1;animation:drift 38s linear infinite}
-.cloud.c2{top:62%;width:110px;animation-duration:52s;animation-delay:-20s}
-@keyframes drift{from{transform:translateX(-30vw)}to{transform:translateX(120vw)}}
-.kicker{display:inline-block;background:var(--white);border:2px solid var(--line);border-radius:999px;padding:4px 14px;font-weight:900;font-size:14px;color:var(--royal)}
-.hero h1{font-size:clamp(30px,7.6vw,46px);line-height:1.2;margin:12px 0 6px}
-.hero h1 em{font-style:normal;color:var(--royal)}
-.big{font:900 clamp(78px,23vw,128px)/1 'Zen Maru Gothic',sans-serif;color:var(--royal);letter-spacing:-.02em;text-shadow:0 4px 0 rgba(156,20,40,.12)}
-.big small{font-size:.32em;color:var(--ink);margin-left:4px}
-.split{display:flex;justify-content:center;gap:10px;margin-top:10px;flex-wrap:wrap}
-.pill{background:var(--white);border:2px solid var(--line);border-radius:999px;padding:6px 14px;font-weight:900;font-size:15px}
-.pill i{font-style:normal;margin-right:4px}
-.oji{width:120px;margin-top:8px;animation:bob 3.2s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-8px)}}
-/* cards */
-section.card{background:rgba(255,253,248,.92);border:2px solid var(--line);border-radius:28px;padding:20px 16px;margin:18px 0;box-shadow:0 14px 30px -24px rgba(31,24,18,.5)}
-h2{font-size:24px;line-height:1.3}
-.sub{color:var(--muted);font-size:15px;font-weight:700;margin:2px 0 12px}
-/* map */
-.mapbox{position:relative}
-#map{width:100%;display:block;border-radius:20px;background:radial-gradient(ellipse at 60% 40%,#EAF2F6,#DCE9F0 70%);}
-.mapcount{position:absolute;left:14px;top:12px;background:var(--white);border-radius:16px;padding:6px 12px;box-shadow:0 6px 16px -10px rgba(0,0,0,.4)}
-.mapcount b{font:900 30px/1 'Zen Maru Gothic',sans-serif;color:var(--royal)}
-.mapcount span{display:block;font-size:12px;font-weight:700;color:var(--muted)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-weight:700;font-size:14px}
-.legend button{border:2px solid var(--line);background:var(--white);border-radius:999px;padding:5px 12px;font:inherit;cursor:pointer;display:flex;align-items:center;gap:6px}
-.legend button[aria-pressed=false]{opacity:.4}
-.legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
-.replay{margin-left:auto;background:var(--royal)!important;color:#fff;border-color:var(--royal)!important}
-/* bars */
-.bars{display:grid;gap:7px}
-.bar{display:grid;grid-template-columns:76px 1fr 54px;gap:8px;align-items:center;font-weight:700;font-size:15px}
-.bar .t{height:22px;border-radius:11px;background:var(--cream);overflow:hidden;display:flex}
-.bar .t i{display:block;height:100%;width:0;transition:width 1.1s cubic-bezier(.2,.8,.3,1)}
-.bar .t i.a{background:var(--leaf)} .bar .t i.b{background:#C9DDB9}
-.bar .v{text-align:right;font-weight:900}
-.more{margin-top:12px;width:100%;border:2px solid var(--line);background:var(--white);border-radius:999px;padding:10px;font:inherit;font-weight:900;cursor:pointer}
-/* donut */
-.donutrow{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.donut{width:170px;height:170px;flex:none}
-.donut circle{fill:none;stroke-width:22}
-.donut .bg{stroke:#F2D795}
-.donut .fg{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.3,1);transform:rotate(-90deg);transform-origin:50% 50%}
-.donut text{font:900 30px 'Zen Maru Gothic',sans-serif;fill:var(--leaf-deep)}
-.kv{display:grid;gap:8px;flex:1;min-width:180px}
-.kv div{display:flex;align-items:center;gap:8px;font-weight:700}
-.kv b{font:900 26px/1 'Zen Maru Gothic',sans-serif;margin-left:auto}
-/* types */
-.types{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.ty{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:10px 4px 8px;text-align:center;opacity:0;transform:scale(.6) translateY(10px)}
-.ty.in{animation:pop .55s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
-@keyframes pop{to{opacity:1;transform:none}}
-.ty img{width:48px;height:48px;object-fit:contain}
-.ty b{display:block;font:900 20px/1.1 'Zen Maru Gothic',sans-serif}
-.ty span{font-size:12px;color:var(--muted);font-weight:700}
-/* facts */
-.facts{display:grid;gap:12px}
-.fact{display:flex;gap:14px;align-items:center;background:var(--white);border-radius:20px;padding:14px;border:2px solid var(--line)}
-.fact .n{font-size:34px;line-height:1;color:var(--royal);min-width:110px;text-align:center}
-.fact.g .n{color:var(--leaf-deep)} .fact.k .n{color:var(--muted)}
-.fact p{font-weight:700;font-size:15px}
-.trend svg{width:100%;height:auto;display:block;overflow:visible}
-.trend .ln{fill:none;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 2.6s cubic-bezier(.4,0,.2,1)}
-.trend .ax{font:700 11px 'Noto Sans JP';fill:#9C8A70}
-.trend .gl{stroke:#EADCC0;stroke-width:1}
-.trend .note{opacity:0;transition:opacity .6s 2.2s}
-.trend.in .note{opacity:1}
-.trend .note text{font:900 12px 'Noto Sans JP';fill:#1F1812}
-.tkeys{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:8px;font-weight:700;font-size:14px}
-.tkeys i{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
-.src{font-size:12px;color:var(--muted);margin-top:8px}
-/* cite */
-section.card.cite{background:var(--night);color:#fff;border:0}
-.cite .sub{color:#C9D2EA}
-.cite code{display:block;background:rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;font:700 14px/1.5 'Noto Sans JP',sans-serif;margin:10px 0}
-.btn{display:inline-block;border:0;border-radius:999px;padding:12px 18px;font:900 16px 'Noto Sans JP',sans-serif;background:var(--gold);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--gold-deep)}
-.soon{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
-.soon div{border:2px dashed rgba(255,255,255,.3);border-radius:16px;padding:10px 6px;text-align:center;font-size:13px;font-weight:700;color:#C9D2EA}
-.soon div b{display:block;font-size:22px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s cubic-bezier(.2,.8,.3,1)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+#prog{position:fixed;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--leaf),var(--gold),var(--royal));z-index:50}
+/* ---------- cover ---------- */
+.cover{position:relative;min-height:min(100svh,860px);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;
+  background:url(img/hero.webp) 72% 100%/cover no-repeat}
+.cover::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,249,238,.97) 0%,rgba(255,249,238,.9) 38%,rgba(255,249,238,0) 64%)}
+.cover .wrap{position:relative;padding-top:34px;width:100%}
+.eyebrow{display:flex;align-items:center;gap:10px;font:900 12px/1 'Noto Sans JP',sans-serif;letter-spacing:.22em;color:var(--royal)}
+.eyebrow::before{content:"";width:28px;height:3px;background:currentColor;border-radius:2px}
+.cover h1{margin-top:18px;font-family:var(--disp);font-weight:400;line-height:1.08;letter-spacing:.01em}
+.cover h1 .s{display:block;font-size:clamp(22px,5.6vw,34px);color:var(--muted)}
+.cover h1 .l{display:block;font-size:clamp(46px,13.2vw,96px);color:var(--ink)}
+.cover h1 .l em{font-style:normal;color:var(--royal)}
+.hero-n{display:flex;align-items:flex-end;gap:10px;margin-top:18px}
+.hero-n b{font:400 clamp(64px,19vw,132px)/.9 var(--disp);color:var(--royal);letter-spacing:-.02em}
+.hero-n span{font:900 18px/1.3 var(--round);padding-bottom:8px}
+.hero-n span small{display:block;font:700 13px/1.4 'Noto Sans JP';color:var(--muted)}
+.cover .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.tag{background:rgba(255,253,248,.92);border:2px solid var(--line);border-radius:999px;padding:5px 12px;font-weight:900;font-size:14px}
+.scroll{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,253,248,.92);display:grid;place-items:center;font-size:20px;animation:nudge 1.8s ease-in-out infinite;box-shadow:0 8px 20px -10px rgba(0,0,0,.4);text-decoration:none;color:var(--ink)}
+@keyframes nudge{50%{transform:translate(-50%,6px)}}
+/* ---------- sections ---------- */
+section.sec{padding:54px 0 8px}
+.sh{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.sh .no{font:400 15px/1 var(--disp);color:var(--royal);letter-spacing:.05em}
+.sh h2{font:900 clamp(24px,6.4vw,34px)/1.25 var(--round)}
+.lede{color:var(--muted);font-weight:700;font-size:15px;margin-bottom:16px}
+.rule{height:3px;background:var(--ink);border-radius:2px;width:0;transition:width 1s cubic-bezier(.2,.8,.3,1);margin:8px 0 16px}
+.in .rule{width:56px}
+.card{background:var(--white);border:2px solid var(--line);border-radius:26px;padding:18px 16px;box-shadow:0 18px 36px -30px rgba(31,24,18,.55)}
+.duo{display:grid;gap:18px}
+@media(min-width:900px){.duo{grid-template-columns:1fr 1fr;align-items:start}.wide-map{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:start}}
+.big3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.k3{background:var(--cream);border-radius:18px;padding:12px 8px;text-align:center}
+.k3 b{display:block;font:400 clamp(24px,7vw,34px)/1.05 var(--disp);color:var(--ink)}
+.k3 span{font-size:12.5px;font-weight:900;color:var(--muted)}
+.k3.r b{color:var(--royal)}.k3.g b{color:var(--leaf-deep)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.3,1)}
 .reveal.in{opacity:1;transform:none}
-footer{text-align:center;color:var(--muted);font-size:13px;padding:24px 0 40px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ty{opacity:1;transform:none}}
+/* ---------- map ---------- */
+.mapbox{position:relative;border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 62% 46%,#EEF5F7 0%,var(--sea) 60%,#D6E6EE 100%)}
+#map{display:block;width:100%;touch-action:manipulation}
+.mc{position:absolute;right:12px;top:12px;text-align:right;pointer-events:none}
+.mc b{display:block;font:400 34px/1 var(--disp);color:var(--royal)}
+.mc span{font:900 12px 'Noto Sans JP';color:var(--muted)}
+.tip{position:absolute;pointer-events:none;background:var(--night);color:#fff;border-radius:12px;padding:7px 11px;font:900 14px/1.35 'Noto Sans JP';transform:translate(-50%,-120%);white-space:nowrap;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.tip small{display:block;font-weight:700;opacity:.8;font-size:12px}
+.tip[hidden]{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{border:2px solid var(--line);background:var(--white);border-radius:999px;padding:7px 14px;font:900 14px 'Noto Sans JP';cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:var(--ink)}
+.chip i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.chip[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.chip.play{margin-left:auto;background:var(--royal);border-color:var(--royal);color:#fff}
+.side .k3{text-align:left;padding:14px 16px}
+.side{display:grid;gap:10px;margin-top:14px}
+@media(min-width:900px){.side{margin-top:0}}
+/* ---------- bars ---------- */
+.bars{display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:22px 64px 1fr 48px;gap:8px;align-items:center;font-weight:900;font-size:15px}
+.bar .rk{font:400 13px var(--disp);color:var(--muted)}
+.bar .t{height:24px;border-radius:12px;background:var(--cream);overflow:hidden;display:flex}
+.bar .t i{display:block;height:100%;width:0;transition:width 1.4s cubic-bezier(.2,.8,.3,1)}
+.bar .t i.a{background:var(--leaf)}.bar .t i.b{background:var(--leaf-soft)}
+.bar .v{text-align:right;font:400 16px var(--disp)}
+.more{margin-top:12px;width:100%;border:2px solid var(--line);background:var(--white);border-radius:999px;padding:11px;font:900 15px 'Noto Sans JP';cursor:pointer;color:var(--ink)}
+.keys{display:flex;gap:14px;font-size:13px;font-weight:900;color:var(--muted);margin:-6px 0 12px}
+.keys i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-1px}
+/* ---------- cities ---------- */
+.cities{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.city{display:flex;align-items:center;gap:10px;background:var(--white);border:2px solid var(--line);border-radius:16px;padding:10px 12px;opacity:0;transform:scale(.8)}
+.in .city{animation:pop .6s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+.city .rk{font:400 18px var(--disp);color:var(--gold-deep);width:24px}
+.city b{display:block;font:900 16px/1.2 var(--round)}
+.city small{font-size:11.5px;color:var(--muted);font-weight:700}
+.city .n{margin-left:auto;font:400 20px var(--disp);color:var(--royal)}
+.city:first-child{grid-column:1/-1;background:var(--royal);border-color:var(--royal);color:#fff}
+.city:first-child .rk,.city:first-child .n,.city:first-child small{color:#fff}
+.city:first-child .n{font-size:30px}
+@keyframes pop{to{opacity:1;transform:none}}
+/* ---------- donut ---------- */
+.donutrow{display:flex;gap:16px;align-items:center}
+.donut{width:150px;height:150px;flex:none}
+.donut circle{fill:none;stroke-width:20}
+.donut .bg{stroke:#F2D795}
+.donut .fg{stroke:var(--leaf);stroke-linecap:round;transition:stroke-dashoffset 2.2s cubic-bezier(.2,.8,.3,1);transform:rotate(-90deg);transform-origin:50% 50%}
+.donut text{font:400 28px var(--disp);fill:var(--leaf-deep)}
+.dl{display:grid;gap:6px;flex:1;font-weight:900;font-size:15px}
+.dl div{display:flex;align-items:center;gap:6px}.dl b{margin-left:auto;font:400 22px var(--disp)}
+/* ---------- types ---------- */
+.types{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ty{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:8px 2px 6px;text-align:center;opacity:0;transform:scale(.6) translateY(10px)}
+.in .ty{animation:pop .6s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+.ty img{width:46px;height:46px;object-fit:contain}
+.ty b{display:block;font:400 18px/1.1 var(--disp)}
+.ty span{font-size:11.5px;color:var(--muted);font-weight:900}
+/* ---------- trends ---------- */
+.take{font:900 clamp(19px,5vw,24px)/1.35 var(--round);margin:4px 0 12px}
+.take em{font-style:normal;color:var(--royal)}
+#tsvg{width:100%;height:auto;display:block;overflow:visible}
+#tsvg .ln{fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;transition:stroke-dashoffset 2.8s cubic-bezier(.4,0,.2,1)}
+#tsvg .ax{font:700 11px 'Noto Sans JP';fill:#9C8A70}
+#tsvg .gl{stroke:#EADCC0;stroke-width:1}
+#tsvg .mk{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.3);transition:opacity .4s,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.in #tsvg .mk{opacity:1;transform:none}
+#tsvg .mk text{font:400 11px var(--disp);fill:#fff}
+.caps{list-style:none;padding:0;display:grid;gap:8px;margin-top:12px}
+.caps li{display:flex;gap:10px;align-items:flex-start;font-weight:700;font-size:15px}
+.caps li b{flex:none;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font:400 12px var(--disp)}
+.tkeys{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:10px;font-weight:900;font-size:13px}
+.tkeys i{display:inline-block;width:16px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.src{font-size:12px;color:var(--muted);margin-top:10px;font-weight:700}
+/* ---------- chains ---------- */
+.chainhead{font:400 clamp(40px,12vw,64px)/1 var(--disp);color:var(--royal)}
+.chainhead small{font:900 18px var(--round);color:var(--ink);margin-left:4px}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.cc{background:var(--cream);border-radius:14px;padding:7px 11px;font-weight:900;font-size:14px;opacity:0;transform:scale(.7)}
+.in .cc{animation:pop .5s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+.cc span{color:var(--muted);font-size:12px;margin-left:4px}
+.soon{display:flex;gap:14px;align-items:center}
+.soon img{width:96px;flex:none}
+/* ---------- facts ---------- */
+.facts{display:grid;gap:10px}
+@media(min-width:900px){.facts{grid-template-columns:repeat(3,1fr)}}
+.fact{background:var(--white);border:2px solid var(--line);border-radius:22px;padding:18px 16px}
+.fact b{display:block;font:400 clamp(38px,11vw,52px)/1 var(--disp);color:var(--royal)}
+.fact.g b{color:var(--leaf-deep)}.fact.k b{color:var(--muted)}
+.fact p{font-weight:900;margin-top:6px}
+/* ---------- cite ---------- */
+.cite{background:var(--night) url(/images/scene/night.webp) center bottom/cover;color:#fff;border-radius:28px;padding:26px 18px;margin-top:8px}
+.cite h2{font:900 24px/1.3 var(--round)}
+.cite p{color:#C9D2EA;font-weight:700;font-size:15px;margin-top:4px}
+.cite code{display:block;background:rgba(255,255,255,.1);border-radius:14px;padding:12px 14px;font:700 14px/1.6 'Noto Sans JP';margin:14px 0}
+.btn{display:inline-block;border:0;border-radius:999px;padding:13px 20px;font:900 16px 'Noto Sans JP';background:var(--gold);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--gold-deep)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--gold-deep)}
+footer{text-align:center;color:var(--muted);font-size:13px;font-weight:700;padding:30px 0 44px}
+footer img{width:84px;display:block;margin:0 auto 6px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal,.ty,.city,.cc,#tsvg .mk{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="sky"></div>
-  <img class="cloud" src="/images/scene/hero-cloud1.webp" alt="" style="top:12%">
-  <img class="cloud c2" src="/images/scene/hero-cloud2.webp" alt="">
+<div id="prog"></div>
+<header class="cover">
   <div class="wrap">
-    <span class="kicker">日本ビーガンマップ調べ・<span id="asof"></span></span>
-    <h1>数字で見る<br><em>ビーガンなニッポン</em></h1>
-    <div class="big num"><span id="total">0</span><small>軒</small></div>
-    <div class="split"><span class="pill"><i>📍</i>マップ掲載 <span class="num" id="onN">0</span></span><span class="pill"><i>✨</i>まもなく追加 <span class="num" id="nextN">0</span></span></div>
-    <img class="oji" src="/images/oji2/oji-presenting.webp" alt="ビーガン王子">
+    <p class="eyebrow">JAPAN VEGAN MAP · REPORT <span id="asof"></span></p>
+    <h1><span class="s">数字で見る</span><span class="l">ビーガンな<br><em>ニッポン</em></span></h1>
+    <div class="hero-n"><b class="num" id="total">0</b><span>軒<small>のビーガンスポット</small></span></div>
+    <div class="meta"><span class="tag">📍 マップ掲載 <span class="num" id="onN">0</span></span><span class="tag">✨ まもなく追加 <span class="num" id="nextN">0</span></span></div>
   </div>
+  <a class="scroll" href="#s1" aria-label="下へ">↓</a>
 </header>
 
 <main class="wrap">
-  <section class="card reveal">
-    <h2>🗾 全国のビーガンスポット</h2>
-    <p class="sub">点ひとつが、お店ひとつ。</p>
-    <div class="mapbox">
-      <canvas id="map"></canvas>
-      <div class="mapcount"><b class="num" id="mapN">0</b><span>軒</span></div>
-    </div>
-    <div class="legend">
-      <button data-k="full" aria-pressed="true"><i style="background:var(--leaf)"></i>🌿 完全ヴィーガン</button>
-      <button data-k="opt" aria-pressed="true"><i style="background:var(--gold)"></i>🌱 メニューあり</button>
-      <button data-k="closed" aria-pressed="false"><i style="background:var(--grey)"></i>閉店</button>
-      <button class="replay" id="replay">▶ もう一回</button>
+  <section class="sec reveal" id="s1">
+    <div class="sh"><span class="no">01</span><h2>全国のビーガンスポット</h2></div>
+    <p class="lede">点ひとつが、お店ひとつ。タップで都道府県の数。</p><div class="rule"></div>
+    <div class="wide-map">
+      <div>
+        <div class="mapbox"><canvas id="map"></canvas><div class="mc"><b class="num" id="mapN">0</b><span>軒</span></div><div class="tip" id="tip" hidden></div></div>
+        <div class="chips" id="filters">
+          <button class="chip" data-f="all" aria-pressed="true">すべて</button>
+          <button class="chip" data-f="full" aria-pressed="false"><i style="background:var(--leaf)"></i>🌿だけ</button>
+          <button class="chip" data-f="closed" aria-pressed="false"><i style="background:var(--grey)"></i>閉店も</button>
+          <button class="chip play" id="replay">▶ もう一回</button>
+        </div>
+      </div>
+      <div class="side" id="side"></div>
     </div>
   </section>
 
-  <section class="card reveal">
-    <h2>🏆 都道府県ランキング</h2>
-    <p class="sub">掲載中 ＋ まもなく追加</p>
+  <section class="sec reveal" id="s2">
+    <div class="sh"><span class="no">02</span><h2>都道府県ランキング</h2></div>
+    <p class="lede" id="tokyoLede"></p><div class="rule"></div>
+    <div class="keys"><span><i style="background:var(--leaf)"></i>掲載中</span><span><i style="background:var(--leaf-soft)"></i>まもなく追加</span></div>
     <div class="bars" id="bars"></div>
     <button class="more" id="more">47都道府県ぜんぶ見る</button>
   </section>
 
-  <section class="card reveal">
-    <h2>🌿 完全ヴィーガンは何軒？</h2>
-    <div class="donutrow">
-      <svg class="donut" viewBox="0 0 170 170"><circle class="bg" cx="85" cy="85" r="66"/><circle class="fg" id="dfg" cx="85" cy="85" r="66"/><text x="85" y="96" text-anchor="middle" id="dpct">0%</text></svg>
-      <div class="kv">
-        <div>🌿 完全ヴィーガン<b class="num" id="kFull">0</b></div>
-        <div>🌱 メニューあり<b class="num" id="kOpt">0</b></div>
+  <div class="duo">
+    <section class="sec reveal" id="s3">
+      <div class="sh"><span class="no">03</span><h2>ビーガンな街 TOP10</h2></div>
+      <p class="lede">市区町村別・掲載中</p><div class="rule"></div>
+      <div class="cities" id="cities"></div>
+    </section>
+    <section class="sec reveal" id="s4">
+      <div class="sh"><span class="no">04</span><h2>完全ヴィーガンは何軒？</h2></div>
+      <p class="lede">メニューの一部ではなく、お店まるごと。</p><div class="rule"></div>
+      <div class="card"><div class="donutrow">
+        <svg class="donut" viewBox="0 0 150 150"><circle class="bg" cx="75" cy="75" r="58"/><circle class="fg" id="dfg" cx="75" cy="75" r="58"/><text x="75" y="85" text-anchor="middle" id="dpct">0%</text></svg>
+        <div class="dl"><div>🌿 完全ヴィーガン<b class="num" id="kFull">0</b></div><div>🌱 メニューあり<b class="num" id="kOpt">0</b></div></div>
       </div>
+      <div class="big3" id="fullTop"></div></div>
+    </section>
+  </div>
+
+  <section class="sec reveal" id="s5">
+    <div class="sh"><span class="no">05</span><h2>「ヴィーガン」は、いつから？</h2></div>
+    <p class="lede">Google検索の人気度（日本・2016年〜）</p><div class="rule"></div>
+    <div class="card">
+      <p class="take" id="take"></p>
+      <svg id="tsvg" viewBox="0 0 360 210"></svg>
+      <div class="tkeys" id="tkeys"></div>
+      <ol class="caps" id="caps"></ol>
+      <p class="src" id="tsrc"></p>
     </div>
   </section>
 
-  <section class="card reveal">
-    <h2>🍜 何が食べられる？</h2>
-    <p class="sub">お店のジャンル</p>
-    <div class="types" id="types"></div>
-  </section>
+  <div class="duo">
+    <section class="sec reveal" id="s6">
+      <div class="sh"><span class="no">06</span><h2>何が食べられる？</h2></div>
+      <p class="lede">お店のジャンル</p><div class="rule"></div>
+      <div class="types" id="types"></div>
+    </section>
+    <section class="sec reveal" id="s7">
+      <div class="sh"><span class="no">07</span><h2>チェーン店も入れると…</h2></div>
+      <p class="lede">ヴィーガンメニューがある全国チェーン</p><div class="rule"></div>
+      <div class="card" id="chains"></div>
+    </section>
+  </div>
 
-  <section class="card reveal trend" id="trend">
-    <h2>🔍 「ヴィーガン」は、いつから？</h2>
-    <p class="sub">Google検索の人気度・2016年〜</p>
-    <svg id="tsvg" viewBox="0 0 360 220"></svg>
-    <div class="tkeys" id="tkeys"></div>
-    <p class="src" id="tsrc"></p>
-  </section>
-
-  <section class="card reveal">
-    <h2>📈 2026年11月の大更新</h2>
+  <section class="sec reveal" id="s8">
+    <div class="sh"><span class="no">08</span><h2>2026年11月の大更新</h2></div>
+    <div class="rule"></div>
     <div class="facts">
-      <div class="fact"><span class="n num" data-to="26986">0</span><p>件の候補をチェック</p></div>
-      <div class="fact g"><span class="n num" data-to="1177">0</span><p>軒を新しく発見</p></div>
-      <div class="fact k"><span class="n num" id="fClosed" data-to="0">0</span><p>軒の閉店を反映</p></div>
+      <div class="fact"><b class="num" data-to="26986">0</b><p>件の候補をチェック</p></div>
+      <div class="fact g"><b class="num" data-to="1177">0</b><p>軒を新しく発見</p></div>
+      <div class="fact k"><b class="num" id="fClosed" data-to="0">0</b><p>軒の閉店を反映</p></div>
     </div>
   </section>
 
-  <section class="card cite reveal">
-    <h2>📊 データの引用について</h2>
-    <p class="sub">記事・研究・発表にどうぞ（出典を明記してください）</p>
-    <code>出典：日本ビーガンマップ（veganmapjapan.org）<span id="asof2"></span>時点</code>
-    <button class="btn" id="csv">⬇ 都道府県別データ（CSV）</button>
-    <div class="soon"><div><b>🍽️</b>ジャンル別<br>の推移 準備中</div><div><b>🗓️</b>月別の変化<br>準備中</div><div><b>🏙️</b>人口あたり<br>準備中</div></div>
+  <section class="sec reveal" id="s9">
+    <div class="cite">
+      <div class="sh"><span class="no" style="color:var(--gold)">09</span><h2>データの引用について</h2></div>
+      <p>記事・研究・発表にどうぞ。出典を明記してください。</p>
+      <code>出典：日本ビーガンマップ（veganmapjapan.org）<span id="asof2"></span>時点</code>
+      <button class="btn" id="csv">⬇ 都道府県別データ（CSV）</button>
+    </div>
   </section>
 </main>
-<footer>© 日本ビーガンマップ ・ ビーガン王子</footer>
+<footer><img src="/images/oji2/oji-happy.webp" alt="">日本ビーガンマップ ・ ビーガン王子</footer>
 
 <script>
 const $=(id)=>document.getElementById(id);
 const fmt=(n)=>Math.round(n).toLocaleString('ja-JP');
-function count(el,to,ms=1400){const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(f)})(t0)}
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.dispatchEvent(new Event('show'));io.unobserve(e.target)}}),{threshold:.25});
+const ease=(p)=>p>=1?1:1-Math.pow(2,-10*p);
+function count(el,to,ms=2600){if(!el)return;const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/ms);el.textContent=fmt(to*ease(p));if(p<1)requestAnimationFrame(f)})(t0)}
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.dispatchEvent(new Event('show'));io.unobserve(e.target)}}),{threshold:.18});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-const TYPE={teishoku:'定食',sweets:'スイーツ',curry:'カレー',bakery:'パン',bowl:'丼・ボウル',course:'コース',ramen:'ラーメン',drink:'ドリンク',noodles:'麺',salad:'サラダ',burger:'バーガー',pizza:'ピザ',bento:'お弁当',pasta:'パスタ',fried:'揚げもの',sushi:'寿司',gyoza:'餃子',tofu:'豆腐',otsumami:'おつまみ'};
 const onShow=(el,fn)=>{if(el.classList.contains('in'))fn();else el.addEventListener('show',fn,{once:true})};
+addEventListener('scroll',()=>{const h=document.documentElement;$('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+const TYPE={teishoku:'定食',sweets:'スイーツ',curry:'カレー',bakery:'パン',bowl:'丼・ボウル',course:'コース',ramen:'ラーメン',drink:'ドリンク',noodles:'麺',salad:'サラダ',burger:'バーガー',pizza:'ピザ',bento:'お弁当',pasta:'パスタ',fried:'揚げもの',sushi:'寿司',gyoza:'餃子',tofu:'豆腐',otsumami:'おつまみ'};
+const short=(p)=>p.replace(/[都府県]$/,'');
 fetch('data.json').then(r=>r.json()).then(D=>{
-  const d=new Date(D.asof);const asof=`${d.getFullYear()}年${d.getMonth()+1}月`;$('asof').textContent=asof;$('asof2').textContent=asof;
-  count($('total'),D.on+D.next,1800);count($('onN'),D.on);count($('nextN'),D.next);
-  // map
-  const cv=$('map'),ctx=cv.getContext('2d');const show={full:true,opt:true,closed:false};
-  const LON0=127.5,LON1=146.2,LAT0=30.6,LAT1=45.7,K=Math.cos(38*Math.PI/180);
-  let W,H,dpr;function size(){dpr=devicePixelRatio||1;W=cv.clientWidth;H=Math.round(W*((LAT1-LAT0)/((LON1-LON0)*K))*.92);cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px'}
-  // Okinawa & far islands shifted into an inset (bottom-left box)
-  const proj=(la,lo)=>{let x,y;if(la<30.5){x=((lo-122.8)/(131.5-122.8))*W*.30+W*.02;y=H*.78+((27.2-la)/(27.2-24))*H*.18;}else{x=(lo-LON0)*K/((LON1-LON0)*K)*W;y=(LAT1-la)/(LAT1-LAT0)*H*.98+H*.01;}return[x,y]};
-  const pts=D.pts.map(p=>{const k=p[2];return{x:0,y:0,lat:p[0],lng:p[1],cat:k===2?'closed':(k>=3?'full':'opt'),la:p[0]}});
-  const place=()=>pts.forEach(p=>{const[x,y]=proj(p.lat,p.lng);p.x=x;p.y=y});
+  const d=new Date(D.asof),asof=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}`;$('asof').textContent=asof;$('asof2').textContent=`${d.getFullYear()}年${d.getMonth()+1}月`;
+  const tot=D.on+D.next;count($('total'),tot,3200);count($('onN'),D.on,3200);count($('nextN'),D.next,3200);
+  const P=D.pref.map((r,i)=>({i,p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2]}));
+
+  /* ---------- 01 map ---------- */
+  const cv=$('map'),ctx=cv.getContext('2d');let mode='all';
+  const LON0=128.6,LON1=146.1,LAT0=30.9,LAT1=45.6,K=Math.cos(38*Math.PI/180);
+  let W,H,dpr,glow;
+  const inset={x0:.03,y0:.04,w:.34,h:.27};
+  function proj(la,lo){if(la<30.6){return[(inset.x0+(lo-123)/(131.4-123)*inset.w)*W,(inset.y0+(29.6-la)/(29.6-24)*inset.h)*H]}
+    return[(lo-LON0)*K/((LON1-LON0)*K)*W*.94+W*.03,(LAT1-la)/(LAT1-LAT0)*H*.92+H*.04]}
+  const pts=D.pts.map(p=>({la:p[0],lo:p[1],k:p[2],pr:p[3],cat:p[2]===2?'closed':(p[2]>=3?'full':'opt'),x:0,y:0}));
   const order=pts.map((p,i)=>i).sort((a,b)=>pts[b].la-pts[a].la);
-  const COL={full:'#6C9560',opt:'#D4A847',closed:'#B9AE9C'};
-  let start=0,anim;
-  function draw(t){const n=Math.min(order.length,Math.floor((t-start)/2600*order.length));ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
-    ctx.strokeStyle='rgba(31,24,18,.18)';ctx.setLineDash([4,5]);ctx.strokeRect(W*.015,H*.76,W*.33,H*.22);ctx.setLineDash([]);ctx.fillStyle='rgba(31,24,18,.45)';ctx.font='700 11px "Noto Sans JP"';ctx.fillText('沖縄・奄美',W*.025,H*.775+12);
-    let c=0;for(let j=0;j<n;j++){const p=pts[order[j]];if(!show[p.cat])continue;c+=p.cat==='closed'?0:1;const age=(t-start)-j/order.length*2600;const r=age<350?2.2+3*(1-age/350):2.2;ctx.globalAlpha=p.cat==='closed'?.55:.82;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.283);ctx.fill()}
-    ctx.globalAlpha=1;$('mapN').textContent=fmt(c);if(n<order.length||(t-start)<3000)anim=requestAnimationFrame(draw)}
-  function play(){cancelAnimationFrame(anim);size();place();start=performance.now();anim=requestAnimationFrame(draw)}
-  const mapCard=cv.closest('section');onShow(mapCard,play);
-  $('replay').onclick=play;addEventListener('resize',()=>{size();place();draw(start+1e7)});
-  document.querySelectorAll('.legend button[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;show[k]=!show[k];b.setAttribute('aria-pressed',show[k]);draw(start+1e7)});
-  // bars
-  const P=D.pref.map(r=>({p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2]})).sort((a,b)=>b.t-a.t);const max=P[0].t;let all=false;
-  function bars(){$('bars').innerHTML=(all?P:P.slice(0,10)).map((r,i)=>`<div class="bar"><span>${i+1}. ${r.p.replace(/[都府県]$/,'')}</span><span class="t"><i class="a" data-w="${r.on/max*100}"></i><i class="b" data-w="${r.nx/max*100}"></i></span><span class="v num">${fmt(r.t)}</span></div>`).join('');requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('.bar .t i').forEach(i=>i.style.width=i.dataset.w+'%')))}
-  onShow($('bars').closest('section'),bars);
-  $('more').onclick=()=>{all=!all;$('more').textContent=all?'トップ10だけ':'47都道府県ぜんぶ見る';bars()};
-  // donut
-  const tot=D.on+D.next,full=D.full,pct=full/tot,C=2*Math.PI*66;const fg=$('dfg');fg.style.strokeDasharray=C;fg.style.strokeDashoffset=C;
-  onShow($('dfg').closest('section'),()=>{fg.style.strokeDashoffset=C*(1-pct);count($('kFull'),full);count($('kOpt'),tot-full);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1600);$('dpct').textContent=Math.round(pct*100*(1-Math.pow(1-p,3)))+'%';if(p<1)requestAnimationFrame(f)})(t0)});
-  // types
-  $('types').innerHTML=D.types.filter(([k])=>TYPE[k]).slice(0,12).map(([k,n],i)=>`<div class="ty" style="--d:${i*70}ms"><img src="/images/menu2/${k==='sushi'?'sushi':k}.webp" alt=""><b class="num">${fmt(n)}</b><span>${TYPE[k]}</span></div>`).join('');
-  onShow($('types').closest('section'),()=>document.querySelectorAll('.ty').forEach(e=>e.classList.add('in')));
-  // facts
-  $('fClosed').dataset.to=D.closed;
-  onShow(document.querySelector('.facts').closest('section'),()=>document.querySelectorAll('.fact .n').forEach(e=>count(e,+e.dataset.to,1600)));
-  // trends
-  (function(){const T=D.trends;if(!T)return;const KEEP=[0,4,2,1],COLS=['#C9223A','#D4A847','#6C9560','#13213F'],NAMES=T.kw;
-    const W=360,H=200,L=26,R=8,TP=10,B=24,n=T.m.length;const X=i=>L+(W-L-R)*i/(n-1),Y=v=>TP+(H-TP-B)*(1-v/100);
-    let g='';[0,25,50,75,100].forEach(v=>g+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${L-6}" y="${Y(v)+4}" text-anchor="end">${v}</text>`);
-    T.m.forEach((m,i)=>{if(m.endsWith('/01')&&(+m.slice(0,4))%2===0)g+=`<text class="ax" x="${X(i)}" y="${H-6}" text-anchor="middle">${m.slice(0,4)}</text>`});
-    let paths='';KEEP.forEach((k,j)=>{const d=T.v.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v[k]).toFixed(1)).join(' ');paths+=`<path class="ln" d="${d}" stroke="${COLS[j]}"/>`});
-    const at=(ym)=>T.m.indexOf(ym);const peak=T.v.reduce((b,v,i)=>v[0]>T.v[b][0]?i:b,0);const cross=T.v.findIndex(v=>v[0]>v[4]);const soy=T.v.reduce((b,v,i)=>v[2]>T.v[b][2]?i:b,0);
-    const note=(i,k,txt,dy)=>`<g class="note"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="4.5" fill="#fff" stroke="${COLS[KEEP.indexOf(k)]}" stroke-width="3"/><text x="${Math.max(60,Math.min(X(i),W-60))}" y="${Y(T.v[i][k])+dy}" text-anchor="middle">${txt}</text></g>`;
-    $('tsvg').innerHTML=g+paths+note(cross,0,`${T.m[cross].slice(0,4)} ベジタリアンを逆転`,22)+note(peak,0,`${T.m[peak].slice(0,4)} ピーク`,-12)+note(soy,2,`${T.m[soy].slice(0,4)} 大豆ミート`,26);
-    $('tkeys').innerHTML=KEEP.map((k,j)=>`<span><i style="background:${COLS[j]}"></i>${NAMES[k]}</span>`).join('');
-    $('tsrc').textContent='出典：'+T.src+'（3か月移動平均）';
-    const ls=[...document.querySelectorAll('#tsvg .ln')];ls.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L});
-    onShow($('trend'),()=>ls.forEach(p=>p.style.strokeDashoffset=0));
+  const COL={full:'#5E8C52',opt:'#D4A847',closed:'#A99D8A'};
+  const vis=(p)=>mode==='all'?p.cat!=='closed':mode==='full'?p.cat==='full':true;
+  function size(){dpr=Math.min(2,devicePixelRatio||1);W=cv.clientWidth;H=Math.round(Math.min(W*1.02,680));cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px';
+    pts.forEach(p=>{[p.x,p.y]=proj(p.la,p.lo)});
+    glow=document.createElement('canvas');glow.width=cv.width;glow.height=cv.height;const g=glow.getContext('2d');g.scale(dpr,dpr);
+    for(const p of pts){if(p.cat==='closed')continue;const r=16;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(255,250,236,.30)');gr.addColorStop(1,'rgba(255,250,236,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}
+    for(const p of pts){if(p.cat==='closed')continue;const r=7;const gr=g.createRadialGradient(p.x,p.y,0,p.x,p.y,r);gr.addColorStop(0,'rgba(108,149,96,.10)');gr.addColorStop(1,'rgba(108,149,96,0)');g.fillStyle=gr;g.fillRect(p.x-r,p.y-r,r*2,r*2)}}
+  const LBL=[['東京',35.68,139.76,12,1],['京都',35.01,135.77,25,-1],['大阪',34.69,135.5,26,-1],['福岡',33.59,130.4,39,1],['北海道',43.06,141.35,0,1],['沖縄',26.21,127.68,46,1],['愛知',35.18,136.9,22,1]];
+  let start=0,anim,DUR=3400;
+  function frame(t){const el=t-start,n=Math.min(order.length,Math.floor(el/DUR*order.length));
+    ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+    ctx.globalAlpha=Math.min(1,el/DUR*1.4);ctx.drawImage(glow,0,0,W,H);ctx.globalAlpha=1;
+    ctx.strokeStyle='rgba(31,24,18,.16)';ctx.lineWidth=1.2;ctx.setLineDash([4,5]);ctx.beginPath();ctx.roundRect(inset.x0*W,inset.y0*H,inset.w*W,inset.h*H,14);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='rgba(31,24,18,.45)';ctx.font='900 11px "Noto Sans JP"';ctx.fillText('沖縄・奄美',inset.x0*W+10,inset.y0*H+18);
+    let c=0;
+    for(let j=0;j<n;j++){const p=pts[order[j]];if(!vis(p))continue;if(p.cat!=='closed')c++;const age=el-j/order.length*DUR;
+      if(age<600){const q=age/600;ctx.globalAlpha=.5*(1-q);ctx.strokeStyle=COL[p.cat];ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(p.x,p.y,2+12*q,0,6.283);ctx.stroke()}
+      ctx.globalAlpha=p.cat==='closed'?.6:.88;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,age<240?2+2.2*(1-age/240):2,0,6.283);ctx.fill()}
+    ctx.globalAlpha=1;$('mapN').textContent=fmt(c);
+    if(el>DUR){const a=Math.min(1,(el-DUR)/500);ctx.globalAlpha=a;for(const[name,la,lo,pi,side]of LBL){const[x,y]=proj(la,lo);const txt=`${name} ${fmt(P[pi].t)}`;ctx.font='900 12px "Noto Sans JP"';const w=ctx.measureText(txt).width+14;const bx=side>0?x+8:x-8-w,by=y-11;
+      ctx.fillStyle='rgba(19,33,63,.9)';ctx.beginPath();ctx.roundRect(bx,by,w,22,11);ctx.fill();ctx.fillStyle='#fff';ctx.fillText(txt,bx+7,by+15.5);ctx.strokeStyle='rgba(19,33,63,.9)';ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(side>0?bx:bx+w,y);ctx.stroke()}ctx.globalAlpha=1}
+    if(el<DUR+600)anim=requestAnimationFrame(frame)}
+  function play(){cancelAnimationFrame(anim);size();start=performance.now();anim=requestAnimationFrame(frame)}
+  onShow($('s1'),play);$('replay').onclick=play;
+  addEventListener('resize',()=>{size();frame(start+1e7)});
+  document.querySelectorAll('#filters .chip[data-f]').forEach(b=>b.onclick=()=>{mode=b.dataset.f;document.querySelectorAll('#filters .chip[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===b));frame(start+1e7)});
+  cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;let best=null,bd=26*26;for(const p of pts){if(!vis(p))continue;const dd=(p.x-x)**2+(p.y-y)**2;if(dd<bd){bd=dd;best=p}}
+    const tip=$('tip');if(!best){tip.hidden=true;return}const pr=P[best.pr];tip.innerHTML=`${pr.p} ${fmt(pr.t)}軒<small>🌿 ${fmt(pr.f)} ・ 🌱 ${fmt(pr.t-pr.f)}</small>`;tip.style.left=x+'px';tip.style.top=y+'px';tip.hidden=false;clearTimeout(tip.h);tip.h=setTimeout(()=>tip.hidden=true,2600)});
+  const sorted=[...P].sort((a,b)=>b.t-a.t),tokyo=sorted[0];
+  const kanto=P.slice(7,14).reduce((s,r)=>s+r.t,0),kinki=P.slice(23,30).reduce((s,r)=>s+r.t,0);
+  $('side').innerHTML=`<div class="k3 r"><b class="num" data-to="${kanto}">0</b><span>関東（1都6県）</span></div><div class="k3"><b class="num" data-to="${kinki}">0</b><span>近畿（2府5県）</span></div><div class="k3 g"><b class="num">47<small style="font-size:.5em">/47</small></b><span>すべての都道府県にあり</span></div>`;
+  onShow($('s1'),()=>document.querySelectorAll('#side b[data-to]').forEach(e=>count(e,+e.dataset.to)));
+
+  /* ---------- 02 bars ---------- */
+  $('tokyoLede').textContent=`東京だけで全体の${Math.round(tokyo.t/tot*100)}%。2位は${short(sorted[1].p)}。`;
+  let all=false;const max=tokyo.t;
+  function bars(){$('bars').innerHTML=(all?sorted:sorted.slice(0,10)).map((r,i)=>`<div class="bar"><span class="rk">${i+1}</span><span>${short(r.p)}</span><span class="t"><i class="a" data-w="${r.on/max*100}"></i><i class="b" data-w="${r.nx/max*100}"></i></span><span class="v num">${fmt(r.t)}</span></div>`).join('');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>document.querySelectorAll('.bar .t i').forEach((i,k)=>{i.style.transitionDelay=(Math.floor(k/2)*45)+'ms';i.style.width=i.dataset.w+'%'})))}
+  onShow($('s2'),bars);$('more').onclick=()=>{all=!all;$('more').textContent=all?'トップ10だけ':'47都道府県ぜんぶ見る';bars()};
+
+  /* ---------- 03 cities ---------- */
+  $('cities').innerHTML=(D.cities||[]).map((c,i)=>`<div class="city" style="--d:${i*80}ms"><span class="rk">${i+1}</span><span><b>${c[0]}</b><small>${c[1]}</small></span><span class="n num">${fmt(c[2])}</span></div>`).join('');
+
+  /* ---------- 04 donut ---------- */
+  const full=D.full,pct=full/tot,C=2*Math.PI*58,fg=$('dfg');fg.style.strokeDasharray=C;fg.style.strokeDashoffset=C;
+  const fullTop=[...P].filter(r=>r.t>=20).sort((a,b)=>b.f/b.t-a.f/a.t).slice(0,3);
+  $('fullTop').innerHTML=fullTop.map((r,i)=>`<div class="k3 g"><b>${Math.round(r.f/r.t*100)}%</b><span>${i+1}位 ${short(r.p)}</span></div>`).join('');
+  $('fullTop').insertAdjacentHTML('beforebegin','<p class="lede" style="margin:16px 0 0">🌿率が高い県（20軒以上）</p>');
+  onShow($('s4'),()=>{fg.style.strokeDashoffset=C*(1-pct);count($('kFull'),full);count($('kOpt'),tot-full);const t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/2400);$('dpct').textContent=Math.round(pct*100*ease(p))+'%';if(p<1)requestAnimationFrame(f)})(t0)});
+
+  /* ---------- 05 trends ---------- */
+  (function(){const T=D.trends;if(!T)return;const KEEP=[0,4,2,1],COLS=['#C9223A','#D4A847','#5E8C52','#13213F'];
+    const W=360,H=196,L=24,R=6,TP=8,B=22,n=T.m.length,X=i=>L+(W-L-R)*i/(n-1),Y=v=>TP+(H-TP-B)*(1-v/100);
+    let g='';[0,50,100].forEach(v=>g+=`<line class="gl" x1="${L}" x2="${W-R}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${L-5}" y="${Y(v)+4}" text-anchor="end">${v}</text>`);
+    T.m.forEach((m,i)=>{const y=+m.slice(0,4);if(m.endsWith('/01')&&y%2===0)g+=`<text class="ax" x="${X(i)}" y="${H+4}" text-anchor="middle">${y}</text>`});
+    let paths='';KEEP.forEach((k,j)=>{paths+=`<path class="ln" d="${T.v.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v[k]).toFixed(1)).join(' ')}" stroke="${COLS[j]}"/>`});
+    const peak=T.v.reduce((b,v,i)=>v[0]>T.v[b][0]?i:b,0),cross=T.v.findIndex(v=>v[0]>v[4]),soy=T.v.reduce((b,v,i)=>v[2]>T.v[b][2]?i:b,0),last=n-1;
+    const ym=(i)=>`${T.m[i].slice(0,4)}年${+T.m[i].slice(5,7)}月`;
+    const M=[[cross,0,'#C9223A',`${ym(cross)}　「ヴィーガン」が「ベジタリアン」を逆転`],[soy,2,'#5E8C52',`${ym(soy)}　大豆ミートの検索がピーク`],[peak,0,'#C9223A',`${ym(peak)}　「ヴィーガン」の検索がピーク`],[last,0,'#C9223A',`いまはピークの約${Math.round(T.v[last][0]/T.v[peak][0]*100)}%。ブームから定着へ？`]];
+    const mk=M.map(([i,k,c],j)=>`<g class="mk" style="transition-delay:${2600+j*250}ms"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="9" fill="${c}" stroke="#fff" stroke-width="2.5"/><text x="${X(i)}" y="${Y(T.v[i][k])+4}" text-anchor="middle">${j+1}</text></g>`).join('');
+    $('tsvg').innerHTML=g+paths+mk;
+    $('take').innerHTML=`${T.m[cross].slice(0,4)}年、<em>「ヴィーガン」</em>が<br>「ベジタリアン」を追い越した。`;
+    $('tkeys').innerHTML=KEEP.map((k,j)=>`<span><i style="background:${COLS[j]}"></i>${T.kw[k]}</span>`).join('');
+    $('caps').innerHTML=M.map(([,,c,t],j)=>`<li><b style="background:${c}">${j+1}</b><span>${t}</span></li>`).join('');
+    $('tsrc').textContent='出典：'+T.src+'・3か月移動平均。値は期間中の最大を100とした相対値。';
+    const ls=[...document.querySelectorAll('#tsvg .ln')];ls.forEach(p=>{const l=p.getTotalLength();p.style.strokeDasharray=l;p.style.strokeDashoffset=l});
+    onShow($('s5'),()=>ls.forEach(p=>p.style.strokeDashoffset=0));
   })();
-  // csv
+
+  /* ---------- 06 types ---------- */
+  $('types').innerHTML=D.types.filter(([k])=>TYPE[k]).slice(0,12).map(([k,n],i)=>`<div class="ty" style="--d:${i*60}ms"><img src="/images/menu2/${k}.webp" alt="" loading="lazy"><b class="num">${fmt(n)}</b><span>${TYPE[k]}</span></div>`).join('');
+
+  /* ---------- 07 chains ---------- */
+  fetch('chains.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null).then(c=>{
+    if(!c||!c.chains||!c.total_food_stores){$('chains').innerHTML=`<div class="soon"><img src="/images/oji2/oji-investigating.webp" alt=""><div><b style="font:900 20px var(--round)">ただいま調査中！</b><p class="lede" style="margin:4px 0 0">ヴィーガンメニューのある全国チェーンを数えています。</p></div></div>`;return}
+    const total=tot+c.total_food_stores;
+    $('chains').innerHTML=`<p class="lede" style="margin:0">チェーン店も入れると、ビーガンが食べられる場所は約</p><div class="chainhead"><span class="num" id="chainN">0</span><small>軒</small></div>
+      <div class="cchips">${c.chains.filter(x=>x.kind!=='drink').sort((a,b)=>(b.stores||0)-(a.stores||0)).slice(0,10).map((x,i)=>`<span class="cc" style="--d:${i*70}ms">${x.name}<span class="num">${fmt(x.stores||0)}</span></span>`).join('')}</div>
+      <p class="src">店舗数は各社公表値など（${c.asof||''}）。メニューは店舗・時期により異なります。${c.total_drink_only_stores?`ドリンクのみのチェーン（約${fmt(c.total_drink_only_stores)}店）は含みません。`:''}</p>`;
+    onShow($('s7'),()=>count($('chainN'),Math.round(total/100)*100,3200));
+  });
+
+  /* ---------- 08 facts ---------- */
+  $('fClosed').dataset.to=D.closed;
+  onShow($('s8'),()=>document.querySelectorAll('.fact b[data-to]').forEach(e=>count(e,+e.dataset.to)));
+
+  /* ---------- 09 csv ---------- */
   $('csv').onclick=()=>{const rows=[['都道府県','掲載中','まもなく追加','合計','うち完全ヴィーガン']].concat(D.pref.map(r=>[r[0],r[1],r[2],r[1]+r[2],r[3]]));const b=new Blob(['﻿'+rows.map(r=>r.join(',')).join('\n')],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`japan-vegan-map-prefectures-${D.asof}.csv`;a.click()};
 });
 </script>
