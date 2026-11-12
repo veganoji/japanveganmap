@@ -183,7 +183,8 @@ fetch('data.json').then(r=>r.json()).then(D=>{
   let W,H,dpr;function size(){dpr=devicePixelRatio||1;W=cv.clientWidth;H=Math.round(W*((LAT1-LAT0)/((LON1-LON0)*K))*.92);cv.width=W*dpr;cv.height=H*dpr;cv.style.height=H+'px'}
   // Okinawa & far islands shifted into an inset (bottom-left box)
   const proj=(la,lo)=>{let x,y;if(la<30.5){x=((lo-122.8)/(131.5-122.8))*W*.30+W*.02;y=H*.78+((27.2-la)/(27.2-24))*H*.18;}else{x=(lo-LON0)*K/((LON1-LON0)*K)*W;y=(LAT1-la)/(LAT1-LAT0)*H*.98+H*.01;}return[x,y]};
-  const pts=D.pts.map(p=>{const[x,y]=proj(p[0],p[1]);const k=p[2];return{x,y,cat:k===2?'closed':(k>=3?'full':'opt'),la:p[0]}});
+  const pts=D.pts.map(p=>{const k=p[2];return{x:0,y:0,lat:p[0],lng:p[1],cat:k===2?'closed':(k>=3?'full':'opt'),la:p[0]}});
+  const place=()=>pts.forEach(p=>{const[x,y]=proj(p.lat,p.lng);p.x=x;p.y=y});
   const order=pts.map((p,i)=>i).sort((a,b)=>pts[b].la-pts[a].la);
   const COL={full:'#6C9560',opt:'#D4A847',closed:'#B9AE9C'};
   let start=0,anim;
@@ -191,9 +192,9 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     ctx.strokeStyle='rgba(31,24,18,.18)';ctx.setLineDash([4,5]);ctx.strokeRect(W*.015,H*.76,W*.33,H*.22);ctx.setLineDash([]);ctx.fillStyle='rgba(31,24,18,.45)';ctx.font='700 11px "Noto Sans JP"';ctx.fillText('沖縄・奄美',W*.025,H*.775+12);
     let c=0;for(let j=0;j<n;j++){const p=pts[order[j]];if(!show[p.cat])continue;c+=p.cat==='closed'?0:1;const age=(t-start)-j/order.length*2600;const r=age<350?2.2+3*(1-age/350):2.2;ctx.globalAlpha=p.cat==='closed'?.55:.82;ctx.fillStyle=COL[p.cat];ctx.beginPath();ctx.arc(p.x,p.y,r,0,6.283);ctx.fill()}
     ctx.globalAlpha=1;$('mapN').textContent=fmt(c);if(n<order.length||(t-start)<3000)anim=requestAnimationFrame(draw)}
-  function play(){cancelAnimationFrame(anim);size();start=performance.now();anim=requestAnimationFrame(draw)}
+  function play(){cancelAnimationFrame(anim);size();place();start=performance.now();anim=requestAnimationFrame(draw)}
   const mapCard=cv.closest('section');onShow(mapCard,play);
-  $('replay').onclick=play;addEventListener('resize',()=>{size();draw(start+1e7)});
+  $('replay').onclick=play;addEventListener('resize',()=>{size();place();draw(start+1e7)});
   document.querySelectorAll('.legend button[data-k]').forEach(b=>b.onclick=()=>{const k=b.dataset.k;show[k]=!show[k];b.setAttribute('aria-pressed',show[k]);draw(start+1e7)});
   // bars
   const P=D.pref.map(r=>({p:r[0],on:r[1],nx:r[2],f:r[3],t:r[1]+r[2]})).sort((a,b)=>b.t-a.t);const max=P[0].t;let all=false;
