@@ -34,6 +34,10 @@ img{display:block}
 .title p{font:900 13px/1 var(--round);color:var(--gold-deep);letter-spacing:.14em;margin-top:6px}
 .oji{position:absolute;right:10px;bottom:22px;height:205px;z-index:2;transform-origin:50% 100%;animation:bob 3.2s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(80,50,10,.2))}
 .oji.jump{animation:jump .7s var(--ease)}
+.oji{cursor:pointer}
+.oji.tilt{animation:tilt .9s var(--ease)}
+@keyframes tilt{30%{transform:rotate(-6deg) translateY(-4px)}65%{transform:rotate(4deg)}}
+.score .sc{animation:rise .55s var(--ease) both}.score .sc:nth-child(2){animation-delay:.07s}.score .sc:nth-child(3){animation-delay:.14s}
 @keyframes bob{50%{transform:translateY(-6px)}}
 @keyframes jump{0%{transform:scale(1,1)}25%{transform:scale(1.08,.9)}55%{transform:translateY(-34px) scale(.96,1.06)}100%{transform:none}}
 .bubble{position:absolute;right:150px;bottom:150px;z-index:3;background:#fff;border-radius:18px;padding:8px 14px;font:900 16px/1.3 var(--round);box-shadow:0 6px 18px -8px rgba(80,50,10,.35);transform-origin:100% 100%;animation:pop .5s var(--ease) both}
@@ -48,11 +52,27 @@ img{display:block}
 .sc span{font-size:12px;font-weight:700;color:var(--muted)}
 .flip{animation:tick .5s var(--ease)}
 @keyframes tick{0%{transform:translateY(-40%) scale(1.3);opacity:.2}100%{transform:none;opacity:1}}
-.rank{display:flex;align-items:center;gap:10px;margin:10px 2px 0}
-.rank .rn{font:900 15px/1 var(--round);white-space:nowrap}
-.rank .bar{flex:1;height:12px;border-radius:9px;background:var(--cream2);overflow:hidden}
-.rank .bar i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,var(--gold-soft),var(--gold));transition:width 1s cubic-bezier(.2,.8,.3,1.1)}
-.rank small{font:700 12px/1 'Noto Sans JP';color:var(--muted);white-space:nowrap}
+.rank{display:flex;align-items:center;gap:14px;margin:12px 0 0;background:rgba(255,253,248,.95);border-radius:24px;padding:14px 16px 16px;box-shadow:0 10px 24px -14px rgba(80,50,10,.45);animation:rise .6s .15s var(--ease) both}
+.crest{position:relative;width:66px;height:66px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#FFF6D2,var(--gold-soft) 58%,var(--gold));box-shadow:0 8px 16px -8px var(--gold-deep),inset 0 0 0 3px rgba(255,255,255,.7);animation:crest 4.5s ease-in-out infinite}
+.crest::before{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px dashed rgba(138,109,31,.45);animation:spin 18s linear infinite}
+.crest img{width:44px;filter:drop-shadow(0 2px 2px rgba(80,50,10,.25))}
+.crest.up{animation:rankup .9s var(--ease)}
+@keyframes crest{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg) translateY(-2px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rankup{0%{transform:scale(1)}30%{transform:scale(1.35) rotate(-14deg)}60%{transform:scale(.92) rotate(8deg)}100%{transform:none}}
+.rk{flex:1;min-width:0}
+.rtop{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.rtop small{display:block;font:900 11px/1 var(--round);letter-spacing:.18em;color:var(--gold-deep);margin-bottom:3px}
+.rtop b{font:900 28px/1.05 var(--round);color:var(--night);white-space:nowrap}
+.rtop .next{font:900 17px/1 var(--round);color:var(--royal);white-space:nowrap}
+.bar{position:relative;height:18px;border-radius:999px;background:var(--cream2);margin:10px 14px 0 0;box-shadow:inset 0 2px 4px rgba(80,50,10,.18)}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:0;min-width:18px;border-radius:999px;overflow:hidden;background:linear-gradient(180deg,#F8DD8C,var(--gold) 55%,#C2922A);box-shadow:inset 0 -2px 0 rgba(138,109,31,.35),inset 0 2px 0 rgba(255,255,255,.5);transition:width 1.3s cubic-bezier(.2,.9,.3,1.12)}
+.bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.85) 48%,transparent 66%) 0 0/240% 100%;animation:sweep 2.8s ease-in-out infinite}
+@keyframes sweep{0%,35%{background-position:140% 0}100%{background-position:-60% 0}}
+.goal{position:absolute;right:-14px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;background:var(--white);box-shadow:0 0 0 3px var(--gold),0 4px 8px -3px rgba(80,50,10,.4);display:grid;place-items:center;font-size:15px;animation:goal 2.2s ease-in-out infinite}
+@keyframes goal{50%{transform:scale(1.12)}}
+.nextname{display:block;text-align:right;margin:8px 14px 0 0;font:900 13px/1 var(--round);color:var(--muted)}
+.nextname b{color:var(--gold-deep)}
 
 /* ── search ───────────────────────────── */
 .search{position:sticky;top:0;z-index:8;padding:12px 0 8px;background:linear-gradient(var(--paper) 75%,transparent)}
@@ -61,8 +81,20 @@ img{display:block}
 .search input{flex:1;border:0;outline:0;background:none;font-size:18px;padding:10px 0;min-width:0}
 .search .go{width:44px;height:44px;border-radius:50%;background:var(--royal);display:grid;place-items:center;flex:none}
 .search .go img{width:26px;filter:brightness(10)}
+.search.pulse label{animation:spulse .6s var(--ease)}
+@keyframes spulse{30%{transform:scale(1.05)}60%{transform:scale(.98)}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:flex;align-items:center;gap:6px;background:var(--white);border-radius:999px;padding:6px 14px 6px 8px;font:900 15px/1 var(--round);box-shadow:0 0 0 2px var(--line);animation:rise .45s var(--ease) both;animation-delay:calc(.25s + var(--i)*60ms);transition:transform .15s}
+.chip img{width:30px;height:30px}
+.chip:active{transform:scale(.9)}
+.chip.on{background:var(--royal);color:#fff;box-shadow:0 0 0 2px var(--royal)}
 .results{display:grid;gap:8px;margin-bottom:6px}
-.res{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--white);border-radius:18px;padding:8px 12px 8px 8px;box-shadow:0 0 0 2px var(--line);animation:rise .35s var(--ease) both;animation-delay:calc(var(--i)*35ms)}
+.res{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--white);border-radius:18px;padding:8px 12px 8px 8px;box-shadow:0 0 0 2px var(--line);animation:cascade .5s var(--ease) both;animation-delay:calc(var(--i)*45ms);transition:transform .15s}
+.res:active{transform:scale(.97)}
+.res img{transition:transform .3s var(--ease)}
+.res:hover img{transform:rotate(-10deg) scale(1.1)}
+@keyframes cascade{0%{transform:translateY(18px) scale(.92);opacity:0}100%{transform:none;opacity:1}}
 .res img{width:48px;height:48px;flex:none}
 .res b{display:block;font-size:16px;line-height:1.3}
 .res small{display:block;font-size:13px;color:var(--muted)}
@@ -72,12 +104,23 @@ img{display:block}
 @keyframes rise{from{transform:translateY(14px);opacity:0}}
 
 /* ── sections ───────────────────────────── */
-.sec{margin-top:26px}
-.sec h2{display:flex;align-items:baseline;gap:8px;font:900 22px/1.2 var(--round);margin-bottom:10px}
+.sec{margin-top:28px}
+.sec h2{display:flex;align-items:baseline;gap:8px;font:900 24px/1.2 var(--round);margin-bottom:10px}
+.sec:not(.in) h2{opacity:0;transform:translateX(-24px)}
+.sec.in h2{transition:opacity .5s,transform .6s var(--ease)}
+.sec:not(.in) .page,.sec:not(.in) .jp,.sec:not(.in) .badges{opacity:0}
+.sec.in .jp{animation:rise .6s var(--ease) both}
+.sec.in .jp:not(.settled) .tile{animation:tin .5s var(--ease) both;animation-delay:calc(var(--d)*28ms)}
+@keyframes tin{0%{transform:scale(0) rotate(-30deg);opacity:0}100%{transform:none;opacity:1}}
+.sec.in .badges:not(.settled) .bd{animation:bdin .55s var(--ease) both;animation-delay:calc(var(--i)*70ms)}
+@keyframes bdin{0%{transform:translateY(20px) scale(.5);opacity:0}100%{transform:none;opacity:1}}
+.bd.got i{animation:medal 3.2s ease-in-out infinite;animation-delay:calc(var(--i)*.4s)}
+@keyframes medal{0%,80%,100%{transform:none}86%{transform:rotate(-12deg) scale(1.08)}93%{transform:rotate(10deg)}}
 .sec h2 small{font:700 14px/1 'Noto Sans JP';color:var(--muted)}
 
 /* passport page */
-.page{position:relative;background:var(--white) url(/images/scene/page-wash-portrait.webp) center/cover;border-radius:8px 22px 22px 8px;padding:18px 14px 18px 22px;box-shadow:0 0 0 2px var(--line),-6px 0 0 -2px var(--cream2),0 16px 30px -18px rgba(80,50,10,.5);transform-origin:0 50%;animation:turn .8s cubic-bezier(.2,.8,.2,1) both}
+.page{position:relative;background:var(--white) url(/images/scene/page-wash-portrait.webp) center/cover;border-radius:8px 22px 22px 8px;padding:18px 14px 18px 22px;box-shadow:0 0 0 2px var(--line),-6px 0 0 -2px var(--cream2),0 16px 30px -18px rgba(80,50,10,.5);transform-origin:0 50%}
+.sec.in .page{animation:turn .9s cubic-bezier(.2,.8,.2,1) both}
 .page::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:2px;background:repeating-linear-gradient(var(--line) 0 6px,transparent 6px 12px)}
 @keyframes turn{from{transform:perspective(900px) rotateY(-70deg);opacity:0}}
 .book{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 10px}
@@ -94,7 +137,10 @@ img{display:block}
 .st.gold .nm{color:var(--gold-deep)}
 .st.gold::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%) 0 0/250% 100%;animation:shine 3.5s ease-in-out infinite;mix-blend-mode:soft-light}
 @keyframes shine{0%,60%{background-position:150% 0}100%{background-position:-60% 0}}
-.st.empty{border:3px dashed var(--line);animation:none;transform:none;opacity:.8}
+.st[data-slug]:hover,.st[data-slug]:active{animation:wob .55s var(--ease)}
+@keyframes wob{0%{transform:rotate(var(--r))}30%{transform:rotate(calc(var(--r) - 9deg)) scale(1.1)}60%{transform:rotate(calc(var(--r) + 6deg)) scale(.97)}100%{transform:rotate(var(--r))}}
+.st.empty{border:3px dashed var(--line);animation:breathe 3s ease-in-out infinite;animation-delay:calc(var(--i,0)*.3s);transform:none;opacity:.8}
+@keyframes breathe{50%{transform:scale(.94);opacity:.55}}
 .st.empty img{width:46%;opacity:.25;filter:grayscale(1)}
 .st.new{animation:slam .6s var(--ease) both}
 @keyframes slam{0%{transform:scale(2.4) rotate(-30deg);opacity:0}60%{transform:scale(.9) rotate(var(--r));opacity:1}100%{transform:rotate(var(--r))}}
@@ -122,7 +168,15 @@ img{display:block}
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:9;padding:10px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--paper) 35%)}
 .dock .wrap{display:flex;gap:10px;padding:0}
 .btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:15px 18px;font:900 18px/1 var(--round);background:var(--royal);color:#fff;box-shadow:0 5px 0 var(--royal-deep);transition:transform .1s,box-shadow .1s}
-.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--royal-deep)}
+.btn:active{transform:translateY(4px) scale(.95,.9);box-shadow:0 1px 0 var(--royal-deep)}
+.btn .wg{display:inline-block}
+.dock .btn .wg{animation:wiggle 5s ease-in-out infinite}
+.dock .btn:nth-child(2) .wg{animation-delay:2.5s}
+.btn.tap .wg{animation:wiggle2 .6s var(--ease)}
+@keyframes wiggle{0%,86%,100%{transform:none}89%{transform:rotate(-16deg) scale(1.15)}93%{transform:rotate(12deg)}96%{transform:rotate(-6deg)}}
+@keyframes wiggle2{30%{transform:rotate(-20deg) scale(1.3)}60%{transform:rotate(14deg)}}
+.dock{animation:dockin .6s .4s var(--ease) both}
+@keyframes dockin{from{transform:translateY(120%)}}
 .btn.gold{background:var(--gold);box-shadow:0 5px 0 var(--gold-deep)}
 .btn.gold:active{box-shadow:0 1px 0 var(--gold-deep)}
 .btn.light{background:var(--white);color:var(--ink);box-shadow:0 0 0 2px var(--line),0 5px 0 var(--line)}
@@ -131,8 +185,15 @@ img{display:block}
 /* ── stamp sheet ───────────────────────────── */
 .sheet{position:fixed;inset:0;z-index:20;display:flex;align-items:flex-end;justify-content:center;background:rgba(31,24,18,.45);opacity:0;pointer-events:none;transition:opacity .25s}
 .sheet.open{opacity:1;pointer-events:auto}
-.panel{position:relative;width:100%;max-width:520px;background:var(--paper) url(/images/scene/page-wash-portrait.webp) center/cover;border-radius:30px 30px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.9,.25,1.05);max-height:94vh;overflow:auto}
-.sheet.open .panel{transform:none}
+.panel{position:relative;width:100%;max-width:520px;background:var(--paper) url(/images/scene/page-wash-portrait.webp) center/cover;border-radius:30px 30px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));transform:translateY(100%);transition:transform .28s cubic-bezier(.5,0,.75,0);max-height:94vh;overflow:auto}
+.sheet.open .panel{transform:none;transition:transform .6s cubic-bezier(.25,1.35,.45,1)}
+.sheet.open .shop,.sheet.open .stage,.sheet.open .acts,.sheet.open .link{animation:rise .5s var(--ease) both}
+.sheet.open .shop{animation-delay:.12s}.sheet.open .stage{animation-delay:.2s}.sheet.open .acts{animation-delay:.28s}.sheet.open .link{animation-delay:.34s}
+.sheet.open .slot:not(.stamped) .hint img{animation:hintbob 1.6s ease-in-out infinite}
+@keyframes hintbob{50%{transform:translateY(-6px) rotate(-6deg)}}
+.slot:not(.stamped){animation:slotpulse 2.4s ease-in-out infinite}
+@keyframes slotpulse{50%{transform:scale(1.03)}}
+.slot:active{transform:scale(.94)}
 .grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 12px}
 .x{position:absolute;right:14px;top:12px;width:40px;height:40px;border-radius:50%;background:var(--white);box-shadow:0 0 0 2px var(--line);font-size:20px;line-height:40px;text-align:center}
 .shop{display:flex;align-items:center;gap:12px;padding-right:40px}
@@ -204,19 +265,27 @@ img{display:block}
     <div class="sc"><b id="sP">0</b><span>都道府県</span></div>
     <div class="sc"><b id="sPt">0</b><span>pt</span></div>
   </div>
-  <div class="rank"><span class="rn" id="rankName">👑 見習い</span><span class="bar"><i id="rankBar"></i></span><small id="rankNext"></small></div>
+  <div class="rank">
+    <div class="crest" id="crest"><img src="/images/brand/leaf-crown-sm.png" alt=""></div>
+    <div class="rk">
+      <div class="rtop"><span><small>RANK</small><b id="rankName">見習い</b></span><span class="next" id="rankNext"></span></div>
+      <div class="bar"><i id="rankBar"></i><span class="goal">👑</span></div>
+      <span class="nextname" id="nextName"></span>
+    </div>
+  </div>
 
   <div class="search"><label><input id="q" type="search" placeholder="お店・エリアをさがす" autocomplete="off" enterkeyhint="search"><span class="go"><img src="/images/menu2/pin.webp" alt=""></span></label></div>
+  <div class="chips" id="chips"></div>
   <div class="results" id="results"></div>
 
-  <section class="sec"><h2>スタンプ帳 <small id="bookN"></small></h2><div class="page"><div class="book" id="book"></div></div></section>
+  <section class="sec" id="secBook"><h2>スタンプ帳 <small id="bookN"></small></h2><div class="page"><div class="book" id="book"></div></div></section>
   <section class="sec"><h2>全国マップ</h2><div class="jp" id="jp"></div></section>
   <section class="sec"><h2>バッジ</h2><div class="badges" id="badges"></div></section>
 </main>
 
 <div class="dock"><div class="wrap">
-  <button class="btn light" id="findBtn" type="button"><img src="/images/menu2/pin.webp" alt="">さがす</button>
-  <button class="btn gold" id="shareBtn" type="button">📸 シェア</button>
+  <button class="btn light" id="findBtn" type="button"><img class="wg" src="/images/menu2/pin.webp" alt="">さがす</button>
+  <button class="btn gold" id="shareBtn" type="button"><span class="wg">📸</span>シェア</button>
 </div></div>
 
 <div class="sheet" id="sheet" aria-hidden="true"><div class="panel" role="dialog" aria-modal="true" aria-labelledby="shName">
@@ -272,18 +341,20 @@ function render(newSlug,newPref){
   const nPref=Object.keys(prefCount).length,pt=points();
   setNum('sN',st.length);setNum('sP',nPref);setNum('sPt',pt);
   let i=0;while(i+1<RANKS.length&&pt>=RANKS[i+1][0])i++;
-  $('rankName').textContent='👑 '+RANKS[i][1];
-  if(RANKS[i+1]){const a=RANKS[i][0],b=RANKS[i+1][0];$('rankNext').textContent=`あと${b-pt}pt`;requestAnimationFrame(()=>$('rankBar').style.width=Math.max(4,Math.round((pt-a)/(b-a)*100))+'%')}
-  else{$('rankNext').textContent='MAX';$('rankBar').style.width='100%'}
+  $('rankName').textContent=RANKS[i][1];
+  if(last.rank!==undefined&&i>last.rank&&!reduce){const c=$('crest');c.classList.remove('up');void c.offsetWidth;c.classList.add('up');setTimeout(()=>toast(`👑 ランクアップ！ ${RANKS[i][1]}`),900)}
+  last.rank=i;
+  if(RANKS[i+1]){const a=RANKS[i][0],b=RANKS[i+1][0];$('rankNext').textContent=`あと${b-pt}pt`;$('nextName').innerHTML=`つぎは <b>${RANKS[i+1][1]}</b>`;requestAnimationFrame(()=>$('rankBar').style.width=Math.max(6,Math.round((pt-a)/(b-a)*100))+'%')}
+  else{$('rankNext').textContent='MAX';$('nextName').textContent='';$('rankBar').style.width='100%'}
   $('bookN').textContent=st.length?`${st.length}こ`:'';
   const cells=st.map(([slug,s],k)=>{const r=((k*37)%15)-7;return `<button type="button" class="st ${s.photo?'gold':''} ${s.thumb?'has-ph':''} ${slug===newSlug?'new':''}" style="--r:${r}deg;--i:${k}" data-slug="${esc(slug)}"><span class="ring"></span>${s.thumb?`<span class="ph"><img src="${s.thumb}" alt=""></span>`:''}<img class="ic" src="${icon(s.type,s.full)}" alt=""><span class="nm">${esc(s.name)}</span></button>`});
   const empties=Math.max(6-st.length,(3-st.length%3)%3);
-  for(let k=0;k<empties;k++)cells.push(`<div class="st empty"><img src="/images/brand/leaf-crown-sm.png" alt=""></div>`);
+  for(let k=0;k<empties;k++)cells.push(`<div class="st empty" style="--i:${k}"><img src="/images/brand/leaf-crown-sm.png" alt=""></div>`);
   $('book').innerHTML=cells.join('');
-  $('jp').innerHTML=`<div class="cap">${nPref}<small> / 47</small></div>`+PREFS.map(p=>{const[c,r]=TILE[p];const n=prefCount[p]||0;return `<div class="tile ${n?'on':''} ${n>=5?'lots':''} ${p===newPref?'pop':''}" style="grid-column:${c+1};grid-row:${r+1}" title="${p} ${n}">${SHORT(p)}</div>`}).join('');
+  $('jp').innerHTML=`<div class="cap">${nPref}<small> / 47</small></div>`+PREFS.map(p=>{const[c,r]=TILE[p];const n=prefCount[p]||0;return `<div class="tile ${n?'on':''} ${n>=5?'lots':''} ${p===newPref?'pop':''}" style="grid-column:${c+1};grid-row:${r+1};--d:${(12-c)+r}" title="${p} ${n}">${SHORT(p)}</div>`}).join('');
   const nFull=st.filter(([,s])=>s.full).length,nPh=st.filter(([,s])=>s.photo).length;
   const B=[['🌱','はじめて',st.length>=1],['🍽️','5軒',st.length>=5],['🌿','完全5軒',nFull>=5],['📷','写真3枚',nPh>=3],['🗾','3県',nPref>=3],['🚄','10県',nPref>=10],['👑','50軒',st.length>=50],['🏯','全国',nPref>=47]];
-  $('badges').innerHTML=B.map(([e,n,g])=>`<div class="bd ${g?'got':''}"><i>${e}</i>${n}</div>`).join('');
+  $('badges').innerHTML=B.map(([e,n,g],k)=>`<div class="bd ${g?'got':''}" style="--i:${k}"><i>${e}</i>${n}</div>`).join('');
   search();
 }
 function search(){
@@ -360,7 +431,7 @@ async function share(){
   for(const p of PREFS){const[cc,rr]=TILE[p];const n=pc[p]||0;x.fillStyle=n>=5?'#3F6A3A':n?'#6C9560':'#F6E4BD';x.beginPath();x.roundRect(ox+cc*(cw+g),oy+rr*(cw+g),cw,cw,12);x.fill()}
   x.fillStyle='#13213F';x.beginPath();x.roundRect(240,1770,600,92,46);x.fill();
   if(crown)x.drawImage(crown,262,1779,88,72);
-  x.fillStyle='#fff';x.font='900 50px "Zen Maru Gothic"';x.fillText($('rankName').textContent.replace('👑 ',''),560,1833);
+  x.fillStyle='#fff';x.font='900 50px "Zen Maru Gothic"';x.fillText($('rankName').textContent,560,1833);
   x.fillStyle='#8A7458';x.font='700 38px "Noto Sans JP"';x.fillText('veganmapjapan.org · @veganoji',540,1905);
   const blob=await new Promise(r=>c.toBlob(r,'image/png'));const file=new File([blob],'oji-stamps.png',{type:'image/png'});
   if(navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],text:'#王子スタンプ帳 #日本ビーガンマップ'});return}catch(e){if(e.name==='AbortError')return}}
@@ -373,8 +444,22 @@ $('closeBtn').onclick=close;$('sheet').addEventListener('click',e=>{if(e.target.
 addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 $('stampBtn').onclick=doStamp;
 $('slot').onclick=()=>{const d=cur&&data.stamps[cur[0]];if(!d||pendingPhoto)doStamp()};
-$('shareBtn').onclick=share;
-$('findBtn').onclick=()=>{$('q').focus();$('q').scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'})};
+$('shareBtn').onclick=()=>{tap($('shareBtn'));share()};
+$('findBtn').onclick=()=>{tap($('findBtn'));$('q').focus();$('q').scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});const sb=document.querySelector('.search');sb.classList.remove('pulse');void sb.offsetWidth;sb.classList.add('pulse')};
+function tap(b){b.classList.remove('tap');void b.offsetWidth;b.classList.add('tap')}
+// quick genre chips
+const CHIPS=[['ramen','ラーメン'],['curry','カレー'],['sweets','スイーツ'],['bakery','パン'],['teishoku','定食'],['burger','バーガー'],['sushi','寿司'],['leaf','完全ヴィーガン']];
+$('chips').innerHTML=CHIPS.map(([k,l],i)=>`<button type="button" class="chip" style="--i:${i}" data-q="${l}"><img src="/images/menu2/${k}.webp" alt="">${l}</button>`).join('');
+$('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const on=c.classList.contains('on');document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));$('q').value=on?'':c.dataset.q;if(!on)c.classList.add('on');search()});
+$('q').addEventListener('input',()=>document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.q===$('q').value.trim())));
+// sections pop in on scroll; tiles/badges animate once, then settle
+const io='IntersectionObserver' in window&&!reduce?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);setTimeout(()=>e.target.querySelectorAll('.jp,.badges').forEach(x=>x.classList.add('settled')),2400)}}),{threshold:.2}):null;
+document.querySelectorAll('.sec').forEach(s=>{if(io)io.observe(s);else{s.classList.add('in');s.querySelectorAll('.jp,.badges').forEach(x=>x.classList.add('settled'))}});
+// 王子: idle wink + tap reaction
+const OJI_LINES=['どこ行く？','おなかすいた！','ビーガン最高！','つぎは何食べる？','スタンプ集めよ！'];
+const wink=new Image();wink.src='/images/oji2/oji-winking.webp';
+if(!reduce)setInterval(()=>{const o=$('oji');if(o.classList.contains('jump'))return;const base=o.src;o.src=wink.src;setTimeout(()=>{if(o.src===wink.src)o.src=base},420)},6500);
+$('oji').onclick=()=>{const o=$('oji');o.classList.remove('tilt','jump');void o.offsetWidth;o.classList.add('tilt');const b=$('bubble');b.textContent=OJI_LINES[Math.floor(Math.random()*OJI_LINES.length)];b.style.animation='none';void b.offsetWidth;b.style.animation=''};
 $('file').onchange=async()=>{const f=$('file').files[0];if(!f)return;try{setPhoto(await thumbOf(f))}catch(e){toast('写真を読み込めませんでした')}};
 render();
 fetch('/data/search.json').then(r=>r.json()).then(d=>{shops=d.shops||[];for(const s of shops)bySlug.set(s[0],s);search();const p=new URLSearchParams(location.search).get('shop');if(p)open(p)}).catch(()=>toast('お店データを読み込めませんでした'));
