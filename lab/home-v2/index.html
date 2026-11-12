@@ -38,6 +38,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/lab/home-v2/site.css" />
+  <style>.live-tag{display:inline-flex;align-items:center;gap:5px;margin-top:4px;font:900 11px/1 "Noto Sans JP",sans-serif;letter-spacing:.12em;color:#C9223A}.live-tag i{width:8px;height:8px;border-radius:50%;background:#C9223A;animation:lp 1.6s ease-in-out infinite}@keyframes lp{50%{opacity:.25;transform:scale(.7)}}.live-tag[hidden]{display:none}</style>
 </head>
 <body class="font-jp">
 
@@ -93,9 +94,9 @@
 
         <!-- stat -->
         <div class="mt-5 sm:mt-7 flex items-end justify-center lg:justify-start gap-3">
-          <div class="stat-num text-[58px] sm:text-[76px]">2,500<span class="text-gold">+</span></div>
+          <div class="stat-num text-[58px] sm:text-[76px]" data-live data-count="2500" data-suffix="+" data-suffix-class="text-gold">2,500<span class="text-gold">+</span></div>
           <div class="pb-2 text-left">
-            <div class="font-display text-[16px] sm:text-[18px] text-ink leading-tight">店舗掲載中</div>
+            <div class="font-display text-[16px] sm:text-[18px] text-ink leading-tight">店舗掲載中</div><div class="live-tag" id="liveTag" hidden><i></i>LIVE</div>
           </div>
         </div>
 
@@ -159,7 +160,7 @@
   <section class="crown-bg crown-bg-paper px-5 sm:px-8 py-12 sm:py-20 text-paper" style="background:linear-gradient(135deg,#C9223A 0%,#9C1428 100%);">
     <div class="max-w-[980px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 text-center reveal">
       <div>
-        <div class="font-display text-[52px] sm:text-[64px] leading-none" data-count="2500" data-suffix="+" data-suffix-class="text-gold-soft">2,500<span class="text-gold-soft">+</span></div>
+        <div class="font-display text-[52px] sm:text-[64px] leading-none" data-live data-count="2500" data-suffix="+" data-suffix-class="text-gold-soft">2,500<span class="text-gold-soft">+</span></div>
         <div class="mt-2 text-[14px] sm:text-[15px] tracking-wide opacity-90">掲載店舗 · Listings</div>
       </div>
       <div class="sm:border-x border-paper/25">
@@ -320,8 +321,14 @@
       });
     });
 
+    // Live count: pins on the Google list right now (/data/home.json on_map). Falls back to the static 2,500+.
+    var liveReady = fetch('/data/home.json').then(function (r) { return r.json(); }).then(function (d) {
+      if (!d || !d.on_map) return;
+      document.querySelectorAll('[data-live]').forEach(function (el) { el.setAttribute('data-count', d.on_map); el.removeAttribute('data-suffix'); });
+      var t = document.getElementById('liveTag'); if (t) t.hidden = false;
+    }).catch(function () {});
     // Count-up animation for the red stat band (fires when scrolled into view)
-    (function () {
+    liveReady.then(function () {
       var nums = document.querySelectorAll('[data-count]');
       if (!nums.length) return;
       function render(el, v) {
@@ -356,7 +363,7 @@
         es.forEach(function (en) { if (en.isIntersecting) { animate(en.target); io.unobserve(en.target); } });
       }, { threshold: 0.5 });
       nums.forEach(function (n) { io.observe(n); });
-    })();
+    });
 
     // Food photo gallery — auto-scroll marquee of real vegan dishes
     (function () {
