@@ -235,8 +235,8 @@ fetch('data.json').then(r=>r.json()).then(D=>{
     T.m.forEach((m,i)=>{if(m.endsWith('/01')&&(+m.slice(0,4))%2===0)g+=`<text class="ax" x="${X(i)}" y="${H-6}" text-anchor="middle">${m.slice(0,4)}</text>`});
     let paths='';KEEP.forEach((k,j)=>{const d=T.v.map((v,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(v[k]).toFixed(1)).join(' ');paths+=`<path class="ln" d="${d}" stroke="${COLS[j]}"/>`});
     const at=(ym)=>T.m.indexOf(ym);const peak=T.v.reduce((b,v,i)=>v[0]>T.v[b][0]?i:b,0);const cross=T.v.findIndex(v=>v[0]>v[4]);const soy=T.v.reduce((b,v,i)=>v[2]>T.v[b][2]?i:b,0);
-    const note=(i,k,txt,dy)=>`<g class="note"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="4.5" fill="#fff" stroke="${COLS[KEEP.indexOf(k)]}" stroke-width="3"/><text x="${Math.min(X(i),W-70)}" y="${Y(T.v[i][k])+dy}" text-anchor="middle">${txt}</text></g>`;
-    $('tsvg').innerHTML=g+paths+note(cross,0,`${T.m[cross].slice(0,4)} ベジタリアンを逆転`,-12)+note(peak,0,`${T.m[peak].slice(0,4)} ピーク`,-12)+note(soy,2,`${T.m[soy].slice(0,4)} 大豆ミートブーム`,-12);
+    const note=(i,k,txt,dy)=>`<g class="note"><circle cx="${X(i)}" cy="${Y(T.v[i][k])}" r="4.5" fill="#fff" stroke="${COLS[KEEP.indexOf(k)]}" stroke-width="3"/><text x="${Math.max(60,Math.min(X(i),W-60))}" y="${Y(T.v[i][k])+dy}" text-anchor="middle">${txt}</text></g>`;
+    $('tsvg').innerHTML=g+paths+note(cross,0,`${T.m[cross].slice(0,4)} ベジタリアンを逆転`,22)+note(peak,0,`${T.m[peak].slice(0,4)} ピーク`,-12)+note(soy,2,`${T.m[soy].slice(0,4)} 大豆ミート`,26);
     $('tkeys').innerHTML=KEEP.map((k,j)=>`<span><i style="background:${COLS[j]}"></i>${NAMES[k]}</span>`).join('');
     $('tsrc').textContent='出典：'+T.src+'（3か月移動平均）';
     const ls=[...document.querySelectorAll('#tsvg .ln')];ls.forEach(p=>{const L=p.getTotalLength();p.style.strokeDasharray=L;p.style.strokeDashoffset=L});
